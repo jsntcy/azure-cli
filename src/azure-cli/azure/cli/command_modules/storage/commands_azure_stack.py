@@ -123,7 +123,7 @@ def load_command_table(self, _):  # pylint: disable=too-many-locals, too-many-st
             2. After the failover, your storage account type will be converted to locally redundant storage (LRS). You can convert your account to use geo-redundant storage (GRS).
             3. Once you re-enable GRS/GZRS for your storage account, Microsoft will replicate data to your new secondary region. Replication time is dependent on the amount of data to replicate. Please note that there are bandwidth charges for the bootstrap. Please refer to doc: https://azure.microsoft.com/pricing/details/bandwidth/
         """
-        g.command('failover', 'failover', supports_no_wait=True, is_preview=True, min_api='2018-07-01',
+        g.command('failover', 'begin_failover', supports_no_wait=True, is_preview=True, min_api='2018-07-01',
                   confirmation=failover_confirmation)
 
     with self.command_group('storage account', storage_account_sdk_keys, resource_type=ResourceType.MGMT_STORAGE) as g:
@@ -395,19 +395,25 @@ def load_command_table(self, _):  # pylint: disable=too-many-locals, too-many-st
     )
 
     with self.command_group('storage container immutability-policy', command_type=blob_container_mgmt_sdk,
+                            custom_command_type=get_custom_sdk('blob',
+                                                               cf_blob_container_mgmt,
+                                                               resource_type=ResourceType.MGMT_STORAGE),
                             min_api='2018-02-01') as g:
         g.show_command('show', 'get_immutability_policy',
                        transform=transform_immutability_policy)
-        g.command('create', 'create_or_update_immutability_policy')
+        g.custom_command('create', 'create_or_update_immutability_policy')
         g.command('delete', 'delete_immutability_policy',
                   transform=lambda x: None)
         g.command('lock', 'lock_immutability_policy')
-        g.command('extend', 'extend_immutability_policy')
+        g.custom_command('extend', 'extend_immutability_policy')
 
     with self.command_group('storage container legal-hold', command_type=blob_container_mgmt_sdk,
+                            custom_command_type=get_custom_sdk('blob',
+                                                               cf_blob_container_mgmt,
+                                                               resource_type=ResourceType.MGMT_STORAGE),
                             min_api='2018-02-01') as g:
-        g.command('set', 'set_legal_hold')
-        g.command('clear', 'clear_legal_hold')
+        g.custom_command('set', 'set_legal_hold')
+        g.custom_command('clear', 'clear_legal_hold')
         g.show_command(
             'show', 'get', transform=lambda x: getattr(x, 'legal_hold', x))
 

@@ -20,6 +20,18 @@ def str2bool(v):
     return v
 
 
+def check_name_availability(cmd, client, name):
+    StorageAccountCheckNameAvailabilityParameters = cmd.get_models('StorageAccountCheckNameAvailabilityParameters')
+    account_name = StorageAccountCheckNameAvailabilityParameters(name=name)
+    return client.check_name_availability(account_name)
+
+
+def regenerate_key(cmd, client, account_name, key_name, resource_group_name=None):
+    StorageAccountRegenerateKeyParameters = cmd.get_models('StorageAccountRegenerateKeyParameters')
+    regenerate_key_parameters = StorageAccountRegenerateKeyParameters(key_name=key_name)
+    return client.regenerate_key(resource_group_name, account_name, regenerate_key_parameters)
+
+
 # pylint: disable=too-many-locals, too-many-statements, too-many-branches
 def create_storage_account(cmd, resource_group_name, account_name, sku=None, location=None, kind=None,
                            tags=None, custom_domain=None, encryption_services=None, access_tier=None, https_only=None,
@@ -122,7 +134,7 @@ def create_storage_account(cmd, resource_group_name, account_name, sku=None, loc
     if require_infrastructure_encryption:
         params.encryption.require_infrastructure_encryption = require_infrastructure_encryption
 
-    return scf.storage_accounts.create(resource_group_name, account_name, params)
+    return scf.storage_accounts.begin_create(resource_group_name, account_name, params)
 
 
 def list_storage_accounts(cmd, resource_group_name=None):
@@ -142,7 +154,7 @@ def show_storage_account_connection_string(cmd, resource_group_name, account_nam
     connection_string = 'DefaultEndpointsProtocol={};EndpointSuffix={}'.format(protocol, endpoint_suffix)
     if account_name is not None:
         scf = cf_sa_for_keys(cmd.cli_ctx, None)
-        obj = scf.list_keys(resource_group_name, account_name)  # pylint: disable=no-member
+        obj = scf.list_keys(resource_group_name, account_name, logging_enable=False, expand=None)  # pylint: disable=no-member
         try:
             keys = [obj.keys[0].value, obj.keys[1].value]  # pylint: disable=no-member
         except AttributeError:
@@ -409,11 +421,11 @@ def _update_private_endpoint_connection_status(cmd, client, resource_group_name,
                           account_name=account_name,
                           private_endpoint_connection_name=private_endpoint_connection_name,
                           properties=private_endpoint_connection)
-    except ErrorResponseException as ex:
-        if ex.response.status_code == 400:
-            from msrestazure.azure_exceptions import CloudError
+    except Exception as ex:
+        from azure.core.exceptions import HttpResponseError
+        if isinstance(ex, HttpResponseError) and ex.response.status_code == 400:
             if new_status == "Approved" and old_status == "Rejected":
-                raise CloudError(ex.response, "You cannot approve the connection request after rejection. "
+                raise CLIError(ex.response, "You cannot approve the connection request after rejection. "
                                  "Please create a new connection for approval.")
         raise ex
 
@@ -435,18 +447,18 @@ def reject_private_endpoint_connection(cmd, client, resource_group_name, account
     )
 
 
-def create_management_policies(client, resource_group_name, account_name, policy):
+def create_management_policies(cmd, client, resource_group_name, account_name, policy):
     if os.path.exists(policy):
         policy = get_file_json(policy)
     else:
         policy = shell_safe_json_parse(policy)
-    return client.create_or_update(resource_group_name, account_name, policy=policy)
+    ManagementPolicy = cmd.get_models('ManagementPolicy')
+    management_policy = ManagementPolicy(policy=policy)
+    return client.create_or_update(resource_group_name, account_name, properties=management_policy)
 
 
 def update_management_policies(client, resource_group_name, account_name, parameters=None):
-    if parameters:
-        parameters = parameters.policy
-    return client.create_or_update(resource_group_name, account_name, policy=parameters)
+    return client.create_or_update(resource_group_name, account_name, properties=parameters)
 
 
 # TODO: support updating other properties besides 'enable_change_feed,delete_retention_policy'

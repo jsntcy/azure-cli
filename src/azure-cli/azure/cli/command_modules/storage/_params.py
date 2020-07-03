@@ -333,7 +333,7 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
     with self.argument_context('storage account keys list', resource_type=ResourceType.MGMT_STORAGE) as c:
         t_expand_key_type = self.get_models('ListKeyExpand', resource_type=ResourceType.MGMT_STORAGE)
         c.argument("expand", options_list=['--expand-key-type'], help='Specify the expanded key types to be listed.',
-                   arg_type=get_enum_type(t_expand_key_type), min_api='2019-04-01', is_preview=True)
+                   arg_type=get_enum_type(t_expand_key_type), min_api='2019-04-01', is_preview=True, default=None)
 
     with self.argument_context('storage account keys renew', resource_type=ResourceType.MGMT_STORAGE) as c:
         c.argument('key_name', options_list=['--key'], help='The key options to regenerate.',
@@ -742,9 +742,19 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
     with self.argument_context('storage container exists') as c:
         c.ignore('blob_name', 'snapshot')
 
-    with self.argument_context('storage container immutability-policy') as c:
-        c.argument('allow_protected_append_writes', options_list=['--allow-protected-append-writes', '-w'],
-                   arg_type=get_three_state_flag())
+    for item in ['create', 'extend']:
+        with self.argument_context('storage container immutability-policy {}'.format(item)) as c:
+            c.extra('allow_protected_append_writes', options_list=['--allow-protected-append-writes', '-w'],
+                    arg_type=get_three_state_flag(), help='This property can only be changed for unlocked time-based '
+                                                          'retention policies. When enabled, new blocks can be '
+                                                          'written to an append blob while maintaining immutability '
+                                                          'protection and compliance. Only new blocks can be added '
+                                                          'and any existing blocks cannot be modified or deleted. '
+                                                          'This property cannot be changed with '
+                                                          'ExtendImmutabilityPolicy API.')
+            c.extra('period', type=int, help='The immutability period for the blobs in the container since the policy '
+                                             'creation, in days.')
+            c.ignore('parameters')
 
     with self.argument_context('storage container list') as c:
         c.argument('num_results', arg_type=num_results_type)
@@ -762,6 +772,12 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
     with self.argument_context('storage container immutability-policy') as c:
         c.argument('immutability_period_since_creation_in_days', options_list='--period')
         c.argument('container_name', container_name_type)
+
+    for item in ['set', 'clear']:
+        with self.argument_context('storage container legal-hold {}'.format(item)) as c:
+            c.extra('tags', nargs='+',
+                    help='Each tag should be 3 to 23 alphanumeric characters and is normalized to lower case')
+            c.ignore('legal_hold')
 
     with self.argument_context('storage container legal-hold') as c:
         c.argument('container_name', container_name_type)
@@ -826,6 +842,7 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
         c.argument('resource_group_name', required=False)
         c.argument('account_name', storage_account_type)
         c.argument('share_name', share_name_type, options_list=('--name', '-n'), id_part='child_name_2')
+        c.argument('expand', default=None)
         c.ignore('filter', 'maxpagesize')
 
     for item in ['create', 'update']:

@@ -22,6 +22,38 @@ from knack.log import get_logger
 from knack.util import CLIError
 
 
+def set_legal_hold(cmd, client, container_name, account_name, tags, resource_group_name=None):
+    LegalHold = cmd.get_models('LegalHold', resource_type=ResourceType.MGMT_STORAGE)
+    legal_hold = LegalHold(tags=tags)
+    return client.set_legal_hold(resource_group_name, account_name, container_name, legal_hold)
+
+
+def clear_legal_hold(cmd, client, container_name, account_name, tags, resource_group_name=None):
+    LegalHold = cmd.get_models('LegalHold', resource_type=ResourceType.MGMT_STORAGE)
+    legal_hold = LegalHold(tags=tags)
+    return client.clear_legal_hold(resource_group_name, account_name, container_name, legal_hold)
+
+
+def create_or_update_immutability_policy(cmd, client, container_name, account_name,
+                                         resource_group_name=None, allow_protected_append_writes=None,
+                                         period=None, if_match=None):
+    ImmutabilityPolicy = cmd.get_models('ImmutabilityPolicy', resource_type=ResourceType.MGMT_STORAGE)
+    immutability_policy = ImmutabilityPolicy(immutability_period_since_creation_in_days=period,
+                                             allow_protected_append_writes=allow_protected_append_writes)
+    return client.create_or_update_immutability_policy(resource_group_name, account_name, container_name,
+                                                       if_match, immutability_policy)
+
+
+def extend_immutability_policy(cmd, client, container_name, account_name,
+                               resource_group_name=None, allow_protected_append_writes=None,
+                               period=None, if_match=None):
+    ImmutabilityPolicy = cmd.get_models('ImmutabilityPolicy', resource_type=ResourceType.MGMT_STORAGE)
+    immutability_policy = ImmutabilityPolicy(immutability_period_since_creation_in_days=period,
+                                             allow_protected_append_writes=allow_protected_append_writes)
+    return client.extend_immutability_policy(resource_group_name, account_name, container_name,
+                                             if_match, immutability_policy)
+
+
 def create_container(cmd, container_name, resource_group_name=None, account_name=None,
                      metadata=None, public_access=None, fail_on_exist=False, timeout=None,
                      default_encryption_scope=None, prevent_encryption_scope_override=None, **kwargs):
