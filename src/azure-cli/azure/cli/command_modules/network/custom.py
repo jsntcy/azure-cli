@@ -2121,9 +2121,10 @@ def list_express_route_route_tables(cmd, resource_group_name, circuit_name, peer
 
 
 def create_express_route_peering_connection(cmd, resource_group_name, circuit_name, peering_name, connection_name,
-                                            peer_circuit, address_prefix, authorization_key=None):
+                                            peer_circuit, address_prefix=None, ipv6_address_prefix=None, authorization_key=None):
     client = network_client_factory(cmd.cli_ctx).express_route_circuit_connections
-    ExpressRouteCircuitConnection, SubResource = cmd.get_models('ExpressRouteCircuitConnection', 'SubResource')
+    ExpressRouteCircuitConnection, SubResource, Ipv6CircuitConnectionConfig\
+        = cmd.get_models('ExpressRouteCircuitConnection', 'SubResource', 'Ipv6CircuitConnectionConfig')
     source_circuit = resource_id(
         subscription=get_subscription_id(cmd.cli_ctx),
         resource_group=resource_group_name,
@@ -2133,12 +2134,20 @@ def create_express_route_peering_connection(cmd, resource_group_name, circuit_na
         child_type_1='peerings',
         child_name_1=peering_name
     )
+
     conn = ExpressRouteCircuitConnection(
         express_route_circuit_peering=SubResource(id=source_circuit),
         peer_express_route_circuit_peering=SubResource(id=peer_circuit),
-        address_prefix=address_prefix,
         authorization_key=authorization_key
     )
+
+    if address_prefix:
+        conn.address_prefix = address_prefix
+
+    if ipv6_address_prefix:
+        ipv6_circuit_connection_config = Ipv6CircuitConnectionConfig(address_prefix=ipv6_address_prefix)
+        conn.ipv6_circuit_connection_config = ipv6_circuit_connection_config
+
     return client.create_or_update(resource_group_name, circuit_name, peering_name, connection_name, conn)
 
 
@@ -2165,36 +2174,56 @@ def create_express_route_peering(
         cmd, client, resource_group_name, circuit_name, peering_type, peer_asn, vlan_id,
         primary_peer_address_prefix, secondary_peer_address_prefix, shared_key=None,
         advertised_public_prefixes=None, customer_asn=None, routing_registry_name=None,
-        route_filter=None, legacy_mode=None):
-    (ExpressRouteCircuitPeering, ExpressRouteCircuitPeeringConfig, RouteFilter) = \
-        cmd.get_models('ExpressRouteCircuitPeering', 'ExpressRouteCircuitPeeringConfig', 'RouteFilter')
+        route_filter=None, legacy_mode=None, ip_version='IPv4'):
+    (ExpressRouteCircuitPeering,
+     ExpressRouteCircuitPeeringConfig,
+     RouteFilter) = cmd.get_models('ExpressRouteCircuitPeering',
+                                   'ExpressRouteCircuitPeeringConfig',
+                                   'RouteFilter')
 
     if cmd.supported_api_version(min_api='2018-02-01'):
         ExpressRoutePeeringType = cmd.get_models('ExpressRoutePeeringType')
     else:
         ExpressRoutePeeringType = cmd.get_models('ExpressRouteCircuitPeeringType')
 
-    peering = ExpressRouteCircuitPeering(
-        peering_type=peering_type, peer_asn=peer_asn, vlan_id=vlan_id,
-        primary_peer_address_prefix=primary_peer_address_prefix,
-        secondary_peer_address_prefix=secondary_peer_address_prefix,
-        shared_key=shared_key)
+    peering = ExpressRouteCircuitPeering(peering_type=peering_type, peer_asn=peer_asn,
+                                         vlan_id=vlan_id, shared_key=shared_key)
 
-    if peering_type == ExpressRoutePeeringType.microsoft_peering.value:
-        peering.microsoft_peering_config = ExpressRouteCircuitPeeringConfig(
-            advertised_public_prefixes=advertised_public_prefixes,
-            customer_asn=customer_asn,
-            routing_registry_name=routing_registry_name)
-    if cmd.supported_api_version(min_api='2016-12-01') and route_filter:
-        peering.route_filter = RouteFilter(id=route_filter)
-    if cmd.supported_api_version(min_api='2017-10-01') and legacy_mode is not None:
-        peering.microsoft_peering_config.legacy_mode = legacy_mode
+    microsoft_peering_config = ExpressRouteCircuitPeeringConfig(
+        advertised_public_prefixes=advertised_public_prefixes,
+        customer_asn=customer_asn,
+        routing_registry_name=routing_registry_name)
+
+    if ip_version.lower() == 'ipv4':
+        peering.primary_peer_address_prefix = primary_peer_address_prefix
+        peering.secondary_peer_address_prefix = secondary_peer_address_prefix
+        if peering_type == ExpressRoutePeeringType.microsoft_peering.value:
+            peering.microsoft_peering_config = microsoft_peering_config
+        if cmd.supported_api_version(min_api='2016-12-01') and route_filter:
+            peering.route_filter = RouteFilter(id=route_filter)
+        if cmd.supported_api_version(min_api='2017-10-01') and legacy_mode is not None:
+            peering.microsoft_peering_config.legacy_mode = legacy_mode
+    else:
+        Ipv6ExpressRouteCircuitPeeringConfig = cmd.get_models('Ipv6ExpressRouteCircuitPeeringConfig')
+
+        ipv6_peering_config = Ipv6ExpressRouteCircuitPeeringConfig(
+            primary_peer_address_prefix=primary_peer_address_prefix,
+            secondary_peer_address_prefix=secondary_peer_address_prefix)
+        if peering_type == ExpressRoutePeeringType.microsoft_peering.value:
+            ipv6_peering_config.microsoft_peering_config = microsoft_peering_config
+        if cmd.supported_api_version(min_api='2016-12-01') and route_filter:
+            ipv6_peering_config.route_filter = RouteFilter(id=route_filter)
+        if cmd.supported_api_version(min_api='2017-10-01') and legacy_mode is not None:
+            ipv6_peering_config.microsoft_peering_config.legacy_mode = legacy_mode
+
+        peering.ipv6_peering_config = ipv6_peering_config
 
     return client.create_or_update(resource_group_name, circuit_name, peering_type, peering)
 
 
 def _create_or_update_ipv6_peering(cmd, config, primary_peer_address_prefix, secondary_peer_address_prefix,
-                                   route_filter, advertised_public_prefixes, customer_asn, routing_registry_name):
+                                   route_filter, advertised_public_prefixes, customer_asn, routing_registry_name,
+                                   peering_type):
     if config:
         # update scenario
         with cmd.update_context(config) as c:
@@ -2217,8 +2246,15 @@ def _create_or_update_ipv6_peering(cmd, config, primary_peer_address_prefix, sec
                                                   routing_registry_name=routing_registry_name)
         config = IPv6Config(primary_peer_address_prefix=primary_peer_address_prefix,
                             secondary_peer_address_prefix=secondary_peer_address_prefix,
-                            microsoft_peering_config=microsoft_config,
                             route_filter=route_filter)
+
+        if cmd.supported_api_version(min_api='2018-02-01'):
+            ExpressRoutePeeringType = cmd.get_models('ExpressRoutePeeringType')
+        else:
+            ExpressRoutePeeringType = cmd.get_models('ExpressRouteCircuitPeeringType')
+
+        if peering_type == ExpressRoutePeeringType.microsoft_peering.value:
+            config.microsoft_peering_config = microsoft_config
 
     return config
 
@@ -2235,13 +2271,14 @@ def update_express_route_peering(cmd, instance, peer_asn=None, primary_peer_addr
         c.set_param('vlan_id', vlan_id)
         c.set_param('shared_key', shared_key)
 
-    if ip_version == 'IPv6':
+    if ip_version.lower() == 'ipv6':
         # update is the only way to add IPv6 peering options
         instance.ipv6_peering_config = _create_or_update_ipv6_peering(cmd, instance.ipv6_peering_config,
                                                                       primary_peer_address_prefix,
                                                                       secondary_peer_address_prefix, route_filter,
                                                                       advertised_public_prefixes, customer_asn,
-                                                                      routing_registry_name)
+                                                                      routing_registry_name,
+                                                                      instance.peering_type)
     else:
         # IPv4 Microsoft Peering (or non-Microsoft Peering)
         with cmd.update_context(instance) as c:
@@ -2269,14 +2306,26 @@ def update_express_route_peering(cmd, instance, peer_asn=None, primary_peer_addr
 # pylint: disable=unused-argument
 def create_express_route_connection(cmd, resource_group_name, express_route_gateway_name, connection_name,
                                     peering, circuit_name=None, authorization_key=None, routing_weight=None,
-                                    enable_internet_security=None):
-    ExpressRouteConnection, SubResource = cmd.get_models('ExpressRouteConnection', 'SubResource')
+                                    enable_internet_security=None, associated_route_table=None,
+                                    propagated_route_tables=None, labels=None):
+    ExpressRouteConnection, SubResource, RoutingConfiguration, PropagatedRouteTable\
+        = cmd.get_models('ExpressRouteConnection', 'SubResource', 'RoutingConfiguration', 'PropagatedRouteTable')
     client = network_client_factory(cmd.cli_ctx).express_route_connections
+
+    propagated_route_tables = PropagatedRouteTable(
+        labels=labels,
+        ids=[SubResource(id=propagated_route_table) for propagated_route_table in propagated_route_tables]
+    )
+    routing_configuration = RoutingConfiguration(
+        associated_route_table=SubResource(id=associated_route_table),
+        propagated_route_tables=propagated_route_tables
+    )
     connection = ExpressRouteConnection(
         name=connection_name,
         express_route_circuit_peering=SubResource(id=peering) if peering else None,
         authorization_key=authorization_key,
-        routing_weight=routing_weight
+        routing_weight=routing_weight,
+        routing_configuration=routing_configuration
     )
 
     if enable_internet_security and cmd.supported_api_version(min_api='2019-09-01'):

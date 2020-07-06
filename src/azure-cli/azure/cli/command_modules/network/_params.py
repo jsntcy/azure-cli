@@ -687,7 +687,7 @@ def load_arguments(self, _):
         c.argument('shared_key', help='Key for generating an MD5 for the BGP session.')
 
     with self.argument_context('network express-route peering', arg_group='Microsoft Peering') as c:
-        c.argument('ip_version', min_api='2017-06-01', help='The IP version to update Microsoft Peering settings for.', arg_type=get_enum_type(['IPv4', 'IPv6']))
+        c.argument('ip_version', min_api='2017-03-01', help='The IP version to update Microsoft Peering settings for.', arg_type=get_enum_type(['IPv4', 'IPv6']))
         c.argument('advertised_public_prefixes', nargs='+', help='Space-separated list of prefixes to be advertised through the BGP peering.')
         c.argument('customer_asn', help='Autonomous system number of the customer.')
         c.argument('routing_registry_name', arg_type=get_enum_type(routing_registry_values), help='Internet Routing Registry / Regional Internet Registry')
@@ -696,7 +696,8 @@ def load_arguments(self, _):
 
     with self.argument_context('network express-route peering connection') as c:
         c.argument('authorization_key', help='The authorization key used when the peer circuit is in another subscription.')
-        c.argument('address_prefix', help='/29 IP address space to carve out customer addresses for tunnels.')
+        c.argument('address_prefix', help='/29 IP address space to carve out customer addresses for IPv4 tunnels.')
+        c.argument('ipv6_address_prefix', min_api='2019-12-01', help='/125 IP address space to carve out customer addresses for IPv6 tunnels.', is_preview=True)
         c.argument('peering_name', options_list=['--peering-name'], help='Name of BGP peering (i.e. AzurePrivatePeering).', id_part='child_name_1')
         c.argument('connection_name', options_list=['--name', '-n'], help='Name of the peering connection.', id_part='child_name_2')
         c.argument('peer_circuit', help='Name or ID of the peer ExpressRoute circuit.', validator=validate_er_peer_circuit)
@@ -724,6 +725,11 @@ def load_arguments(self, _):
     with self.argument_context('network express-route gateway connection', arg_group='Peering', min_api='2018-08-01') as c:
         c.argument('peering', help='Name or ID of an ExpressRoute peering.', validator=validate_express_route_peering)
         c.argument('circuit_name', er_circuit_name_type, id_part=None)
+
+    with self.argument_context('network express-route gateway connection', arg_group='Routing Configuration', min_api='2020-04-01') as c:
+        c.argument('associated_route_table', help='The resource id of route table associated with this RoutingConfiguration.')
+        c.argument('propagated_route_tables', nargs='+', help='Space-separated list of resource id of propagated route tables.')
+        c.argument('labels', nargs='+', help='Space-separated list of labels for propagated route tables.')
 
     with self.argument_context('network express-route gateway connection list', min_api='2018-08-01') as c:
         c.argument('express_route_gateway_name', er_gateway_name_type, id_part=None)
