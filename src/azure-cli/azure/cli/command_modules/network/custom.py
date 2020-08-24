@@ -3027,7 +3027,7 @@ def create_load_balancer(cmd, load_balancer_name, resource_group_name, location=
                          public_ip_dns_name=None, subnet=None, subnet_address_prefix='10.0.0.0/24',
                          virtual_network_name=None, vnet_address_prefix='10.0.0.0/16',
                          public_ip_address_type=None, subnet_type=None, validate=False,
-                         no_wait=False, sku=None, frontend_ip_zone=None, public_ip_zone=None,
+                         no_wait=False, sku=None, tier=None, frontend_ip_zone=None, public_ip_zone=None,
                          private_ip_address_version=None):
     from azure.cli.core.util import random_string
     from azure.cli.core.commands.arm import ArmTemplateBuilder
@@ -3078,7 +3078,7 @@ def create_load_balancer(cmd, load_balancer_name, resource_group_name, location=
 
     load_balancer_resource = build_load_balancer_resource(
         cmd, load_balancer_name, location, tags, backend_pool_name, frontend_ip_name,
-        public_ip_id, subnet_id, private_ip_address, private_ip_allocation, sku,
+        public_ip_id, subnet_id, private_ip_address, private_ip_allocation, sku, tier,
         frontend_ip_zone, private_ip_address_version)
     load_balancer_resource['dependsOn'] = lb_dependencies
     master_template.add_resource(load_balancer_resource)

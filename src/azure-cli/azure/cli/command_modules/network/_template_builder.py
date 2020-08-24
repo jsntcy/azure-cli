@@ -252,7 +252,7 @@ def build_application_gateway_resource(cmd, name, location, tags, sku_name, sku_
 
 def build_load_balancer_resource(cmd, name, location, tags, backend_pool_name, frontend_ip_name, public_ip_id,
                                  subnet_id, private_ip_address, private_ip_allocation,
-                                 sku, frontend_ip_zone, private_ip_address_version):
+                                 sku, tier, frontend_ip_zone, private_ip_address_version):
     frontend_ip_config = _build_frontend_ip_config(cmd, frontend_ip_name, public_ip_id, subnet_id, private_ip_address,
                                                    private_ip_allocation, frontend_ip_zone, private_ip_address_version)
 
@@ -271,10 +271,13 @@ def build_load_balancer_resource(cmd, name, location, tags, backend_pool_name, f
         'tags': tags,
         'apiVersion': cmd.get_api_version(),
         'dependsOn': [],
+        'sku': {},
         'properties': lb_properties
     }
     if sku and cmd.supported_api_version(min_api='2017-08-01'):
-        lb['sku'] = {'name': sku}
+        lb['sku'].update({'name': sku})
+    if tier and cmd.supported_api_version(min_api='2020-07-01'):
+        lb['sku'].update({'tier': tier})
     return lb
 
 
