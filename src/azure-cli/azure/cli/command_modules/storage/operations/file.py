@@ -18,6 +18,13 @@ from azure.cli.command_modules.storage.url_quote_util import encode_for_url, mak
 from azure.cli.core.profiles import ResourceType
 
 
+def restore_share_rm(client, resource_group_name, account_name, share_name, deleted_version, restored_name=None):
+
+    restored_name = restored_name if restored_name else share_name
+
+    return client.restore(resource_group_name=resource_group_name, account_name=account_name, share_name=restored_name,
+                          deleted_share_name=share_name, deleted_share_version=deleted_version)
+
 def create_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=None, share_quota=None,
                     enabled_protocols=None, root_squash=None, access_tier=None):
 

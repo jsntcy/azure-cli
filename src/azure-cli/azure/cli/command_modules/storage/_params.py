@@ -736,10 +736,13 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
             c.extra('lease_id', help='Required if the blob has an active lease.', required=True)
 
     with self.argument_context('storage copy') as c:
-        c.argument('destination', options_list=['--destination', '-d'], help="The path/url of copy destination. "
+        c.argument('destination',
+                   options_list=['--destination', '-d',
+                                 c.deprecate(target='--destination-local-path', redirect='--destination')],
+                   help="The path/url of copy destination. "
                    "It can be a local path, an url to azure storage server. If you provide destination parameter "
                    "here, you do not need to provide arguments in copy destination arguments group and copy "
-                   "destination arguments will be deprecated in future.")
+                   "destination arguments will be deprecated in future.", required=False)
         c.argument('source', options_list=['--source', '-s'], help="The path/url of copy source. It can be a local"
                    " path, an url to azure storage server or AWS S3 buckets. If you provide source parameter here,"
                    " you do not need to provide arguments in copy source arguments group and copy source arguments"
@@ -755,8 +758,7 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
                        help='File share name of copy {} storage account'.format(item))
             c.argument('{}_file_path'.format(item), arg_group='Copy {}'.format(item),
                        help='File path in file share of copy {} storage account'.format(item))
-            c.argument('{}_local_path'.format(item), arg_group='Copy {}'.format(item),
-                       help='Local file path')
+
         c.argument('put_md5', arg_group='Additional Flags', action='store_true',
                    help='Create an MD5 hash of each file, and save the hash as the Content-MD5 property of the '
                    'destination blob/file.Only available when uploading.')
@@ -949,6 +951,14 @@ def load_arguments(self, _):  # pylint: disable=too-many-locals, too-many-statem
         c.argument('account_name', storage_account_type)
         c.argument('share_name', share_name_type, options_list=('--name', '-n'), id_part='child_name_2')
         c.ignore('filter', 'maxpagesize')
+
+    with self.argument_context('storage share-rm restore', resource_type=ResourceType.MGMT_STORAGE) as c:
+        c.argument('deleted_version',
+                   help='Identify the version of the deleted share that will be restored.')
+        c.argument('share_name',
+                   help='The file share name. Identify the name of the deleted share that will be restored.')
+        c.argument('restored_name',
+                   help='A new file share name to be restored. If not specified, deleted share name will be used.')
 
     for item in ['create', 'update']:
         with self.argument_context('storage share-rm {}'.format(item), resource_type=ResourceType.MGMT_STORAGE) as c:
