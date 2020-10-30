@@ -3,6 +3,54 @@ interactions:
     body: null
     headers:
       Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 08:46:42 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=AkVTVyilWJtGkVWf2rNVGgE; expires=Sun, 30-Aug-2020 08:46:42 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAWYeuPsG3rD1to_nPUguFpdvn0g0VZQ1SHepfpUbIWDLkTgVeAPtRjBYA1zwIYwdU_r2Yi7dvtg0qJY6xtkRHX0HqsosGlkv9iCWRLHhuGCen7qKdggntwmUnOmjljfDG6FIzk59dmL3Dx-lt0QzKvXHb7ZBD32lpXVX37ZFnoeIgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - WUS2 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
       - application/json
       Accept-Encoding:
       - gzip, deflate
@@ -15,10 +63,8 @@ interactions:
       ParameterSetName:
       - -n -g --query -o
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.3
-        azure-mgmt-storage/10.0.0 Azure-SDK-For-Python AZURECLI/2.5.1
-      accept-language:
-      - en-US
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
     method: POST
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002/listKeys?api-version=2019-06-01
   response:
@@ -32,7 +78,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 14 May 2020 14:03:42 GMT
+      - Fri, 31 Jul 2020 08:46:47 GMT
       expires:
       - '-1'
       pragma:
@@ -48,7 +94,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-resource-requests:
-      - '11999'
+      - '11963'
     status:
       code: 200
       message: OK
@@ -64,9 +110,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:43 GMT
+      - Fri, 31 Jul 2020 08:46:49 GMT
       x-ms-version:
       - '2019-07-07'
     method: PUT
@@ -78,11 +124,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:03:45 GMT
+      - Fri, 31 Jul 2020 08:46:55 GMT
       etag:
-      - '"0x8D7F80F9E5D9FB0"'
+      - '"0x8D8352E47CAE6CB"'
       last-modified:
-      - Thu, 14 May 2020 14:03:46 GMT
+      - Fri, 31 Jul 2020 08:46:56 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -100,9 +146,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:46 GMT
+      - Fri, 31 Jul 2020 08:46:57 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -112,7 +158,7 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:03:46 GMT
+      - Fri, 31 Jul 2020 08:47:02 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -136,9 +182,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:47 GMT
+      - Fri, 31 Jul 2020 08:47:05 GMT
       x-ms-properties:
       - ''
       x-ms-version:
@@ -152,11 +198,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:03:48 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -174,9 +220,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:10 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -192,11 +238,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:03:50 GMT
+      - Fri, 31 Jul 2020 08:47:15 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -206,7 +252,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -230,9 +276,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:50 GMT
+      - Fri, 31 Jul 2020 08:47:16 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -248,11 +294,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:03:51 GMT
+      - Fri, 31 Jul 2020 08:47:20 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -262,7 +308,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -286,9 +332,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:52 GMT
+      - Fri, 31 Jul 2020 08:47:21 GMT
       x-ms-version:
       - '2019-02-02'
     method: HEAD
@@ -298,11 +344,11 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:03:53 GMT
+      - Fri, 31 Jul 2020 08:47:25 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-acl:
@@ -330,9 +376,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:53 GMT
+      - Fri, 31 Jul 2020 08:47:27 GMT
       x-ms-permissions:
       - rwxrwxrwx
       x-ms-properties:
@@ -350,11 +396,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -372,9 +418,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:33 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -390,11 +436,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:03:55 GMT
+      - Fri, 31 Jul 2020 08:47:37 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -404,7 +450,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -428,9 +474,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:56 GMT
+      - Fri, 31 Jul 2020 08:47:37 GMT
       x-ms-version:
       - '2019-02-02'
     method: HEAD
@@ -440,11 +486,11 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:03:56 GMT
+      - Fri, 31 Jul 2020 08:47:40 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-acl:
@@ -470,25 +516,25 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:57 GMT
+      - Fri, 31 Jul 2020 08:47:41 GMT
       x-ms-version:
       - '2019-02-02'
     method: GET
     uri: https://clitest000002.dfs.core.windows.net/filesystem000003?recursive=true&resource=filesystem
   response:
     body:
-      string: '{"paths":[{"contentLength":"0","etag":"0x8D7F80FA0171E90","group":"$superuser","isDirectory":"true","lastModified":"Thu,
-        14 May 2020 14:03:49 GMT","name":"dir000004","owner":"$superuser","permissions":"rwxr-x---"},{"contentLength":"0","etag":"0x8D7F80FA3602C7D","group":"$superuser","isDirectory":"true","lastModified":"Thu,
-        14 May 2020 14:03:54 GMT","name":"dir000004/subdir000005","owner":"$superuser","permissions":"rwxrwx---"}]}
+      string: '{"paths":[{"contentLength":"0","etag":"0x8D8352E4FBDDBD9","group":"$superuser","isDirectory":"true","lastModified":"Fri,
+        31 Jul 2020 08:47:09 GMT","name":"dir000004","owner":"$superuser","permissions":"rwxr-x---"},{"contentLength":"0","etag":"0x8D8352E5D846614","group":"$superuser","isDirectory":"true","lastModified":"Fri,
+        31 Jul 2020 08:47:32 GMT","name":"dir000004/subdir000005","owner":"$superuser","permissions":"rwxrwx---"}]}
 
         '
     headers:
       content-type:
       - application/json;charset=utf-8
       date:
-      - Thu, 14 May 2020 14:03:57 GMT
+      - Fri, 31 Jul 2020 08:47:44 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -508,24 +554,24 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:03:58 GMT
+      - Fri, 31 Jul 2020 08:47:45 GMT
       x-ms-version:
       - '2019-02-02'
     method: GET
     uri: https://clitest000002.dfs.core.windows.net/filesystem000003?directory=dir000004&recursive=true&resource=filesystem
   response:
     body:
-      string: '{"paths":[{"contentLength":"0","etag":"0x8D7F80FA3602C7D","group":"$superuser","isDirectory":"true","lastModified":"Thu,
-        14 May 2020 14:03:54 GMT","name":"dir000004/subdir000005","owner":"$superuser","permissions":"rwxrwx---"}]}
+      string: '{"paths":[{"contentLength":"0","etag":"0x8D8352E5D846614","group":"$superuser","isDirectory":"true","lastModified":"Fri,
+        31 Jul 2020 08:47:32 GMT","name":"dir000004/subdir000005","owner":"$superuser","permissions":"rwxrwx---"}]}
 
         '
     headers:
       content-type:
       - application/json;charset=utf-8
       date:
-      - Thu, 14 May 2020 14:03:59 GMT
+      - Fri, 31 Jul 2020 08:47:47 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -545,9 +591,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:00 GMT
+      - Fri, 31 Jul 2020 08:47:49 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -557,7 +603,7 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:04:00 GMT
+      - Fri, 31 Jul 2020 08:47:52 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -581,11 +627,11 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:01 GMT
+      - Fri, 31 Jul 2020 08:47:52 GMT
       x-ms-rename-source:
-      - /filesystemiusjny6qbya3wz/dirvpgub7d6w/subdironi4dy
+      - /filesystemgoo2duhbs6ltqc/dirf4hrhvpfm/subdirdnab7z
       x-ms-source-lease-id:
       - ''
       x-ms-version:
@@ -599,7 +645,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:04:01 GMT
+      - Fri, 31 Jul 2020 08:47:58 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -617,9 +663,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:03 GMT
+      - Fri, 31 Jul 2020 08:47:59 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -635,11 +681,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:04:03 GMT
+      - Fri, 31 Jul 2020 08:48:01 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -649,7 +695,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -673,9 +719,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:04 GMT
+      - Fri, 31 Jul 2020 08:48:02 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -685,7 +731,7 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:04:04 GMT
+      - Fri, 31 Jul 2020 08:48:05 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -707,9 +753,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:06 GMT
+      - Fri, 31 Jul 2020 08:48:06 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -725,11 +771,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:04:06 GMT
+      - Fri, 31 Jul 2020 08:48:09 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -739,7 +785,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -763,9 +809,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:07 GMT
+      - Fri, 31 Jul 2020 08:48:09 GMT
       x-ms-version:
       - '2019-02-02'
     method: HEAD
@@ -775,11 +821,11 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:04:07 GMT
+      - Fri, 31 Jul 2020 08:48:12 GMT
       etag:
-      - '"0x8D7F80FA3602C7D"'
+      - '"0x8D8352E5D846614"'
       last-modified:
-      - Thu, 14 May 2020 14:03:54 GMT
+      - Fri, 31 Jul 2020 08:47:32 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-acl:
@@ -805,25 +851,25 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:08 GMT
+      - Fri, 31 Jul 2020 08:48:15 GMT
       x-ms-version:
       - '2019-02-02'
     method: GET
     uri: https://clitest000002.dfs.core.windows.net/filesystem000003?recursive=true&resource=filesystem
   response:
     body:
-      string: '{"paths":[{"contentLength":"0","etag":"0x8D7F80FA0171E90","group":"$superuser","isDirectory":"true","lastModified":"Thu,
-        14 May 2020 14:03:49 GMT","name":"dir000004","owner":"$superuser","permissions":"rwxr-x---"},{"contentLength":"0","etag":"0x8D7F80FA3602C7D","group":"$superuser","isDirectory":"true","lastModified":"Thu,
-        14 May 2020 14:03:54 GMT","name":"new_dir","owner":"$superuser","permissions":"rwxrwx---"}]}
+      string: '{"paths":[{"contentLength":"0","etag":"0x8D8352E4FBDDBD9","group":"$superuser","isDirectory":"true","lastModified":"Fri,
+        31 Jul 2020 08:47:09 GMT","name":"dir000004","owner":"$superuser","permissions":"rwxr-x---"},{"contentLength":"0","etag":"0x8D8352E5D846614","group":"$superuser","isDirectory":"true","lastModified":"Fri,
+        31 Jul 2020 08:47:32 GMT","name":"new_dir","owner":"$superuser","permissions":"rwxrwx---"}]}
 
         '
     headers:
       content-type:
       - application/json;charset=utf-8
       date:
-      - Thu, 14 May 2020 14:04:09 GMT
+      - Fri, 31 Jul 2020 08:48:18 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -843,9 +889,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:10 GMT
+      - Fri, 31 Jul 2020 08:48:19 GMT
       x-ms-version:
       - '2019-02-02'
     method: GET
@@ -859,7 +905,7 @@ interactions:
       content-type:
       - application/json;charset=utf-8
       date:
-      - Thu, 14 May 2020 14:04:10 GMT
+      - Fri, 31 Jul 2020 08:48:21 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:
@@ -881,9 +927,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:11 GMT
+      - Fri, 31 Jul 2020 08:48:22 GMT
       x-ms-version:
       - '2019-07-07'
     method: PUT
@@ -895,11 +941,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:04:12 GMT
+      - Fri, 31 Jul 2020 08:48:25 GMT
       etag:
-      - '"0x8D7F80FAE320098"'
+      - '"0x8D8352E7CF6D7BC"'
       last-modified:
-      - Thu, 14 May 2020 14:04:12 GMT
+      - Fri, 31 Jul 2020 08:48:25 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -919,11 +965,11 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:13 GMT
+      - Fri, 31 Jul 2020 08:48:26 GMT
       x-ms-rename-source:
-      - /filesystemiusjny6qbya3wz/dirvpgub7d6w
+      - /filesystemgoo2duhbs6ltqc/dirf4hrhvpfm
       x-ms-source-lease-id:
       - ''
       x-ms-version:
@@ -937,7 +983,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:04:13 GMT
+      - Fri, 31 Jul 2020 08:48:29 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -955,9 +1001,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:14 GMT
+      - Fri, 31 Jul 2020 08:48:31 GMT
       x-ms-version:
       - '2019-07-07'
     method: HEAD
@@ -973,11 +1019,11 @@ interactions:
       content-type:
       - application/octet-stream
       date:
-      - Thu, 14 May 2020 14:04:16 GMT
+      - Fri, 31 Jul 2020 08:48:34 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-access-tier:
@@ -987,7 +1033,7 @@ interactions:
       x-ms-blob-type:
       - BlockBlob
       x-ms-creation-time:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       x-ms-lease-state:
       - available
       x-ms-lease-status:
@@ -1011,9 +1057,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:18 GMT
+      - Fri, 31 Jul 2020 08:48:34 GMT
       x-ms-version:
       - '2019-02-02'
     method: HEAD
@@ -1023,11 +1069,11 @@ interactions:
       string: ''
     headers:
       date:
-      - Thu, 14 May 2020 14:04:18 GMT
+      - Fri, 31 Jul 2020 08:48:37 GMT
       etag:
-      - '"0x8D7F80FA0171E90"'
+      - '"0x8D8352E4FBDDBD9"'
       last-modified:
-      - Thu, 14 May 2020 14:03:49 GMT
+      - Fri, 31 Jul 2020 08:47:09 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-acl:
@@ -1055,9 +1101,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:19 GMT
+      - Fri, 31 Jul 2020 08:48:38 GMT
       x-ms-version:
       - '2019-02-02'
     method: DELETE
@@ -1069,7 +1115,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:04:20 GMT
+      - Fri, 31 Jul 2020 08:48:41 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -1089,9 +1135,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:21 GMT
+      - Fri, 31 Jul 2020 08:48:42 GMT
       x-ms-version:
       - '2019-02-02'
     method: DELETE
@@ -1103,7 +1149,7 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 14 May 2020 14:04:21 GMT
+      - Fri, 31 Jul 2020 08:48:45 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -1121,9 +1167,9 @@ interactions:
       Connection:
       - keep-alive
       User-Agent:
-      - azsdk-python-storage-dfs/12.0.1 Python/3.7.4 (Windows-10-10.0.18362-SP0)
+      - azsdk-python-storage-dfs/12.0.1 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
       x-ms-date:
-      - Thu, 14 May 2020 14:04:22 GMT
+      - Fri, 31 Jul 2020 08:48:46 GMT
       x-ms-version:
       - '2019-02-02'
     method: GET
@@ -1137,7 +1183,7 @@ interactions:
       content-type:
       - application/json;charset=utf-8
       date:
-      - Thu, 14 May 2020 14:04:23 GMT
+      - Fri, 31 Jul 2020 08:48:48 GMT
       server:
       - Windows-Azure-HDFS/1.0 Microsoft-HTTPAPI/2.0
       transfer-encoding:

@@ -3,6 +3,54 @@ interactions:
     body: null
     headers:
       Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 08:53:30 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=An4nK35nJWRLszVuw8MyHbw; expires=Sun, 30-Aug-2020 08:53:30 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAohgY3UyPT-FfpHerkCgr_mmZK6yx9_IMuAhd2vSyRuPVCp7FI6lhAzRY4DkAOm1u2n805tZP5w7lvKTYM9KUh_kDId3IXUhZvardWRoGd8PzBN175wkVp7JIlHLyaj7gbxeKqKmOQDtgq-n90F0mtKAfWb8UJA934V6dYI9Qf6QgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
       - application/json
       Accept-Encoding:
       - gzip, deflate
@@ -15,10 +63,8 @@ interactions:
       ParameterSetName:
       - -n -g --query -o
       User-Agent:
-      - python/3.7.7 (Windows-10-10.0.18362-SP0) msrest/0.6.13 msrest_azure/0.6.3
-        azure-mgmt-storage/9.0.0 Azure-SDK-For-Python AZURECLI/2.7.0
-      accept-language:
-      - en-US
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
     method: POST
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002/listKeys?api-version=2019-06-01
   response:
@@ -32,7 +78,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 11 Jun 2020 09:21:00 GMT
+      - Fri, 31 Jul 2020 08:53:33 GMT
       expires:
       - '-1'
       pragma:
@@ -48,7 +94,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-resource-requests:
-      - '11998'
+      - '11980'
     status:
       code: 200
       message: OK
@@ -60,9 +106,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.7; Windows 10) AZURECLI/2.7.0
+      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.6; Windows 10) AZURECLI/2.8.10
       x-ms-date:
-      - Thu, 11 Jun 2020 09:21:00 GMT
+      - Fri, 31 Jul 2020 08:53:34 GMT
       x-ms-version:
       - '2018-11-09'
     method: PUT
@@ -74,11 +120,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 11 Jun 2020 09:21:02 GMT
+      - Fri, 31 Jul 2020 08:53:37 GMT
       etag:
-      - '"0x8D80DE8C366F4BD"'
+      - '"0x8D8352F3733C734"'
       last-modified:
-      - Thu, 11 Jun 2020 09:21:03 GMT
+      - Fri, 31 Jul 2020 08:53:37 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -94,13 +140,13 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.7; Windows 10) AZURECLI/2.7.0
+      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.6; Windows 10) AZURECLI/2.8.10
       x-ms-blob-content-length:
       - '16384'
       x-ms-blob-type:
       - PageBlob
       x-ms-date:
-      - Thu, 11 Jun 2020 09:21:03 GMT
+      - Fri, 31 Jul 2020 08:53:38 GMT
       x-ms-version:
       - '2018-11-09'
     method: PUT
@@ -112,11 +158,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 11 Jun 2020 09:21:04 GMT
+      - Fri, 31 Jul 2020 08:53:40 GMT
       etag:
-      - '"0x8D80DE8C4419CA0"'
+      - '"0x8D8352F3985EF7A"'
       last-modified:
-      - Thu, 11 Jun 2020 09:21:04 GMT
+      - Fri, 31 Jul 2020 08:53:41 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-request-server-encrypted:
@@ -134,9 +180,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.7; Windows 10) AZURECLI/2.7.0
+      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.6; Windows 10) AZURECLI/2.8.10
       x-ms-date:
-      - Thu, 11 Jun 2020 09:21:04 GMT
+      - Fri, 31 Jul 2020 08:53:42 GMT
       x-ms-version:
       - '2018-11-09'
     method: PUT
@@ -148,22 +194,70 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 11 Jun 2020 09:21:05 GMT
+      - Fri, 31 Jul 2020 08:53:45 GMT
       etag:
-      - '"0x8D80DE8C4419CA0"'
+      - '"0x8D8352F3985EF7A"'
       last-modified:
-      - Thu, 11 Jun 2020 09:21:04 GMT
+      - Fri, 31 Jul 2020 08:53:41 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-request-server-encrypted:
       - 'false'
       x-ms-snapshot:
-      - '2020-06-11T09:21:06.1341828Z'
+      - '2020-07-31T08:53:45.8608395Z'
       x-ms-version:
       - '2018-11-09'
     status:
       code: 201
       message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 08:53:49 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=AlnQ0Hb5d4xJnvNO7W9Qaug; expires=Sun, 30-Aug-2020 08:53:49 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAmYRSSvgT37rVXdu9ZPUzpn0O-cVXO6gXT64RJ_TEkjCW4XUxoYGxALrAxcqfKH1lurFlxUcpSPjnscyS7OcvxPCYqb-179HPRZ1q_tQDnAyr0ot2MMmcdkHXodbCh7AiwzmM5-HYYhNfTdlJacw6MPqAdt8qjIk64LP-1-x0zJkgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
 - request:
     body: null
     headers:
@@ -180,10 +274,8 @@ interactions:
       ParameterSetName:
       - -n -g --query -o
       User-Agent:
-      - python/3.7.7 (Windows-10-10.0.18362-SP0) msrest/0.6.13 msrest_azure/0.6.3
-        azure-mgmt-storage/9.0.0 Azure-SDK-For-Python AZURECLI/2.7.0
-      accept-language:
-      - en-US
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
     method: POST
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003/listKeys?api-version=2019-06-01
   response:
@@ -197,7 +289,7 @@ interactions:
       content-type:
       - application/json
       date:
-      - Thu, 11 Jun 2020 09:21:06 GMT
+      - Fri, 31 Jul 2020 08:53:52 GMT
       expires:
       - '-1'
       pragma:
@@ -213,7 +305,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-resource-requests:
-      - '11998'
+      - '11961'
     status:
       code: 200
       message: OK
@@ -225,9 +317,9 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.7; Windows 10) AZURECLI/2.7.0
+      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.6; Windows 10) AZURECLI/2.8.10
       x-ms-date:
-      - Thu, 11 Jun 2020 09:21:07 GMT
+      - Fri, 31 Jul 2020 08:53:53 GMT
       x-ms-version:
       - '2018-11-09'
     method: PUT
@@ -239,11 +331,11 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 11 Jun 2020 09:21:10 GMT
+      - Fri, 31 Jul 2020 08:53:59 GMT
       etag:
-      - '"0x8D80DE8C76F9E10"'
+      - '"0x8D8352F44291DB4"'
       last-modified:
-      - Thu, 11 Jun 2020 09:21:10 GMT
+      - Fri, 31 Jul 2020 08:53:59 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-version:
@@ -259,11 +351,11 @@ interactions:
       Content-Length:
       - '0'
       User-Agent:
-      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.7; Windows 10) AZURECLI/2.7.0
+      - Azure-Storage/2.0.0-2.0.1 (Python CPython 3.7.6; Windows 10) AZURECLI/2.8.10
       x-ms-copy-source:
-      - https://clitestrahgamwkwbwtkykfm.blob.core.windows.net/contqvllunkl3q3am2gquupp/src?se=2020-06-12T09%3A21%3A10Z&sp=r&spr=https&sv=2018-11-09&sr=b&sig=DQI/Vu4xLAF7uBO14WXbhn%2BD5xHh26mXJkY7d1QYA94%3D&snapshot=2020-06-11T09:21:06.1341828Z
+      - https://clitestdlcgeyyarjve72rom.blob.core.windows.net/conteasw32rystqyroo3yktk/src?se=2020-08-01T08%3A54%3A02Z&sp=r&spr=https&sv=2018-11-09&sr=b&sig=rSvo5mgfi/LrEjaclXadrc8uKpizqYabycR%2BN3QfWKI%3D&snapshot=2020-07-31T08:53:45.8608395Z
       x-ms-date:
-      - Thu, 11 Jun 2020 09:21:10 GMT
+      - Fri, 31 Jul 2020 08:54:02 GMT
       x-ms-version:
       - '2018-11-09'
     method: PUT
@@ -275,15 +367,15 @@ interactions:
       content-length:
       - '0'
       date:
-      - Thu, 11 Jun 2020 09:21:11 GMT
+      - Fri, 31 Jul 2020 08:54:06 GMT
       etag:
-      - '"0x8D80DE8C846270F"'
+      - '"0x8D8352F4850DA2B"'
       last-modified:
-      - Thu, 11 Jun 2020 09:21:11 GMT
+      - Fri, 31 Jul 2020 08:54:06 GMT
       server:
       - Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
       x-ms-copy-id:
-      - 4ea2ad4e-1335-4900-ab1a-d281d209182e
+      - 4562cc9d-b1ca-490b-a98d-588566e3349e
       x-ms-copy-status:
       - pending
       x-ms-version:

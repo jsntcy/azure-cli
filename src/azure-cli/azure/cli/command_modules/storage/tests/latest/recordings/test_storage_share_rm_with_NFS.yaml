@@ -28,13 +28,13 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Fri, 31 Jul 2020 08:41:21 GMT
+      - Fri, 31 Jul 2020 09:00:02 GMT
       p3p:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       set-cookie:
-      - fpc=Amn5hcBXKsdLgVp6tbQdTL0; expires=Sun, 30-Aug-2020 08:41:21 GMT; path=/;
+      - fpc=AoK2kYJ7qglFu7XVurjGOhI; expires=Sun, 30-Aug-2020 09:00:03 GMT; path=/;
         secure; HttpOnly; SameSite=None
-      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tA9oZNUZGaIcP_eOtD3bSV-7g9X3rWdDizOyXUdbAhb7TuV0WqIsFpL06jPuOhcA8OLsvSFLPWmwdZ9XZW4QaPulHNOUIIXGGFaAT91v1ploBm92e6rt1Bo_bOFmkmitUKpHxpuGVcm_Isz7L5NQzzGw9sAAcFGhkfSawZteWr1nsgAA;
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAqtbiIyIUVuTgUJDsec1fvtC2XE0eOoB7mVK1Lm1wbKXVlibigF_7ZTZuBI6EJrhGm2ELC2ZvkBgk1L2mDSQYOofxe1rPWpgIzXIKSx7kbrtvSDR0QdpbXrAuyrR_FtOJnX1kRDJei_T1wcjS7K0S6aEhIJZew7HsDIaALO0x63EgAA;
         domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
       - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
       - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
@@ -43,7 +43,106 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ests-server:
-      - 2.1.10897.13 - SAN ProdSlices
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"properties": {"enabledProtocols": "NFS", "rootSquash": "AllSquash"}}'
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - storage share-rm create
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '70'
+      Content-Type:
+      - application/json
+      ParameterSetName:
+      - --storage-account -g -n --enabled-protocols --root-squash
+      User-Agent:
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
+    method: PUT
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003?api-version=2019-06-01
+  response:
+    body:
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003","name":"share000003","type":"Microsoft.Storage/storageAccounts/fileServices/shares","properties":{"enabledProtocols":"NFS","rootSquash":"AllSquash"}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '435'
+      content-type:
+      - application/json
+      date:
+      - Fri, 31 Jul 2020 09:00:07 GMT
+      etag:
+      - '"0x8D835301FFB0D0A"'
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ratelimit-remaining-subscription-writes:
+      - '1143'
+    status:
+      code: 201
+      message: Created
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 09:00:13 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=AlPbHvZYNhpPtSC_jd6y5Kg; expires=Sun, 30-Aug-2020 09:00:13 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAYUi_9FyGbM_1mAQuBnbjFoqMrGAxJNGL1FUP8xp-lgKY7L2ErL-u4CZAKphuXuFdKIe-Wb7AeoMO0NzlbAzs3uvgQOfnmkrJ9eZquuCbgQT1whWCQ6hnix_p9i4lR6N4qtc7EhGPQdqq487jRKQOYqI9BAVA7G8s3FC8um10MfkgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
     status:
       code: 200
       message: OK
@@ -55,36 +154,40 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - storage account create
+      - storage share-rm update
       Connection:
       - keep-alive
       ParameterSetName:
-      - -n -g --sku --https-only
+      - --storage-account -g -n --root-squash
       User-Agent:
-      - python/3.7.6 (Windows-10-10.0.18362-SP0) msrest/0.6.11 yulocal msrest_azure/0.6.3
-        azure-mgmt-resource/10.0.0 Azure-SDK-For-Python AZURECLI/2.8.10
-      accept-language:
-      - en-US
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/clistorage000001?api-version=2019-07-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003?api-version=2019-06-01&$expand=stats
   response:
     body:
-      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001","name":"clistorage000001","type":"Microsoft.Resources/resourceGroups","location":"westus2","tags":{"product":"azurecli","cause":"automation","date":"2020-07-31T08:40:29Z"},"properties":{"provisioningState":"Succeeded"}}'
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003","name":"share000003","type":"Microsoft.Storage/storageAccounts/fileServices/shares","etag":"\"0x8D835301FFB0D0A\"","properties":{"shareUsageBytes":0,"lastModifiedTime":"2020-07-31T09:00:08.0000000Z","shareQuota":5120}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '429'
+      - '504'
       content-type:
-      - application/json; charset=utf-8
+      - application/json
       date:
-      - Fri, 31 Jul 2020 08:41:23 GMT
+      - Fri, 31 Jul 2020 09:00:18 GMT
+      etag:
+      - '"0x8D835301FFB0D0A"'
       expires:
       - '-1'
       pragma:
       - no-cache
+      server:
+      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
       strict-transport-security:
       - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
       vary:
       - Accept-Encoding
       x-content-type-options:
@@ -121,13 +224,13 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Fri, 31 Jul 2020 08:41:27 GMT
+      - Fri, 31 Jul 2020 09:00:22 GMT
       p3p:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       set-cookie:
-      - fpc=AowY88tReJFPu_TEZi9PZDU; expires=Sun, 30-Aug-2020 08:41:27 GMT; path=/;
+      - fpc=AuTpQIdeu1pPg5yNgr4-rKs; expires=Sun, 30-Aug-2020 09:00:23 GMT; path=/;
         secure; HttpOnly; SameSite=None
-      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tA644Hxkugsp-V2CeSyxxzAOtUqMkJWuABO5fhrFBaq-gSMWVyLnkgIxzrFPqCRhCa3uW5_-VbZ-tIVsUTrBVejx0V5GcOuFQNwIPDJQ9FjGYWG7-2SqViE59r51vkLrGexPxI01BgJOQ8rsE2QimZWAC8Jd_6jXDllvuUXIrO96cgAA;
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAGY7PiFS8mu7_ChCB2_6PENsvYxrUbrpfaR9vTSiqNIFnPD_vl_1Sol9Jx3eMEqShSNOeKZCtVJJUaq6WSYSUifnz45phGrb3KffXJVpOALEo1I59C0IoNHia3xjhzos-z3bZXK8kaYhPCc8vVqz1qlH9MmlCbIQCDSn7e6qnnHAgAA;
         domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
       - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
       - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
@@ -136,34 +239,325 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ests-server:
-      - 2.1.10897.13 - SAN ProdSlices
+      - 2.1.10897.13 - HKG1 ProdSlices
     status:
       code: 200
       message: OK
 - request:
-    body: '{"sku": {"name": "Standard_GZRS"}, "kind": "StorageV2", "location": "westus2",
-      "properties": {"encryption": {"services": {"blob": {}}, "keySource": "Microsoft.Storage"},
-      "supportsHttpsTrafficOnly": true}}'
+    body: '{"properties": {"shareQuota": 5120, "rootSquash": "NoRootSquash"}}'
     headers:
       Accept:
       - application/json
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - storage account create
+      - storage share-rm update
       Connection:
       - keep-alive
       Content-Length:
-      - '204'
+      - '66'
       Content-Type:
       - application/json
       ParameterSetName:
-      - -n -g --sku --https-only
+      - --storage-account -g -n --root-squash
       User-Agent:
       - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
         yulocal
-    method: PUT
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/cligzrs000003?api-version=2019-06-01
+    method: PATCH
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003?api-version=2019-06-01
+  response:
+    body:
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003","name":"share000003","type":"Microsoft.Storage/storageAccounts/fileServices/shares","properties":{"shareQuota":5120,"rootSquash":"NoRootSquash"}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '431'
+      content-type:
+      - application/json
+      date:
+      - Fri, 31 Jul 2020 09:00:27 GMT
+      etag:
+      - '"0x8D835302C084B44"'
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-content-type-options:
+      - nosniff
+      x-ms-ratelimit-remaining-subscription-writes:
+      - '1140'
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 09:00:33 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=AooVJzfiBetNpW7mp4BP3GA; expires=Sun, 30-Aug-2020 09:00:33 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAetoK9HukrYD67rm0yoEH4d1JIKj6wUay9qOHvdWebqtO6thTPyNgX3y3laX9Cg6K-R1NLUZLrEnkdvJySh28v4gZgbwR6PKHel_rsHGc4jiYEa4IQGmZVvcGuX43t62p95xCEv9ehCCuXEmJqL8RiWbeCNSdfTgNsOTO6biL74AgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - storage share-rm show
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - --storage-account -g -n
+      User-Agent:
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003?api-version=2019-06-01
+  response:
+    body:
+      string: '{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003","name":"share000003","type":"Microsoft.Storage/storageAccounts/fileServices/shares","etag":"\"0x8D835302C084B44\"","properties":{"lastModifiedTime":"2020-07-31T09:00:28.0000000Z","shareQuota":5120}}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '484'
+      content-type:
+      - application/json
+      date:
+      - Fri, 31 Jul 2020 09:00:38 GMT
+      etag:
+      - '"0x8D835302C084B44"'
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-content-type-options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 09:00:42 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=Amdq8lUG2eNMiK8ccDOoxME; expires=Sun, 30-Aug-2020 09:00:43 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAfRHKs7L8FVZFyx3m8d_Er8__Ko7So9MZts_vpodv0O8mxoO4NWQg2OJL6Vrqgpfqy_9Sd5Kyv9dUfIBcmdYWV2UNusrGzjU_ZJA8R_Fw1ejjv0dy-K7lTj_1QqeTMG0-k3rGqLQujceycTYtdibI7C2Hd5_p_-mSFwatPULkwn4gAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - application/json
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - storage share-rm list
+      Connection:
+      - keep-alive
+      ParameterSetName:
+      - --storage-account -g
+      User-Agent:
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
+    method: GET
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares?api-version=2019-06-01
+  response:
+    body:
+      string: '{"value":[{"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003","name":"share000003","type":"Microsoft.Storage/storageAccounts/fileServices/shares","etag":"\"0x8D835302C084B44\"","properties":{"accessTier":"TransactionOptimized","lastModifiedTime":"2020-07-31T09:00:28.0000000Z","shareQuota":5120,"enabledProtocols":"SMB"}}]}'
+    headers:
+      cache-control:
+      - no-cache
+      content-length:
+      - '557'
+      content-type:
+      - application/json
+      date:
+      - Fri, 31 Jul 2020 09:00:48 GMT
+      expires:
+      - '-1'
+      pragma:
+      - no-cache
+      server:
+      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      transfer-encoding:
+      - chunked
+      vary:
+      - Accept-Encoding
+      x-content-type-options:
+      - nosniff
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      User-Agent:
+      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
+    method: GET
+    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
+  response:
+    body:
+      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
+        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
+    headers:
+      access-control-allow-methods:
+      - GET, OPTIONS
+      access-control-allow-origin:
+      - '*'
+      cache-control:
+      - max-age=86400, private
+      content-length:
+      - '1523'
+      content-type:
+      - application/json; charset=utf-8
+      date:
+      - Fri, 31 Jul 2020 09:00:52 GMT
+      p3p:
+      - CP="DSP CUR OTPi IND OTRi ONL FIN"
+      set-cookie:
+      - fpc=AsIyLGAVBiROnytewUQgoHM; expires=Sun, 30-Aug-2020 09:00:52 GMT; path=/;
+        secure; HttpOnly; SameSite=None
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tA6j-hdRBtpZEC5hShjlOswRWtvT6RcuFkQPH3O2VSMDoIvkb-nsn_5VlDtzV2Etp3iOj0DTXcfnFa7-TFpmJIgbHMjAS_P7WsZoV4r0K62dgNkK7yEk3hMfiyHCw42eAhBQN2cYa7AYXSxJUlSrKVLbSH9lxT9REWK-z9qWZIBVUgAA;
+        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
+      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
+      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
+      strict-transport-security:
+      - max-age=31536000; includeSubDomains
+      x-content-type-options:
+      - nosniff
+      x-ms-ests-server:
+      - 2.1.10897.13 - HKG1 ProdSlices
+    status:
+      code: 200
+      message: OK
+- request:
+    body: null
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      CommandName:
+      - storage share-rm delete
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '0'
+      ParameterSetName:
+      - --storage-account -g -n -y
+      User-Agent:
+      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
+        yulocal
+    method: DELETE
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares/share000003?api-version=2019-06-01
   response:
     body:
       string: ''
@@ -175,54 +569,7 @@ interactions:
       content-type:
       - text/plain; charset=utf-8
       date:
-      - Fri, 31 Jul 2020 08:41:33 GMT
-      expires:
-      - '-1'
-      location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Storage/locations/westus2/asyncoperations/b1748ea6-0ada-4d5b-8582-fe552c4f5849?monitor=true&api-version=2019-06-01
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      x-content-type-options:
-      - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1159'
-    status:
-      code: 202
-      message: Accepted
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account create
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -n -g --sku --https-only
-      User-Agent:
-      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
-        yulocal
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Storage/locations/westus2/asyncoperations/b1748ea6-0ada-4d5b-8582-fe552c4f5849?monitor=true&api-version=2019-06-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_GZRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/cligzrs000003","name":"cligzrs000003","type":"Microsoft.Storage/storageAccounts","location":"westus2","tags":{},"properties":{"privateEndpointConnections":[],"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:41:33.2327267Z"},"blob":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:41:33.2327267Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2020-07-31T08:41:33.1859094Z","primaryEndpoints":{"dfs":"https://cligzrs000003.dfs.core.windows.net/","web":"https://cligzrs000003.z5.web.core.windows.net/","blob":"https://cligzrs000003.blob.core.windows.net/","queue":"https://cligzrs000003.queue.core.windows.net/","table":"https://cligzrs000003.table.core.windows.net/","file":"https://cligzrs000003.file.core.windows.net/"},"primaryLocation":"westus2","statusOfPrimary":"available","secondaryLocation":"westcentralus","statusOfSecondary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1461'
-      content-type:
-      - application/json
-      date:
-      - Fri, 31 Jul 2020 08:41:51 GMT
+      - Fri, 31 Jul 2020 09:00:57 GMT
       expires:
       - '-1'
       pragma:
@@ -231,12 +578,10 @@ interactions:
       - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
       strict-transport-security:
       - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
       x-content-type-options:
       - nosniff
+      x-ms-ratelimit-remaining-subscription-deletes:
+      - '14997'
     status:
       code: 200
       message: OK
@@ -269,13 +614,13 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Fri, 31 Jul 2020 08:41:55 GMT
+      - Fri, 31 Jul 2020 09:01:06 GMT
       p3p:
       - CP="DSP CUR OTPi IND OTRi ONL FIN"
       set-cookie:
-      - fpc=Am-gBOMAhNpAiKa8hEr2WOE; expires=Sun, 30-Aug-2020 08:41:55 GMT; path=/;
+      - fpc=Ai4PuHFQ4WFKtpvQxjMp3m8; expires=Sun, 30-Aug-2020 09:01:06 GMT; path=/;
         secure; HttpOnly; SameSite=None
-      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAljCqXZMUmWNR4XL98XpKoj1FthpMJ7PJ7uBEghJGRpypwoEV7s3THeXUrlCDtkp0L-Lt0OG6nr3yR5EXKMKVFjc7NVk6KPZyWzM3W8bo8EjKhpEPVU046R3oxeUqnXsRr4yarAI26PK2tanhdUCghpEwUT7h_2ELkvWUFGzRL54gAA;
+      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tAFIGvp4dd2VPxGeVxxEQSZY83zENyZV5pruMnNodr-YFWwwh5EJe64-xjdKYlTM0gXnHk3kFhPSKj8TY6vJVf2XIgGwu-ROsp0ZZaX1rhJLqzJO6AwkmfKrRlONxvOL6uny8X9BQJ8zsssvo1Fq36A9ZyCIJXeR30hLg_riFfRUYgAA;
         domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
       - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
       - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
@@ -284,7 +629,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ests-server:
-      - 2.1.10897.13 - WUS2 ProdSlices
+      - 2.1.10897.13 - HKG1 ProdSlices
     status:
       code: 200
       message: OK
@@ -296,28 +641,28 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - storage account show
+      - storage share-rm list
       Connection:
       - keep-alive
       ParameterSetName:
-      - -n -g
+      - --storage-account -g
       User-Agent:
       - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
         yulocal
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/clistoragesku000002?api-version=2019-06-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/cli_nfs000001/providers/Microsoft.Storage/storageAccounts/nfs000002/fileServices/default/shares?api-version=2019-06-01
   response:
     body:
-      string: '{"sku":{"name":"Standard_ZRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/clistoragesku000002","name":"clistoragesku000002","type":"Microsoft.Storage/storageAccounts","location":"westus2","tags":{},"properties":{"privateEndpointConnections":[],"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:40:49.8111341Z"},"blob":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:40:49.8111341Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2020-07-31T08:40:49.7486307Z","primaryEndpoints":{"dfs":"https://clistoragesku000002.dfs.core.windows.net/","web":"https://clistoragesku000002.z5.web.core.windows.net/","blob":"https://clistoragesku000002.blob.core.windows.net/","queue":"https://clistoragesku000002.queue.core.windows.net/","table":"https://clistoragesku000002.table.core.windows.net/","file":"https://clistoragesku000002.file.core.windows.net/"},"primaryLocation":"westus2","statusOfPrimary":"available"}}'
+      string: '{"value":[]}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '1392'
+      - '12'
       content-type:
       - application/json
       date:
-      - Fri, 31 Jul 2020 08:41:58 GMT
+      - Fri, 31 Jul 2020 09:01:11 GMT
       expires:
       - '-1'
       pragma:
@@ -335,201 +680,4 @@ interactions:
     status:
       code: 200
       message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      User-Agent:
-      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
-    method: GET
-    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
-  response:
-    body:
-      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
-        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
-    headers:
-      access-control-allow-methods:
-      - GET, OPTIONS
-      access-control-allow-origin:
-      - '*'
-      cache-control:
-      - max-age=86400, private
-      content-length:
-      - '1523'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Fri, 31 Jul 2020 08:42:03 GMT
-      p3p:
-      - CP="DSP CUR OTPi IND OTRi ONL FIN"
-      set-cookie:
-      - fpc=AuK-iwYnCldCitd4z8FbgNw; expires=Sun, 30-Aug-2020 08:42:03 GMT; path=/;
-        secure; HttpOnly; SameSite=None
-      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tATb02Mr7DTt2yowA0VvkIAcWHWt3ioAxpbD4l4nRAqYKIUcFr9-9qo0_VVbwTZmMiaDlIPqIqIIO1VO4HC6tVtFcgVXz6Z1HtUe9P1UTaF4ijtv9uegwwPc94hLqtAQObnm3KUmNaY0YPqkumFeJqZpBNfyEBwJD5P3pziWV7woogAA;
-        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
-      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
-      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      x-content-type-options:
-      - nosniff
-      x-ms-ests-server:
-      - 2.1.10897.13 - WUS2 ProdSlices
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -n -g --sku
-      User-Agent:
-      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
-        yulocal
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/clistoragesku000002?api-version=2019-06-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_ZRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/clistoragesku000002","name":"clistoragesku000002","type":"Microsoft.Storage/storageAccounts","location":"westus2","tags":{},"properties":{"privateEndpointConnections":[],"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:40:49.8111341Z"},"blob":{"keyType":"Account","enabled":true,"lastEnabledTime":"2020-07-31T08:40:49.8111341Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2020-07-31T08:40:49.7486307Z","primaryEndpoints":{"dfs":"https://clistoragesku000002.dfs.core.windows.net/","web":"https://clistoragesku000002.z5.web.core.windows.net/","blob":"https://clistoragesku000002.blob.core.windows.net/","queue":"https://clistoragesku000002.queue.core.windows.net/","table":"https://clistoragesku000002.table.core.windows.net/","file":"https://clistoragesku000002.file.core.windows.net/"},"primaryLocation":"westus2","statusOfPrimary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1392'
-      content-type:
-      - application/json
-      date:
-      - Fri, 31 Jul 2020 08:42:05 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - '*/*'
-      Accept-Encoding:
-      - gzip, deflate
-      Connection:
-      - keep-alive
-      User-Agent:
-      - azsdk-python-identity/1.4.0b5 Python/3.7.6 (Windows-10-10.0.18362-SP0) yulocal
-    method: GET
-    uri: https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0/.well-known/openid-configuration
-  response:
-    body:
-      string: '{"token_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/token","token_endpoint_auth_methods_supported":["client_secret_post","private_key_jwt","client_secret_basic"],"jwks_uri":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/discovery/v2.0/keys","response_modes_supported":["query","fragment","form_post"],"subject_types_supported":["pairwise"],"id_token_signing_alg_values_supported":["RS256"],"response_types_supported":["code","id_token","code
-        id_token","id_token token"],"scopes_supported":["openid","profile","email","offline_access"],"issuer":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/v2.0","request_uri_parameter_supported":false,"userinfo_endpoint":"https://graph.microsoft.com/oidc/userinfo","authorization_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/authorize","http_logout_supported":true,"frontchannel_logout_supported":true,"end_session_endpoint":"https://login.microsoftonline.com/54826b22-38d6-4fb2-bad9-b7b93a3e9c5a/oauth2/v2.0/logout","claims_supported":["sub","iss","cloud_instance_name","cloud_instance_host_name","cloud_graph_host_name","msgraph_host","aud","exp","iat","auth_time","acr","nonce","preferred_username","name","tid","ver","at_hash","c_hash","email"],"tenant_region_scope":"NA","cloud_instance_name":"microsoftonline.com","cloud_graph_host_name":"graph.windows.net","msgraph_host":"graph.microsoft.com","rbac_url":"https://pas.windows.net"}'
-    headers:
-      access-control-allow-methods:
-      - GET, OPTIONS
-      access-control-allow-origin:
-      - '*'
-      cache-control:
-      - max-age=86400, private
-      content-length:
-      - '1523'
-      content-type:
-      - application/json; charset=utf-8
-      date:
-      - Fri, 31 Jul 2020 08:42:09 GMT
-      p3p:
-      - CP="DSP CUR OTPi IND OTRi ONL FIN"
-      set-cookie:
-      - fpc=ArnvAWRSNQtGgcf4enyWEPo; expires=Sun, 30-Aug-2020 08:42:10 GMT; path=/;
-        secure; HttpOnly; SameSite=None
-      - esctx=AQABAAAAAAAGV_bv21oQQ4ROqh0_1-tA7_QUcOb4QGHfOdcgt3nPfWKVDPCy6_yDRHg9E_BQPk1haVMwTLr_XmdpZVZJXJ6GA8_cEkrsR2_fKsVd_tOvJlUugdn3L8dpYPWLXAMyX0vpWBno7OPGZ3DegsYAgGAr9fwOaKcKC6OHE8zbSbwMe98EVa79IzCD6elvaoTTI2kgAA;
-        domain=.login.microsoftonline.com; path=/; secure; HttpOnly; SameSite=None
-      - x-ms-gateway-slice=corp; path=/; secure; samesite=none; httponly
-      - stsservicecookie=estscorp; path=/; secure; samesite=none; httponly
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      x-content-type-options:
-      - nosniff
-      x-ms-ests-server:
-      - 2.1.10897.13 - SAN ProdSlices
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"sku": {"name": "Standard_GZRS"}, "tags": {}, "properties": {"encryption":
-      {"services": {"blob": {"enabled": true, "keyType": "Account"}, "file": {"enabled":
-      true, "keyType": "Account"}}, "keySource": "Microsoft.Storage"}, "accessTier":
-      "Hot", "supportsHttpsTrafficOnly": true, "networkAcls": {"bypass": "AzureServices",
-      "virtualNetworkRules": [], "ipRules": [], "defaultAction": "Allow"}}}'
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '391'
-      Content-Type:
-      - application/json
-      ParameterSetName:
-      - -n -g --sku
-      User-Agent:
-      - AZURECLI/2.8.10 azsdk-python-azure-mgmt-storage/16.0.0b2 Python/3.7.6 (Windows-10-10.0.18362-SP0)
-        yulocal
-    method: PATCH
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clistorage000001/providers/Microsoft.Storage/storageAccounts/clistoragesku000002?api-version=2019-06-01
-  response:
-    body:
-      string: '{"error":{"code":"StorageAccountTypeConversionNotAllowed","message":"Storage
-        account type Standard_ZRS cannot be changed to Standard_GZRS."}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '141'
-      content-type:
-      - application/json
-      date:
-      - Fri, 31 Jul 2020 08:42:12 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      x-content-type-options:
-      - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1156'
-    status:
-      code: 400
-      message: Bad Request
 version: 1
