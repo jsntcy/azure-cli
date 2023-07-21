@@ -3,13 +3,13 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-# pylint: disable=line-too-long
+# pylint: disable=line-too-long, too-many-lines
 from argcomplete.completers import FilesCompleter
 
 from knack.arguments import CLIArgumentType
 
 from azure.cli.core.profiles import ResourceType
-from azure.cli.core.util import get_default_admin_username
+from azure.cli.core.commands.parameters import get_datetime_type
 from azure.cli.core.commands.validators import (
     get_default_location_from_resource_group, validate_file_or_dict)
 from azure.cli.core.commands.parameters import (
@@ -21,13 +21,16 @@ from azure.cli.command_modules.vm._completers import (
 from azure.cli.command_modules.vm._validators import (
     validate_nsg_name, validate_vm_nics, validate_vm_nic, validate_vm_disk, validate_vmss_disk,
     validate_asg_names_or_ids, validate_keyvault, _validate_proximity_placement_group,
-    process_gallery_image_version_namespace)
+    process_gallery_image_version_namespace, validate_vm_name_for_monitor_metrics)
 
 from azure.cli.command_modules.vm._vm_utils import MSI_LOCAL_ID
 from azure.cli.command_modules.vm._image_builder import ScriptType
 
+from azure.cli.command_modules.monitor.validators import validate_metric_dimension
+from azure.cli.command_modules.monitor.actions import get_period_type
 
-# pylint: disable=too-many-statements, too-many-branches, too-many-locals
+
+# pylint: disable=too-many-statements, too-many-branches, too-many-locals, too-many-lines
 def load_arguments(self, _):
     # Model imports
     StorageAccountTypes = self.get_models('StorageAccountTypes')
@@ -36,6 +39,8 @@ def load_arguments(self, _):
     UpgradeMode, CachingTypes, OperatingSystemTypes = self.get_models('UpgradeMode', 'CachingTypes', 'OperatingSystemTypes')
     HyperVGenerationTypes, HyperVGeneration = self.get_models('HyperVGenerationTypes', 'HyperVGeneration')
     DedicatedHostLicenseTypes = self.get_models('DedicatedHostLicenseTypes')
+    OrchestrationServiceNames, OrchestrationServiceStateAction = self.get_models('OrchestrationServiceNames', 'OrchestrationServiceStateAction', operation_group='virtual_machine_scale_sets')
+    RebootSetting, VMGuestPatchClassificationWindows, VMGuestPatchClassificationLinux = self.get_models('VMGuestPatchRebootSetting', 'VMGuestPatchClassificationWindows', 'VMGuestPatchClassificationLinux')
 
     # REUSABLE ARGUMENT DEFINITIONS
     name_arg_type = CLIArgumentType(options_list=['--name', '-n'], metavar='NAME')
@@ -54,6 +59,7 @@ def load_arguments(self, _):
 
     extension_instance_name_type = CLIArgumentType(help="Name of extension instance, which can be customized. Default: name of the extension.")
     image_template_name_type = CLIArgumentType(overrides=name_arg_type, id_part='name')
+    disk_encryption_set_name = CLIArgumentType(overrides=name_arg_type, help='Name of disk encryption set.', id_part='name')
 
     # StorageAccountTypes renamed to DiskStorageAccountTypes in 2018_06_01 of azure-mgmt-compute
     DiskStorageAccountTypes = DiskStorageAccountTypes or StorageAccountTypes
@@ -86,6 +92,17 @@ def load_arguments(self, _):
         arg_type=get_three_state_flag(), min_api='2018-06-01',
         help='Enables or disables the capability to have 1 or more managed data disks with UltraSSD_LRS storage account')
 
+    scale_in_policy_type = CLIArgumentType(
+        nargs='+', arg_type=get_enum_type(self.get_models('VirtualMachineScaleSetScaleInRules')),
+        help='Specify the scale-in policy (space delimited) that decides which virtual machines are chosen for removal when a Virtual Machine Scale Set is scaled-in.'
+    )
+
+    edge_zone_type = CLIArgumentType(
+        help='The name of edge zone.',
+        min_api='2020-12-01',
+        is_preview=True
+    )
+
     # region MixedScopes
     for scope in ['vm', 'disk', 'snapshot', 'image', 'sig']:
         with self.argument_context(scope) as c:
@@ -104,6 +121,14 @@ def load_arguments(self, _):
                 c.argument('hyper_v_generation', arg_type=hyper_v_gen_sku, help='The hypervisor generation of the Virtual Machine. Applicable to OS disks only.')
             else:
                 c.ignore('access_level', 'for_upload', 'hyper_v_generation')
+            c.argument('encryption_type', min_api='2019-07-01', arg_type=get_enum_type(self.get_models('EncryptionType')),
+                       help='Encryption type. EncryptionAtRestWithPlatformKey: Disk is encrypted with XStore managed key at rest. It is the default encryption type. EncryptionAtRestWithCustomerKey: Disk is encrypted with Customer managed key at rest.')
+            c.argument('disk_encryption_set', min_api='2019-07-01', help='Name or ID of disk encryption set that is used to encrypt the disk.')
+            c.argument('location', help='Location. Values from: `az account list-locations`. You can configure the default location using `az configure --defaults location=<location>`. If location is not specified and no default location specified, location will be automatically set as same as the resource group.')
+            operation_group = 'disks' if scope == 'disk' else 'snapshots'
+            c.argument('network_access_policy', min_api='2020-05-01', help='Policy for accessing the disk via network.', arg_type=get_enum_type(self.get_models('NetworkAccessPolicy', operation_group=operation_group)))
+            c.argument('disk_access', min_api='2020-05-01', help='Name or ID of the disk access resource for using private endpoints on disks.')
+            c.argument('enable_bursting', arg_type=get_three_state_flag(), help='Enable bursting beyond the provisioned performance target of the disk. Bursting is disabled by default, and it does not apply to Ultra disks.')
 
     for scope in ['disk create', 'snapshot create']:
         with self.argument_context(scope) as c:
@@ -121,6 +146,18 @@ def load_arguments(self, _):
         c.argument('disk_mbps_read_write', type=int, min_api='2018-06-01', help="The bandwidth allowed for this disk. Only settable for UltraSSD disks. MBps means millions of bytes per second with ISO notation of powers of 10")
         c.argument('upload_size_bytes', type=int, min_api='2019-03-01',
                    help='The size (in bytes) of the contents of the upload including the VHD footer. Min value: 20972032. Max value: 35183298347520')
+        c.argument('max_shares', type=int, help='The maximum number of VMs that can attach to the disk at the same time. Value greater than one indicates a disk that can be mounted on multiple VMs at the same time')
+        c.argument('disk_iops_read_only', type=int, help='The total number of IOPS that will be allowed across all VMs mounting the shared disk as ReadOnly. One operation can transfer between 4k and 256k bytes')
+        c.argument('disk_mbps_read_only', type=int, help='The total throughput (MBps) that will be allowed across all VMs mounting the shared disk as ReadOnly. MBps means millions of bytes per second - MB here uses the ISO notation, of powers of 10')
+        c.argument('image_reference', help='ID or URN (publisher:offer:sku:version) of the image from which to create a disk')
+        c.argument('image_reference_lun', type=int, help='If the disk is created from an image\'s data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null')
+        c.argument('gallery_image_reference', help='ID of the shared galley image version from which to create a disk')
+        c.argument('gallery_image_reference_lun', type=int, help='If the disk is created from an image\'s data disk, this is an index that indicates which of the data disks in the image to use. For OS disks, this field is null')
+        c.argument('logical_sector_size', type=int, help='Logical sector size in bytes for Ultra disks. Supported values are 512 ad 4096. 4096 is the default.')
+        c.argument('tier', help='Performance tier of the disk (e.g, P4, S10) as described here: https://azure.microsoft.com/en-us/pricing/details/managed-disks/. Does not apply to Ultra disks.')
+        c.argument('edge_zone', edge_zone_type)
+        c.argument('security_type', choices=['TrustedLaunch'], help='The security type of the VM. Applicable for OS disks only.', min_api='2020-12-01')
+        c.argument('support_hibernation', arg_type=get_three_state_flag(), help='Indicate the OS on a disk supports hibernation.', min_api='2020-12-01')
     # endregion
 
     # region Snapshots
@@ -130,6 +167,7 @@ def load_arguments(self, _):
         c.argument('sku', arg_type=snapshot_sku)
         c.argument('incremental', arg_type=get_three_state_flag(), min_api='2019-03-01',
                    help='Whether a snapshot is incremental. Incremental snapshots on the same disk occupy less space than full snapshots and can be diffed')
+        c.argument('edge_zone', edge_zone_type)
     # endregion
 
     # region Images
@@ -147,12 +185,15 @@ def load_arguments(self, _):
                    'Default is false. Zone resilient images can be created only in regions that provide Zone Redundant Storage')
         c.argument('storage_sku', arg_type=disk_sku, help='The SKU of the storage account with which to create the VM image. Unused if source VM is specified.')
         c.argument('os_disk_caching', arg_type=get_enum_type(CachingTypes), help="Storage caching type for the image's OS disk.")
+        c.argument('data_disk_caching', arg_type=get_enum_type(CachingTypes),
+                   help="Storage caching type for the image's data disk.")
         c.argument('hyper_v_generation', arg_type=hyper_v_gen_sku, min_api="2019-03-01", help='The hypervisor generation of the Virtual Machine created from the image.')
         c.ignore('source_virtual_machine', 'os_blob_uri', 'os_disk', 'os_snapshot', 'data_blob_uris', 'data_disks', 'data_snapshots')
+        c.argument('edge_zone', edge_zone_type, )
     # endregion
 
     # region Image Templates
-    with self.argument_context('image template') as c:
+    with self.argument_context('image builder') as c:
         ib_output_name_help = "Name of the image builder run output."
 
         c.argument('location', get_location_type(self.cli_ctx))
@@ -167,12 +208,20 @@ def load_arguments(self, _):
         c.argument('output_name', help=ib_output_name_help)
         c.ignore('destinations_lists', 'scripts_list', 'source_dict')
 
-    with self.argument_context('image template create') as c:
+    with self.argument_context('image builder create') as c:
         ib_source_type = CLIArgumentType(arg_group="Image Source")
         ib_customizer_type = CLIArgumentType(arg_group="Customizer")
         ib_cutput_type = CLIArgumentType(arg_group="Output")
 
         c.argument('build_timeout', type=int, help="The Maximum duration to wait while building the image template, in minutes. Default is 60.")
+        c.argument('image_template', help='Local path or URL to an image template file. When using --image-template, all other parameters are ignored except -g and -n. Reference: https://docs.microsoft.com/en-us/azure/virtual-machines/linux/image-builder-json')
+        c.argument('identity', nargs='+', help='List of user assigned identities (name or ID, space delimited) of the image template.')
+
+        # VM profile
+        c.argument('vm_size', help='Size of the virtual machine used to build, customize and capture images. Omit or specify empty string to use the default (Standard_D1_v2)')
+        c.argument('os_disk_size', type=int, help='Size of the OS disk in GB. Omit or specify 0 to use Azure\'s default OS disk size')
+        c.argument('vnet', help='Name of VNET to deploy the build virtual machine. You should only specify it when subnet is a name')
+        c.argument('subnet', help='Name or ID of subnet to deploy the build virtual machine')
 
         # Image Source Arguments
         c.argument('source', arg_type=ib_source_type)
@@ -189,7 +238,7 @@ def load_arguments(self, _):
         c.argument('shared_image_destinations', arg_type=ib_cutput_type)
         c.argument('output_name', arg_type=ib_cutput_type)
 
-    with self.argument_context('image template output') as c:
+    with self.argument_context('image builder output') as c:
         ib_sig_regions_help = "Space-separated list of regions to replicate the image version into."
         ib_img_location_help = "Location where the customized image will be created."
 
@@ -199,7 +248,7 @@ def load_arguments(self, _):
         c.argument('managed_image', arg_group="Managed Image", help="Name or ID of the customized managed image to be created.")
         c.argument('managed_image_location', arg_group="Managed Image", help=ib_img_location_help)
 
-    with self.argument_context('image template output add') as c:
+    with self.argument_context('image builder output add') as c:
         ib_artifact_tags_help = "Tags that will be applied to the output artifact once it has been created by the distributor. " + tags_type.settings['help']
         ib_artifact_tags_type = CLIArgumentType(overrides=tags_type, help=ib_artifact_tags_help, options_list=["--artifact-tags"])
         ib_default_loc_help = " Defaults to resource group's location."
@@ -211,8 +260,9 @@ def load_arguments(self, _):
         c.argument('tags', arg_type=ib_artifact_tags_type)
         c.ignore('location')
 
-    with self.argument_context('image template customizer') as c:
+    with self.argument_context('image builder customizer') as c:
         ib_win_restart_type = CLIArgumentType(arg_group="Windows Restart")
+        ib_win_update_type = CLIArgumentType(arg_group="Windows Update")
         ib_script_type = CLIArgumentType(arg_group="Shell and Powershell")
         ib_powershell_type = CLIArgumentType(arg_group="Powershell")
         ib_file_customizer_type = CLIArgumentType(arg_group="File")
@@ -231,6 +281,11 @@ def load_arguments(self, _):
         c.argument('restart_command', arg_type=ib_win_restart_type, help="Command to execute the restart operation.")
         c.argument('restart_check_command', arg_type=ib_win_restart_type, help="Command to verify that restart succeeded.")
         c.argument('restart_timeout', arg_type=ib_win_restart_type, help="Restart timeout specified as a string consisting of a magnitude and unit, e.g. '5m' (5 minutes) or '2h' (2 hours)", default="5m")
+
+        # Windows Update Specific Args
+        c.argument('search_criteria', arg_type=ib_win_update_type, help='Criteria to search updates. Omit or specify empty string to use the default (search all). Refer to above link for examples and detailed description of this field.')
+        c.argument('filters', arg_type=ib_win_update_type, nargs='+', help='Space delimited filters to select updates to apply. Omit or specify empty array to use the default (no filter)')
+        c.argument('update_limit', arg_type=ib_win_update_type, help='Maximum number of updates to apply at a time. Omit or specify 0 to use the default (1000)')
 
         # File Args
         c.argument('file_source', arg_type=ib_file_customizer_type, help="The URI of the file to be downloaded into the image. It can be a github link, SAS URI for Azure Storage, etc.")
@@ -275,6 +330,10 @@ def load_arguments(self, _):
                    help="enable/disable disk write accelerator. Use singular value 'true/false' to apply across, or specify individual disks, e.g.'os=true 1=true 2=true' for os disk and data disks with lun of 1 & 2")
         c.argument('disk_caching', nargs='*', help="Use singular value to apply across, or specify individual disks, e.g. 'os=ReadWrite 0=None 1=ReadOnly' should enable update os disk and 2 data disks")
         c.argument('ultra_ssd_enabled', ultra_ssd_enabled_type)
+        c.argument('enable_secure_boot', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                   help='Enable secure boot.')
+        c.argument('enable_vtpm', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                   help='Enable vTPM.')
 
     with self.argument_context('vm create') as c:
         c.argument('name', name_arg_type, validator=_resource_not_exists(self.cli_ctx, 'Microsoft.Compute/virtualMachines'))
@@ -282,38 +341,50 @@ def load_arguments(self, _):
         c.argument('os_disk_size_gb', type=int, help='the size of the os disk in GB', arg_group='Storage')
         c.argument('availability_set', help='Name or ID of an existing availability set to add the VM to. None by default.')
         c.argument('vmss', help='Name or ID of an existing virtual machine scale set that the virtual machine should be assigned to. None by default.')
-        c.argument('nsg', help='The name to use when creating a new Network Security Group (default) or referencing an existing one. Can also reference an existing NSG by ID or specify "" for none.', arg_group='Network')
-        c.argument('nsg_rule', help='NSG rule to create when creating a new NSG. Defaults to open ports for allowing RDP on Windows and allowing SSH on Linux.', arg_group='Network', arg_type=get_enum_type(['RDP', 'SSH']))
+        c.argument('nsg', help='The name to use when creating a new Network Security Group (default) or referencing an existing one. Can also reference an existing NSG by ID or specify "" for none (\'""\' in Azure CLI using PowerShell or --% operator).', arg_group='Network')
+        c.argument('nsg_rule', help='NSG rule to create when creating a new NSG. Defaults to open ports for allowing RDP on Windows and allowing SSH on Linux. NONE represents no NSG rule', arg_group='Network', arg_type=get_enum_type(['RDP', 'SSH', 'NONE']))
         c.argument('application_security_groups', resource_type=ResourceType.MGMT_NETWORK, min_api='2017-09-01', nargs='+', options_list=['--asgs'], help='Space-separated list of existing application security groups to associate with the VM.', arg_group='Network', validator=validate_asg_names_or_ids)
         c.argument('boot_diagnostics_storage',
                    help='pre-existing storage account name or its blob uri to capture boot diagnostics. Its sku should be one of Standard_GRS, Standard_LRS and Standard_RAGRS')
         c.argument('accelerated_networking', resource_type=ResourceType.MGMT_NETWORK, min_api='2016-09-01', arg_type=get_three_state_flag(), arg_group='Network',
                    help="enable accelerated networking. Unless specified, CLI will enable it based on machine image and size")
         if self.supported_api_version(min_api='2019-03-01', resource_type=ResourceType.MGMT_COMPUTE):
-            VMPriorityTypes = self.get_models('VirtualMachinePriorityTypes', resource_type=ResourceType.MGMT_COMPUTE)
             VirtualMachineEvictionPolicyTypes = self.get_models('VirtualMachineEvictionPolicyTypes', resource_type=ResourceType.MGMT_COMPUTE)
-            c.argument('priority', resource_type=ResourceType.MGMT_COMPUTE, min_api='2019-03-01',
-                       arg_type=get_enum_type(VMPriorityTypes, default=None),
-                       help="Priority. Use 'Low' to run short-lived workloads in a cost-effective way")
             c.argument('eviction_policy', resource_type=ResourceType.MGMT_COMPUTE, min_api='2019-03-01',
                        arg_type=get_enum_type(VirtualMachineEvictionPolicyTypes, default=None),
-                       help="The eviction policy for the low priority virtual machine.")
+                       help="The eviction policy for the Spot priority virtual machine. Default eviction policy is Deallocate for a Spot priority virtual machine")
         c.argument('enable_agent', arg_type=get_three_state_flag(), min_api='2018-06-01',
                    help='Indicates whether virtual machine agent should be provisioned on the virtual machine. When this property is not specified, default behavior is to set it to true. This will ensure that VM Agent is installed on the VM so that extensions can be added to the VM later')
+        c.argument('enable_auto_update', arg_type=get_three_state_flag(), min_api='2020-06-01',
+                   help='Indicate whether Automatic Updates is enabled for the Windows virtual machine')
+        c.argument('patch_mode', arg_type=get_enum_type(['AutomaticByOS', 'AutomaticByPlatform', 'Manual', 'ImageDefault']), min_api='2020-12-01',
+                   help='Mode of in-guest patching to IaaS virtual machine. Allowed values for Windows VM: AutomaticByOS, AutomaticByPlatform, Manual. Allowed values for Linux VM: AutomaticByPlatform, ImageDefault. Manual - You control the application of patches to a virtual machine. You do this by applying patches manually inside the VM. In this mode, automatic updates are disabled; the paramater --enable-auto-update must be false. AutomaticByOS - The virtual machine will automatically be updated by the OS. The parameter --enable-auto-update must be true. AutomaticByPlatform - the virtual machine will automatically updated by the OS. ImageDefault - The virtual machine\'s default patching configuration is used. The parameter --enable-agent and --enable-auto-update must be true')
+        c.argument('ssh_key_name', help='Use it as public key in virtual machine. It should be an existing SSH key resource in Azure.')
+        c.argument('enable_hotpatching', arg_type=get_three_state_flag(), help='Patch VMs without requiring a reboot. --enable-agent must be set and --patch-mode must be set to AutomaticByPlatform', min_api='2020-12-01')
+        c.argument('platform_fault_domain', min_api='2020-06-01',
+                   help='Specify the scale set logical fault domain into which the virtual machine will be created. By default, the virtual machine will be automatically assigned to a fault domain that best maintains balance across available fault domains. This is applicable only if the virtualMachineScaleSet property of this virtual machine is set. The virtual machine scale set that is referenced, must have platform fault domain count. This property cannot be updated once the virtual machine is created. Fault domain assignment can be viewed in the virtual machine instance view')
+        c.argument('count', type=int, is_preview=True,
+                   help='Number of virtual machines to create. Value range is [2, 250], inclusive. Don\'t specify this parameter if you want to create a normal single VM. The VMs are created in parallel. The output of this command is an array of VMs instead of one single VM. Each VM has its own public IP, NIC. VNET and NSG are shared. It is recommended that no existing public IP, NIC, VNET and NSG are in resource group. When --count is specified, --attach-data-disks, --attach-os-disk, --boot-diagnostics-storage, --computer-name, --host, --host-group, --nics, --os-disk-name, --private-ip-address, --public-ip-address, --public-ip-address-dns-name, --storage-account, --storage-container-name, --subnet, --use-unmanaged-disk, --vnet-name are not allowed.')
+        c.argument('security_type', arg_type=get_enum_type(['TrustedLaunch']), min_api='2020-12-01',
+                   help='Specify if the VM is Trusted Launch enabled. See https://docs.microsoft.com/azure/virtual-machines/trusted-launch.')
+        c.argument('enable_secure_boot', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                   help='Enable secure boot. It is part of trusted launch.')
+        c.argument('enable_vtpm', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                   help='Enable vTPM. It is part of trusted launch.')
 
     with self.argument_context('vm create', arg_group='Storage') as c:
         c.argument('attach_os_disk', help='Attach an existing OS disk to the VM. Can use the name or ID of a managed disk or the URI to an unmanaged disk VHD.')
         c.argument('attach_data_disks', nargs='+', help='Attach existing data disks to the VM. Can use the name or ID of a managed disk or the URI to an unmanaged disk VHD.')
 
     with self.argument_context('vm create', arg_group='Dedicated Host', min_api='2019-03-01') as c:
-        c.argument('dedicated_host_group', options_list=['--host-group'], is_preview=True, help="Name of the dedicated host group containing the dedicated host this VM will reside in.")
-        c.argument('dedicated_host', options_list=['--host'], is_preview=True, help="Name or ID of the dedicated host this VM will reside in. If a name is specified, a host group must be specified via `--host-group`.")
+        c.argument('dedicated_host_group', options_list=['--host-group'], is_preview=True, help="Name or ID of the dedicated host group that the VM will reside in. --host and --host-group can't be used together.")
+        c.argument('dedicated_host', options_list=['--host'], is_preview=True, help="ID of the dedicated host that the VM will reside in. --host and --host-group can't be used together.")
 
     with self.argument_context('vm open-port') as c:
         c.argument('vm_name', name_arg_type, help='The name of the virtual machine to open inbound traffic on.')
         c.argument('network_security_group_name', options_list=('--nsg-name',), help='The name of the network security group to create if one does not exist. Ignored if an NSG already exists.', validator=validate_nsg_name)
         c.argument('apply_to_subnet', help='Allow inbound traffic on the subnet instead of the NIC', action='store_true')
-        c.argument('port', help="The port or port range (ex: 80-100) to open inbound traffic to. Use '*' to allow traffic to all ports.")
+        c.argument('port', help="The port or port range (ex: 80-100) to open inbound traffic to. Use '*' to allow traffic to all ports. Use comma separated values to specify more than one port or port range.")
         c.argument('priority', help='Rule priority, between 100 (highest priority) and 4096 (lowest priority). Must be unique for each rule in the collection.', type=int)
 
     for scope in ['vm show', 'vm list']:
@@ -325,6 +396,17 @@ def load_arguments(self, _):
 
     with self.argument_context('vm diagnostics set') as c:
         c.argument('storage_account', completer=get_resource_name_completion_list('Microsoft.Storage/storageAccounts'))
+
+    with self.argument_context('vm install-patches') as c:
+        c.argument('maximum_duration', type=str, help='Specify the maximum amount of time that the operation will run. It must be an ISO 8601-compliant duration string such as PT4H (4 hours)')
+        c.argument('reboot_setting', arg_type=get_enum_type(RebootSetting), help='Define when it is acceptable to reboot a VM during a software update operation.')
+        c.argument('classifications_to_include_win', nargs='+', arg_type=get_enum_type(VMGuestPatchClassificationWindows), help='Space-separated list of classifications to include for Windows VM.')
+        c.argument('classifications_to_include_linux', nargs='+', arg_type=get_enum_type(VMGuestPatchClassificationLinux), help='Space-separated list of classifications to include for Linux VM.')
+        c.argument('kb_numbers_to_include', nargs='+', help='Space-separated list of KBs to include in the patch operation. Applicable to Windows VM only')
+        c.argument('kb_numbers_to_exclude', nargs='+', help='Space-separated list of KBs to exclude in the patch operation. Applicable to Windows VM only')
+        c.argument('exclude_kbs_requiring_reboot', arg_type=get_three_state_flag(), help="Filter out KBs that don't have a reboot behavior of 'NeverReboots' when this is set. Applicable to Windows VM only")
+        c.argument('package_name_masks_to_include', nargs='+', help='Space-separated list of packages to include in the patch operation. Format: packageName_packageVersion. Applicable to Linux VM only')
+        c.argument('package_name_masks_to_exclude', nargs='+', help='Space-separated list of packages to exclude in the patch operation. Format: packageName_packageVersion. Applicable to Linux VM only')
 
     with self.argument_context('vm disk') as c:
         c.argument('vm_name', options_list=['--vm-name'], id_part=None, completer=get_resource_name_completion_list('Microsoft.Compute/virtualMachines'))
@@ -353,7 +435,7 @@ def load_arguments(self, _):
     with self.argument_context('vm extension') as c:
         c.argument('vm_extension_name', name_arg_type, completer=get_resource_name_completion_list('Microsoft.Compute/virtualMachines/extensions'), help='Name of the extension.', id_part='child_name_1')
         c.argument('vm_name', arg_type=existing_vm_name, options_list=['--vm-name'], id_part='name')
-        c.argument('expand', deprecate_info=c.deprecate(expiration='2.1.0', hide=True))
+        c.argument('expand', deprecate_info=c.deprecate(expiration='3.0.0', hide=True))
 
     with self.argument_context('vm extension list') as c:
         c.argument('vm_name', arg_type=existing_vm_name, options_list=['--vm-name'], id_part=None)
@@ -421,7 +503,7 @@ def load_arguments(self, _):
 
     with self.argument_context('vm list-skus') as c:
         c.argument('size', options_list=['--size', '-s'], help="size name, partial name is accepted")
-        c.argument('zone', options_list=['--zone', '-z'], arg_type=get_three_state_flag(), help="show all vm size supporting availability zones")
+        c.argument('zone', options_list=['--zone', '-z'], arg_type=get_three_state_flag(), help="show skus supporting availability zones")
         c.argument('show_all', options_list=['--all'], arg_type=get_three_state_flag(),
                    help="show all information including vm sizes not available under the current subscription")
         c.argument('resource_type', options_list=['--resource-type', '-r'], help='resource types e.g. "availabilitySets", "snapshots", "disks", etc')
@@ -441,18 +523,22 @@ def load_arguments(self, _):
                    help="Replace the host automatically if a failure occurs")
         c.argument('license_type', arg_type=get_enum_type(DedicatedHostLicenseTypes),
                    help="The software license type that will be applied to the VMs deployed on the dedicated host.")
-        c.argument('sku', arg_type=get_enum_type(['DSv3-Type1', 'ESv3-Type1', 'FSv2-Type2']),
-                   help="Sku of the dedicated host.")
+        c.argument('sku', help="SKU of the dedicated host. Available SKUs: https://azure.microsoft.com/en-us/pricing/details/virtual-machines/dedicated-host/")
 
     with self.argument_context('vm host list') as c:
         c.argument('host_group_name', id_part=None)
 
     with self.argument_context('vm host group') as c:
         c.argument('host_group_name', name_arg_type, id_part='name', help="Name of the Dedicated Host Group")
+        c.argument('automatic_placement', arg_type=get_three_state_flag(), min_api='2020-06-01',
+                   help='Specify whether virtual machines or virtual machine scale sets can be placed automatically '
+                        'on the dedicated host group. Automatic placement means resources are allocated on dedicated '
+                        'hosts, that are chosen by Azure, under the dedicated host group. The value is defaulted to '
+                        'false when not provided.')
 
     with self.argument_context('vm host group create') as c:
         c.argument('platform_fault_domain_count', options_list=["--platform-fault-domain-count", "-c"], type=int,
-                   help="Number of fault domains that the host group can span. Allowed values: 1, 2, 3")
+                   help="Number of fault domains that the host group can span.")
         c.argument('zones', zone_type)
 
     for scope in ["vm host", "vm host group"]:
@@ -475,35 +561,37 @@ def load_arguments(self, _):
         c.argument('caching', help='Disk caching policy', arg_type=get_enum_type(CachingTypes))
         for dest in scaleset_name_aliases:
             c.argument(dest, vmss_name_type)
+        c.argument('host_group', min_api='2020-06-01',
+                   help='Name or ID of dedicated host group that the virtual machine scale set resides in')
 
-    for scope in ['vmss deallocate', 'vmss delete-instances', 'vmss restart', 'vmss start', 'vmss stop', 'vmss show', 'vmss update-instances']:
+    for scope in ['vmss deallocate', 'vmss delete-instances', 'vmss restart', 'vmss start', 'vmss stop', 'vmss show', 'vmss update-instances', 'vmss simulate-eviction']:
         with self.argument_context(scope) as c:
             for dest in scaleset_name_aliases:
                 c.argument(dest, vmss_name_type, id_part=None)  # due to instance-ids parameter
 
     with self.argument_context('vmss create') as c:
-        VMPriorityTypes = self.get_models('VirtualMachinePriorityTypes', resource_type=ResourceType.MGMT_COMPUTE)
         VirtualMachineEvictionPolicyTypes = self.get_models('VirtualMachineEvictionPolicyTypes', resource_type=ResourceType.MGMT_COMPUTE)
         c.argument('name', name_arg_type)
         c.argument('nat_backend_port', default=None, help='Backend port to open with NAT rules. Defaults to 22 on Linux and 3389 on Windows.')
         c.argument('single_placement_group', arg_type=get_three_state_flag(), help="Limit the scale set to a single placement group."
-                   " See https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups for details")
+                   " See https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups for details.")
         c.argument('platform_fault_domain_count', type=int, help='Fault Domain count for each placement group in the availability zone', min_api='2017-12-01')
         c.argument('vmss_name', name_arg_type, id_part=None, help='Name of the virtual machine scale set.')
         c.argument('instance_count', help='Number of VMs in the scale set.', type=int)
         c.argument('disable_overprovision', help='Overprovision option (see https://azure.microsoft.com/documentation/articles/virtual-machine-scale-sets-overview/ for details).', action='store_true')
         c.argument('upgrade_policy_mode', help=None, arg_type=get_enum_type(UpgradeMode))
-        c.argument('health_probe', help='Probe name from the existing load balancer, mainly used for rolling upgrade')
+        c.argument('health_probe', help='Probe name from the existing load balancer, mainly used for rolling upgrade or automatic repairs')
         c.argument('vm_sku', help='Size of VMs in the scale set. Default to "Standard_DS1_v2". See https://azure.microsoft.com/pricing/details/virtual-machines/ for size info.')
         c.argument('nsg', help='Name or ID of an existing Network Security Group.', arg_group='Network')
-        c.argument('priority', resource_type=ResourceType.MGMT_COMPUTE, min_api='2017-12-01', arg_type=get_enum_type(VMPriorityTypes, default=None),
-                   help="Priority. Use 'Low' to run short-lived workloads in a cost-effective way")
         c.argument('eviction_policy', resource_type=ResourceType.MGMT_COMPUTE, min_api='2017-12-01', arg_type=get_enum_type(VirtualMachineEvictionPolicyTypes, default=None),
-                   help="The eviction policy for virtual machines in a low priority scale set.", is_preview=True)
+                   help="The eviction policy for virtual machines in a Spot priority scale set. Default eviction policy is Deallocate for a Spot priority scale set")
         c.argument('application_security_groups', resource_type=ResourceType.MGMT_COMPUTE, min_api='2018-06-01', nargs='+', options_list=['--asgs'], help='Space-separated list of existing application security groups to associate with the VM.', arg_group='Network', validator=validate_asg_names_or_ids)
         c.argument('computer_name_prefix', help='Computer name prefix for all of the virtual machines in the scale set. Computer name prefixes must be 1 to 15 characters long')
-        c.argument('orchestration_mode', help='Choose how virtual machines are managed by the scale set. In VM mode, you manually create and add a virtual machine of any configuration to the scale set. In ScaleSetVM mode, you define a virtual machine model and Azure will generate identical instances based on that model.',
-                   arg_type=get_enum_type(['VM', 'ScaleSetVM']))
+        c.argument('orchestration_mode', help='Choose how virtual machines are managed by the scale set. In Uniform mode, you define a virtual machine model and Azure will generate identical instances based on that model. In Flexible mode, you manually create and add a virtual machine of any configuration to the scale set or generate identical instances based on virtual machine model defined for the scale set.',
+                   arg_type=get_enum_type(['Uniform', 'Flexible']), is_preview=True)
+        c.argument('scale_in_policy', scale_in_policy_type)
+        c.argument('automatic_repairs_grace_period', min_api='2018-10-01',
+                   help='The amount of time (in minutes, between 30 and 90) for which automatic repairs are suspended due to a state change on VM.')
 
     with self.argument_context('vmss create', arg_group='Network Balancer') as c:
         LoadBalancerSkuName = self.get_models('LoadBalancerSkuName', resource_type=ResourceType.MGMT_NETWORK)
@@ -520,7 +608,7 @@ def load_arguments(self, _):
 
     with self.argument_context('vmss create', min_api='2017-03-30', arg_group='Network') as c:
         c.argument('public_ip_per_vm', action='store_true', help="Each VM instance will have a public ip. For security, you can use '--nsg' to apply appropriate rules")
-        c.argument('vm_domain_name', help="domain name of VM instances, once configured, the FQDN is 'vm<vm-index>.<vm-domain-name>.<..rest..>'")
+        c.argument('vm_domain_name', help="domain name of VM instances, once configured, the FQDN is `vm<vm-index>.<vm-domain-name>.<..rest..>`")
         c.argument('dns_servers', nargs='+', help="space-separated IP addresses of DNS servers, e.g. 10.0.0.5 10.0.0.6")
         c.argument('accelerated_networking', arg_type=get_three_state_flag(),
                    help="enable accelerated networking. Unless specified, CLI will enable it based on machine image and size")
@@ -532,11 +620,31 @@ def load_arguments(self, _):
         c.argument('enable_terminate_notification', min_api='2019-03-01', arg_type=get_three_state_flag(),
                    help='Enable terminate notification')
         c.argument('ultra_ssd_enabled', ultra_ssd_enabled_type)
+        c.argument('scale_in_policy', scale_in_policy_type)
+
+    with self.argument_context('vmss update', min_api='2018-10-01', arg_group='Automatic Repairs') as c:
+        c.argument('enable_automatic_repairs', arg_type=get_three_state_flag(), help='Enable automatic repairs')
+        c.argument(
+            'automatic_repairs_grace_period',
+            help='The amount of time (in minutes, between 30 and 90) for which automatic repairs are suspended due to a state change on VM.'
+        )
 
     for scope in ['vmss create', 'vmss update']:
         with self.argument_context(scope) as c:
             c.argument('terminate_notification_time', min_api='2019-03-01',
                        help='Length of time (in minutes, between 5 and 15) a notification to be sent to the VM on the instance metadata server till the VM gets deleted')
+            c.argument('max_batch_instance_percent', type=int, min_api='2020-12-01',
+                       help='The maximum percent of total virtual machine instances that will be upgraded simultaneously by the rolling upgrade in one batch. Default: 20%')
+            c.argument('max_unhealthy_instance_percent', type=int, min_api='2020-12-01',
+                       help='The maximum percentage of the total virtual machine instances in the scale set that can be simultaneously unhealthy. Default: 20%')
+            c.argument('max_unhealthy_upgraded_instance_percent', type=int, min_api='2020-12-01',
+                       help='The maximum percentage of upgraded virtual machine instances that can be found to be in an unhealthy state. Default: 20%')
+            c.argument('pause_time_between_batches', min_api='2020-12-01',
+                       help='The wait time between completing the update for all virtual machines in one batch and starting the next batch. Default: 0 seconds')
+            c.argument('enable_cross_zone_upgrade', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                       help='Set this Boolean property will allow VMSS to ignore AZ boundaries when constructing upgrade batches, and only consider Update Domain and maxBatchInstancePercent to determine the batch size')
+            c.argument('prioritize_unhealthy_instances', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                       help='Set this Boolean property will lead to all unhealthy instances in a scale set getting upgraded before any healthy instances')
 
     for scope, help_prefix in [('vmss update', 'Update the'), ('vmss wait', 'Wait on the')]:
         with self.argument_context(scope) as c:
@@ -575,12 +683,19 @@ def load_arguments(self, _):
 
     with self.argument_context('vmss nic list') as c:
         c.argument('virtual_machine_scale_set_name', arg_type=vmss_name_type, options_list=['--vmss-name'], id_part=None)
+
+    with self.argument_context('vmss set-orchestration-service-state') as c:
+        c.argument('service_name', arg_type=get_enum_type(OrchestrationServiceNames), help='The name of the orchestration service.')
+        c.argument('action', arg_type=get_enum_type(OrchestrationServiceStateAction), help='The action to be performed.')
     # endregion
 
     # region VM & VMSS Shared
     for scope in ['vm', 'vmss']:
         with self.argument_context(scope) as c:
-            c.argument('no_auto_upgrade', arg_type=get_three_state_flag(), help='If set, the extension service will not automatically pick or upgrade to the latest minor version, even if the extension is redeployed.')
+            c.argument('no_auto_upgrade',
+                       options_list=['--no-auto-upgrade-minor-version', c.deprecate(target='--no-auto-upgrade', redirect='--no-auto-upgrade-minor-version')],
+                       arg_type=get_three_state_flag(),
+                       help='If set, the extension service will not automatically pick or upgrade to the latest minor version, even if the extension is redeployed.')
 
         with self.argument_context('{} run-command'.format(scope)) as c:
             c.argument('command_id', completer=get_vm_run_command_completion_list, help="The command id. Use 'az {} run-command list' to get the list".format(scope))
@@ -623,15 +738,14 @@ def load_arguments(self, _):
             c.argument('secrets', multi_ids_type, help='One or many Key Vault secrets as JSON strings or files via `@{path}` containing `[{ "sourceVault": { "id": "value" }, "vaultCertificates": [{ "certificateUrl": "value", "certificateStore": "cert store name (only on windows)"}] }]`', type=file_type, completer=FilesCompleter())
             c.argument('assign_identity', nargs='*', arg_group='Managed Service Identity', help="accept system or user assigned identities separated by spaces. Use '[system]' to refer system assigned identity, or a resource id to refer user assigned identity. Check out help for more examples")
             c.ignore('aux_subscriptions')
-            max_billing_help = 'The maximum price (in US Dollars) you are willing to pay for a low priority VM/VMSS. -1 indicates that the low priority VM/VMSS should not be evicted for price reasons'
-            c.argument('max_billing', help=max_billing_help, min_api='2019-03-01', type=float)
+            c.argument('edge_zone', edge_zone_type)
 
         with self.argument_context(scope, arg_group='Authentication') as c:
             c.argument('generate_ssh_keys', action='store_true', help='Generate SSH public and private key files if missing. The keys will be stored in the ~/.ssh directory')
-            c.argument('admin_username', help='Username for the VM.', default=get_default_admin_username())
+            c.argument('admin_username', help='Username for the VM. Default value is current username of OS. If the default value is system reserved, then default value will be set to azureuser. Please refer to https://docs.microsoft.com/en-us/rest/api/compute/virtualmachines/createorupdate#osprofile to get a full list of reserved values.')
             c.argument('admin_password', help="Password for the VM if authentication type is 'Password'.")
             c.argument('ssh_key_value', options_list=['--ssh-key-values'], completer=FilesCompleter(), type=file_type, nargs='+')
-            c.argument('ssh_dest_key_path', help='Destination file path on the VM for the SSH key. If the file already exists, the specified key(s) are appended to the file.')
+            c.argument('ssh_dest_key_path', help='Destination file path on the VM for the SSH key. If the file already exists, the specified key(s) are appended to the file. Destination path for SSH public keys is currently limited to its default value "/home/username/.ssh/authorized_keys" due to a known issue in Linux provisioning agent.')
             c.argument('authentication_type', help='Type of authentication to use with the VM. Defaults to password for Windows and SSH public key for Linux. "all" enables both ssh and password authentication. ', arg_type=get_enum_type(['ssh', 'password', 'all']))
 
         with self.argument_context(scope, arg_group='Storage') as c:
@@ -652,23 +766,31 @@ def load_arguments(self, _):
             c.argument('storage_container_name', help="Only applicable when used with `--use-unmanaged-disk`. Name of the storage container for the VM OS disk. Default: vhds")
             c.ignore('os_publisher', 'os_offer', 'os_sku', 'os_version', 'storage_profile')
             c.argument('use_unmanaged_disk', action='store_true', help='Do not use managed disk to persist VM')
+            c.argument('os_disk_size_gb', type=int, help='OS disk size in GB to create.')
             c.argument('data_disk_sizes_gb', nargs='+', type=int, help='space-separated empty managed data disk sizes in GB to create')
             c.ignore('disk_info', 'storage_account_type', 'public_ip_address_type', 'nsg_type', 'nic_type', 'vnet_type', 'load_balancer_type', 'app_gateway_type')
             c.argument('os_caching', options_list=[self.deprecate(target='--storage-caching', redirect='--os-disk-caching', hide=True), '--os-disk-caching'], help='Storage caching type for the VM OS disk. Default: ReadWrite', arg_type=get_enum_type(CachingTypes))
             c.argument('data_caching', options_list=['--data-disk-caching'], nargs='+',
-                       help="storage caching type for data disk(s), including 'None', 'ReadOnly', 'ReadWrite', etc. Use a singular value to apply on all disks, or use '<lun>=<vaule1> <lun>=<value2>' to configure individual disk")
+                       help="storage caching type for data disk(s), including 'None', 'ReadOnly', 'ReadWrite', etc. Use a singular value to apply on all disks, or use `<lun>=<vaule1> <lun>=<value2>` to configure individual disk")
             c.argument('ultra_ssd_enabled', ultra_ssd_enabled_type)
             c.argument('ephemeral_os_disk', arg_type=get_three_state_flag(), min_api='2018-06-01',
                        help='Allows you to create an OS disk directly on the host node, providing local disk performance and faster VM/VMSS reimage time.', is_preview=True)
+            c.argument('os_disk_encryption_set', min_api='2019-07-01', help='Name or ID of disk encryption set for OS disk.')
+            c.argument('data_disk_encryption_sets', nargs='+', min_api='2019-07-01',
+                       help='Names or IDs (space delimited) of disk encryption sets for data disks.')
+            c.argument('data_disk_iops', min_api='2019-07-01', nargs='+', type=int, help='Specify the Read-Write IOPS (space delimited) for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.')
+            c.argument('data_disk_mbps', min_api='2019-07-01', nargs='+', type=int, help='Specify the bandwidth in MB per second (space delimited) for the managed disk. Should be used only when StorageAccountType is UltraSSD_LRS. If not specified, a default value would be assigned based on diskSizeGB.')
+            c.argument('specialized', arg_type=get_three_state_flag(), help='Indicate whether the source image is specialized.')
+            c.argument('encryption_at_host', arg_type=get_three_state_flag(), help='Enable Host Encryption for the VM or VMSS. This will enable the encryption for all the disks including Resource/Temp disk at host itself.')
 
         with self.argument_context(scope, arg_group='Network') as c:
             c.argument('vnet_name', help='Name of the virtual network when creating a new one or referencing an existing one.')
             c.argument('vnet_address_prefix', help='The IP address prefix to use when creating a new VNet in CIDR format.')
-            c.argument('subnet', help='The name of the subnet when creating a new VNet or referencing an existing one. Can also reference an existing subnet by ID. If omitted, an appropriate VNet and subnet will be selected automatically, or a new one will be created.')
+            c.argument('subnet', help='The name of the subnet when creating a new VNet or referencing an existing one. Can also reference an existing subnet by ID. If both vnet-name and subnet are omitted, an appropriate VNet and subnet will be selected automatically, or a new one will be created.')
             c.argument('subnet_address_prefix', help='The subnet IP address prefix to use when creating a new VNet in CIDR format.')
             c.argument('nics', nargs='+', help='Names or IDs of existing NICs to attach to the VM. The first NIC will be designated as primary. If omitted, a new NIC will be created. If an existing NIC is specified, do not specify subnet, VNet, public IP or NSG.')
             c.argument('private_ip_address', help='Static private IP address (e.g. 10.0.0.5).')
-            c.argument('public_ip_address', help='Name of the public IP address when creating one (default) or referencing an existing one. Can also reference an existing public IP by ID or specify "" for None.')
+            c.argument('public_ip_address', help='Name of the public IP address when creating one (default) or referencing an existing one. Can also reference an existing public IP by ID or specify "" for None (\'""\' in Azure CLI using PowerShell or --% operator).')
             c.argument('public_ip_address_allocation', help=None, default=None, arg_type=get_enum_type(['dynamic', 'static']))
             c.argument('public_ip_address_dns_name', help='Globally unique DNS name for a newly created public IP.')
             if self.supported_api_version(min_api='2017-08-01', resource_type=ResourceType.MGMT_NETWORK):
@@ -687,6 +809,13 @@ def load_arguments(self, _):
             c.argument('identity_scope', options_list=['--scope'], arg_group=arg_group, help="Scope that the system assigned identity can access")
             c.argument('identity_role', options_list=['--role'], arg_group=arg_group, help="Role name or id the system assigned identity will have")
             c.ignore('identity_role_id')
+
+    with self.argument_context('vm auto-shutdown') as c:
+        c.argument('off', action='store_true', help='Turn off auto-shutdown for VM. Configuration will be cleared.')
+        c.argument('email', help='The email recipient to send notifications to (can be a list of semi-colon separated email addresses)')
+        c.argument('time', help='The UTC time of day the schedule will occur every day. Format: hhmm. Example: 1730')
+        c.argument('webhook', help='The webhook URL to which the notification will be sent')
+        c.argument('location', validator=get_default_location_from_resource_group)
 
     for scope in ['vm diagnostics', 'vmss diagnostics']:
         with self.argument_context(scope) as c:
@@ -708,7 +837,9 @@ def load_arguments(self, _):
             c.argument('publisher', help='The name of the extension publisher.')
             c.argument('settings', type=validate_file_or_dict, help='Extension settings in JSON format. A JSON file path is also accepted.')
             c.argument('protected_settings', type=validate_file_or_dict, help='Protected settings in JSON format for sensitive information like credentials. A JSON file path is also accepted.')
-            c.argument('version', help='The version of the extension')
+            c.argument('version', help='The version of the extension. To pin extension version to this value, please specify --no-auto-upgrade-minor-version.')
+            c.argument('enable_auto_upgrade', arg_type=get_three_state_flag(),
+                       help='Indicate the extension should be automatically upgraded by the platform if there is a newer version of the extension available.')
 
     with self.argument_context('vm extension set') as c:
         c.argument('vm_extension_name', name_arg_type,
@@ -739,7 +870,21 @@ def load_arguments(self, _):
                           "To enable Azure Hybrid Benefit for Windows Server, use 'Windows_Server'. " \
                           "To enable Multitenant Hosting Rights for Windows 10, use 'Windows_Client'. " \
                           "For more information see the Azure Windows VM online docs."
-            c.argument('license_type', help=license_msg, arg_type=get_enum_type(['Windows_Server', 'Windows_Client', 'None']))
+            c.argument('license_type', help=license_msg, arg_type=get_enum_type(['Windows_Server', 'Windows_Client', 'RHEL_BYOS', 'SLES_BYOS', 'None']))
+            c.argument('priority', resource_type=ResourceType.MGMT_COMPUTE, min_api='2019-03-01',
+                       arg_type=get_enum_type(self.get_models('VirtualMachinePriorityTypes'), default=None),
+                       help="Priority. Use 'Spot' to run short-lived workloads in a cost-effective way. 'Low' enum will be deprecated in the future. Please use 'Spot' to deploy Azure spot VM and/or VMSS. Default to Regular.")
+            c.argument('max_price', min_api='2019-03-01', type=float, is_preview=True,
+                       help='The maximum price (in US Dollars) you are willing to pay for a Spot VM/VMSS. -1 indicates that the Spot VM/VMSS should not be evicted for price reasons')
+
+    with self.argument_context('vm update') as c:
+        c.argument('license_type', help=license_msg, arg_type=get_enum_type(
+            ['Windows_Server', 'Windows_Client', 'RHEL_BYOS', 'SLES_BYOS', 'RHEL_ELS_6', 'None']))
+
+    with self.argument_context('vmss create') as c:
+        c.argument('priority', resource_type=ResourceType.MGMT_COMPUTE, min_api='2017-12-01',
+                   arg_type=get_enum_type(self.get_models('VirtualMachinePriorityTypes'), default=None),
+                   help="Priority. Use 'Spot' to run short-lived workloads in a cost-effective way. 'Low' enum will be deprecated in the future. Please use 'Spot' to deploy Azure spot VM and/or VMSS. Default to Regular.")
 
     with self.argument_context('sig') as c:
         c.argument('gallery_name', options_list=['--gallery-name', '-r'], help='gallery name')
@@ -756,7 +901,8 @@ def load_arguments(self, _):
         c.argument('sku', options_list=['--sku', '-s'], help='image sku')
         c.argument('publisher', options_list=['--publisher', '-p'], help='image publisher')
         c.argument('os_type', arg_type=get_enum_type(['Windows', 'Linux']), help='the type of the OS that is included in the disk if creating a VM from user-image or a specialized VHD')
-        c.ignore('os_state')  # service is not ready
+        c.argument('os_state', arg_type=get_enum_type(self.get_models('OperatingSystemStateTypes')), help="This property allows the user to specify whether the virtual machines created under this image are 'Generalized' or 'Specialized'.")
+        c.argument('hyper_v_generation', arg_type=get_enum_type(self.get_models('HyperVGenerationTypes')), help='The hypervisor generation of the Virtual Machine. Applicable to OS disks only.')
         c.argument('minimum_cpu_core', type=int, arg_group='Recommendation', help='minimum cpu cores')
         c.argument('maximum_cpu_core', type=int, arg_group='Recommendation', help='maximum cpu cores')
         c.argument('minimum_memory', type=int, arg_group='Recommendation', help='minimum memory in MB')
@@ -771,6 +917,7 @@ def load_arguments(self, _):
         c.argument('release_note_uri', help='The release note uri')
         c.argument('end_of_life_date', help="the end of life date, e.g. '2020-12-31'")
         c.argument('disallowed_disk_types', nargs='*', help='disk types which would not work with the image, e.g., Standard_LRS')
+        c.argument('features', help='A list of gallery image features. E.g. "IsSecureBootSupported=true IsMeasuredBootSupported=false"')
 
     with self.argument_context('sig create') as c:
         c.argument('description', help='the description of the gallery')
@@ -782,19 +929,30 @@ def load_arguments(self, _):
         c.ignore('gallery_image')
 
     with self.argument_context('sig image-version') as c:
-        deprecated_option = c.deprecate(target='--gallery-image-version-name', redirect='--gallery-image-version', hide=True, expiration="2.1.0")
-        c.argument('gallery_image_version_name', options_list=['--gallery-image-version', '-e', deprecated_option], )
+        deprecated_option = c.deprecate(target='--gallery-image-version-name', redirect='--gallery-image-version', hide=True, expiration="3.0.0")
+        c.argument('gallery_image_version_name', options_list=['--gallery-image-version', '-e', deprecated_option],
+                   help='Gallery image version in semantic version pattern. The allowed characters are digit and period. Digits must be within the range of a 32-bit integer, e.g. `<MajorVersion>.<MinorVersion>.<Patch>`')
 
-    with self.argument_context('sig image-version create') as c:
+    with self.argument_context('sig image-version create', resource_type=ResourceType.MGMT_COMPUTE, operation_group='gallery_image_versions') as c:
         c.argument('gallery_image_version', options_list=['--gallery-image-version', '-e'],
-                   help='Gallery image version in semantic version pattern. The allowed characters are digit and period. Digits must be within the range of a 32-bit integer, e.g. <MajorVersion>.<MinorVersion>.<Patch>')
+                   help='Gallery image version in semantic version pattern. The allowed characters are digit and period. Digits must be within the range of a 32-bit integer, e.g. `<MajorVersion>.<MinorVersion>.<Patch>`')
         c.argument('description', help='the description of the gallery image version')
         c.argument('managed_image', help='image name(if in the same resource group) or resource id')
+        c.argument('os_snapshot', help='Name or ID of OS disk snapshot')
+        c.argument('data_snapshots', nargs='+', help='Names or IDs (space-delimited) of data disk snapshots')
+        c.argument('data_snapshot_luns', nargs='+', help='Logical unit numbers (space-delimited) of data disk snapshots')
         c.argument('exclude_from_latest', arg_type=get_three_state_flag(), help='The flag means that if it is set to true, people deploying VMs with version omitted will not use this version.')
         c.argument('version', help='image version')
         c.argument('end_of_life_date', help="the end of life date, e.g. '2020-12-31'")
         c.argument('storage_account_type', help="The default storage account type to be used per region. To set regional storage account types, use --target-regions",
-                   arg_type=get_enum_type(["Standard_LRS", "Standard_ZRS"]), min_api='2019-03-01')
+                   arg_type=get_enum_type(["Standard_LRS", "Standard_ZRS", "Premium_LRS"]), min_api='2019-03-01')
+        c.argument('target_region_encryption', nargs='+',
+                   help='Space-separated list of customer managed keys for encrypting the OS and data disks in the gallery artifact for each region. Format for each region: `<os_des>,<lun1>,<lun1_des>,<lun2>,<lun2_des>`. Use "null" as a placeholder.')
+        c.argument('os_vhd_uri', help='Source VHD URI of OS disk')
+        c.argument('os_vhd_storage_account', help='Name or ID of storage account of source VHD URI of OS disk')
+        c.argument('data_vhds_uris', nargs='+', help='Source VHD URIs (space-delimited) of data disks')
+        c.argument('data_vhds_luns', nargs='+', help='Logical unit numbers (space-delimited) of source VHD URIs of data disks')
+        c.argument('data_vhds_storage_accounts', options_list=['--data-vhds-storage-accounts', '--data-vhds-sa'], nargs='+', help='Names or IDs (space-delimited) of storage accounts of source VHD URIs of data disks')
 
     with self.argument_context('sig image-version show') as c:
         c.argument('expand', help="The expand expression to apply on the operation, e.g. 'ReplicationStatus'")
@@ -802,7 +960,7 @@ def load_arguments(self, _):
     for scope in ['sig image-version create', 'sig image-version update']:
         with self.argument_context(scope) as c:
             c.argument('target_regions', nargs='*', validator=process_gallery_image_version_namespace,
-                       help='Space-separated list of regions and their replica counts. Use "<region>[=<replica count>][=<storage account type>]" to optionally set the replica count and/or storage account type for each region. '
+                       help='Space-separated list of regions and their replica counts. Use `<region>[=<replica count>][=<storage account type>]` to optionally set the replica count and/or storage account type for each region. '
                             'If a replica count is not specified, the default replica count will be used. If a storage account type is not specified, the default storage account type will be used')
             c.argument('replica_count', help='The default number of replicas to be created per region. To set regional replication counts, use --target-regions', type=int)
     # endregion
@@ -815,8 +973,69 @@ def load_arguments(self, _):
         c.argument('ppg_type', options_list=['--type', '-t'], help="The type of the proximity placement group. Allowed values: Standard.")
         c.argument('tags', tags_type)
 
-    for scope, item in [('vm create', 'VM'), ('vmss create', 'VMSS'), ('vm availability-set create', 'availability set')]:
+    with self.argument_context('ppg show', min_api='2019-07-01') as c:
+        c.argument('include_colocation_status', action='store_true', help='Enable fetching the colocation status of all the resources in the proximity placement group.')
+
+    for scope, item in [('vm create', 'VM'), ('vmss create', 'VMSS'),
+                        ('vm availability-set create', 'availability set'),
+                        ('vm update', 'VM'), ('vmss update', 'VMSS'),
+                        ('vm availability-set update', 'availability set')]:
         with self.argument_context(scope, min_api='2018-04-01') as c:
             c.argument('proximity_placement_group', options_list=['--ppg'], help="The name or ID of the proximity placement group the {} should be associated with.".format(item),
                        validator=_validate_proximity_placement_group)    # only availability set does not have a command level validator, so this should be added.
     # endregion
+
+    # region VM Monitor
+    with self.argument_context('vm monitor log show') as c:
+        c.argument('analytics_query', options_list=['--analytics-query', '-q'], help="Query to execute over Log Analytics data.")
+        c.argument('timespan', help="Timespan over which to query. Defaults to querying all available data.")
+
+    with self.argument_context('vm monitor metrics') as c:
+        c.argument('metricnamespace', options_list=['--namespace'],
+                   help='Namespace to query metric definitions for.')
+
+    with self.argument_context('vm monitor metrics tail') as c:
+        from azure.mgmt.monitor.models import AggregationType
+        c.extra('resource_group_name', required=True)
+        c.argument('resource', arg_type=existing_vm_name, help='Name or ID of a virtual machine', validator=validate_vm_name_for_monitor_metrics, id_part=None)
+        c.argument('metadata', action='store_true')
+        c.argument('dimension', nargs='*', validator=validate_metric_dimension)
+        c.argument('aggregation', arg_type=get_enum_type(t for t in AggregationType if t.name != 'none'), nargs='*')
+        c.argument('metrics', nargs='*')
+        c.argument('orderby',
+                   help='Aggregation to use for sorting results and the direction of the sort. Only one order can be specificed. Examples: sum asc')
+        c.argument('top', help='Max number of records to retrieve. Valid only if --filter used.')
+        c.argument('filters', options_list=['--filter'])
+        c.argument('metric_namespace', options_list=['--namespace'])
+
+    with self.argument_context('vm monitor metrics tail', arg_group='Time') as c:
+        c.argument('start_time', arg_type=get_datetime_type(help='Start time of the query.'))
+        c.argument('end_time', arg_type=get_datetime_type(help='End time of the query. Defaults to the current time.'))
+        c.argument('offset', type=get_period_type(as_timedelta=True))
+        c.argument('interval', arg_group='Time', type=get_period_type())
+
+    with self.argument_context('vm monitor metrics list-definitions') as c:
+        c.extra('resource_group_name', required=True)
+        c.argument('resource_uri', arg_type=existing_vm_name, help='Name or ID of a virtual machine', validator=validate_vm_name_for_monitor_metrics, id_part=None)
+    # endregion
+
+    # region disk encryption set
+    with self.argument_context('disk-encryption-set') as c:
+        c.argument('disk_encryption_set_name', disk_encryption_set_name)
+        c.argument('key_url', help='URL pointing to a key or secret in KeyVault.')
+        c.argument('source_vault', help='Name or ID of the KeyVault containing the key or secret.')
+        c.argument('encryption_type', arg_type=get_enum_type(['EncryptionAtRestWithPlatformKey', 'EncryptionAtRestWithCustomerKey', 'EncryptionAtRestWithPlatformAndCustomerKeys']),
+                   help='The type of key used to encrypt the data of the disk. EncryptionAtRestWithPlatformKey: Disk is encrypted at rest with Platform managed key. It is the default encryption type. EncryptionAtRestWithCustomerKey: Disk is encrypted at rest with Customer managed key that can be changed and revoked by a customer. EncryptionAtRestWithPlatformAndCustomerKeys: Disk is encrypted at rest with 2 layers of encryption. One of the keys is Customer managed and the other key is Platform managed.')
+        c.argument('location', validator=get_default_location_from_resource_group)
+        c.argument('tags', tags_type)
+        c.argument('enable_auto_key_rotation', arg_type=get_three_state_flag(), min_api='2020-12-01',
+                   options_list=['--enable-auto-key-rotation', '--auto-rotation'],
+                   help='Enable automatic rotation of keys.')
+    # endregion
+
+    # region DiskAccess
+    with self.argument_context('disk-access', resource_type=ResourceType.MGMT_COMPUTE, operation_group='disk_accesses') as c:
+        c.argument('disk_access_name', arg_type=name_arg_type, help='Name of the disk access resource.', id_part='name')
+        c.argument('location', validator=get_default_location_from_resource_group)
+        c.argument('tags', tags_type)
+    # endRegion

@@ -6,6 +6,7 @@
 from azure.cli.core.commands.client_factory import get_mgmt_service_client
 from azure.cli.core.commands.parameters import get_resources_in_subscription
 from azure.cli.core.profiles import ResourceType
+from azure.mgmt.msi import ManagedServiceIdentityClient
 from knack.util import CLIError
 
 
@@ -52,6 +53,8 @@ def get_auth_management_client(cli_ctx, scope=None, **_):
         matched = re.match('/subscriptions/(?P<subscription>[^/]*)/', scope)
         if matched:
             subscription_id = matched.groupdict()['subscription']
+        else:
+            raise CLIError("{} does not contain subscription Id.".format(scope))
     return get_mgmt_service_client(cli_ctx, ResourceType.MGMT_AUTHORIZATION, subscription_id=subscription_id)
 
 
@@ -64,7 +67,7 @@ def get_container_service_client(cli_ctx, **_):
 def get_osa_container_service_client(cli_ctx, **_):
     from azure.mgmt.containerservice import ContainerServiceClient
 
-    return get_mgmt_service_client(cli_ctx, ContainerServiceClient, api_version='2019-04-30')
+    return get_mgmt_service_client(cli_ctx, ContainerServiceClient, api_version='2019-09-30-preview')
 
 
 def get_graph_rbac_management_client(cli_ctx, **_):
@@ -111,3 +114,8 @@ def get_resource_by_name(cli_ctx, resource_name, resource_type):
         raise CLIError(
             "More than one resources with type '{}' are found with name '{}'.".format(
                 resource_type, resource_name))
+
+
+def get_msi_client(cli_ctx, subscription_id=None):
+    return get_mgmt_service_client(cli_ctx, ManagedServiceIdentityClient,
+                                   subscription_id=subscription_id)

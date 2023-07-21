@@ -3,11 +3,12 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
+# pylint: disable=C0302
+import re
 from msrest.exceptions import ValidationError
 from knack.log import get_logger
 from knack.util import CLIError
 from azure.cli.core.commands import LongRunningOperation
-
 from ._utils import (
     get_registry_by_name,
     validate_managed_registry,
@@ -16,19 +17,23 @@ from ._utils import (
     get_yaml_template,
     build_timers_info,
     remove_timer_trigger,
-    get_task_id_from_task_name
+    get_task_id_from_task_name,
+    prepare_source_location,
+    user_confirmation
 )
 from ._stream_utils import stream_logs
+from ._constants import (
+    ACR_NULL_CONTEXT,
+    ACR_TASK_QUICKTASK,
+)
 
 logger = get_logger(__name__)
 
 
 TASK_NOT_SUPPORTED = 'Task is only supported for managed registries.'
 DEFAULT_TOKEN_TYPE = 'PAT'
-NULL_CONTEXT = '/dev/null'
 IDENTITY_LOCAL_ID = '[system]'
 IDENTITY_GLOBAL_REMOVE = '[all]'
-
 DEFAULT_TIMEOUT_IN_SEC = 60 * 60  # 60 minutes
 DEFAULT_CPU = 2
 ALLOWED_TASK_FILE_TYPES = ('.yaml', '.yml', '.toml', '.json', '.sh', '.bash', '.zsh', '.ps1',
@@ -39,7 +44,8 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
                     client,
                     task_name,
                     registry_name,
-                    context_path,
+                    context_path=None,
+                    agent_pool_name=None,
                     file=None,
                     cmd_value=None,
                     git_access_token=None,
@@ -53,7 +59,6 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
                     commit_trigger_enabled=True,
                     pull_request_trigger_enabled=False,
                     schedule=None,
-                    branch='master',
                     no_push=False,
                     no_cache=False,
                     arg=None,
@@ -68,13 +73,40 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
                     resource_group_name=None,
                     assign_identity=None,
                     target=None,
-                    auth_mode=None):
+                    auth_mode=None,
+                    log_template=None,
+                    is_system_task=False):
 
     registry, resource_group_name = get_registry_by_name(
         cmd.cli_ctx, registry_name, resource_group_name)
 
-    if context_path.lower() == NULL_CONTEXT:
+    Task = cmd.get_models('Task')
+
+    # If quicktask skip other parameters
+    if is_system_task and task_name == ACR_TASK_QUICKTASK:
+        task_create_parameters = Task(
+            location=registry.location,
+            status=status,
+            timeout=timeout,
+            log_template=log_template,
+            is_system_task=is_system_task)
+        try:
+            return client.create(resource_group_name=resource_group_name,
+                                 registry_name=registry_name,
+                                 task_name=task_name,
+                                 task_create_parameters=task_create_parameters)
+        except ValidationError as e:
+            raise CLIError(e)
+
+    if not context_path:
+        raise CLIError("If the task is not a System Task, --context-path must be provided.")
+
+    if context_path.lower() == ACR_NULL_CONTEXT:
         context_path = None
+        commit_trigger_enabled = False
+        pull_request_trigger_enabled = False
+
+    if context_path is not None and context_path.lower().startswith("oci://"):
         commit_trigger_enabled = False
         pull_request_trigger_enabled = False
 
@@ -114,8 +146,10 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
     source_trigger_events = _get_trigger_event_list_put(cmd,
                                                         commit_trigger_enabled,
                                                         pull_request_trigger_enabled)
-    # if source_trigger_events contains any event types we know they are enabled
+    # if source_trigger_events contains any event types we assume they are enabled
     if source_trigger_events:
+        branch = _get_branch_name(context_path)
+
         SourceTrigger, SourceProperties, AuthInfo, TriggerStatus = cmd.get_models(
             'SourceTrigger', 'SourceProperties', 'AuthInfo', 'TriggerStatus')
         source_triggers = [
@@ -123,7 +157,7 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
                 source_repository=SourceProperties(
                     source_control_type=source_control_type,
                     repository_url=context_path,
-                    branch=branch,
+                    branch=branch if branch else 'master',
                     source_control_auth_properties=AuthInfo(
                         token=git_access_token,
                         token_type=DEFAULT_TOKEN_TYPE,
@@ -154,8 +188,8 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
 
     platform_os, platform_arch, platform_variant = get_validate_platform(cmd, platform)
 
-    Task, PlatformProperties, AgentProperties, TriggerProperties = cmd.get_models(
-        'Task', 'PlatformProperties', 'AgentProperties', 'TriggerProperties')
+    PlatformProperties, AgentProperties, TriggerProperties = cmd.get_models(
+        'PlatformProperties', 'AgentProperties', 'TriggerProperties')
 
     identity = None
     if assign_identity is not None:
@@ -183,7 +217,10 @@ def acr_task_create(cmd,  # pylint: disable=too-many-locals
         credentials=get_custom_registry_credentials(
             cmd=cmd,
             auth_mode=auth_mode
-        )
+        ),
+        agent_pool_name=agent_pool_name,
+        log_template=log_template,
+        is_system_task=is_system_task
     )
 
     try:
@@ -277,17 +314,21 @@ def acr_task_delete(cmd,
                     client,
                     task_name,
                     registry_name,
-                    resource_group_name=None):
+                    resource_group_name=None,
+                    yes=False):
     _, resource_group_name = validate_managed_registry(
         cmd, registry_name, resource_group_name, TASK_NOT_SUPPORTED)
+
+    user_confirmation("Are you sure you want to delete the task '{}' ".format(task_name), yes)
     return client.delete(resource_group_name, registry_name, task_name)
 
 
-def acr_task_update(cmd,  # pylint: disable=too-many-locals
+def acr_task_update(cmd,  # pylint: disable=too-many-locals, too-many-statements
                     client,
                     task_name,
                     registry_name,
                     resource_group_name=None,
+                    agent_pool_name=None,
                     # task parameters
                     status=None,
                     platform=None,
@@ -297,7 +338,6 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
                     commit_trigger_enabled=None,
                     pull_request_trigger_enabled=None,
                     git_access_token=None,
-                    branch=None,
                     image_names=None,
                     no_push=None,
                     no_cache=None,
@@ -312,13 +352,31 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
                     update_trigger_endpoint=None,
                     update_trigger_payload_type=None,
                     target=None,
-                    auth_mode=None):
+                    auth_mode=None,
+                    log_template=None):
     _, resource_group_name = validate_managed_registry(
         cmd, registry_name, resource_group_name, TASK_NOT_SUPPORTED)
 
-    task = client.get(resource_group_name, registry_name, task_name)
-    step = task.step
+    task = client.get_details(resource_group_name, registry_name, task_name)
 
+    TaskUpdateParameters = cmd.get_models('TaskUpdateParameters')
+    # If quicktask skip other parameters
+    if hasattr(task, 'is_system_task') and task.is_system_task and task_name == ACR_TASK_QUICKTASK:
+        taskUpdateParameters = TaskUpdateParameters(
+            status=status,
+            timeout=timeout,
+            log_template=log_template)
+        return client.update(resource_group_name, registry_name, task_name, taskUpdateParameters)
+
+    step = task.step
+    branch = None
+    if context_path is None:
+        context_path = step.context_path
+    else:
+        branch = _get_branch_name(context_path)
+
+    if git_access_token is None:
+        git_access_token = step.context_access_token
     arguments = _get_all_override_arguments(arg, secret_arg)
     set_values = _get_all_override_arguments(set_value, set_secret)
 
@@ -344,9 +402,7 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
             target=target
         )
     elif step:
-        DockerBuildStep, FileTaskStep = cmd.get_models(
-            'DockerBuildStep', 'FileTaskStep')
-        if isinstance(step, DockerBuildStep):
+        if hasattr(step, 'docker_file_path'):
             step = DockerBuildStepUpdateParameters(
                 image_names=image_names,
                 is_push_enabled=not no_push,
@@ -358,7 +414,7 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
                 target=target
             )
 
-        elif isinstance(step, FileTaskStep):
+        elif hasattr(step, 'task_file_path'):
             step = FileTaskStepUpdateParameters(
                 task_file_path=file,
                 values_file_path=values,
@@ -381,21 +437,20 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
         TriggerStatus = cmd.get_models('TriggerStatus')
 
         source_triggers = task.trigger.source_triggers
-        base_image_trigger = task.trigger.base_image_trigger
         if (commit_trigger_enabled or pull_request_trigger_enabled) or source_triggers:
-            SourceTriggerUpdateParameters, SourceUpdateParameters, AuthInfoUpdateParameters = cmd.get_models(
-                'SourceTriggerUpdateParameters', 'SourceUpdateParameters', 'AuthInfoUpdateParameters')
-
             source_trigger_events = _get_trigger_event_list_patch(cmd,
                                                                   source_triggers,
                                                                   commit_trigger_enabled,
                                                                   pull_request_trigger_enabled)
+
+            SourceTriggerUpdateParameters, SourceUpdateParameters, AuthInfoUpdateParameters = cmd.get_models(
+                'SourceTriggerUpdateParameters', 'SourceUpdateParameters', 'AuthInfoUpdateParameters')
             source_trigger_update_params = [
                 SourceTriggerUpdateParameters(
                     source_repository=SourceUpdateParameters(
                         source_control_type=source_control_type,
                         repository_url=context_path,
-                        branch=branch,
+                        branch=branch if branch else source_triggers[0].source_repository.branch,
                         source_control_auth_properties=AuthInfoUpdateParameters(
                             token=git_access_token,
                             token_type=DEFAULT_TOKEN_TYPE
@@ -407,6 +462,7 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
                 )
             ]
 
+        base_image_trigger = task.trigger.base_image_trigger
         if base_image_trigger_enabled or base_image_trigger is not None:
             BaseImageTriggerUpdateParameters = cmd.get_models(
                 'BaseImageTriggerUpdateParameters')
@@ -427,8 +483,8 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
     if platform:
         platform_os, platform_arch, platform_variant = get_validate_platform(cmd, platform)
 
-    TaskUpdateParameters, PlatformUpdateParameters, AgentProperties, TriggerUpdateParameters = cmd.get_models(
-        'TaskUpdateParameters', 'PlatformUpdateParameters', 'AgentProperties', 'TriggerUpdateParameters')
+    PlatformUpdateParameters, AgentProperties, TriggerUpdateParameters = cmd.get_models(
+        'PlatformUpdateParameters', 'AgentProperties', 'TriggerUpdateParameters')
     taskUpdateParameters = TaskUpdateParameters(
         status=status,
         platform=PlatformUpdateParameters(
@@ -448,7 +504,9 @@ def acr_task_update(cmd,  # pylint: disable=too-many-locals
         credentials=get_custom_registry_credentials(
             cmd=cmd,
             auth_mode=auth_mode
-        )
+        ),
+        agent_pool_name=agent_pool_name,
+        log_template=log_template
     )
 
     return client.update(resource_group_name, registry_name, task_name, taskUpdateParameters)
@@ -535,7 +593,10 @@ def acr_task_credential_add(cmd,
         cmd, registry_name, resource_group_name, TASK_NOT_SUPPORTED)
 
     existingCreds = client.get_details(resource_group_name, registry_name, task_name).credentials
-    existingCreds = {} if not existingCreds else existingCreds.custom_registries
+    if not existingCreds or not existingCreds.custom_registries:
+        existingCreds = {}
+    else:
+        existingCreds = existingCreds.custom_registries
 
     if login_server in existingCreds:
         raise CLIError("Login server '{}' already exists. You cannot add it again.".format(login_server))
@@ -571,7 +632,10 @@ def acr_task_credential_update(cmd,
         cmd, registry_name, resource_group_name, TASK_NOT_SUPPORTED)
 
     existingCreds = client.get_details(resource_group_name, registry_name, task_name).credentials
-    existingCreds = {} if not existingCreds else existingCreds.custom_registries
+    if not existingCreds or not existingCreds.custom_registries:
+        existingCreds = {}
+    else:
+        existingCreds = existingCreds.custom_registries
 
     if login_server not in existingCreds:
         raise CLIError("Login server '{}' not found.".format(login_server))
@@ -755,6 +819,7 @@ def acr_task_run(cmd,  # pylint: disable=too-many-locals
                  client,  # cf_acr_runs
                  task_name,
                  registry_name,
+                 agent_pool_name=None,
                  set_value=None,
                  set_secret=None,
                  file=None,
@@ -765,7 +830,8 @@ def acr_task_run(cmd,  # pylint: disable=too-many-locals
                  update_trigger_token=None,
                  no_logs=False,
                  no_wait=False,
-                 resource_group_name=None):
+                 resource_group_name=None,
+                 log_template=None):
     _, resource_group_name = validate_managed_registry(
         cmd, registry_name, resource_group_name, TASK_NOT_SUPPORTED)
 
@@ -778,6 +844,8 @@ def acr_task_run(cmd,  # pylint: disable=too-many-locals
         update_trigger_token = base64.b64encode(update_trigger_token.encode()).decode()
 
     task_id = get_task_id_from_task_name(cmd.cli_ctx, resource_group_name, registry_name, task_name)
+    context_path = prepare_source_location(cmd, context_path, client_registries, registry_name, resource_group_name)
+
     override_task_step_properties = OverrideTaskStepProperties(
         context_path=context_path,
         file=file,
@@ -792,11 +860,12 @@ def acr_task_run(cmd,  # pylint: disable=too-many-locals
             registry_name,
             TaskRunRequest(
                 task_id=task_id,
-                override_task_step_properties=override_task_step_properties
+                override_task_step_properties=override_task_step_properties,
+                agent_pool_name=agent_pool_name,
+                log_template=log_template
             )
         )
     )
-
     run_id = queued_run.run_id
     logger.warning("Queued a run with ID: %s", run_id)
 
@@ -809,7 +878,7 @@ def acr_task_run(cmd,  # pylint: disable=too-many-locals
         from ._run_polling import get_run_with_polling
         return get_run_with_polling(cmd, client, run_id, registry_name, resource_group_name)
 
-    return stream_logs(client, run_id, registry_name, resource_group_name, True)
+    return stream_logs(cmd, client, run_id, registry_name, resource_group_name, True)
 
 
 def acr_task_show_run(cmd,
@@ -862,7 +931,6 @@ def acr_task_list_runs(cmd,
 def _add_run_filter(orig_filter, name, value, operator):
     if not value:
         return orig_filter
-
     if operator == 'contains':
         new_filter_str = "contains({}, '{}')".format(name, value)
     elif operator == 'eq':
@@ -870,7 +938,6 @@ def _add_run_filter(orig_filter, name, value, operator):
     else:
         raise ValueError(
             "Allowed filter operator: {}".format(['contains', 'eq']))
-
     return "{} and {}".format(orig_filter, new_filter_str) if orig_filter else new_filter_str
 
 
@@ -903,7 +970,7 @@ def acr_task_logs(cmd,
                                                   task_name=task_name,
                                                   image=image))
 
-    return stream_logs(client, run_id, registry_name, resource_group_name)
+    return stream_logs(cmd, client, run_id, registry_name, resource_group_name)
 
 
 def _get_list_runs_message(base_message, task_name=None, image=None):
@@ -962,7 +1029,6 @@ def _get_trigger_event_list_patch(cmd,
                                   commit_trigger_enabled=None,
                                   pull_request_trigger_enabled=None):
     TriggerStatus, SourceTriggerEvent = cmd.get_models('TriggerStatus', 'SourceTriggerEvent')
-
     source_trigger_events = set()
     # perform merge with server-side event list
     if source_triggers:
@@ -982,3 +1048,14 @@ def _get_trigger_event_list_patch(cmd,
             if SourceTriggerEvent.pullrequest.value in source_trigger_events:
                 source_trigger_events.remove(SourceTriggerEvent.pullrequest.value)
     return source_trigger_events
+
+
+def _get_branch_name(context_path):
+    # Context formats https://docs.docker.com/engine/reference/commandline/build/#git-repositories
+    # The regex matches from the first '#' to the next ':', space, or end of line.
+    # It doesn't consider pull and tags scenarios.
+    if context_path:
+        branch = re.search(r'(?<=#)([^:\n\s]*)', context_path)
+        if branch:
+            return branch.group()
+    return None

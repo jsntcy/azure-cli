@@ -5,6 +5,8 @@
 
 from knack.util import CLIError
 
+from azure.mgmt.media.models import (ApiErrorException, MediaService, MediaServiceIdentity, StorageAccount)
+
 
 def get_mediaservice(client, account_name, resource_group_name=None):
     return client.get(resource_group_name,
@@ -15,12 +17,12 @@ def list_mediaservices(client, resource_group_name=None):
     return client.list(resource_group_name) if resource_group_name else client.list_by_subscription()
 
 
-def create_mediaservice(client, resource_group_name, account_name, storage_account, location=None, tags=None):
-    from azure.mgmt.media.models import StorageAccount
+def create_mediaservice(client, resource_group_name, account_name, storage_account, location=None,
+                        assign_identity=False, tags=None):
     storage_account_primary = StorageAccount(type='Primary', id=storage_account)
 
     return create_or_update_mediaservice(client, resource_group_name, account_name, [storage_account_primary],
-                                         location,
+                                         location, assign_identity,
                                          tags)
 
 
@@ -29,7 +31,6 @@ def add_mediaservice_secondary_storage(client, resource_group_name, account_name
 
     storage_accounts_filtered = list(filter(lambda s: storage_account in s.id, ams.storage_accounts))
 
-    from azure.mgmt.media.models import StorageAccount
     storage_account_secondary = StorageAccount(type='Secondary', id=storage_account)
 
     if not storage_accounts_filtered:
@@ -55,18 +56,26 @@ def remove_mediaservice_secondary_storage(client, resource_group_name, account_n
                                          ams.tags)
 
 
-def create_or_update_mediaservice(client, resource_group_name, account_name, storage_accounts=None,
-                                  location=None,
-                                  tags=None):
+def set_mediaservice_trusted_storage(client, resource_group_name, account_name,
+                                     storage_auth):
+    ams = client.get(resource_group_name, account_name)
+    media_service = MediaService(location=ams.location, storage_accounts=ams.storage_accounts,
+                                 storage_authentication=storage_auth)
 
-    from azure.mgmt.media.models import MediaService
-    media_service = MediaService(location=location, storage_accounts=storage_accounts, tags=tags)
+    return client.create_or_update(resource_group_name, account_name, media_service)
+
+
+def create_or_update_mediaservice(client, resource_group_name, account_name, storage_accounts=None,
+                                  location=None, assign_identity=False,
+                                  tags=None):
+    identity = 'SystemAssigned' if assign_identity else 'None'
+    media_service = MediaService(location=location, storage_accounts=storage_accounts,
+                                 identity=MediaServiceIdentity(type=identity), tags=tags)
 
     return client.create_or_update(resource_group_name, account_name, media_service)
 
 
 def mediaservice_update_getter(client, resource_group_name, account_name):
-    from azure.mgmt.media.models import ApiErrorException
 
     try:
         return client.get(resource_group_name, account_name)
@@ -75,6 +84,9 @@ def mediaservice_update_getter(client, resource_group_name, account_name):
 
 
 def update_mediaservice(instance, tags=None):
+    if not instance:
+        raise CLIError('The account resource was not found.')
+
     if tags:
         instance.tags = tags
 

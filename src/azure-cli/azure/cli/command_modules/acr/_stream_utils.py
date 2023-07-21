@@ -6,11 +6,12 @@ from io import BytesIO
 import time
 from random import uniform
 import colorama
+import requests
 from knack.util import CLIError
 from knack.log import get_logger
 from msrestazure.azure_exceptions import CloudError
-from azure.storage.blob import AppendBlobService
 from azure.common import AzureHttpError
+from azure.cli.core.profiles import ResourceType, get_sdk
 from ._azure_utils import get_blob_info
 
 logger = get_logger(__name__)
@@ -19,20 +20,26 @@ DEFAULT_CHUNK_SIZE = 1024 * 4
 DEFAULT_LOG_TIMEOUT_IN_SEC = 60 * 30  # 30 minutes
 
 
-def stream_logs(client,
+def stream_logs(cmd, client,
                 run_id,
                 registry_name,
                 resource_group_name,
                 no_format=False,
                 raise_error_on_failure=False):
     log_file_sas = None
+    artifact = False
     error_msg = "Could not get logs for ID: {}".format(run_id)
 
     try:
-        log_file_sas = client.get_log_sas_url(
+        response = client.get_log_sas_url(
             resource_group_name=resource_group_name,
             registry_name=registry_name,
-            run_id=run_id).log_link
+            run_id=run_id)
+        if not response.log_artifact_link:
+            log_file_sas = response.log_link
+        else:
+            log_file_sas = response.log_artifact_link
+            artifact = True
     except (AttributeError, CloudError) as e:
         logger.debug("%s Exception: %s", error_msg, e)
         raise CLIError(error_msg)
@@ -41,19 +48,23 @@ def stream_logs(client,
         logger.debug("%s Empty SAS URL.", error_msg)
         raise CLIError(error_msg)
 
-    account_name, endpoint_suffix, container_name, blob_name, sas_token = get_blob_info(
-        log_file_sas)
-
-    _stream_logs(no_format,
-                 DEFAULT_CHUNK_SIZE,
-                 DEFAULT_LOG_TIMEOUT_IN_SEC,
-                 AppendBlobService(
-                     account_name=account_name,
-                     sas_token=sas_token,
-                     endpoint_suffix=endpoint_suffix),
-                 container_name,
-                 blob_name,
-                 raise_error_on_failure)
+    if not artifact:
+        account_name, endpoint_suffix, container_name, blob_name, sas_token = get_blob_info(
+            log_file_sas)
+        AppendBlobService = get_sdk(cmd.cli_ctx, ResourceType.DATA_STORAGE, 'blob#AppendBlobService')
+        _stream_logs(no_format,
+                     DEFAULT_CHUNK_SIZE,
+                     DEFAULT_LOG_TIMEOUT_IN_SEC,
+                     AppendBlobService(
+                         account_name=account_name,
+                         sas_token=sas_token,
+                         endpoint_suffix=endpoint_suffix),
+                     container_name,
+                     blob_name,
+                     raise_error_on_failure)
+    else:
+        _stream_artifact_logs(log_file_sas,
+                              no_format)
 
 
 def _stream_logs(no_format,  # pylint: disable=too-many-locals, too-many-statements, too-many-branches
@@ -67,6 +78,7 @@ def _stream_logs(no_format,  # pylint: disable=too-many-locals, too-many-stateme
     if not no_format:
         colorama.init()
 
+    log_exist = False
     stream = BytesIO()
     metadata = {}
     start = 0
@@ -81,10 +93,18 @@ def _stream_logs(no_format,  # pylint: disable=too-many-locals, too-many-stateme
     # Try to get the initial properties so there's no waiting.
     # If the storage call fails, we'll just sleep and try again after.
     try:
-        props = blob_service.get_blob_properties(
+        # Need to call "exists" API to prevent storage SDK logging BlobNotFound error
+        log_exist = blob_service.exists(
             container_name=container_name, blob_name=blob_name)
-        metadata = props.metadata
-        available = props.properties.content_length
+
+        if log_exist:
+            props = blob_service.get_blob_properties(
+                container_name=container_name, blob_name=blob_name)
+            metadata = props.metadata
+            available = props.properties.content_length
+        else:
+            # Wait a little bit before checking the existence again
+            time.sleep(1)
     except (AttributeError, AzureHttpError):
         pass
 
@@ -129,10 +149,14 @@ def _stream_logs(no_format,  # pylint: disable=too-many-locals, too-many-stateme
                 return
 
         try:
-            props = blob_service.get_blob_properties(
-                container_name=container_name, blob_name=blob_name)
-            metadata = props.metadata
-            available = props.properties.content_length
+            if log_exist:
+                props = blob_service.get_blob_properties(
+                    container_name=container_name, blob_name=blob_name)
+                metadata = props.metadata
+                available = props.properties.content_length
+            else:
+                log_exist = blob_service.exists(
+                    container_name=container_name, blob_name=blob_name)
         except AzureHttpError as ae:
             if ae.status_code != 404:
                 raise CLIError(ae)
@@ -189,6 +213,24 @@ def _stream_logs(no_format,  # pylint: disable=too-many-locals, too-many-stateme
             raise CLIError("Run timed out")
         if build_status == 'canceled':
             raise CLIError("Run was canceled")
+
+
+def _stream_artifact_logs(log_file_sas,
+                          no_format):
+
+    if not no_format:
+        colorama.init()
+
+    try:
+        response = requests.get(log_file_sas, timeout=3, verify=False, stream=True)
+        response.raise_for_status()
+    except KeyboardInterrupt:
+        return
+    except Exception as err:
+        raise CLIError(err)
+
+    for line in response.iter_lines():
+        print(line.decode('utf-8', errors='ignore'))
 
 
 def _blob_is_not_complete(metadata):

@@ -12,7 +12,7 @@ from azure.cli.core.commands import CliCommandType
 from ._client_factory import (_auth_client_factory, _graph_client_factory,
                               _msi_user_identities_operations, _msi_operations_operations)
 
-from ._validators import process_msi_namespace, process_assignment_namespace
+from ._validators import process_msi_namespace, process_assignment_namespace, validate_change_password
 
 
 def transform_definition_list(result):
@@ -133,6 +133,7 @@ def load_command_table(self, _):
         g.custom_command('delete', 'delete_role_assignments', validator=process_assignment_namespace)
         g.custom_command('list', 'list_role_assignments', validator=process_assignment_namespace, table_transformer=transform_assignment_list)
         g.custom_command('create', 'create_role_assignment', validator=process_assignment_namespace)
+        g.custom_command('update', 'update_role_assignment', min_api='2020-04-01-preview')
         g.custom_command('list-changelogs', 'list_role_assignment_change_logs')
 
     with self.command_group('ad app', client_factory=get_graph_client_applications, resource_type=PROFILE_TYPE,
@@ -184,11 +185,11 @@ def load_command_table(self, _):
         g.custom_command('list', 'list_users', client_factory=get_graph_client_users)
         g.custom_command('get-member-groups', 'get_user_member_groups')
         g.custom_command('create', 'create_user', client_factory=get_graph_client_users, doc_string_source='azure.graphrbac.models#UserCreateParameters')
-        g.custom_command('update', 'update_user', client_factory=get_graph_client_users)
+        g.custom_command('update', 'update_user', client_factory=get_graph_client_users, validator=validate_change_password)
 
     with self.command_group('ad signed-in-user', signed_in_users_sdk, exception_handler=graph_err_handler,
                             transform=transform_graph_objects_with_cred) as g:
-        g.command('show', 'get')
+        g.show_command('show', 'get')
         g.custom_command('list-owned-objects', 'list_owned_objects', client_factory=get_graph_client_signed_in_users)
 
     with self.command_group('ad group', role_group_sdk, exception_handler=graph_err_handler) as g:

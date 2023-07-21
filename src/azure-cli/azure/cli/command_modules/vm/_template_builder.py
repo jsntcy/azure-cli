@@ -6,6 +6,9 @@
 
 from enum import Enum
 
+from knack.util import CLIError
+
+from azure.cli.core.azclierror import ValidationError
 from azure.cli.core.util import b64encode
 from azure.cli.core.profiles import ResourceType
 from azure.cli.core.commands.arm import ArmTemplateBuilder
@@ -75,7 +78,7 @@ def build_storage_account_resource(_, name, location, tags, sku):
     return storage_account
 
 
-def build_public_ip_resource(cmd, name, location, tags, address_allocation, dns_name, sku, zone):
+def build_public_ip_resource(cmd, name, location, tags, address_allocation, dns_name, sku, zone, count=None):
     public_ip_properties = {'publicIPAllocationMethod': address_allocation}
 
     if dns_name:
@@ -91,6 +94,14 @@ def build_public_ip_resource(cmd, name, location, tags, address_allocation, dns_
         'properties': public_ip_properties
     }
 
+    if count:
+        public_ip['name'] = "[concat('{}', copyIndex())]".format(name)
+        public_ip['copy'] = {
+            'name': 'publicipcopy',
+            'mode': 'parallel',
+            'count': count
+        }
+
     # when multiple zones are provided(through a x-zone scale set), we don't propagate to PIP becasue it doesn't
     # support x-zone; rather we will rely on the Standard LB to work with such scale sets
     if zone and len(zone) == 1:
@@ -102,8 +113,8 @@ def build_public_ip_resource(cmd, name, location, tags, address_allocation, dns_
 
 
 def build_nic_resource(_, name, location, tags, vm_name, subnet_id, private_ip_address=None,
-                       nsg_id=None, public_ip_id=None, application_security_groups=None, accelerated_networking=None):
-
+                       nsg_id=None, public_ip_id=None, application_security_groups=None, accelerated_networking=None,
+                       count=None):
     private_ip_allocation = 'Static' if private_ip_address else 'Dynamic'
     ip_config_properties = {
         'privateIPAllocationMethod': private_ip_allocation,
@@ -115,15 +126,20 @@ def build_nic_resource(_, name, location, tags, vm_name, subnet_id, private_ip_a
 
     if public_ip_id:
         ip_config_properties['publicIPAddress'] = {'id': public_ip_id}
+        if count:
+            ip_config_properties['publicIPAddress']['id'] = "[concat('{}', copyIndex())]".format(public_ip_id)
 
+    ipconfig_name = 'ipconfig{}'.format(vm_name)
     nic_properties = {
         'ipConfigurations': [
             {
-                'name': 'ipconfig{}'.format(vm_name),
+                'name': ipconfig_name,
                 'properties': ip_config_properties
             }
         ]
     }
+    if count:
+        nic_properties['ipConfigurations'][0]['name'] = "[concat('{}', copyIndex())]".format(ipconfig_name)
 
     if nsg_id:
         nic_properties['networkSecurityGroup'] = {'id': nsg_id}
@@ -147,41 +163,52 @@ def build_nic_resource(_, name, location, tags, vm_name, subnet_id, private_ip_a
         'dependsOn': [],
         'properties': nic_properties
     }
+
+    if count:
+        nic['name'] = "[concat('{}', copyIndex())]".format(name)
+        nic['copy'] = {
+            'name': 'niccopy',
+            'mode': 'parallel',
+            'count': count
+        }
+
     return nic
 
 
-def build_nsg_resource(_, name, location, tags, nsg_rule_type):
-
-    rule_name = 'rdp' if nsg_rule_type == 'rdp' else 'default-allow-ssh'
-    rule_dest_port = '3389' if nsg_rule_type == 'rdp' else '22'
-
-    nsg_properties = {
-        'securityRules': [
-            {
-                'name': rule_name,
-                'properties': {
-                    'protocol': 'Tcp',
-                    'sourcePortRange': '*',
-                    'destinationPortRange': rule_dest_port,
-                    'sourceAddressPrefix': '*',
-                    'destinationAddressPrefix': '*',
-                    'access': 'Allow',
-                    'priority': 1000,
-                    'direction': 'Inbound'
-                }
-            }
-        ]
-    }
-
+def build_nsg_resource(_, name, location, tags, nsg_rule):
     nsg = {
         'type': 'Microsoft.Network/networkSecurityGroups',
         'name': name,
         'apiVersion': '2015-06-15',
         'location': location,
         'tags': tags,
-        'dependsOn': [],
-        'properties': nsg_properties
+        'dependsOn': []
     }
+
+    if nsg_rule != 'NONE':
+        rule_name = 'rdp' if nsg_rule == 'RDP' else 'default-allow-ssh'
+        rule_dest_port = '3389' if nsg_rule == 'RDP' else '22'
+
+        nsg_properties = {
+            'securityRules': [
+                {
+                    'name': rule_name,
+                    'properties': {
+                        'protocol': 'Tcp',
+                        'sourcePortRange': '*',
+                        'destinationPortRange': rule_dest_port,
+                        'sourceAddressPrefix': '*',
+                        'destinationAddressPrefix': '*',
+                        'access': 'Allow',
+                        'priority': 1000,
+                        'direction': 'Inbound'
+                    }
+                }
+            ]
+        }
+
+        nsg['properties'] = nsg_properties
+
     return nsg
 
 
@@ -224,7 +251,7 @@ def build_msi_role_assignment(vm_vmss_name, vm_vmss_resource_id, role_definition
         assignment_type = 'Microsoft.Authorization/roleAssignments'
 
     # pylint: disable=line-too-long
-    msi_rp_api_version = '2015-08-31-PREVIEW'
+    msi_rp_api_version = '2019-07-01'
     return {
         'name': name,
         'type': assignment_type,
@@ -234,7 +261,7 @@ def build_msi_role_assignment(vm_vmss_name, vm_vmss_resource_id, role_definition
         ],
         'properties': {
             'roleDefinitionId': role_definition_id,
-            'principalId': "[reference('{}/providers/Microsoft.ManagedIdentity/Identities/default', '{}').principalId]".format(
+            'principalId': "[reference('{}', '{}', 'Full').identity.principalId]".format(
                 vm_vmss_resource_id, msi_rp_api_version),
             'scope': identity_scope
         }
@@ -248,8 +275,11 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
         os_publisher=None, os_offer=None, os_sku=None, os_version=None, os_vhd_uri=None,
         attach_os_disk=None, os_disk_size_gb=None, custom_data=None, secrets=None, license_type=None, zone=None,
         disk_info=None, boot_diagnostics_storage_uri=None, ultra_ssd_enabled=None, proximity_placement_group=None,
-        computer_name=None, dedicated_host=None, priority=None, max_billing=None, eviction_policy=None,
-        enable_agent=None, vmss=None):
+        computer_name=None, dedicated_host=None, priority=None, max_price=None, eviction_policy=None,
+        enable_agent=None, vmss=None, os_disk_encryption_set=None, data_disk_encryption_sets=None, specialized=None,
+        encryption_at_host=None, dedicated_host_group=None, enable_auto_update=None, patch_mode=None,
+        enable_hotpatching=None, platform_fault_domain=None, security_type=None, enable_secure_boot=None,
+        enable_vtpm=None, count=None, edge_zone=None):
 
     os_caching = disk_info['os'].get('caching')
 
@@ -257,11 +287,17 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
 
         special_chars = '`~!@#$%^&*()=+_[]{}\\|;:\'\",<>/?'
 
+        # _computer_name is used to avoid shadow names
+        _computer_name = computer_name or ''.join(filter(lambda x: x not in special_chars, name))
+
         os_profile = {
             # Use name as computer_name if it's not provided. Remove special characters from name.
-            'computerName': computer_name or ''.join(filter(lambda x: x not in special_chars, name)),
+            'computerName': _computer_name,
             'adminUsername': admin_username
         }
+
+        if count:
+            os_profile['computerName'] = "[concat('{}', copyIndex())]".format(_computer_name)
 
         if admin_password:
             os_profile['adminPassword'] = "[parameters('adminPassword')]"
@@ -294,6 +330,29 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
 
         if secrets:
             os_profile['secrets'] = secrets
+
+        if enable_auto_update is not None and custom_image_os_type.lower() == 'windows':
+            os_profile['windowsConfiguration']['enableAutomaticUpdates'] = enable_auto_update
+
+        # Windows patch settings
+        if patch_mode is not None and custom_image_os_type.lower() == 'windows':
+            if patch_mode.lower() not in ['automaticbyos', 'automaticbyplatform', 'manual']:
+                raise ValidationError(
+                    'Invalid value of --patch-mode for Windows VM. Valid values are AutomaticByOS, '
+                    'AutomaticByPlatform, Manual.')
+            os_profile['windowsConfiguration']['patchSettings'] = {
+                'patchMode': patch_mode,
+                'enableHotpatching': enable_hotpatching
+            }
+
+        # Linux patch settings
+        if patch_mode is not None and custom_image_os_type.lower() == 'linux':
+            if patch_mode.lower() not in ['automaticbyplatform', 'imagedefault']:
+                raise ValidationError(
+                    'Invalid value of --patch-mode for Linux VM. Valid values are AutomaticByPlatform, ImageDefault.')
+            os_profile['linuxConfiguration']['patchSettings'] = {
+                'patchMode': patch_mode
+            }
 
         return os_profile
 
@@ -337,7 +396,9 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
                     'createOption': 'fromImage',
                     'name': os_disk_name,
                     'caching': os_caching,
-                    'managedDisk': {'storageAccountType': disk_info['os'].get('storageAccountType')}
+                    'managedDisk': {
+                        'storageAccountType': disk_info['os'].get('storageAccountType'),
+                    }
                 },
                 'imageReference': {
                     'publisher': os_publisher,
@@ -351,7 +412,9 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
                     'createOption': 'fromImage',
                     'name': os_disk_name,
                     'caching': os_caching,
-                    'managedDisk': {'storageAccountType': disk_info['os'].get('storageAccountType')}
+                    'managedDisk': {
+                        'storageAccountType': disk_info['os'].get('storageAccountType'),
+                    }
                 },
                 "imageReference": {
                     'id': image_reference
@@ -367,12 +430,25 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
                 }
             }
         }
+        if os_disk_encryption_set is not None:
+            storage_profiles['ManagedPirImage']['osDisk']['managedDisk']['diskEncryptionSet'] = {
+                'id': os_disk_encryption_set,
+            }
+            storage_profiles['ManagedCustomImage']['osDisk']['managedDisk']['diskEncryptionSet'] = {
+                'id': os_disk_encryption_set,
+            }
         profile = storage_profiles[storage_profile.name]
         if os_disk_size_gb:
             profile['osDisk']['diskSizeGb'] = os_disk_size_gb
         if disk_info['os'].get('writeAcceleratorEnabled') is not None:
             profile['osDisk']['writeAcceleratorEnabled'] = disk_info['os']['writeAcceleratorEnabled']
         data_disks = [v for k, v in disk_info.items() if k != 'os']
+        if data_disk_encryption_sets:
+            if len(data_disk_encryption_sets) != len(data_disks):
+                raise CLIError(
+                    'usage error: Number of --data-disk-encryption-sets mismatches with number of data disks.')
+            for i, data_disk in enumerate(data_disks):
+                data_disk['managedDisk']['diskEncryptionSet'] = {'id': data_disk_encryption_sets[i]}
         if data_disks:
             profile['dataDisks'] = data_disks
 
@@ -391,7 +467,7 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
     if vmss is not None:
         vm_properties['virtualMachineScaleSet'] = {'id': vmss}
 
-    if not attach_os_disk:
+    if not attach_os_disk and not specialized:
         vm_properties['osProfile'] = _build_os_profile()
 
     if license_type:
@@ -414,14 +490,38 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
     if dedicated_host:
         vm_properties['host'] = {'id': dedicated_host}
 
+    if dedicated_host_group:
+        vm_properties['hostGroup'] = {'id': dedicated_host_group}
+
     if priority is not None:
         vm_properties['priority'] = priority
 
     if eviction_policy is not None:
         vm_properties['evictionPolicy'] = eviction_policy
 
-    if max_billing is not None:
-        vm_properties['billingProfile'] = {'maxPrice': max_billing}
+    if max_price is not None:
+        vm_properties['billingProfile'] = {'maxPrice': max_price}
+
+    vm_properties['securityProfile'] = {}
+
+    if encryption_at_host is not None:
+        vm_properties['securityProfile']['encryptionAtHost'] = encryption_at_host
+
+    if security_type is not None:
+        vm_properties['securityProfile']['securityType'] = security_type
+
+    if enable_secure_boot is not None or enable_vtpm is not None:
+        vm_properties['securityProfile']['uefiSettings'] = {
+            'secureBootEnabled': enable_secure_boot,
+            'vTpmEnabled': enable_vtpm
+        }
+
+    # Compatibility of various API versions
+    if vm_properties['securityProfile'] == {}:
+        del vm_properties['securityProfile']
+
+    if platform_fault_domain is not None:
+        vm_properties['platformFaultDomain'] = platform_fault_domain
 
     vm = {
         'apiVersion': cmd.get_api_version(ResourceType.MGMT_COMPUTE, operation_group='virtual_machines'),
@@ -432,8 +532,21 @@ def build_vm_resource(  # pylint: disable=too-many-locals, too-many-statements
         'dependsOn': [],
         'properties': vm_properties,
     }
+
     if zone:
         vm['zones'] = zone
+
+    if count:
+        vm['copy'] = {
+            'name': 'vmcopy',
+            'mode': 'parallel',
+            'count': count
+        }
+        vm['name'] = "[concat('{}', copyIndex())]".format(name)
+
+    if edge_zone:
+        vm['extendedLocation'] = edge_zone
+
     return vm
 
 
@@ -640,7 +753,7 @@ def build_vmss_storage_account_pool_resource(_, loop_name, location, tags, stora
     return storage_resource
 
 
-# pylint: disable=too-many-locals, too-many-branches, too-many-statements
+# pylint: disable=too-many-locals, too-many-branches, too-many-statements, too-many-lines
 def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision, upgrade_policy_mode,
                         vm_sku, instance_count, ip_config_name, nic_name, subnet_id,
                         public_ip_per_vm, vm_domain_name, dns_servers, nsg, accelerated_networking,
@@ -651,7 +764,13 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
                         single_placement_group=None, platform_fault_domain_count=None, custom_data=None,
                         secrets=None, license_type=None, zones=None, priority=None, eviction_policy=None,
                         application_security_groups=None, ultra_ssd_enabled=None, proximity_placement_group=None,
-                        terminate_notification_time=None, max_billing=None, orchestration_mode=None):
+                        terminate_notification_time=None, max_price=None, scale_in_policy=None,
+                        os_disk_encryption_set=None, data_disk_encryption_sets=None,
+                        data_disk_iops=None, data_disk_mbps=None, automatic_repairs_grace_period=None,
+                        specialized=None, os_disk_size_gb=None, encryption_at_host=None, host_group=None,
+                        max_batch_instance_percent=None, max_unhealthy_instance_percent=None,
+                        max_unhealthy_upgraded_instance_percent=None, pause_time_between_batches=None,
+                        enable_cross_zone_upgrade=None, prioritize_unhealthy_instances=None, edge_zone=None):
 
     # Build IP configuration
     ip_configuration = {
@@ -709,14 +828,24 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
             })
         else:
             storage_properties['osDisk']['vhdContainers'] = "[variables('vhdContainers')]"
+
+        if os_disk_size_gb is not None:
+            storage_properties['osDisk']['diskSizeGB'] = os_disk_size_gb
     elif storage_profile in [StorageProfile.ManagedPirImage, StorageProfile.ManagedCustomImage]:
         storage_properties['osDisk'] = {
             'createOption': 'FromImage',
             'caching': os_caching,
             'managedDisk': {'storageAccountType': disk_info['os'].get('storageAccountType')}
         }
+        if os_disk_encryption_set is not None:
+            storage_properties['osDisk']['managedDisk']['diskEncryptionSet'] = {
+                'id': os_disk_encryption_set
+            }
         if disk_info['os'].get('diffDiskSettings'):
             storage_properties['osDisk']['diffDiskSettings'] = disk_info['os']['diffDiskSettings']
+
+        if os_disk_size_gb is not None:
+            storage_properties['osDisk']['diskSizeGB'] = os_disk_size_gb
 
     if storage_profile in [StorageProfile.SAPirImage, StorageProfile.ManagedPirImage]:
         storage_properties['imageReference'] = {
@@ -730,6 +859,22 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
             'id': image
         }
     data_disks = [v for k, v in disk_info.items() if k != 'os']
+    if data_disk_encryption_sets:
+        if len(data_disk_encryption_sets) != len(data_disks):
+            raise CLIError(
+                'usage error: Number of --data-disk-encryption-sets mismatches with number of data disks.')
+        for i, data_disk in enumerate(data_disks):
+            data_disk['managedDisk']['diskEncryptionSet'] = {'id': data_disk_encryption_sets[i]}
+    if data_disk_iops:
+        if len(data_disk_iops) != len(data_disks):
+            raise CLIError('usage error: Number of --data-disk-iops mismatches with number of data disks.')
+        for i, data_disk in enumerate(data_disks):
+            data_disk['diskIOPSReadWrite'] = data_disk_iops[i]
+    if data_disk_mbps:
+        if len(data_disk_mbps) != len(data_disks):
+            raise CLIError('usage error: Number of --data-disk-mbps mismatches with number of data disks.')
+        for i, data_disk in enumerate(data_disks):
+            data_disk['diskMBpsReadWrite'] = data_disk_mbps[i]
     if data_disks:
         storage_properties['dataDisks'] = data_disks
 
@@ -783,16 +928,26 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
     vmss_properties = {
         'overprovision': overprovision,
         'upgradePolicy': {
-            'mode': upgrade_policy_mode
+            'mode': upgrade_policy_mode,
+            'rollingUpgradePolicy': {
+                'maxBatchInstancePercent': max_batch_instance_percent,
+                'maxUnhealthyInstancePercent': max_unhealthy_instance_percent,
+                'maxUnhealthyUpgradedInstancePercent': max_unhealthy_upgraded_instance_percent,
+                'pauseTimeBetweenBatches': pause_time_between_batches,
+                'enableCrossZoneUpgrade': enable_cross_zone_upgrade,
+                'prioritizeUnhealthyInstances': prioritize_unhealthy_instances
+            }
         },
         'virtualMachineProfile': {
             'storageProfile': storage_properties,
-            'osProfile': os_profile,
             'networkProfile': {
                 'networkInterfaceConfigurations': [nic_config]
             }
         }
     }
+
+    if not specialized:
+        vmss_properties['virtualMachineProfile']['osProfile'] = os_profile
 
     if license_type:
         vmss_properties['virtualMachineProfile']['licenseType'] = license_type
@@ -810,9 +965,9 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
                                                      operation_group='virtual_machine_scale_sets'):
         vmss_properties['virtualMachineProfile']['evictionPolicy'] = eviction_policy
 
-    if max_billing is not None and cmd.supported_api_version(
+    if max_price is not None and cmd.supported_api_version(
             min_api='2019-03-01', operation_group='virtual_machine_scale_sets'):
-        vmss_properties['virtualMachineProfile']['billingProfile'] = {'maxPrice': max_billing}
+        vmss_properties['virtualMachineProfile']['billingProfile'] = {'maxPrice': max_price}
 
     if platform_fault_domain_count is not None and cmd.supported_api_version(
             min_api='2017-12-01', operation_group='virtual_machine_scale_sets'):
@@ -836,6 +991,22 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
         }
         vmss_properties['virtualMachineProfile']['scheduledEventsProfile'] = scheduled_events_profile
 
+    if automatic_repairs_grace_period is not None:
+        automatic_repairs_policy = {
+            'enabled': 'true',
+            'gracePeriod': automatic_repairs_grace_period
+        }
+        vmss_properties['automaticRepairsPolicy'] = automatic_repairs_policy
+
+    if scale_in_policy:
+        vmss_properties['scaleInPolicy'] = {'rules': scale_in_policy}
+
+    if encryption_at_host:
+        vmss_properties['virtualMachineProfile']['securityProfile'] = {'encryptionAtHost': encryption_at_host}
+
+    if host_group:
+        vmss_properties['hostGroup'] = {'id': host_group}
+
     vmss = {
         'type': 'Microsoft.Compute/virtualMachineScaleSets',
         'name': name,
@@ -849,24 +1020,13 @@ def build_vmss_resource(cmd, name, naming_prefix, location, tags, overprovision,
         },
         'properties': vmss_properties
     }
+
     if zones:
         vmss['zones'] = zones
-    # vmss without vm profile
-    if orchestration_mode == 'VM':
-        if platform_fault_domain_count is None:
-            platform_fault_domain_count = 2
-        vmss = {
-            'type': 'Microsoft.Compute/virtualMachineScaleSets',
-            'name': name,
-            'location': location,
-            'tags': tags,
-            'apiVersion': cmd.get_api_version(ResourceType.MGMT_COMPUTE, operation_group='virtual_machine_scale_sets'),
-            'properties': {
-                'singlePlacementGroup': True,
-                'provisioningState': 0,
-                'platformFaultDomainCount': platform_fault_domain_count
-            }
-        }
+
+    if edge_zone:
+        vmss['extendedLocation'] = edge_zone
+
     return vmss
 
 
@@ -898,15 +1058,17 @@ def build_av_set_resource(cmd, name, location, tags, platform_update_domain_coun
     return av_set
 
 
-# used for log analytics workspace
-def build_vm_mmaExtension_resource(_, vm_name, location):
+def build_vm_linux_log_analytics_workspace_agent(_, vm_name, location):
+    '''
+    This is used for log analytics workspace
+    '''
     mmaExtension_resource = {
         'type': 'Microsoft.Compute/virtualMachines/extensions',
         'apiVersion': '2018-10-01',
         'properties': {
             'publisher': 'Microsoft.EnterpriseCloud.Monitoring',
             'type': 'OmsAgentForLinux',
-            'typeHandlerVersion': '1.4',
+            'typeHandlerVersion': '1.0',
             'autoUpgradeMinorVersion': 'true',
             'settings': {
                 'workspaceId': "[reference(parameters('workspaceId'), '2015-11-01-preview').customerId]",
@@ -918,26 +1080,35 @@ def build_vm_mmaExtension_resource(_, vm_name, location):
         }
     }
 
-    mmaExtension_resource['name'] = vm_name + '/OMSExtension'
+    mmaExtension_resource['name'] = vm_name + '/OmsAgentForLinux'
     mmaExtension_resource['location'] = location
     mmaExtension_resource['dependsOn'] = ['Microsoft.Compute/virtualMachines/' + vm_name]
     return mmaExtension_resource
 
 
-# used for log analytics workspace
-def build_vm_daExtensionName_resource(_, vm_name, location):
-    daExtensionName_resource = {
+def build_vm_windows_log_analytics_workspace_agent(_, vm_name, location):
+    '''
+    This function is used for log analytics workspace.
+    '''
+    mmaExtension_resource = {
         'type': 'Microsoft.Compute/virtualMachines/extensions',
         'apiVersion': '2018-10-01',
         'properties': {
-            'publisher': 'Microsoft.Azure.Monitoring.DependencyAgent',
-            'type': 'DependencyAgentLinux',
-            'typeHandlerVersion': '9.5',
-            'autoUpgradeMinorVersion': 'true'
+            'publisher': 'Microsoft.EnterpriseCloud.Monitoring',
+            'type': 'MicrosoftMonitoringAgent',
+            'typeHandlerVersion': '1.0',
+            'autoUpgradeMinorVersion': 'true',
+            'settings': {
+                'workspaceId': "[reference(parameters('workspaceId'), '2015-11-01-preview').customerId]",
+                'stopOnMultipleConnections': 'true'
+            },
+            'protectedSettings': {
+                'workspaceKey': "[listKeys(parameters('workspaceId'), '2015-11-01-preview').primarySharedKey]"
+            }
         }
     }
 
-    daExtensionName_resource['name'] = vm_name + '/DependencyAgentLinux'
-    daExtensionName_resource['location'] = location
-    daExtensionName_resource['dependsOn'] = ['Microsoft.Compute/virtualMachines/{0}/extensions/OMSExtension'.format(vm_name)]  # pylint: disable=line-too-long
-    return daExtensionName_resource
+    mmaExtension_resource['name'] = vm_name + '/MicrosoftMonitoringAgent'
+    mmaExtension_resource['location'] = location
+    mmaExtension_resource['dependsOn'] = ['Microsoft.Compute/virtualMachines/' + vm_name]
+    return mmaExtension_resource

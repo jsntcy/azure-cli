@@ -3,13 +3,12 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-from __future__ import print_function
 from sys import stderr
 from vsts_cd_manager.continuous_delivery_manager import ContinuousDeliveryManager
 from azure.cli.core._profile import Profile
 
 
-class VstsContinuousDeliveryProvider(object):
+class VstsContinuousDeliveryProvider:
     def __init__(self):
         self._progress_last_message = ''
 

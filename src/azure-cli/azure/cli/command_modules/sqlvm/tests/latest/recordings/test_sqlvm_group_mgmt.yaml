@@ -7,138 +7,27 @@ interactions:
       Accept-Encoding:
       - gzip, deflate
       CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -n -g --set
-      User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002?api-version=2019-04-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"Storage","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002","name":"clitest000002","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"}},"keySource":"Microsoft.Storage"},"provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:06.6396877Z","primaryEndpoints":{"blob":"https://clitest000002.blob.core.windows.net/","queue":"https://clitest000002.queue.core.windows.net/","table":"https://clitest000002.table.core.windows.net/","file":"https://clitest000002.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1168'
-      content-type:
-      - application/json
-      date:
-      - Wed, 23 Oct 2019 01:54:51 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"sku": {"name": "Standard_LRS"}, "tags": {}, "properties": {"encryption":
-      {"services": {"blob": {"enabled": true}, "file": {"enabled": true}}, "keySource":
-      "Microsoft.Storage"}, "supportsHttpsTrafficOnly": true, "networkAcls": {"bypass":
-      "AzureServices", "virtualNetworkRules": [], "ipRules": [], "defaultAction":
-      "Allow"}}, "kind": "StorageV2"}'
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '346'
-      Content-Type:
-      - application/json; charset=utf-8
-      ParameterSetName:
-      - -n -g --set
-      User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
-    method: PATCH
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002?api-version=2019-04-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002","name":"clitest000002","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:06.6396877Z","primaryEndpoints":{"dfs":"https://clitest000002.dfs.core.windows.net/","web":"https://clitest000002.z22.web.core.windows.net/","blob":"https://clitest000002.blob.core.windows.net/","queue":"https://clitest000002.queue.core.windows.net/","table":"https://clitest000002.table.core.windows.net/","file":"https://clitest000002.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1319'
-      content-type:
-      - application/json
-      date:
-      - Wed, 23 Oct 2019 01:54:54 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1196'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
       - storage account show
       Connection:
       - keep-alive
       ParameterSetName:
       - -n -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
+      - AZURECLI/2.22.0 azsdk-python-azure-mgmt-storage/17.1.0 Python/3.7.9 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002?api-version=2021-02-01
   response:
     body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002","name":"clitest000002","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:06.7178120Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:06.6396877Z","primaryEndpoints":{"dfs":"https://clitest000002.dfs.core.windows.net/","web":"https://clitest000002.z22.web.core.windows.net/","blob":"https://clitest000002.blob.core.windows.net/","queue":"https://clitest000002.queue.core.windows.net/","table":"https://clitest000002.table.core.windows.net/","file":"https://clitest000002.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
+      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002","name":"clitest000002","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"keyCreationTime":{"key1":"2021-04-20T04:04:51.3214640Z","key2":"2021-04-20T04:04:51.3214640Z"},"privateEndpointConnections":[],"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"keyType":"Account","enabled":true,"lastEnabledTime":"2021-04-20T04:04:51.3214640Z"},"blob":{"keyType":"Account","enabled":true,"lastEnabledTime":"2021-04-20T04:04:51.3214640Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2021-04-20T04:04:51.2276973Z","primaryEndpoints":{"dfs":"https://clitest000002.dfs.core.windows.net/","web":"https://clitest000002.z22.web.core.windows.net/","blob":"https://clitest000002.blob.core.windows.net/","queue":"https://clitest000002.queue.core.windows.net/","table":"https://clitest000002.table.core.windows.net/","file":"https://clitest000002.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '1319'
+      - '1487'
       content-type:
       - application/json
       date:
-      - Wed, 23 Oct 2019 01:54:56 GMT
+      - Tue, 20 Apr 2021 04:05:36 GMT
       expires:
       - '-1'
       pragma:
@@ -172,24 +61,21 @@ interactions:
       ParameterSetName:
       - -n -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
+      - AZURECLI/2.22.0 azsdk-python-azure-mgmt-storage/17.1.0 Python/3.7.9 (Windows-10-10.0.19041-SP0)
     method: POST
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002/listKeys?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000002/listKeys?api-version=2021-02-01&$expand=kerb
   response:
     body:
-      string: '{"keys":[{"keyName":"key1","value":"veryFakedStorageAccountKey==","permissions":"FULL"},{"keyName":"key2","value":"veryFakedStorageAccountKey==","permissions":"FULL"}]}'
+      string: '{"keys":[{"creationTime":"2021-04-20T04:04:51.3214640Z","keyName":"key1","value":"veryFakedStorageAccountKey==","permissions":"FULL"},{"creationTime":"2021-04-20T04:04:51.3214640Z","keyName":"key2","value":"veryFakedStorageAccountKey==","permissions":"FULL"}]}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '288'
+      - '380'
       content-type:
       - application/json
       date:
-      - Wed, 23 Oct 2019 01:54:58 GMT
+      - Tue, 20 Apr 2021 04:05:37 GMT
       expires:
       - '-1'
       pragma:
@@ -204,116 +90,8 @@ interactions:
       - Accept-Encoding
       x-content-type-options:
       - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1196'
-    status:
-      code: 200
-      message: OK
-- request:
-    body: null
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      ParameterSetName:
-      - -n -g --set
-      User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
-    method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003?api-version=2019-04-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"Storage","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003","name":"clitest000003","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"}},"keySource":"Microsoft.Storage"},"provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:31.0013392Z","primaryEndpoints":{"blob":"https://clitest000003.blob.core.windows.net/","queue":"https://clitest000003.queue.core.windows.net/","table":"https://clitest000003.table.core.windows.net/","file":"https://clitest000003.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1168'
-      content-type:
-      - application/json
-      date:
-      - Wed, 23 Oct 2019 01:54:59 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-    status:
-      code: 200
-      message: OK
-- request:
-    body: '{"sku": {"name": "Standard_LRS"}, "tags": {}, "properties": {"encryption":
-      {"services": {"blob": {"enabled": true}, "file": {"enabled": true}}, "keySource":
-      "Microsoft.Storage"}, "supportsHttpsTrafficOnly": true, "networkAcls": {"bypass":
-      "AzureServices", "virtualNetworkRules": [], "ipRules": [], "defaultAction":
-      "Allow"}}, "kind": "StorageV2"}'
-    headers:
-      Accept:
-      - application/json
-      Accept-Encoding:
-      - gzip, deflate
-      CommandName:
-      - storage account update
-      Connection:
-      - keep-alive
-      Content-Length:
-      - '346'
-      Content-Type:
-      - application/json; charset=utf-8
-      ParameterSetName:
-      - -n -g --set
-      User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
-    method: PATCH
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003?api-version=2019-04-01
-  response:
-    body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003","name":"clitest000003","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:31.0013392Z","primaryEndpoints":{"dfs":"https://clitest000003.dfs.core.windows.net/","web":"https://clitest000003.z22.web.core.windows.net/","blob":"https://clitest000003.blob.core.windows.net/","queue":"https://clitest000003.queue.core.windows.net/","table":"https://clitest000003.table.core.windows.net/","file":"https://clitest000003.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
-    headers:
-      cache-control:
-      - no-cache
-      content-length:
-      - '1319'
-      content-type:
-      - application/json
-      date:
-      - Wed, 23 Oct 2019 01:55:02 GMT
-      expires:
-      - '-1'
-      pragma:
-      - no-cache
-      server:
-      - Microsoft-Azure-Storage-Resource-Provider/1.0,Microsoft-HTTPAPI/2.0 Microsoft-HTTPAPI/2.0
-      strict-transport-security:
-      - max-age=31536000; includeSubDomains
-      transfer-encoding:
-      - chunked
-      vary:
-      - Accept-Encoding
-      x-content-type-options:
-      - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1193'
+      x-ms-ratelimit-remaining-subscription-resource-requests:
+      - '11996'
     status:
       code: 200
       message: OK
@@ -331,24 +109,21 @@ interactions:
       ParameterSetName:
       - -n -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
+      - AZURECLI/2.22.0 azsdk-python-azure-mgmt-storage/17.1.0 Python/3.7.9 (Windows-10-10.0.19041-SP0)
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003?api-version=2021-02-01
   response:
     body:
-      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003","name":"clitest000003","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"},"blob":{"enabled":true,"lastEnabledTime":"2019-10-23T01:54:31.0794430Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2019-10-23T01:54:31.0013392Z","primaryEndpoints":{"dfs":"https://clitest000003.dfs.core.windows.net/","web":"https://clitest000003.z22.web.core.windows.net/","blob":"https://clitest000003.blob.core.windows.net/","queue":"https://clitest000003.queue.core.windows.net/","table":"https://clitest000003.table.core.windows.net/","file":"https://clitest000003.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
+      string: '{"sku":{"name":"Standard_LRS","tier":"Standard"},"kind":"StorageV2","id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003","name":"clitest000003","type":"Microsoft.Storage/storageAccounts","location":"westus","tags":{},"properties":{"keyCreationTime":{"key1":"2021-04-20T04:05:16.4168500Z","key2":"2021-04-20T04:05:16.4168500Z"},"privateEndpointConnections":[],"networkAcls":{"bypass":"AzureServices","virtualNetworkRules":[],"ipRules":[],"defaultAction":"Allow"},"supportsHttpsTrafficOnly":true,"encryption":{"services":{"file":{"keyType":"Account","enabled":true,"lastEnabledTime":"2021-04-20T04:05:16.4168500Z"},"blob":{"keyType":"Account","enabled":true,"lastEnabledTime":"2021-04-20T04:05:16.4168500Z"}},"keySource":"Microsoft.Storage"},"accessTier":"Hot","provisioningState":"Succeeded","creationTime":"2021-04-20T04:05:16.3231446Z","primaryEndpoints":{"dfs":"https://clitest000003.dfs.core.windows.net/","web":"https://clitest000003.z22.web.core.windows.net/","blob":"https://clitest000003.blob.core.windows.net/","queue":"https://clitest000003.queue.core.windows.net/","table":"https://clitest000003.table.core.windows.net/","file":"https://clitest000003.file.core.windows.net/"},"primaryLocation":"westus","statusOfPrimary":"available"}}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '1319'
+      - '1487'
       content-type:
       - application/json
       date:
-      - Wed, 23 Oct 2019 01:55:04 GMT
+      - Tue, 20 Apr 2021 04:05:38 GMT
       expires:
       - '-1'
       pragma:
@@ -382,24 +157,21 @@ interactions:
       ParameterSetName:
       - -n -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-storage/4.2.0 Azure-SDK-For-Python AZURECLI/2.0.75
-      accept-language:
-      - en-US
+      - AZURECLI/2.22.0 azsdk-python-azure-mgmt-storage/17.1.0 Python/3.7.9 (Windows-10-10.0.19041-SP0)
     method: POST
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003/listKeys?api-version=2019-04-01
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.Storage/storageAccounts/clitest000003/listKeys?api-version=2021-02-01&$expand=kerb
   response:
     body:
-      string: '{"keys":[{"keyName":"key1","value":"veryFakedStorageAccountKey==","permissions":"FULL"},{"keyName":"key2","value":"veryFakedStorageAccountKey==","permissions":"FULL"}]}'
+      string: '{"keys":[{"creationTime":"2021-04-20T04:05:16.4168500Z","keyName":"key1","value":"veryFakedStorageAccountKey==","permissions":"FULL"},{"creationTime":"2021-04-20T04:05:16.4168500Z","keyName":"key2","value":"veryFakedStorageAccountKey==","permissions":"FULL"}]}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '288'
+      - '380'
       content-type:
       - application/json
       date:
-      - Wed, 23 Oct 2019 01:55:04 GMT
+      - Tue, 20 Apr 2021 04:05:38 GMT
       expires:
       - '-1'
       pragma:
@@ -414,17 +186,17 @@ interactions:
       - Accept-Encoding
       x-content-type-options:
       - nosniff
-      x-ms-ratelimit-remaining-subscription-writes:
-      - '1195'
+      x-ms-ratelimit-remaining-subscription-resource-requests:
+      - '11996'
     status:
       code: 200
       message: OK
 - request:
-    body: 'b''{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
+    body: '{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
       "sqlImageSku": "Enterprise", "wsfcDomainProfile": {"domainFqdn": "domain.com",
       "clusterOperatorAccount": "myvmadmin", "sqlServiceAccount": "sqlservice", "storageAccountUrl":
       "https://clitest000002.blob.core.windows.net/", "storageAccountPrimaryKey":
-      "veryFakedStorageAccountKey=="}}}'''
+      "veryFakedStorageAccountKey=="}}}'
     headers:
       Accept:
       - application/json
@@ -441,8 +213,8 @@ interactions:
       ParameterSetName:
       - -n -g -l -i -s -f -p -k -e -u
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: PUT
@@ -452,7 +224,7 @@ interactions:
       string: '{"properties":{"provisioningState":"ProvisioningDomainful","sqlImageOffer":"SQL2017-WS2016","sqlImageSku":"Enterprise","wsfcDomainProfile":{"storageAccountUrl":"https://clitest000002.blob.core.windows.net/"}},"location":"westus","tags":{},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup","name":"sqlvmgroup","type":"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups"}'
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/createsqlvirtualmachinegroup/operationResults/28f42a36-46b4-4f7f-af36-7654e74d2837?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/createsqlvirtualmachinegroup/operationResults/099d6a40-e443-4791-9683-307ee9a7befb?api-version=2017-03-01-preview
       cache-control:
       - no-cache
       content-length:
@@ -460,7 +232,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:09 GMT
+      - Tue, 20 Apr 2021 04:05:49 GMT
       expires:
       - '-1'
       pragma:
@@ -472,7 +244,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1193'
+      - '1196'
     status:
       code: 201
       message: Created
@@ -490,13 +262,13 @@ interactions:
       ParameterSetName:
       - -n -g -l -i -s -f -p -k -e -u
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/createsqlvirtualmachinegroup/operationResults/28f42a36-46b4-4f7f-af36-7654e74d2837?api-version=2017-03-01-preview
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/createsqlvirtualmachinegroup/operationResults/099d6a40-e443-4791-9683-307ee9a7befb?api-version=2017-03-01-preview
   response:
     body:
-      string: '{"name":"28f42a36-46b4-4f7f-af36-7654e74d2837","status":"Succeeded","startTime":"2019-10-23T01:55:08.73Z"}'
+      string: '{"name":"099d6a40-e443-4791-9683-307ee9a7befb","status":"Succeeded","startTime":"2021-04-20T04:05:46.73Z"}'
     headers:
       cache-control:
       - no-cache
@@ -505,7 +277,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:26 GMT
+      - Tue, 20 Apr 2021 04:06:04 GMT
       expires:
       - '-1'
       pragma:
@@ -537,8 +309,8 @@ interactions:
       ParameterSetName:
       - -n -g -l -i -s -f -p -k -e -u
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup?api-version=2017-03-01-preview
   response:
@@ -552,7 +324,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:27 GMT
+      - Tue, 20 Apr 2021 04:06:04 GMT
       expires:
       - '-1'
       pragma:
@@ -584,8 +356,8 @@ interactions:
       ParameterSetName:
       - -n -g -l -i -s -f -p -k -e -u
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -601,7 +373,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:29 GMT
+      - Tue, 20 Apr 2021 04:06:05 GMT
       expires:
       - '-1'
       pragma:
@@ -633,8 +405,8 @@ interactions:
       ParameterSetName:
       - -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -650,7 +422,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:30 GMT
+      - Tue, 20 Apr 2021 04:06:07 GMT
       expires:
       - '-1'
       pragma:
@@ -682,8 +454,8 @@ interactions:
       ParameterSetName:
       - -n -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -699,7 +471,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:32 GMT
+      - Tue, 20 Apr 2021 04:06:07 GMT
       expires:
       - '-1'
       pragma:
@@ -731,8 +503,8 @@ interactions:
       ParameterSetName:
       - -n -g -u -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -748,7 +520,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:34 GMT
+      - Tue, 20 Apr 2021 04:06:09 GMT
       expires:
       - '-1'
       pragma:
@@ -767,11 +539,11 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: 'b''{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
+    body: '{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
       "sqlImageSku": "Enterprise", "wsfcDomainProfile": {"domainFqdn": "domain.com",
       "clusterOperatorAccount": "myvmadmin", "sqlServiceAccount": "sqlservice", "storageAccountUrl":
       "https://clitest000003.blob.core.windows.net/", "storageAccountPrimaryKey":
-      "veryFakedStorageAccountKey=="}}}'''
+      "veryFakedStorageAccountKey=="}}}'
     headers:
       Accept:
       - application/json
@@ -788,8 +560,8 @@ interactions:
       ParameterSetName:
       - -n -g -u -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: PUT
@@ -799,7 +571,7 @@ interactions:
       string: '{"properties":{"provisioningState":"UpdatingDomainful","sqlImageOffer":"SQL2017-WS2016","sqlImageSku":"Enterprise","wsfcDomainProfile":{"storageAccountUrl":"https://clitest000003.blob.core.windows.net/"}},"location":"westus","tags":{},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup","name":"sqlvmgroup","type":"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups"}'
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/02a7194e-22eb-4f9b-b1cd-0a22f3b49a16?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/eb758d67-a6fb-4f89-8bb1-6d654a6e9c26?api-version=2017-03-01-preview
       cache-control:
       - no-cache
       content-length:
@@ -807,7 +579,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:36 GMT
+      - Tue, 20 Apr 2021 04:06:11 GMT
       expires:
       - '-1'
       pragma:
@@ -823,7 +595,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1129'
+      - '1195'
     status:
       code: 200
       message: OK
@@ -841,22 +613,22 @@ interactions:
       ParameterSetName:
       - -n -g -u -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/02a7194e-22eb-4f9b-b1cd-0a22f3b49a16?api-version=2017-03-01-preview
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/eb758d67-a6fb-4f89-8bb1-6d654a6e9c26?api-version=2017-03-01-preview
   response:
     body:
-      string: '{"name":"02a7194e-22eb-4f9b-b1cd-0a22f3b49a16","status":"Succeeded","startTime":"2019-10-23T01:55:36.057Z"}'
+      string: '{"name":"eb758d67-a6fb-4f89-8bb1-6d654a6e9c26","status":"Succeeded","startTime":"2021-04-20T04:06:10.15Z"}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '107'
+      - '106'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:52 GMT
+      - Tue, 20 Apr 2021 04:06:26 GMT
       expires:
       - '-1'
       pragma:
@@ -888,8 +660,8 @@ interactions:
       ParameterSetName:
       - -n -g -u -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup?api-version=2017-03-01-preview
   response:
@@ -903,7 +675,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:53 GMT
+      - Tue, 20 Apr 2021 04:06:26 GMT
       expires:
       - '-1'
       pragma:
@@ -935,8 +707,8 @@ interactions:
       ParameterSetName:
       - -n -g -f -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -952,7 +724,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:54 GMT
+      - Tue, 20 Apr 2021 04:06:27 GMT
       expires:
       - '-1'
       pragma:
@@ -971,11 +743,11 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: 'b''{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
+    body: '{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
       "sqlImageSku": "Enterprise", "wsfcDomainProfile": {"domainFqdn": "mydomain.com",
       "clusterOperatorAccount": "myvmadmin", "sqlServiceAccount": "sqlservice", "storageAccountUrl":
       "https://clitest000003.blob.core.windows.net/", "storageAccountPrimaryKey":
-      "veryFakedStorageAccountKey=="}}}'''
+      "veryFakedStorageAccountKey=="}}}'
     headers:
       Accept:
       - application/json
@@ -992,8 +764,8 @@ interactions:
       ParameterSetName:
       - -n -g -f -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: PUT
@@ -1003,7 +775,7 @@ interactions:
       string: '{"properties":{"provisioningState":"UpdatingDomainful","sqlImageOffer":"SQL2017-WS2016","sqlImageSku":"Enterprise","wsfcDomainProfile":{"storageAccountUrl":"https://clitest000003.blob.core.windows.net/"}},"location":"westus","tags":{},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup","name":"sqlvmgroup","type":"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups"}'
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/cbf7a261-dbc0-4499-a486-909fcf298a5c?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/0988bb2c-26e7-413a-bea4-6d49ddd10b5b?api-version=2017-03-01-preview
       cache-control:
       - no-cache
       content-length:
@@ -1011,7 +783,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:55:57 GMT
+      - Tue, 20 Apr 2021 04:06:30 GMT
       expires:
       - '-1'
       pragma:
@@ -1027,7 +799,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1128'
+      - '1195'
     status:
       code: 200
       message: OK
@@ -1045,22 +817,22 @@ interactions:
       ParameterSetName:
       - -n -g -f -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/cbf7a261-dbc0-4499-a486-909fcf298a5c?api-version=2017-03-01-preview
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/0988bb2c-26e7-413a-bea4-6d49ddd10b5b?api-version=2017-03-01-preview
   response:
     body:
-      string: '{"name":"cbf7a261-dbc0-4499-a486-909fcf298a5c","status":"Succeeded","startTime":"2019-10-23T01:55:56.307Z"}'
+      string: '{"name":"0988bb2c-26e7-413a-bea4-6d49ddd10b5b","status":"Succeeded","startTime":"2021-04-20T04:06:29.3Z"}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '107'
+      - '105'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:13 GMT
+      - Tue, 20 Apr 2021 04:06:46 GMT
       expires:
       - '-1'
       pragma:
@@ -1092,8 +864,8 @@ interactions:
       ParameterSetName:
       - -n -g -f -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup?api-version=2017-03-01-preview
   response:
@@ -1107,7 +879,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:14 GMT
+      - Tue, 20 Apr 2021 04:06:46 GMT
       expires:
       - '-1'
       pragma:
@@ -1139,8 +911,8 @@ interactions:
       ParameterSetName:
       - -n -g -p -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -1156,7 +928,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:16 GMT
+      - Tue, 20 Apr 2021 04:06:47 GMT
       expires:
       - '-1'
       pragma:
@@ -1175,11 +947,11 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: 'b''{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
+    body: '{"location": "westus", "tags": {}, "properties": {"sqlImageOffer": "SQL2017-WS2016",
       "sqlImageSku": "Enterprise", "wsfcDomainProfile": {"domainFqdn": "mydomain.com",
       "clusterOperatorAccount": "mymyvmadmin", "sqlServiceAccount": "sqlservice",
       "storageAccountUrl": "https://clitest000003.blob.core.windows.net/", "storageAccountPrimaryKey":
-      "veryFakedStorageAccountKey=="}}}'''
+      "veryFakedStorageAccountKey=="}}}'
     headers:
       Accept:
       - application/json
@@ -1196,8 +968,8 @@ interactions:
       ParameterSetName:
       - -n -g -p -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: PUT
@@ -1207,7 +979,7 @@ interactions:
       string: '{"properties":{"provisioningState":"UpdatingDomainful","sqlImageOffer":"SQL2017-WS2016","sqlImageSku":"Enterprise","wsfcDomainProfile":{"storageAccountUrl":"https://clitest000003.blob.core.windows.net/"}},"location":"westus","tags":{},"id":"/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup","name":"sqlvmgroup","type":"Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups"}'
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/dbd07af7-07ae-48d5-8385-cef81720b47e?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/940df7d3-2c37-4ae6-9731-88fe68f7ac76?api-version=2017-03-01-preview
       cache-control:
       - no-cache
       content-length:
@@ -1215,7 +987,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:18 GMT
+      - Tue, 20 Apr 2021 04:06:49 GMT
       expires:
       - '-1'
       pragma:
@@ -1231,7 +1003,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-writes:
-      - '1189'
+      - '1193'
     status:
       code: 200
       message: OK
@@ -1249,22 +1021,22 @@ interactions:
       ParameterSetName:
       - -n -g -p -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/dbd07af7-07ae-48d5-8385-cef81720b47e?api-version=2017-03-01-preview
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/updatesqlvirtualmachinegroup/operationResults/940df7d3-2c37-4ae6-9731-88fe68f7ac76?api-version=2017-03-01-preview
   response:
     body:
-      string: '{"name":"dbd07af7-07ae-48d5-8385-cef81720b47e","status":"Succeeded","startTime":"2019-10-23T01:56:17.26Z"}'
+      string: '{"name":"940df7d3-2c37-4ae6-9731-88fe68f7ac76","status":"Succeeded","startTime":"2021-04-20T04:06:48.997Z"}'
     headers:
       cache-control:
       - no-cache
       content-length:
-      - '106'
+      - '107'
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:33 GMT
+      - Tue, 20 Apr 2021 04:07:05 GMT
       expires:
       - '-1'
       pragma:
@@ -1296,8 +1068,8 @@ interactions:
       ParameterSetName:
       - -n -g -p -k
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
     uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/clitest.rg000001/providers/Microsoft.SqlVirtualMachine/sqlVirtualMachineGroups/sqlvmgroup?api-version=2017-03-01-preview
   response:
@@ -1311,7 +1083,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:35 GMT
+      - Tue, 20 Apr 2021 04:07:06 GMT
       expires:
       - '-1'
       pragma:
@@ -1345,8 +1117,8 @@ interactions:
       ParameterSetName:
       - -n -g --yes
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: DELETE
@@ -1356,17 +1128,17 @@ interactions:
       string: ''
     headers:
       azure-asyncoperation:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/deletesqlvirtualmachinegroup/operationResults/3fe686f6-8c26-40d3-89a3-6eb7d3f9d253?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/deletesqlvirtualmachinegroup/operationResults/53fd240f-9b7b-4062-8b5b-170f8e9a8017?api-version=2017-03-01-preview
       cache-control:
       - no-cache
       content-length:
       - '0'
       date:
-      - Wed, 23 Oct 2019 01:56:37 GMT
+      - Tue, 20 Apr 2021 04:07:08 GMT
       expires:
       - '-1'
       location:
-      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/sqlVirtualMachineGroupOperationResults/3fe686f6-8c26-40d3-89a3-6eb7d3f9d253?api-version=2017-03-01-preview
+      - https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/sqlVirtualMachineGroupOperationResults/53fd240f-9b7b-4062-8b5b-170f8e9a8017?api-version=2017-03-01-preview
       pragma:
       - no-cache
       server:
@@ -1376,7 +1148,7 @@ interactions:
       x-content-type-options:
       - nosniff
       x-ms-ratelimit-remaining-subscription-deletes:
-      - '14994'
+      - '14997'
     status:
       code: 202
       message: Accepted
@@ -1394,13 +1166,13 @@ interactions:
       ParameterSetName:
       - -n -g --yes
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
     method: GET
-    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/deletesqlvirtualmachinegroup/operationResults/3fe686f6-8c26-40d3-89a3-6eb7d3f9d253?api-version=2017-03-01-preview
+    uri: https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.SqlVirtualMachine/locations/westus/operationTypes/deletesqlvirtualmachinegroup/operationResults/53fd240f-9b7b-4062-8b5b-170f8e9a8017?api-version=2017-03-01-preview
   response:
     body:
-      string: '{"name":"3fe686f6-8c26-40d3-89a3-6eb7d3f9d253","status":"Succeeded","startTime":"2019-10-23T01:56:36.75Z"}'
+      string: '{"name":"53fd240f-9b7b-4062-8b5b-170f8e9a8017","status":"Succeeded","startTime":"2021-04-20T04:07:07.76Z"}'
     headers:
       cache-control:
       - no-cache
@@ -1409,7 +1181,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:54 GMT
+      - Tue, 20 Apr 2021 04:07:24 GMT
       expires:
       - '-1'
       pragma:
@@ -1441,8 +1213,8 @@ interactions:
       ParameterSetName:
       - -g
       User-Agent:
-      - python/3.7.4 (Windows-10-10.0.18362-SP0) msrest/0.6.10 msrest_azure/0.6.2
-        azure-mgmt-sqlvirtualmachine/0.4.0 Azure-SDK-For-Python AZURECLI/2.0.75
+      - python/3.7.9 (Windows-10-10.0.19041-SP0) msrest/0.6.21 msrest_azure/0.6.3
+        azure-mgmt-sqlvirtualmachine/0.5.0 Azure-SDK-For-Python AZURECLI/2.22.0
       accept-language:
       - en-US
     method: GET
@@ -1458,7 +1230,7 @@ interactions:
       content-type:
       - application/json; charset=utf-8
       date:
-      - Wed, 23 Oct 2019 01:56:55 GMT
+      - Tue, 20 Apr 2021 04:07:25 GMT
       expires:
       - '-1'
       pragma:

@@ -4,16 +4,18 @@
 # --------------------------------------------------------------------------------------------
 
 from azure.cli.testsdk import (ScenarioTest, JMESPathCheck, ResourceGroupPreparer, StorageAccountPreparer)
+from azure_devtools.scenario_tests import AllowLargeResponse
 
 
 class StorageLegalHold(ScenarioTest):
+    @AllowLargeResponse()
     @ResourceGroupPreparer()
     def test_legal_hold(self, resource_group):
         storage_account = self.create_random_name('clistorage', 20)
         self.cmd('storage account create -g {} -n {} --kind StorageV2'.format(
             resource_group, storage_account))
         container_name = 'container1'
-        self.cmd('storage container create --account-name {} -n {}'.format(storage_account, container_name))
+        self.cmd('storage container create --account-name {} -n {} --metadata k1=v1 k2=v2'.format(storage_account, container_name))
 
         self.cmd('storage container legal-hold show --account-name {} -c {} -g {}'.format(
             storage_account, container_name, resource_group), checks=[

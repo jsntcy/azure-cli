@@ -5,12 +5,13 @@
 
 # pylint: disable=line-too-long
 
+import json
 import re
 from knack.log import get_logger
 from knack.util import CLIError
 
-from ._utils import is_valid_connection_string, resolve_resource_group
-from ._azconfig.models import QueryFields
+from ._utils import is_valid_connection_string, resolve_store_metadata, get_store_name_from_connection_string
+from ._models import QueryFields
 from ._featuremodels import FeatureQueryFields
 
 logger = get_logger(__name__)
@@ -31,6 +32,15 @@ def validate_connection_string(namespace):
         if not is_valid_connection_string(connection_string):
             raise CLIError('''The connection string is invalid. \
 Correct format should be Endpoint=https://example.azconfig.io;Id=xxxxx;Secret=xxxx ''')
+
+
+def validate_auth_mode(namespace):
+    auth_mode = namespace.auth_mode
+    if auth_mode == "login":
+        if not namespace.name and not namespace.endpoint:
+            raise CLIError("App Configuration name or endpoint should be provided if auth mode is 'login'.")
+        if namespace.connection_string:
+            raise CLIError("Auth mode should be 'key' when connection string is provided.")
 
 
 def validate_import_depth(namespace):
@@ -76,7 +86,7 @@ def validate_export(namespace):
         if (namespace.dest_name is None) and (namespace.dest_connection_string is None):
             raise CLIError("usage error: --config-name NAME | --connection-string STR")
     elif destination == 'appservice':
-        if namespace.appservice_name is None:
+        if namespace.appservice_account is None:
             raise CLIError("usage error: --appservice-account NAME_OR_ID")
 
 
@@ -85,15 +95,22 @@ def validate_appservice_name_or_id(cmd, namespace):
     from msrestazure.tools import is_valid_resource_id, parse_resource_id
     if namespace.appservice_account:
         if not is_valid_resource_id(namespace.appservice_account):
-            resource_group, _ = resolve_resource_group(cmd, namespace.name)
+            config_store_name = ""
+            if namespace.name:
+                config_store_name = namespace.name
+            elif namespace.connection_string:
+                config_store_name = get_store_name_from_connection_string(namespace.connection_string)
+            else:
+                raise CLIError("Please provide App Configuration name or connection string for fetching the AppService account details. Alternatively, you can provide a valid ARM ID for the Appservice account.")
+
+            resource_group, _ = resolve_store_metadata(cmd, config_store_name)
             namespace.appservice_account = {
                 "subscription": get_subscription_id(cmd.cli_ctx),
                 "resource_group": resource_group,
                 "name": namespace.appservice_account
             }
         else:
-            namespace.appservice_account = parse_resource_id(
-                namespace.appservice_account)
+            namespace.appservice_account = parse_resource_id(namespace.appservice_account)
 
 
 def validate_query_fields(namespace):
@@ -123,16 +140,12 @@ def validate_filter_parameters(namespace):
         for item in namespace.filter_parameters:
             param_tuple = validate_filter_parameter(item)
             if param_tuple:
+                # pylint: disable=unbalanced-tuple-unpacking
                 param_name, param_value = param_tuple
-                # If param_name already exists, convert the values to a list
+                # If param_name already exists, error out
                 if param_name in filter_parameters_dict:
-                    old_param_value = filter_parameters_dict[param_name]
-                    if isinstance(old_param_value, list):
-                        old_param_value.append(param_value)
-                    else:
-                        filter_parameters_dict[param_name] = [old_param_value, param_value]
-                else:
-                    filter_parameters_dict.update({param_name: param_value})
+                    raise CLIError('Filter parameter name "{}" cannot be duplicated.'.format(param_name))
+                filter_parameters_dict.update({param_name: param_value})
         namespace.filter_parameters = filter_parameters_dict
 
 
@@ -141,9 +154,81 @@ def validate_filter_parameter(string):
     result = ()
     if string:
         comps = string.split('=', 1)
-        # Ignore invalid arguments like  '=value' or '='
+
         if comps[0]:
-            result = (comps[0], comps[1]) if len(comps) > 1 else (string, '')
+            if len(comps) > 1:
+                # In the portal, if value textbox is blank we store the value as empty string.
+                # In CLI, we should allow inputs like 'name=', which correspond to empty string value.
+                # But there is no way to differentiate between CLI inputs 'name=' and 'name=""'.
+                # So even though "" is invalid JSON escaped string, we will accept it and set the value as empty string.
+                filter_param_value = '\"\"' if comps[1] == "" else comps[1]
+                try:
+                    # Ensure that provided value of this filter parameter is valid JSON. Error out if value is invalid JSON.
+                    filter_param_value = json.loads(filter_param_value)
+                except ValueError:
+                    raise CLIError('Filter parameter value must be a JSON escaped string. "{}" is not a valid JSON object.'.format(filter_param_value))
+                result = (comps[0], filter_param_value)
+            else:
+                result = (string, '')
         else:
-            logger.warning("Ignoring filter parameter '%s' because parameter name is empty.", string)
+            # Error out on invalid arguments like '=value' or '='
+            raise CLIError('Invalid filter parameter "{}". Parameter name cannot be empty.'.format(string))
     return result
+
+
+def validate_identity(namespace):
+    subcommand = namespace.command.split(' ')[-1]
+    identities = set()
+
+    if subcommand == 'create' and namespace.assign_identity:
+        identities = set(namespace.assign_identity)
+    elif subcommand in ('assign', 'remove') and namespace.identities:
+        identities = set(namespace.identities)
+    else:
+        return
+
+    for identity in identities:
+        from msrestazure.tools import is_valid_resource_id
+        if identity == '[all]' and subcommand == 'remove':
+            continue
+
+        if identity != '[system]' and not is_valid_resource_id(identity):
+            raise CLIError("Invalid identity '{}'. Use '[system]' to refer system assigned identity, or a resource id to refer user assigned identity.".format(identity))
+
+
+def validate_secret_identifier(namespace):
+    """ Validate the format of keyvault reference secret identifier """
+    from azure.keyvault.key_vault_id import KeyVaultIdentifier
+
+    identifier = getattr(namespace, 'secret_identifier', None)
+    try:
+        # this throws an exception for invalid format of secret identifier
+        KeyVaultIdentifier(uri=identifier)
+    except Exception as e:
+        raise CLIError("Received an exception while validating the format of secret identifier.\n{0}".format(str(e)))
+
+
+def validate_key(namespace):
+    if namespace.key:
+        input_key = str(namespace.key).lower()
+        if input_key == '.' or input_key == '..' or '%' in input_key:
+            raise CLIError("Key is invalid. Key cannot be a '.' or '..', or contain the '%' character.")
+    else:
+        raise CLIError("Key cannot be empty.")
+
+
+def validate_resolve_keyvault(namespace):
+    if namespace.resolve_keyvault:
+        identifier = getattr(namespace, 'destination', None)
+        if identifier and identifier != "file":
+            raise CLIError("--resolve-keyvault is only applicable for exporting to file.")
+
+
+def validate_feature(namespace):
+    if namespace.feature:
+        invalid_pattern = re.compile(r'[^a-zA-Z0-9._-]')
+        invalid = re.search(invalid_pattern, namespace.feature)
+        if invalid:
+            raise CLIError("Feature name is invalid. Only alphanumeric characters, '.', '-' and '_' are allowed.")
+    else:
+        raise CLIError("Feature name cannot be empty.")

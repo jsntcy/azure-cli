@@ -3,8 +3,6 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 # --------------------------------------------------------------------------------------------
 
-from __future__ import print_function
-
 from knack.log import get_logger
 from knack.prompting import prompt_pass, NoTTYException
 from knack.util import CLIError
@@ -52,34 +50,49 @@ def list_subscriptions(cmd, all=False, refresh=False):  # pylint: disable=redefi
 def show_subscription(cmd, subscription=None, show_auth_for_sdk=None):
     import json
     profile = Profile(cli_ctx=cmd.cli_ctx)
-    if not show_auth_for_sdk:
-        return profile.get_subscription(subscription)
 
-    # sdk-auth file should be in json format all the time, hence the print
-    print(json.dumps(profile.get_sp_auth_info(subscription), indent=2))
+    if show_auth_for_sdk:
+        from azure.cli.command_modules.role.custom import CREDENTIAL_WARNING_MESSAGE
+        logger.warning(CREDENTIAL_WARNING_MESSAGE)
+        # sdk-auth file should be in json format all the time, hence the print
+        print(json.dumps(profile.get_sp_auth_info(subscription), indent=2))
+        return
+
+    return profile.get_subscription(subscription)
 
 
-def get_access_token(cmd, subscription=None, resource=None, resource_type=None):
-    '''
+def get_access_token(cmd, subscription=None, resource=None, resource_type=None, tenant=None):
+    """
     get AAD token to access to a specified resource
     :param resource: Azure resource endpoints. Default to Azure Resource Manager
     :param resource-type: Name of Azure resource endpoints. Can be used instead of resource.
     Use 'az cloud show' command for other Azure resources
-    '''
+    """
     if resource is None and resource_type is not None:
         endpoints_attr_name = cloud_resource_type_mappings[resource_type]
         resource = getattr(cmd.cli_ctx.cloud.endpoints, endpoints_attr_name)
     else:
         resource = (resource or cmd.cli_ctx.cloud.endpoints.active_directory_resource_id)
     profile = Profile(cli_ctx=cmd.cli_ctx)
-    creds, subscription, tenant = profile.get_raw_token(subscription=subscription, resource=resource)
-    return {
+    creds, subscription, tenant = profile.get_raw_token(subscription=subscription, resource=resource, tenant=tenant)
+
+    token_entry = creds[2]
+    # MSIAuthentication's token entry has `expires_on`, while ADAL's token entry has `expiresOn`
+    # Unify to ISO `expiresOn`, like "2020-06-30 06:14:41"
+    if 'expires_on' in token_entry:
+        # https://docs.python.org/3.8/library/datetime.html#strftime-and-strptime-format-codes
+        token_entry['expiresOn'] = _fromtimestamp(int(token_entry['expires_on']))\
+            .strftime("%Y-%m-%d %H:%M:%S.%f")
+
+    result = {
         'tokenType': creds[0],
         'accessToken': creds[1],
         'expiresOn': creds[2].get('expiresOn', 'N/A'),
-        'subscription': subscription,
         'tenant': tenant
     }
+    if subscription:
+        result['subscription'] = subscription
+    return result
 
 
 def set_active_subscription(cmd, subscription):
@@ -100,7 +113,7 @@ def account_clear(cmd):
 
 # pylint: disable=inconsistent-return-statements
 def login(cmd, username=None, password=None, service_principal=None, tenant=None, allow_no_subscriptions=False,
-          identity=False, use_device_code=False, use_cert_sn_issuer=None):
+          identity=False, use_device_code=False, use_cert_sn_issuer=None, scopes=None):
     """Log in to access Azure subscriptions"""
     from adal.adal_error import AdalError
     import requests
@@ -142,6 +155,7 @@ def login(cmd, username=None, password=None, service_principal=None, tenant=None
             password,
             service_principal,
             tenant,
+            scopes=scopes,
             use_device_code=use_device_code,
             allow_no_subscriptions=allow_no_subscriptions,
             use_cert_sn_issuer=use_cert_sn_issuer)
@@ -161,6 +175,9 @@ def login(cmd, username=None, password=None, service_principal=None, tenant=None
                                # pylint: disable=line-too-long
                                "More details are available at https://github.com/AzureAD/microsoft-authentication-library-for-python/wiki/Username-Password-Authentication")
         raise CLIError(err)
+    except requests.exceptions.SSLError as err:
+        from azure.cli.core.util import SSLERROR_TEMPLATE
+        raise CLIError(SSLERROR_TEMPLATE + " Error detail: {}".format(str(err)))
     except requests.exceptions.ConnectionError as err:
         raise CLIError('Please ensure you have network connection. Error detail: ' + str(err))
     all_subscriptions = list(subscriptions)
@@ -200,6 +217,7 @@ def check_cli(cmd):
     except Exception as ex:  # pylint: disable=broad-except
         exceptions['load_commands'] = ex
         logger.error('Error occurred loading commands!\n')
+        raise ex
 
     print('Retrieving all help...')
     try:
@@ -208,8 +226,19 @@ def check_cli(cmd):
     except Exception as ex:  # pylint: disable=broad-except
         exceptions['load_help'] = ex
         logger.error('Error occurred loading help!\n')
+        raise ex
 
     if not exceptions:
         print('CLI self-test completed: OK')
     else:
         raise CLIError(exceptions)
+
+
+def _fromtimestamp(t):
+    # datetime.datetime can't be patched:
+    #   TypeError: can't set attributes of built-in/extension type 'datetime.datetime'
+    # So we wrap datetime.datetime.fromtimestamp with this function.
+    # https://docs.python.org/3/library/unittest.mock-examples.html#partial-mocking
+    # https://williambert.online/2011/07/how-to-unit-testing-in-django-with-mocking-and-patching/
+    from datetime import datetime
+    return datetime.fromtimestamp(t)

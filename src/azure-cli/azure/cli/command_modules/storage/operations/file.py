@@ -8,12 +8,94 @@ Commands for storage file share operations
 """
 
 import os
+from knack.log import get_logger
+
 from azure.cli.command_modules.storage.util import (filter_none, collect_blobs, collect_files,
                                                     create_blob_service_from_storage_client,
                                                     create_short_lived_container_sas, create_short_lived_share_sas,
                                                     guess_content_type)
 from azure.cli.command_modules.storage.url_quote_util import encode_for_url, make_encoded_file_url_and_params
-from knack.log import get_logger
+from azure.cli.core.profiles import ResourceType
+
+
+def create_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=None, share_quota=None,
+                    enabled_protocols=None, root_squash=None, access_tier=None):
+
+    return _create_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=metadata,
+                            share_quota=share_quota, enabled_protocols=enabled_protocols, root_squash=root_squash,
+                            access_tier=access_tier, snapshot=False)
+
+
+def snapshot_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=None, share_quota=None,
+                      enabled_protocols=None, root_squash=None, access_tier=None):
+
+    return _create_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=metadata,
+                            share_quota=share_quota, enabled_protocols=enabled_protocols, root_squash=root_squash,
+                            access_tier=access_tier, snapshot=True)
+
+
+def _create_share_rm(cmd, client, resource_group_name, account_name, share_name, metadata=None, share_quota=None,
+                     enabled_protocols=None, root_squash=None, access_tier=None, snapshot=None):
+    FileShare = cmd.get_models('FileShare', resource_type=ResourceType.MGMT_STORAGE)
+
+    file_share = FileShare()
+    expand = None
+    if share_quota is not None:
+        file_share.share_quota = share_quota
+    if enabled_protocols is not None:
+        file_share.enabled_protocols = enabled_protocols
+    if root_squash is not None:
+        file_share.root_squash = root_squash
+    if metadata is not None:
+        file_share.metadata = metadata
+    if access_tier is not None:
+        file_share.access_tier = access_tier
+    if snapshot:
+        PutSharesExpand = cmd.get_models('PutSharesExpand', resource_type=ResourceType.MGMT_STORAGE)
+        expand = PutSharesExpand.SNAPSHOTS
+
+    return client.create(resource_group_name=resource_group_name, account_name=account_name, share_name=share_name,
+                         file_share=file_share, expand=expand)
+
+
+def get_stats(client, resource_group_name, account_name, share_name):
+    return client.get(resource_group_name=resource_group_name, account_name=account_name, share_name=share_name,
+                      expand='stats')
+
+
+def list_share_rm(cmd, client, resource_group_name, account_name, include_deleted=None):
+    ListSharesExpand = cmd.get_models('ListSharesExpand')
+    if include_deleted:
+        return client.list(resource_group_name=resource_group_name, account_name=account_name,
+                           expand=ListSharesExpand.DELETED)
+
+    return client.list(resource_group_name=resource_group_name, account_name=account_name, expand=None)
+
+
+def restore_share_rm(cmd, client, resource_group_name, account_name, share_name, deleted_version, restored_name=None):
+
+    restored_name = restored_name if restored_name else share_name
+
+    deleted_share = cmd.get_models('DeletedShare',
+                                   resource_type=ResourceType.MGMT_STORAGE)(deleted_share_name=share_name,
+                                                                            deleted_share_version=deleted_version)
+
+    return client.restore(resource_group_name=resource_group_name, account_name=account_name,
+                          share_name=restored_name, deleted_share=deleted_share)
+
+
+def update_share_rm(cmd, instance, metadata=None, share_quota=None, root_squash=None, access_tier=None):
+    FileShare = cmd.get_models('FileShare', resource_type=ResourceType.MGMT_STORAGE)
+
+    params = FileShare(
+        share_quota=share_quota if share_quota is not None else instance.share_quota,
+        root_squash=root_squash if root_squash is not None else instance.root_squash,
+        metadata=metadata if metadata is not None else instance.metadata,
+        enabled_protocols=instance.enabled_protocols,
+        access_tier=access_tier if access_tier is not None else instance.access_tier
+    )
+
+    return params
 
 
 def create_share_url(client, share_name, unc=None, protocol=None):
@@ -97,7 +179,7 @@ def storage_file_download_batch(cmd, client, source, destination, pattern=None, 
 
     from azure.cli.command_modules.storage.util import glob_files_remotely, mkdir_p
 
-    source_files = glob_files_remotely(cmd, client, source, pattern)
+    source_files = glob_files_remotely(cmd, client, source, pattern, snapshot=snapshot)
 
     if dryrun:
         source_files_list = list(source_files)
@@ -321,3 +403,12 @@ def _make_directory_in_files_share(file_service, file_share, directory_path, exi
 
         if existing_dirs:
             existing_dirs.add(directory_path)
+
+
+def _file_share_exists(client, resource_group_name, account_name, share_name):
+    from azure.core.exceptions import HttpResponseError
+    try:
+        file_share = client.get(resource_group_name, account_name, share_name, expand=None)
+        return file_share is not None
+    except HttpResponseError:
+        return False

@@ -16,13 +16,56 @@ helps['appconfig create'] = """
 type: command
 short-summary: Create an App Configuration.
 examples:
-  - name: Create an App Configuration with name, location and resource group.
-    text: az appconfig create -g MyResourceGroup -n MyAppConfiguration -l westus
+  - name: Create an App Configuration with name, location, sku and resource group.
+    text: az appconfig create -g MyResourceGroup -n MyAppConfiguration -l westus --sku Standard
+  - name: Create an App Configuration with name, location, sku and resource group with system assigned identity.
+    text: az appconfig create -g MyResourceGroup -n MyAppConfiguration -l westus --sku Standard --assign-identity
+  - name: Create an App Configuration with name, location, sku and resource group with user assigned identity.
+    text: az appconfig create -g MyResourceGroup -n MyAppConfiguration -l westus --sku Standard --assign-identity /subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity
+  - name: Create an App Configuration with name, location and resource group and enable public network access.
+    text: az appconfig create -g MyResourceGroup -n MyAppConfiguration -l westus --enable-public-network
+"""
+
+helps['appconfig identity'] = """
+type: group
+short-summary: Managed identities for App Configurations.
+"""
+
+helps['appconfig identity assign'] = """
+type: command
+short-summary: Update managed identities for an App Configuration.
+examples:
+  - name: Enable the system-assigned identity for an existing App Configuration
+    text: az appconfig identity assign -g MyResourceGroup -n MyAppConfiguration
+  - name: Assign a user-assigned managed identity for an existing App Configuration
+    text: az appconfig identity assign -g MyResourceGroup -n MyAppConfiguration --identities "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+  - name: Assign both system-assigned and user assigned identities for an existing App Configuration
+    text: az appconfig identity assign -g MyResourceGroup -n MyAppConfiguration --identities [system] "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+"""
+
+helps['appconfig identity remove'] = """
+type: command
+short-summary: Remove managed identities for an App Configuration.
+examples:
+  - name: Remove the system-assigned identity from a App Configuration.
+    text: az appconfig identity remove -g MyResourceGroup -n MyAppConfiguration
+  - name: Remove a user assigned identity from a App Configuration.
+    text: az appconfig identity remove -g MyResourceGroup -n MyAppConfiguration --identities "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentity"
+  - name: Remove all identities from an App Configuration.
+    text: az appconfig identity remove -g MyResourceGroup -n MyAppConfiguration --identities [all]
+"""
+
+helps['appconfig identity show'] = """
+type: command
+short-summary: Display managed identities for an App Configuration.
+examples:
+  - name: Display managed identities for a task.
+    text: az appconfig identity show -g MyResourceGroup -n MyAppConfiguration
 """
 
 helps['appconfig credential'] = """
 type: group
-short-summary: Manage credentials for App Configurations
+short-summary: Manage credentials for App Configurations.
 """
 
 helps['appconfig credential list'] = """
@@ -62,44 +105,65 @@ examples:
     text: az appconfig kv delete -n MyAppConfiguration --key color --label MyLabel --yes
   - name: Delete a key using connection string.
     text: az appconfig kv delete --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --key color --label MyLabel
+  - name: Delete a key using your 'az login' credentials and App Configuration endpoint.
+    text: az appconfig kv delete --endpoint https://myappconfiguration.azconfig.io --key color --auth-mode login --yes
 """
 
 helps['appconfig kv export'] = """
 type: command
 short-summary: Export configurations to another place from your App Configuration.
 examples:
-  - name: Export all keys with label test to a json file.
+  - name: Export all keys and feature flags with label test to a json file.
     text: az appconfig kv export -n MyAppConfiguration --label test -d file --path D:/abc.json --format json
-  - name: Export all keys with null label to another App Configuration.
-    text: az appconfig kv export -n MyAppConfiguration -d appconfig --dest-name AnotherAppConfiguration
-  - name: Export all keys with null label to an App Service appliaction.
-    text: az appconfig kv export -n MyAppConfiguration -d appservice  --appservice-account MyAppService
+  - name: Export all keys with null label to an App Service application.
+    text: az appconfig kv export -n MyAppConfiguration -d appservice --appservice-account MyAppService
+  - name: Export all keys with label test excluding feature flags to a json file.
+    text: az appconfig kv export -n MyAppConfiguration --label test -d file --path D:/abc.json --format json --skip-features
+  - name: Export all keys and feature flags with all labels to another App Configuration.
+    text: az appconfig kv export -n MyAppConfiguration -d appconfig --dest-name AnotherAppConfiguration --key * --label * --preserve-labels
+  - name: Export all keys and feature flags with all labels to another App Configuration and overwrite destination labels.
+    text: az appconfig kv export -n MyAppConfiguration -d appconfig --dest-name AnotherAppConfiguration --key * --label * --dest-label ExportedKeys
+  - name: Export all keys to another App Configuration using your 'az login' credentials.
+    text: az appconfig kv export -d appconfig --endpoint https://myappconfiguration.azconfig.io --auth-mode login --dest-endpoint https://anotherappconfiguration.azconfig.io --dest-auth-mode login --key * --label * --preserve-labels
 """
 
 helps['appconfig kv import'] = """
 type: command
 short-summary: Import configurations into your App Configuration from another place.
 examples:
-  - name: Import all keys with label test from a file.
+  - name: Import all keys and feature flags from a file and apply test label.
     text: az appconfig kv import -n MyAppConfiguration --label test -s file --path D:/abc.json --format json
-  - name: Import all keys with null label from an App Configuration.
-    text: az appconfig kv import -n MyAppConfiguration -s appconfig --src-name AnotherAppConfiguration
-  - name: Import all keys with null label from an App Service appliaction.
+  - name: Import all keys and feature flags with null label and apply new label from an App Configuration.
+    text: az appconfig kv import -n MyAppConfiguration -s appconfig --src-name AnotherAppConfiguration --label ImportedKeys
+  - name: Import all keys and apply null label from an App Service application.
     text: az appconfig kv import -n MyAppConfiguration -s appservice --appservice-account MyAppService
+  - name: Import all keys with label test and apply test2 label excluding feature flags from an App Configuration.
+    text: az appconfig kv import -n MyAppConfiguration -s appconfig --src-label test --label test2 --src-name AnotherAppConfiguration --skip-features
+  - name: Import all keys and feature flags with all labels to another App Configuration.
+    text: az appconfig kv import -n MyAppConfiguration -s appconfig --src-name AnotherAppConfiguration --src-key * --src-label * --preserve-labels
+  - name: Import all keys and feature flags from a JSON file and apply JSON content type.
+    text: az appconfig kv import -n MyAppConfiguration -s file --path D:/abc.json --format json --separator . --content-type application/json
+  - name: Import all keys to another App Configuration using your 'az login' credentials.
+    text: az appconfig kv import -s appconfig --endpoint https://myappconfiguration.azconfig.io --auth-mode login --src-endpoint https://anotherappconfiguration.azconfig.io --src-auth-mode login --src-key * --src-label * --preserve-labels
+
 """
 
 helps['appconfig kv list'] = """
 type: command
 short-summary: List key-values.
 examples:
-  - name: List all key-values.
-    text: az appconfig kv list -n MyAppConfiguration
-  - name: List a specfic key for any label start with v1. using connection string.
+  - name: List all key-values with null label.
+    text: az appconfig kv list -n MyAppConfiguration --label \\0
+  - name: List a specific key for any label start with v1. using connection string.
     text: az appconfig kv list --key color --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --label v1.*
   - name: List all keys with any labels and query only key, value and tags.
     text: az appconfig kv list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --fields key value tags --datetime "2019-05-01T11:24:12Z"
-  - name: List 150 key-values with any labels.
-    text: az appconfig kv list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx  --top 150
+  - name: List content of key vault reference with key prefix 'KVRef_' and only select key and value.
+    text: az appconfig kv list -n MyAppConfiguration --key "KVRef_*" --resolve-keyvault --query "[*].{key:key, value:value}"
+  - name: List key-values with multiple labels.
+    text: az appconfig kv list --label test,prod,\\0 -n MyAppConfiguration
+  - name: List all key-values with all labels using your 'az login' credentials.
+    text: az appconfig kv list --endpoint https://myappconfiguration.azconfig.io --auth-mode login
 """
 
 helps['appconfig kv lock'] = """
@@ -130,6 +194,24 @@ examples:
     text: az appconfig kv set -n MyAppConfiguration --key color --label MyLabel --value red
   - name: Set a key with null label using connection string.
     text: az appconfig kv set --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --key color --value red --tags key1=value1 key2=value2
+  - name: Set a key with string value and JSON content type.
+    text: az appconfig kv set -n MyAppConfiguration --key color --value \\"red\\" --content-type application/json
+  - name: Set a key with list value and JSON content type.
+    text: az appconfig kv set -n MyAppConfiguration --key options --value [1,2,3] --content-type application/activity+json;charset=utf-8
+  - name: Set a key with null value and JSON content type.
+    text: az appconfig kv set -n MyAppConfiguration --key foo --value null --content-type application/json
+  - name: Set a key-value using your 'az login' credentials.
+    text: az appconfig kv set --endpoint https://myappconfiguration.azconfig.io --key color --value red --auth-mode login
+"""
+
+helps['appconfig kv set-keyvault'] = """
+type: command
+short-summary: Set a keyvault reference.
+examples:
+  - name: Set a keyvault reference with label MyLabel.
+    text: az appconfig kv set-keyvault -n MyAppConfiguration --key HostSecret --label MyLabel --secret-identifier https://contoso.vault.azure.net/Secrets/DummySecret/Dummyversion
+  - name: Set a keyvault reference with null label and multiple tags using connection string.
+    text: az appconfig kv set-keyvault --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --key HostSecret --secret-identifier https://contoso.vault.azure.net/Secrets/DummySecret --tags tag1=value1 tag2=value2
 """
 
 helps['appconfig kv show'] = """
@@ -140,6 +222,8 @@ examples:
     text: az appconfig kv show -n MyAppConfiguration --key color --label MyLabel --datetime "2019-05-01T11:24:12Z"
   - name: Show a key-value using connection string with label
     text: az appconfig kv show --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --key color --label MyLabel
+  - name: Show a key-value using your 'az login' credentials.
+    text: az appconfig kv show --key color --auth-mode login --endpoint https://myappconfiguration.azconfig.io
 """
 
 helps['appconfig kv unlock'] = """
@@ -169,10 +253,14 @@ helps['appconfig revision list'] = """
 type: command
 short-summary: Lists revision history of key-values.
 examples:
-  - name: List revision history of key "color" label "test" using App Configuration name.
+  - name: List revision history of a key-value using App Configuration name.
     text: az appconfig revision list -n MyAppConfiguration --key color --label test
+  - name: List revision history of a key-value with multiple labels.
+    text: az appconfig revision list -n MyAppConfiguration --key color --label test,prod,\\0
   - name: List revision history for key "color" with any labels using connection string
     text: az appconfig revision list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --key color --datetime "2019-05-01T11:24:12Z"
+  - name: List revision history for all items and query only key, value and last_modified.
+    text: az appconfig revision list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --fields key value last_modified
 """
 
 helps['appconfig show'] = """
@@ -189,6 +277,14 @@ short-summary: Update an App Configuration.
 examples:
   - name: Update tags of an App Configuration
     text: az appconfig update -g MyResourceGroup -n MyAppConfiguration --tags key1=value1 key2=value2
+  - name: Upgrade sku of an App Configuration to standard
+    text: az appconfig update -g MyResourceGroup -n MyAppConfiguration --sku Standard
+  - name: Enable customer encryption key with system assigned identity
+    text: az appconfig update -g MyResourceGroup -n MyAppConfiguration --encryption-key-name myKey --encryption-key-version keyVersion --encryption-key-vault https://keyVaultName.vault.azure.net
+  - name: Remove customer encryption key
+    text: az appconfig update -g MyResourceGroup -n MyAppConfiguration --encryption-key-name ""
+  - name: Update an App Configuration to enable public network access.
+    text: az appconfig update -g MyResourceGroup -n MyAppConfiguration --enable-public-network true
 """
 
 helps['appconfig feature'] = """
@@ -206,6 +302,9 @@ helps['appconfig feature set'] = """
         - name: Set a feature flag with null label using connection string and set a description.
           text:
             az appconfig feature set --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --feature color --description "This is a colorful feature"
+        - name: Set a feature flag using your 'az login' credentials.
+          text:
+            az appconfig feature set --endpoint https://myappconfiguration.azconfig.io --feature color --label MyLabel --auth-mode login
     """
 
 helps['appconfig feature delete'] = """
@@ -218,6 +317,9 @@ helps['appconfig feature delete'] = """
         - name: Delete a feature using connection string.
           text:
             az appconfig feature delete --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --feature color --label MyLabel
+        - name: Delete a feature using App Configuration endpoint and your 'az login' credentials.
+          text:
+            az appconfig feature delete --endpoint https://myappconfiguration.azconfig.io --feature color --auth-mode login
     """
 
 helps['appconfig feature show'] = """
@@ -230,6 +332,9 @@ helps['appconfig feature show'] = """
         - name: Show a feature flag using connection string and field filters
           text:
             az appconfig feature show --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --feature color --fields key locked conditions state
+        - name: Show a feature flag using App Configuration endpoint and your 'az login' credentials.
+          text:
+            az appconfig feature show --endpoint https://myappconfiguration.azconfig.io --feature color --auth-mode login
     """
 
 helps['appconfig feature list'] = """
@@ -241,7 +346,7 @@ helps['appconfig feature list'] = """
             az appconfig feature list -n MyAppConfiguration
         - name: List all feature flags with null labels.
           text:
-            az appconfig feature list -n MyAppConfiguration --label ""
+            az appconfig feature list -n MyAppConfiguration --label \\0
         - name: List a specfic feature for any label start with v1. using connection string.
           text:
             az appconfig feature list --feature color --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --label v1.*
@@ -251,6 +356,9 @@ helps['appconfig feature list'] = """
         - name: List 150 feature flags with any labels.
           text:
             az appconfig feature list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx  --top 150
+        - name: List feature flags with multiple labels.
+          text:
+            az appconfig feature list --label test,prod,\\0 -n MyAppConfiguration
     """
 
 helps['appconfig feature lock'] = """
@@ -312,13 +420,19 @@ helps['appconfig feature filter add'] = """
     examples:
         - name: Add a filter for feature 'color' with label MyLabel with name 'MyFilter' and 2 parameters.
           text:
-            az appconfig feature filter add -n MyAppConfiguration --feature color --label MyLabel --filter-name MyFilter --filter-parameters Name=Value Name2=Value2
+            az appconfig feature filter add -n MyAppConfiguration --feature color --label MyLabel --filter-name MyFilter --filter-parameters Name=\\"Value\\" Name2=\\"Value2\\"
         - name: Insert a filter at index 2 (zero-based index) for feature 'color' with label MyLabel and filter name 'MyFilter' with no parameters
           text:
             az appconfig feature filter add -n MyAppConfiguration --feature color --label MyLabel --filter-name MyFilter --index 2
-        - name:  Add a filter with name 'MyFilter' using connection string.
+        - name: Add a filter with name 'MyFilter' using connection string.
           text:
             az appconfig feature filter add --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx --feature color --filter-name MyFilter
+        - name: Add a filter with name 'MyFilter' using App Configuration endpoint and your 'az login' credentials.
+          text:
+            az appconfig feature filter add --endpoint=https://contoso.azconfig.io --feature color --filter-name MyFilter --auth-mode login
+        - name: Add a filter for feature 'color' with label MyLabel with name 'MyFilter' and array parameters.
+          text:
+            az appconfig feature filter add -n MyAppConfiguration --feature color --label MyLabel --filter-name MyFilter --filter-parameters ArrayParam=[1,2,3]
     """
 
 helps['appconfig feature filter delete'] = """
@@ -358,4 +472,7 @@ helps['appconfig feature filter list'] = """
         - name: List 150 filters for feature flag 'color'
           text:
             az appconfig feature filter list --connection-string Endpoint=https://contoso.azconfig.io;Id=xxx;Secret=xxx  --feature color --top 150
+        - name: List all filters for feature flag 'color' using your 'az login' credentials.
+          text:
+            az appconfig feature filter list --endpoint https://myappconfiguration.azconfig.io --feature color --all --auth-mode login
     """

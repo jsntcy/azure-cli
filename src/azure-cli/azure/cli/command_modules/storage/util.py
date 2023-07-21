@@ -11,6 +11,14 @@ def collect_blobs(blob_service, container, pattern=None):
     """
     List the blobs in the given blob container, filter the blob by comparing their path to the given pattern.
     """
+    return [name for (name, _) in collect_blob_objects(blob_service, container, pattern)]
+
+
+def collect_blob_objects(blob_service, container, pattern=None):
+    """
+    List the blob name and blob in the given blob container, filter the blob by comparing their path to
+     the given pattern.
+    """
     if not blob_service:
         raise ValueError('missing parameter blob_service')
 
@@ -18,19 +26,17 @@ def collect_blobs(blob_service, container, pattern=None):
         raise ValueError('missing parameter container')
 
     if not _pattern_has_wildcards(pattern):
-        return [pattern] if blob_service.exists(container, pattern) else []
+        if blob_service.exists(container, pattern):
+            yield pattern, blob_service.get_blob_properties(container, pattern)
+    else:
+        for blob in blob_service.list_blobs(container):
+            try:
+                blob_name = blob.name.encode('utf-8') if isinstance(blob.name, unicode) else blob.name
+            except NameError:
+                blob_name = blob.name
 
-    results = []
-    for blob in blob_service.list_blobs(container):
-        try:
-            blob_name = blob.name.encode('utf-8') if isinstance(blob.name, unicode) else blob.name
-        except NameError:
-            blob_name = blob.name
-
-        if not pattern or _match_path(blob_name, pattern):
-            results.append(blob_name)
-
-    return results
+            if not pattern or _match_path(blob_name, pattern):
+                yield blob_name, blob
 
 
 def collect_files(cmd, file_service, share, pattern=None):
@@ -81,7 +87,7 @@ def glob_files_locally(folder_path, pattern):
                 yield (full_path, full_path[len_folder_path:])
 
 
-def glob_files_remotely(cmd, client, share_name, pattern):
+def glob_files_remotely(cmd, client, share_name, pattern, snapshot=None):
     """glob the files in remote file share based on the given pattern"""
     from collections import deque
     t_dir, t_file = cmd.get_models('file.models#Directory', 'file.models#File')
@@ -89,7 +95,7 @@ def glob_files_remotely(cmd, client, share_name, pattern):
     queue = deque([""])
     while queue:
         current_dir = queue.pop()
-        for f in client.list_directories_and_files(share_name, current_dir):
+        for f in client.list_directories_and_files(share_name, current_dir, snapshot=snapshot):
             if isinstance(f, t_file):
                 if not pattern or _match_path(os.path.join(current_dir, f.name), pattern):
                     yield current_dir, f.name

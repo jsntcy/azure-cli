@@ -31,6 +31,9 @@ examples:
   - name: Queue a remote GitHub context as a Windows build, tag it, and push it to the registry.
     text: >
         az acr build -r MyRegistry https://github.com/Azure/acr-builder.git -f Windows.Dockerfile --platform windows
+  - name: Queue a remote OCI Artifact context build.
+    text: >
+        az acr build -r MyRegistry oci://myregistry.azurecr.io/myartifact:mytag
   - name: Queue a local context as a Linux build on arm/v7 architecture, tag it, and push it to the registry.
     text: >
         az acr build -t sample/hello-world:{{.Run.ID}} -r MyRegistry . --platform linux/arm/v7
@@ -113,7 +116,7 @@ examples:
 
 helps['acr create'] = """
 type: command
-short-summary: Creates an Azure Container Registry.
+short-summary: Create an Azure Container Registry.
 examples:
   - name: Create a managed container registry with the Standard SKU.
     text: >
@@ -226,20 +229,41 @@ examples:
         az acr helm show -n MyRegistry mychart --version 0.3.2
 """
 
+helps['acr helm install-cli'] = """
+type: command
+short-summary: Download and install Helm command-line tool.
+examples:
+  - name: Install the default version of Helm CLI to the default location
+    text: >
+        az acr helm install-cli
+  - name: Install a specified version of Helm CLI to the default location
+    text: >
+        az acr helm install-cli --client-version x.x.x
+  - name: Install the default version of Helm CLI to a specified location
+    text: >
+        az acr helm install-cli --install-location /folder/filename
+  - name: Install a specified version of Helm CLI to a specified location
+    text: >
+        az acr helm install-cli --client-version x.x.x --install-location /folder/filename
+"""
+
 helps['acr import'] = """
 type: command
 short-summary: Imports an image to an Azure Container Registry from another Container Registry. Import removes the need to docker pull, docker tag, docker push.
 examples:
-  - name: Import an image to the target registry and inherits sourcerepository:sourcetag from the source registry.
+  - name: Import an image from 'sourceregistry' to 'MyRegistry'. The image inherits its source repository and tag names.
     text: >
         az acr import -n MyRegistry --source sourceregistry.azurecr.io/sourcerepository:sourcetag
-  - name: Import an image from a registry in a different subscription.
+  - name: Import an image from a public repository on Docker Hub. The image uses the specified repository and tag names.
+    text: >
+        az acr import -n MyRegistry --source docker.io/library/hello-world:latest -t targetrepository:targettag
+  - name: Import an image from a private repository using its username and password. This also applies to registries outside Azure.
+    text: >
+        az acr import -n MyRegistry --source myprivateregistry.azurecr.io/hello-world:latest -u username -p password
+  - name: Import an image from an Azure container registry in a different subscription.
     text: |
         az acr import -n MyRegistry --source sourcerepository:sourcetag -t targetrepository:targettag \\
             -r /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/sourceResourceGroup/providers/Microsoft.ContainerRegistry/registries/sourceRegistry
-  - name: Import an image from a public repository in Docker Hub
-    text: >
-        az acr import -n MyRegistry --source docker.io/library/hello-world:latest -t targetrepository:targettag
 """
 
 helps['acr list'] = """
@@ -257,11 +281,14 @@ examples:
 helps['acr login'] = """
 type: command
 short-summary: Log in to an Azure Container Registry through the Docker CLI.
-long-summary: Docker must be installed on your machine. Once done, use 'docker logout <registry url>' to log out.
+long-summary: Docker must be installed on your machine. Once done, use 'docker logout <registry url>' to log out. (If you only need an access token and do not want to install Docker, specify '--expose-token')
 examples:
   - name: Log in to an Azure Container Registry
     text: >
         az acr login -n MyRegistry
+  - name: Get an Azure Container Registry access token
+    text: >
+        az acr login -n MyRegistry --expose-token
 """
 
 helps['acr network-rule'] = """
@@ -468,7 +495,7 @@ short-summary: Queues a quick run providing streamed logs for an Azure Container
 examples:
   - name: Queue a run to execute a container command.
     text: >
-        az acr run -r MyRegistry --cmd MyImage /dev/null
+        az acr run -r MyRegistry --cmd '$Registry/myimage' /dev/null
   - name: Queue a run with the task definition from the standard input. Either 'Ctrl + Z'(Windows) or 'Ctrl + D'(Linux) terminates the input stream.
     text: >
         az acr run -r MyRegistry -f - /dev/null
@@ -477,13 +504,16 @@ examples:
         cat task.yaml | az acr run -r MyRegistry -f - /dev/null
   - name: Queue a local context, pushed to ACR with streaming logs.
     text: >
-        az acr run -r MyRegistry -f bash-echo.yaml .
+        az acr run -r MyRegistry -f bash-echo.yaml ./workspace
   - name: Queue a remote git context with streaming logs.
     text: >
         az acr run -r MyRegistry https://github.com/Azure-Samples/acr-tasks.git -f hello-world.yaml
   - name: Queue a remote git context with streaming logs and runs the task on Linux platform.
     text: >
         az acr run -r MyRegistry https://github.com/Azure-Samples/acr-tasks.git -f build-hello-world.yaml --platform linux
+  - name: Queue a remote OCI Artifact context and runs the task.
+    text: >
+        az acr run -r MyRegistry oci://myregistry.azurecr.io/myartifact:mytag -f hello-world.yaml
 """
 
 helps['acr scope-map'] = """
@@ -498,6 +528,12 @@ examples:
   - name: Create a scope map that allows content/write and metadata/read actions for `hello-world` repository, and content/read action for `hello-world-again`.
     text: >
         az acr scope-map create -n MyScopeMap -r MyRegistry --repository hello-world content/write metadata/read --repository hello-world-again content/read --description "Sample scope map."
+  - name: Create a scope map that allows all repository actions for `test`, and all gateway actions for `connectedRegistry`.
+    text: >
+        az acr scope-map create -n MyScopeMap -r MyRegistry --description "Sample scope map."
+          --repository test content/delete content/read content/write metadata/read metadata/write
+          --gateway connectedRegistry config/read config/write message/read message/write
+
 """
 
 helps['acr scope-map delete'] = """
@@ -531,9 +567,9 @@ helps['acr scope-map update'] = """
 type: command
 short-summary: Update a scope map for an Azure Container Registry.
 examples:
-  - name: Update the scope map 'MyScopeMap' removing metadata/read and content/read actions for `hello-world` repository, and metadata/write action for `hello-world-again`.
+  - name: Update the scope map 'MyScopeMap' removing metadata/read and content/read actions for `hello-world` repository, and message/write action for `connectedRegistry`.
     text: >
-        az acr scope-map update -n MyScopeMap -r MyRegistry --remove hello-world metadata/read content/read --remove hello-world-again metadata/write
+        az acr scope-map update -n MyScopeMap -r MyRegistry --remove-repo hello-world metadata/read content/read --remove-gateway connectedRegistry message/write
 """
 
 helps['acr show'] = """
@@ -573,75 +609,43 @@ examples:
 
 helps['acr task create'] = """
 type: command
-short-summary: Creates a series of steps for building, testing and OS & Framework patching containers. Tasks support triggers from git commits and base image updates.
+short-summary: Create a series of steps for building, testing and OS & Framework patching containers. Tasks support triggers from git commits and base image updates.
 examples:
   - name: Create a task without the source location.
     text: >
-        az acr task create -n hello-world -r MyRegistry --cmd MyImage -c /dev/null
-  - name: Create a task without the source location and with a timer trigger that runs the image `MyImage` at the top of every hour using the default trigger name.
-    text: >
-        az acr task create -n hello-world -r MyRegistry --cmd MyImage -c /dev/null --schedule "0 */1 * * *"
-  - name: Create a task with the definition from the standard input. Either 'Ctrl + Z'(Windows) or 'Ctrl + D'(Linux) terminates the input stream.
-    text: >
-        az acr task create -n hello-world -r MyRegistry -f - -c /dev/null
-  - name: Create a task with the definition from the pipe.
-    text: >
-        cat task.yaml | az acr task create -n hello-world -r MyRegistry -f - -c /dev/null
-  - name: Create a Linux task from a public GitHub repository which builds the hello-world image without triggers.
+        az acr task create -n hello-world -r MyRegistry --cmd '$Registry/myimage' -c /dev/null
+  - name: Create a task with the definition from the standard input and with a timer trigger that runs the task at the top of every hour using the default trigger name. Either 'Ctrl + Z'(Windows) or 'Ctrl + D'(Linux) terminates the input stream.
     text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile --commit-trigger-enabled false
+        cat task.yaml | az acr task create -n hello-world -r MyRegistry -f - -c /dev/null \\
+            --schedule "0 */1 * * *"
+        az acr task create -n hello-world -r MyRegistry -f - -c /dev/null --schedule "0 */1 * * *"
   - name: Create a Linux task from a public GitHub repository which builds the hello-world image without triggers and uses a build argument.
     text: |
         az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure/acr-builder.git -f Dockerfile --commit-trigger-enabled false \\
+            -c https://github.com/Azure/acr-builder.git -f Dockerfile \\
+            --commit-trigger-enabled false --base-image-trigger-enabled false \\
             --arg DOCKER_CLI_BASE_IMAGE=docker:18.03.0-ce-git
-  - name: Create a Linux task using a private GitHub repository which builds the hello-world image without triggers on Arm architecture (V7 variant)
+  - name: Create a Linux task using a specific branch of a private Azure DevOps repository which builds the hello-world image on Arm architecture (V7 variant) and has triggers enabled.
     text: |
         az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile --commit-trigger-enabled false \\
-            --git-access-token 0000000000000000000000000000000000000000 --platform linux/arm/v7
-  - name: Create a Linux task from a public GitHub repository which builds the hello-world image with a git commit trigger. Note that this task does not use Source Registry (MyRegistry), so we can explicitly set Auth mode as None for it.
+            -c https://msazure.visualstudio.com/DefaultCollection/Project/_git/Repo#Branch:Folder \\
+            -f Dockerfile --git-access-token <Personal Access Token> --platform linux/arm/v7
+  - name: Create a Linux task from a public GitHub repository which builds the hello-world image with both a git commit and pull request trigger enabled. Note that this task does not use Source Registry (MyRegistry), so we can explicitly set Auth mode as None for it.
     text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            --auth-mode None -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile \\
-            --git-access-token 0000000000000000000000000000000000000000
-  - name: Create a Linux task from a public GitHub repository which builds the hello-world image with a git pull request trigger. Note that this task does not use Source Registry (MyRegistry), so we can explicitly set Auth mode as None for it.
-    text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            --auth-mode None -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile \\
-            --pull-request-trigger-enabled True --git-access-token 0000000000000000000000000000000000000000
-  - name: Create a Windows task from a public GitHub repository which builds the Azure Container Builder image on Amd64 architecture without triggers.
+        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry  -f Dockerfile \\
+            --no-push true --auth-mode None -c https://github.com/Azure-Samples/acr-build-helloworld-node.git \\
+            --pull-request-trigger-enabled true --git-access-token 000000000000000000000000000000000
+  - name: Create a Windows task from a public GitHub repository which builds the Azure Container Builder image on Amd64 architecture with only base image trigger enabled.
     text: |
         az acr task create -t acb:{{.Run.ID}} -n acb-win -r MyRegistry \\
             -c https://github.com/Azure/acr-builder.git -f Windows.Dockerfile \\
             --commit-trigger-enabled false --platform Windows/amd64
-  - name: Create a Linux multi-step task from a public GitHub repository with a git commit trigger and with the system-assigned managed identity
+  - name: Create a Linux multi-step task from a public GitHub repository with with both system-assigned and user-assigned managed identities and base image, git commit, pull request, and timer triggers that run the task at noon on Mondays through Fridays with the timer trigger name provided.
     text: |
         az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
+            --pull-request-trigger-enabled true --schedule "dailyTimer:0 12 * * Mon-Fri" \\
             -c https://github.com/Azure-Samples/acr-tasks.git#:multipleRegistries -f testtask.yaml \\
-            --assign-identity
-  - name: Create a Linux multi-step task from a public GitHub repository with a git commit trigger and with a user-assigned managed identity
-    text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-tasks.git#:multipleRegistries -f testtask.yaml \\
-            --assign-identity "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentitiy"
-  - name: Create a Linux multi-step task from a public GitHub repository with a git commit trigger and with both system-assigned and user-assigned managed identities
-    text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-tasks.git#:multipleRegistries -f testtask.yaml \\
-            --assign-identity [system] "/subscriptions/<SUBSCRIPTON ID>/resourcegroups/myResourceGroup/providers/Microsoft.ManagedIdentity/userAssignedIdentities/myUserAssignedIdentitiy"
-  - name: Create a Linux multi-step task from a public GitHub repository with a system-assigned managed identity and a timer trigger that runs that task at noon on Mondays through Fridays using the default trigger name.
-    text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-tasks.git#:multipleRegistries -f testtask.yaml \\
-            --commit-trigger-enabled false --schedule "0 12 * * Mon-Fri"\\
-            --assign-identity
-  - name: Create a Linux task from a public GitHub repository which builds the hello-world image with a git commit trigger and a timer trigger that runs that task at noon on Mondays through Fridays with the trigger name provided.
-    text: |
-        az acr task create -t hello-world:{{.Run.ID}} -n hello-world -r MyRegistry \\
-            -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile \\
-            --schedule "dailyTimer:0 12 * * Mon-Fri"
+            --assign-identity [system] "/subscriptions/<subscriptionId>/resourcegroups/<myResourceGroup>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<myUserAssignedIdentitiy>"
 """
 
 helps['acr task credential'] = """
@@ -656,26 +660,26 @@ examples:
   - name: Add a registry login credential to a task using a plain text username and password.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'myusername' -p 'mysecret'
+            -u myusername -p mysecret
   - name: Add a registry login credential to a task using key vault secret URIs for the username and password and the task system-assigned identity.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'https://mykeyvault.vault.azure.net/secrets/secretusername' -p 'https://mykeyvault.vault.azure.net/secrets/secretpassword' \\
+            -u https://mykeyvault.vault.azure.net/secrets/secretusername -p https://mykeyvault.vault.azure.net/secrets/secretpassword \\
             --use-identity [system]
   - name: Add a registry login credential to a task using key vault secret URIs for the username and password and a task user-assigned identity given by its client id.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'https://mykeyvault.vault.azure.net/secrets/secretusername' -p 'https://mykeyvault.vault.azure.net/secrets/secretpassword' \\
+            -u https://mykeyvault.vault.azure.net/secrets/secretusername -p https://mykeyvault.vault.azure.net/secrets/secretpassword \\
             --use-identity 00000000-0000-0000-0000-000000000000
   - name: Add a registry login credential to a task using a plain text username and key vault secret URI for the password and the task user-assigned identity given by its client id.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'myusername' -p 'https://mykeyvault.vault.azure.net/secrets/secretpassword' \\
+            -u myusername -p https://mykeyvault.vault.azure.net/secrets/secretpassword \\
             --use-identity 00000000-0000-0000-0000-000000000000
   - name: Add a registry login credential to a task using a plain text username and key vault secret URI for the password and the default managed identity for the task if one exists.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'myusername' -p 'https://mykeyvault.vault.azure.net/secrets/secretpassword'
+            -u myusername -p https://mykeyvault.vault.azure.net/secrets/secretpassword
   - name: Add a registry login credential to a task that uses only the task system-assigned identity to authenticate to the registry.
     text: |
         az acr task credential add -n taskname -r registryname --login-server myregistry.docker.io \\
@@ -707,7 +711,7 @@ examples:
   - name: Update the credential for a task
     text: |
         az acr task credential update -n taskname -r registryname --login-server myregistry.docker.io \\
-            -u 'myusername2' -p 'mysecret'
+            -u myusername2 -p mysecret
 """
 
 helps['acr task delete'] = """
@@ -818,9 +822,12 @@ examples:
   - name: Trigger a task run.
     text: >
         az acr task run -n MyTask -r MyRegistry
-  - name: Trigger a task run by overriding the context and file passed during Task create.
+  - name: Trigger a task run by overriding the context and file passed during Task create with a remote repository.
     text: >
         az acr task run -n MyTask -r MyRegistry -c https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile
+  - name: Trigger a task run by overriding the context and file passed during Task create with a local context.
+    text: >
+        az acr task run -n MyTask -r MyRegistry -c . -f Dockerfile
   - name: Trigger a task run by adding or overriding build arguments set during Task create.
     text: |
         az acr task run -n MyTask -r MyRegistry --arg DOCKER_CLI_BASE_IMAGE=docker:18.03.0-ce-git
@@ -902,8 +909,15 @@ examples:
   - name: Update platform for the Build step of your Task to Windows (prev Linux).
     text: >
         az acr task update -n MyTask -r MyRegistry --platform Windows
+  - name: Update task's triggers and context for an Azure Container Registry.
+    text: |
+        az acr task update -n hello-world -r MyRegistry -f Dockerfile \\
+            --commit-trigger-enabled false --pull-request-trigger-enabled true \\
+            -c https://msazure.visualstudio.com/DefaultCollection/Project/_git/Repo#Branch:Folder
   - name: Update a task for an Azure Container Registry. (autogenerated)
-    text: az acr task update --context https://github.com/Azure-Samples/acr-build-helloworld-node.git --image MyImage --name MyTask --registry MyRegistry
+    text: |
+        az acr task update --image MyImage --name MyTask --registry MyRegistry \\
+            --context https://github.com/Azure-Samples/acr-build-helloworld-node.git
     crafted: true
 """
 
@@ -914,6 +928,48 @@ examples:
   - name: Update an existing run to be archived.
     text: >
         az acr task update-run -r MyRegistry --run-id runId --no-archive false
+"""
+
+helps['acr taskrun'] = """
+type: group
+short-summary: Manage taskruns using Azure Container Registries.
+"""
+
+
+helps['acr taskrun delete'] = """
+type: command
+short-summary: Delete a taskrun from an Azure Container Registry.
+examples:
+  - name: Delete a taskrun from an Azure Container Registry.
+    text: >
+        az acr taskrun delete -r MyRegistry -n MyTaskRun -g MyResourceGroup
+"""
+
+helps['acr taskrun list'] = """
+type: command
+short-summary: List the taskruns for an Azure Container Registry.
+examples:
+  - name: List taskruns and show the results in a table.
+    text: >
+        az acr taskrun list -r MyRegistry -g MyResourceGroup -o table
+"""
+
+helps['acr taskrun show'] = """
+type: command
+short-summary: Get the properties of a named taskrun for an Azure Container Registry.
+examples:
+  - name: Get the properties of a taskrun, displaying the results in a table.
+    text: >
+        az acr taskrun show -r MyRegistry -n MyTaskRun -o table
+"""
+
+helps['acr taskrun logs'] = """
+type: command
+short-summary: Show run logs for a particular taskrun.
+examples:
+  - name: Show run logs for a particular taskrun.
+    text: >
+        az acr taskrun logs -r MyRegistry -n MyTaskRun
 """
 
 helps['acr token'] = """
@@ -931,9 +987,10 @@ examples:
   - name: Create a token which has read permissions on hello-world repository.
     text: >
         az acr token create -n myToken -r MyRegistry --repository hello-world content/read metadata/read
-  - name: Create a token without credentials.
-    text: >
-        az acr token create -n myToken -r MyRegistry --repository hello-world content/read --no-passwords
+  - name: Create a token without credentials and with all gateway permissions.
+    text: |
+        az acr token create -n myToken -r MyRegistry --repository hello-world content/read
+          --gateway registry config/read config/write message/read message/write --no-passwords
   - name: Create a token in disabled status.
     text: >
         az acr token create -n MyToken -r MyRegistry --scope-map MyScopeMap --status disabled
@@ -995,6 +1052,63 @@ examples:
     text: >
         az acr token update -n MyToken -r MyRegistry --scope-map MyNewScopeMap
 """
+
+helps['acr agentpool'] = """
+type: group
+short-summary: Manage private Tasks agent pools with Azure Container Registries.
+"""
+
+helps['acr agentpool create'] = """
+type: command
+short-summary: Create an agent pool for an Azure Container Registry.
+examples:
+  - name: Create the agent pool 'MyAgentName' associated with the registry 'MyRegistry'.
+    text: >
+        az acr agentpool create -n MyAgentName -r MyRegistry
+  - name: Create the agent pool 'MyAgentName' with 2 agent count.
+    text: >
+        az acr agentpool create -n MyAgentName -r MyRegistry --count 2
+  - name: Create the agent pool 'MyAgentName' associated with the registry 'MyRegistry' in VNET subnet.
+    text: >
+        az acr agentpool create -n MyAgentName -r MyRegistry --subnet-id /subscriptions/<SubscriptionId>/resourceGroups/<ResourceGroupName>/providers/Microsoft.ClassicNetwork/virtualNetworks/<myNetwork>/subnets/<subNet>
+"""
+
+helps['acr agentpool update'] = """
+type: command
+short-summary: Update an agent pool for an Azure Container Registry.
+examples:
+  - name: Update the agent pool 'MyAgentName' count to 5
+    text: >
+        az acr agentpool update -n MyAgentName -r MyRegistry --count 5
+"""
+
+helps['acr agentpool delete'] = """
+type: command
+short-summary: Delete an agent pool.
+examples:
+  - name: Delete the agent pool 'MyAgentName'.
+    text: >
+        az acr agentpool delete -n MyAgentName -r MyRegistry
+"""
+
+helps['acr agentpool list'] = """
+type: command
+short-summary: List the agent pools for an Azure Container Registry.
+examples:
+  - name: List agent pools and show the result in a table.
+    text: >
+        az acr agentpool list -r MyRegistry -o table
+"""
+
+helps['acr agentpool show'] = """
+type: command
+short-summary: Get the properties of a specified agent pool for an Azure Container Registry.
+examples:
+  - name: Get the properties of an agent pool, displaying the results in a table.
+    text: >
+        az acr agentpool show -n MyAgentName -r MyRegistry -o table
+"""
+
 
 helps['acr update'] = """
 type: command
@@ -1096,3 +1210,233 @@ examples:
     text: >
         az acr webhook update -n MyWebhook -r MyRegistry --status disabled
 """
+
+# region connected-registry
+helps['acr connected-registry'] = """
+type: group
+short-summary: Manage connected registry resources with Azure Container Registries.
+"""
+
+helps['acr connected-registry create'] = """
+type: command
+short-summary: Create a connected registry for an Azure Container Registry.
+examples:
+  - name: Create a connected registry in registry mode with access to repos app/hello-world and service/mycomponent. It'll create a sync token and scope-map with the right repo permissions.
+    text: |
+        az acr connected-registry create --registry mycloudregistry --name myconnectedregistry \\
+            --repository "app/hello-world" "service/mycomponent"
+  - name: Create a mirror connected registry with only read permissions and pass the sync token
+    text: |
+        az acr connected-registry create --registry mycloudregistry  --name mymirroracr \\
+            --mode mirror --parent myconnectedregistry --sync-token mySyncTokenName
+  - name: Create a mirror connected registry with client tokens, that syncs every day at midninght and sync window of 4 hours.
+    text: |
+        az acr connected-registry create -r mycloudregistry -n mymirroracr -p myconnectedregistry \\
+            --repository "app/mycomponent" -m mirror -s "0 12 * * *" -w PT4H \\
+            --client-tokens myTokenName1 myTokenName2
+"""
+
+helps['acr connected-registry delete'] = """
+type: command
+short-summary: Delete a connected registry from Azure Container Registry.
+examples:
+  - name: Delete a mirror connected registry 'myconnectedregistry' from parent registry 'mycloudregistry'.
+    text: >
+        az acr connected-registry delete --registry mycloudregistry --name myconnectedregistry
+  - name: Delete a mirror connected registry 'myconnectedregistry' and it's sync token and scope-map from parent registry 'mycloudregistry'.
+    text: >
+        az acr connected-registry delete -r mycloudregistry -n myconnectedregistry --cleanup
+"""
+
+helps['acr connected-registry deactivate'] = """
+type: command
+short-summary: Deactivate a connected registry from Azure Container Registry.
+examples:
+  - name: Deactivate a connected registry 'myconnectedregistry'.
+    text: >
+        az acr connected-registry deactivate -r mycloudregistry -n myconnectedregistry
+"""
+
+helps['acr connected-registry list'] = """
+type: command
+short-summary: Lists all the connected registries under the current parent registry.
+examples:
+  - name: Lists all the connected registries of 'mycloudregistry' in table format.
+    text: >
+        az acr connected-registry list --registry mycloudregistry --output table
+  - name: Lists only the inmediate children of 'mycloudregistry' in expanded form in a table.
+    text: >
+        az acr connected-registry list --registry mycloudregistry --no-children --output table
+  - name: Lists all the offspring of 'myconnectedregistry' in expanded form inside a table.
+    text: >
+        az acr connected-registry list -r mycloudregistry -p myconnectedregistry --output table
+"""
+
+helps['acr connected-registry list-client-tokens'] = """
+type: command
+short-summary: Lists all the client tokens associated to a specific connected registries.
+examples:
+  - name: Lists all client tokens of 'mymirroracr'.
+    text: >
+        az acr connected-registry list-client-tokens -r mycloudregistry -n mymirroracr -o table
+"""
+
+helps['acr connected-registry show'] = """
+type: command
+short-summary: Show connected registry details.
+examples:
+  - name: Show all the details of the 'mymirroracr' registry in table form.
+    text: >
+        az acr connected-registry show --registry mycloudregistry --name mymirroracr --output table
+"""
+
+helps['acr connected-registry update'] = """
+type: command
+short-summary: Update a connected registry for an Azure Container Registry.
+examples:
+  - name: Update the connected registry client Tokens.
+    text: |
+        az acr connected-registry update --registry mycloudregistry --name myconnectedregistry \\
+            --remove-client-tokens myTokenName1 --add-client-tokens myTokenName2 myTokenName3
+
+  - name: Update the sync and window time of a connected registry.
+    text: |
+        az acr connected-registry update --registry mycloudregistry --name mymirroracr \\
+            --sync-schedule "0 12 * * *" --sync-window PT4H
+"""
+
+helps['acr connected-registry install'] = """
+type: group
+short-summary: Helps to access the necessary information for installing a connected registry. Please see https://aka.ms/acr/connected-registry for more information.
+"""
+
+helps['acr connected-registry install info'] = """
+type: command
+short-summary: Retrieves information required to activate a connected registry.
+examples:
+  - name: Prints the values requiered to activate a connected registry in json format
+    text: >
+        az acr connected-registry install info --registry mycloudregistry --name myconnectedregistry
+"""
+
+helps['acr connected-registry install renew-credentials'] = """
+type: command
+short-summary: Retrieves information required to activate a connected registry, and renews the sync token credentials.
+examples:
+  - name: Prints the values in json format requiered to activate a connected registry and the newly generated sync token credentials.
+    text: >
+        az acr connected-registry install renew-credentials -r mycloudregistry -n myconnectedregistry
+"""
+
+helps['acr connected-registry repo'] = """
+type: command
+short-summary: Updates all the necessary connected registry sync scope maps repository permissions.
+examples:
+  - name: Adds permissions to synchronize images from 'repo1' and 'repo2' to the connected registry 'myconnectedregistry' and its ancestors.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --add repo1 repo2
+  - name: Removes permissions to synchronize images from 'repo1' and 'repo2' to the connected registry 'myconnectedregistry' and its descendants.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --remove repo1 repo2
+  - name: Removes permissions to synchronize 'repo1' images and adds permissions for 'repo2' images.
+    text: >
+        az acr connected-registry repo -r mycloudregistry -n myconnectedregistry --remove repo1 --add repo2
+"""
+# endregion
+
+# region private-endpoint-connection
+# be careful to keep long-summary consistent in this region
+helps['acr private-endpoint-connection'] = """
+type: group
+short-summary: Manage container registry private endpoint connections
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-endpoint-connection approve'] = """
+type: command
+short-summary: Approve a private endpoint connection request for a container registry
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-endpoint-connection reject'] = """
+type: command
+short-summary: Reject a private endpoint connection request for a container registry
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-endpoint-connection list'] = """
+type: command
+short-summary: List all private endpoint connections to a container registry
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-endpoint-connection show'] = """
+type: command
+short-summary:  Show details of a container registry's private endpoint connection
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-endpoint-connection delete'] = """
+type: command
+short-summary:  Delete a private endpoint connection request for a container registry
+long-summary: To create a private endpoint connection use "az network private-endpoint create". For more information see https://aka.ms/acr/private-link
+"""
+
+helps['acr private-link-resource'] = """
+type: group
+short-summary: Manage registry private link resources.
+"""
+
+helps['acr private-link-resource list'] = """
+type: command
+short-summary: list the private link resources supported for a registry
+"""
+# endregion
+
+# region encryption
+helps['acr encryption'] = """
+type: group
+short-summary: Manage container registry encryption
+long-summary: For more information, see http://aka.ms/acr/cmk
+"""
+
+helps['acr encryption rotate-key'] = """
+type: command
+short-summary: Rotate (update) the container registry's encryption key
+long-summary: For more information, see http://aka.ms/acr/cmk
+"""
+
+helps['acr encryption show'] = """
+type: command
+short-summary: Show the container registry's encryption details
+long-summary: For more information, see http://aka.ms/acr/cmk
+"""
+# endregion
+
+# region identity
+helps['acr identity'] = """
+type: group
+short-summary: Manage service (managed) identities for a container registry
+"""
+
+helps['acr identity assign'] = """
+type: command
+short-summary: Assign a managed identity to a container registry
+long-summary: Managed identities can be user-assigned or system-assigned
+"""
+
+helps['acr identity remove'] = """
+type: command
+short-summary: Remove a managed identity from a container registry
+"""
+
+helps['acr identity show'] = """
+type: command
+short-summary: Show the container registry's identity details
+"""
+
+helps['acr show-endpoints'] = """
+type: command
+short-summary: Display registry endpoints
+"""
+# endregion

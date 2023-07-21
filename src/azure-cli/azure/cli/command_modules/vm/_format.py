@@ -83,13 +83,17 @@ def transform_sku_for_table_output(skus):
             order_dict['zones'] = ','.join(sorted(k['locationInfo'][0].get('zones', [])))
         else:
             order_dict['zones'] = 'None'
-        if k['capabilities']:
-            temp = ['{}={}'.format(pair['name'], pair['value']) for pair in k['capabilities']]
-            order_dict['capabilities'] = str(temp) if len(temp) > 1 else temp[0]
-        else:
-            order_dict['capabilities'] = 'None'
         if k['restrictions']:
-            reasons = [x['reasonCode'] for x in k['restrictions']]
+            reasons = []
+            for x in k['restrictions']:
+                reason = x['reasonCode']
+                if x['type']:
+                    reason += ', type: ' + x['type']
+                if x['restrictionInfo']['locations']:
+                    reason += ', locations: ' + ','.join(x['restrictionInfo']['locations'])
+                if x['restrictionInfo']['zones']:
+                    reason += ', zones: ' + ','.join(x['restrictionInfo']['zones'])
+                reasons.append(reason)
             order_dict['restrictions'] = str(reasons) if len(reasons) > 1 else reasons[0]
         else:
             order_dict['restrictions'] = 'None'
@@ -123,3 +127,31 @@ def transform_vm_encryption_show_table_output(result):
         return OrderedDict([("status", status_dict.get("displayStatus", "N/A")),
                             ("message", status_dict.get("message", "N/A"))])
     return result
+
+
+def transform_log_analytics_query_output(result):
+    from collections import OrderedDict
+    tables_output = []
+
+    def _transform_query_output(table):
+        columns = table.columns
+        name = table.name
+        rows = table.rows
+
+        column_names = []
+        table_output = []
+        for column in columns:
+            column_names.append(column.name)
+        for row in rows:
+            item = OrderedDict()
+            item['TableName'] = name
+            for index, value in enumerate(row):
+                item[column_names[index]] = str(value)
+            table_output.append(item)
+        return table_output
+
+    for table in result.tables:
+        table_output = _transform_query_output(table)
+        tables_output.extend(table_output)
+
+    return tables_output

@@ -3,9 +3,9 @@
 # Licensed under the MIT License. See License.txt in the project root for license information.
 #---------------------------------------------------------------------------------------------
 
-ARG PYTHON_VERSION="3.6.4"
+ARG PYTHON_VERSION="3.8.9"
 
-FROM python:${PYTHON_VERSION}-alpine3.7
+FROM python:${PYTHON_VERSION}-alpine3.13
 
 ARG CLI_VERSION
 
@@ -23,7 +23,7 @@ LABEL maintainer="Microsoft" \
       org.label-schema.usage="https://docs.microsoft.com/cli/azure/install-az-cli2#docker" \
       org.label-schema.build-date=$BUILD_DATE \
       org.label-schema.vcs-url="https://github.com/Azure/azure-cli.git" \
-      org.label-schema.docker.cmd="docker run -v \${HOME}/.azure:/root/.azure -it microsoft/azure-cli:$CLI_VERSION"
+      org.label-schema.docker.cmd="docker run -v \${HOME}/.azure:/root/.azure -it mcr.microsoft.com/azure-cli:$CLI_VERSION"
 
 # bash gcc make openssl-dev libffi-dev musl-dev - dependencies required for CLI
 # openssh - included for ssh-keygen
@@ -34,9 +34,10 @@ LABEL maintainer="Microsoft" \
 # pip wheel - required for CLI packaging
 # jmespath-terminal - we include jpterm as a useful tool
 # libintl and icu-libs - required by azure devops artifact (az extension add --name azure-devops)
-RUN apk add --no-cache bash openssh ca-certificates jq curl openssl git zip \
+RUN apk add --no-cache bash openssh ca-certificates jq curl openssl perl git zip \
  && apk add --no-cache --virtual .build-deps gcc make openssl-dev libffi-dev musl-dev linux-headers \
- && apk add --no-cache libintl icu-libs \
+ && apk add --no-cache libintl icu-libs libc6-compat \
+ && apk add --no-cache bash-completion \
  && update-ca-certificates
 
 ARG JP_VERSION="0.1.3"
@@ -50,7 +51,6 @@ COPY . /azure-cli
 
 # 1. Build packages and store in tmp dir
 # 2. Install the cli and the other command modules that weren't included
-# 3. Temporary fix - install azure-nspkg to remove import of pkg_resources in azure/__init__.py (to improve performance)
 RUN ./scripts/install_full.sh \
  && cat /azure-cli/az.completion > ~/.bashrc \
  && runDeps="$( \
@@ -68,4 +68,5 @@ WORKDIR /
 RUN rm -rf ./azure-cli && \
     dos2unix /root/.bashrc /usr/local/bin/az
 
+ENV AZ_INSTALLER=DOCKER
 CMD bash

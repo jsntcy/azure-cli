@@ -9,49 +9,56 @@ import os
 from knack.util import CLIError
 
 from azure.cli.command_modules.ams._sdk_utils import (get_sdk_model_class, get_stand_alone_presets)
+from azure.cli.command_modules.ams._utils import show_resource_not_found_message
 
-from azure.mgmt.media.models import (StandardEncoderPreset, TransformOutput,
-                                     BuiltInStandardEncoderPreset, EncoderNamedPreset)
+from azure.mgmt.media.models import (BuiltInStandardEncoderPreset, EncoderNamedPreset,
+                                     OnErrorType, Priority,
+                                     StandardEncoderPreset, TransformOutput)
 
 
 def create_transform(client, account_name, resource_group_name, transform_name, preset,
-                     insights_to_extract=None, audio_language=None, on_error=None,
-                     relative_priority=None, description=None):
+                     insights_to_extract=None, video_analysis_mode=None, audio_language=None,
+                     audio_analysis_mode=None, on_error=None, relative_priority=None,
+                     description=None, resolution=None):
 
-    outputs = [build_transform_output(preset, insights_to_extract, audio_language,
-                                      on_error, relative_priority)]
+    outputs = [build_transform_output(preset, insights_to_extract, video_analysis_mode, audio_language,
+                                      audio_analysis_mode, on_error, relative_priority, resolution)]
 
     return client.create_or_update(resource_group_name, account_name, transform_name,
                                    outputs, description)
 
 
 def add_transform_output(client, account_name, resource_group_name, transform_name, preset,
-                         insights_to_extract=None, audio_language=None, on_error=None,
-                         relative_priority=None):
+                         insights_to_extract=None, video_analysis_mode=None, audio_language=None,
+                         audio_analysis_mode=None, on_error=None, relative_priority=None, resolution=None):
 
     transform = client.get(resource_group_name, account_name, transform_name)
 
     if not transform:
-        raise CLIError('The transform resource was not found.')
+        show_resource_not_found_message(resource_group_name, account_name, 'transforms', transform_name)
 
-    transform.outputs.append(build_transform_output(preset, insights_to_extract, audio_language,
-                                                    on_error, relative_priority))
+    transform.outputs.append(build_transform_output(preset, insights_to_extract, video_analysis_mode,
+                                                    audio_language, audio_analysis_mode, on_error,
+                                                    relative_priority, resolution))
 
     return client.create_or_update(resource_group_name, account_name, transform_name, transform.outputs)
 
 
-def build_transform_output(preset, insights_to_extract, audio_language, on_error,
-                           relative_priority):
-    from azure.mgmt.media.models import (OnErrorType, Priority)
+def build_transform_output(preset, insights_to_extract, video_analysis_mode,
+                           audio_language, audio_analysis_mode, on_error, relative_priority, resolution):
 
-    validate_arguments(preset, insights_to_extract, audio_language)
+    validate_arguments(preset, insights_to_extract, audio_language, resolution)
     transform_output = get_transform_output(preset)
 
     if preset == 'VideoAnalyzer':
         transform_output.preset.audio_language = audio_language
         transform_output.preset.insights_to_extract = insights_to_extract
+        transform_output.preset.mode = video_analysis_mode
     elif preset == 'AudioAnalyzer':
         transform_output.preset.audio_language = audio_language
+        transform_output.preset.mode = audio_analysis_mode
+    elif preset == 'FaceDetector':
+        transform_output.preset.resolution = resolution
 
     if on_error is not None:
         transform_output.on_error = OnErrorType(on_error)
@@ -62,13 +69,16 @@ def build_transform_output(preset, insights_to_extract, audio_language, on_error
     return transform_output
 
 
-def validate_arguments(preset, insights_to_extract, audio_language):
+def validate_arguments(preset, insights_to_extract, audio_language, resolution):
 
     if insights_to_extract and preset != 'VideoAnalyzer':
         raise CLIError("insights-to-extract argument only works with VideoAnalyzer preset type.")
 
-    if audio_language and preset not in get_stand_alone_presets():
+    if audio_language and preset != 'VideoAnalyzer' and preset != 'AudioAnalyzer':
         raise CLIError("audio-language argument only works with VideoAnalyzer or AudioAnalyzer preset types.")
+
+    if resolution and preset != 'FaceDetector':
+        raise CLIError("resolution argument only works with FaceDetector preset type.")
 
 
 def remove_transform_output(client, account_name, resource_group_name, transform_name, output_index):
@@ -100,7 +110,6 @@ def update_transform(instance, description=None):
 
 def get_transform_output(preset):
     transform_preset = None
-
     try:
         if os.path.exists(preset):
             transform_preset = parse_standard_encoder_preset(preset)
@@ -127,3 +136,11 @@ def parse_standard_encoder_preset(custom_preset_path):
     except:
         raise CLIError("Couldn't find a valid custom preset JSON definition in '{}'. Check the schema is correct."
                        .format(custom_preset_path))
+
+
+def get_transform(client, account_name, resource_group_name, transform_name):
+    transform = client.get(resource_group_name, account_name, transform_name)
+    if not transform:
+        show_resource_not_found_message(resource_group_name, account_name, 'transforms', transform_name)
+
+    return transform
