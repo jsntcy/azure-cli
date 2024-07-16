@@ -1,0 +1,145 @@
+{
+    "resourceType": "networkManagers/routingConfigurations",
+    "apiVersion": "2023-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config"
+    },
+    "commands": [
+        {
+            "name": "az network manager routing-config delete",
+            "description": "Delete a network manager routing configuration.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config#az-network-manager-routing-config-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a network manager routing configuration.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager routing-config show",
+            "description": "Get a network manager routing configuration.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config#az-network-manager-routing-config-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a network manager routing configuration.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager routing-config rule-collection list",
+            "description": "List all the rule collections in a routing configuration, in a paginated format.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config/rule-collection#az-network-manager-routing-config-rule-collection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the rule collections.",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

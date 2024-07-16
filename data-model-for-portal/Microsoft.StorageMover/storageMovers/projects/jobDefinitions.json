@@ -1,0 +1,256 @@
+{
+    "resourceType": "storageMovers/projects/jobDefinitions",
+    "apiVersion": "2024-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition"
+    },
+    "commands": [
+        {
+            "name": "az storage-mover job-definition delete",
+            "description": "Deletes a Job Definition resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition#az-storage-mover-job-definition-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--job-definition-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-definition delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover job-definition show",
+            "description": "Gets a Job Definition resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition#az-storage-mover-job-definition-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--job-definition-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-definition show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover job-definition start-job",
+            "description": "Requests an Agent to start a new instance of this Job Definition, generating a new Job Run resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/startJob",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition#az-storage-mover-job-definition-start-job"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--job-definition-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-definition start-job",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--job-definition-name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover job-definition stop-job",
+            "description": "Requests the Agent of any active instance of this Job Definition to stop.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/stopJob",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition#az-storage-mover-job-definition-stop-job"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--job-definition-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-definition stop-job",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--job-definition-name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover job-run list",
+            "description": "Lists all Job Runs in a Job Definition.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-run#az-storage-mover-job-run-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--job-definition-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-run list",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--job-definition-name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

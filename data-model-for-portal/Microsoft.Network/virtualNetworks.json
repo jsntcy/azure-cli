@@ -1,39 +1,40 @@
 {
     "resourceType": "virtualNetworks",
-    "apiVersion": "2022-01-01",
+    "apiVersion": "2022-07-01",
     "learnMore": {
-        "url": "https://docs.microsoft.com/cli/azure/network/vnet"
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver"
     },
     "commands": [
         {
-            "name": "az network vnet delete",
-            "description": "Delete a virtual network.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-            "confirmation": true,
+            "name": "az dns-resolver list-by-virtual-network",
+            "description": "Lists DNS resolver resource IDs linked to a virtual network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsResolvers",
+            "confirmation": false,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-delete"
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver#az-dns-resolver-list-by-virtual-network"
                 },
                 "parameterSets": [
                     {
                         "parameters": [
                             "[--resource-group]",
                             "[--subscription]",
-                            "[--name]"
+                            "[--virtual-network-name]",
+                            "[--top]"
                         ]
                     }
                 ]
             },
             "examples": [
                 {
-                    "description": "Delete a virtual network.",
+                    "description": "List DNS resolvers by virtual network",
                     "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
-                            "name": "--name",
+                            "name": "--virtual-network-name",
                             "value": "[path.virtualNetworkName]"
                         },
                         {
@@ -45,152 +46,40 @@
             ]
         },
         {
-            "name": "az network vnet list",
-            "description": "List virtual networks.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks",
+            "name": "az dns-resolver forwarding-ruleset list-by-virtual-network",
+            "description": "Lists DNS forwarding ruleset resource IDs attached to a virtual network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/listDnsForwardingRulesets",
             "confirmation": false,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-list"
-                },
-                "parameterSets": [
-                    {
-                        "parameters": [
-                            "[--resource-group]",
-                            "[--subscription]"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                {
-                    "description": "List all virtual networks in a resource group.",
-                    "parameters": [
-                        {
-                            "name": "--resource-group",
-                            "value": "[path.resourceGroupName]"
-                        },
-                        {
-                            "name": "--subscription",
-                            "value": "[path.subscriptionId]"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "az network vnet show",
-            "description": "Get the details of a virtual network.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}",
-            "confirmation": false,
-            "help": {
-                "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/vnet#az-network-vnet-show"
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/forwarding-ruleset#az-dns-resolver-forwarding-ruleset-list-by-virtual-network"
                 },
                 "parameterSets": [
                     {
                         "parameters": [
                             "[--resource-group]",
                             "[--subscription]",
-                            "[--name]",
-                            "[--expand]"
+                            "[--virtual-network-name]",
+                            "[--top]"
                         ]
                     }
                 ]
             },
             "examples": [
                 {
-                    "description": "Get details for MyVNet.",
+                    "description": "Lists DNS forwarding ruleset resource IDs attached to a virtual network.",
                     "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
-                            "name": "--name",
-                            "value": "[path.virtualNetworkName]"
-                        },
-                        {
                             "name": "--subscription",
                             "value": "[path.subscriptionId]"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "az network vnet peering list",
-            "description": "List peerings.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/virtualNetworkPeerings",
-            "confirmation": false,
-            "help": {
-                "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/vnet/peering#az-network-vnet-peering-list"
-                },
-                "parameterSets": [
-                    {
-                        "parameters": [
-                            "[--resource-group]",
-                            "[--subscription]",
-                            "[--vnet-name]"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                {
-                    "description": "List all peerings of a specified virtual network.",
-                    "parameters": [
-                        {
-                            "name": "--resource-group",
-                            "value": "[path.resourceGroupName]"
                         },
                         {
-                            "name": "--vnet-name",
+                            "name": "--virtual-network-name",
                             "value": "[path.virtualNetworkName]"
-                        },
-                        {
-                            "name": "--subscription",
-                            "value": "[path.subscriptionId]"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "az network vnet subnet list",
-            "description": "List the subnets in a virtual network.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualNetworks/{virtualNetworkName}/subnets",
-            "confirmation": false,
-            "help": {
-                "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/vnet/subnet#az-network-vnet-subnet-list"
-                },
-                "parameterSets": [
-                    {
-                        "parameters": [
-                            "[--resource-group]",
-                            "[--subscription]",
-                            "[--vnet-name]"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                {
-                    "description": "List the subnets in a virtual network.",
-                    "parameters": [
-                        {
-                            "name": "--resource-group",
-                            "value": "[path.resourceGroupName]"
-                        },
-                        {
-                            "name": "--vnet-name",
-                            "value": "[path.virtualNetworkName]"
-                        },
-                        {
-                            "name": "--subscription",
-                            "value": "[path.subscriptionId]"
                         }
                     ]
                 }

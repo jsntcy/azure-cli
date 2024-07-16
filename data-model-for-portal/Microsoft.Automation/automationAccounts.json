@@ -1,0 +1,293 @@
+{
+    "resourceType": "automationAccounts",
+    "apiVersion": "2023-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/account"
+    },
+    "commands": [
+        {
+            "name": "az automation account list-keys",
+            "description": "Retrieve the automation keys for an account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/listKeys",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/account#az-automation-account-list-keys"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve the automation keys",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation account show-linked-workspace",
+            "description": "Get the linked workspace for the account id.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/linkedWorkspace",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/account#az-automation-account-show-linked-workspace"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the linked workspace id",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation configuration list",
+            "description": "List a list of configurations.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/configuration#az-automation-configuration-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--filter]",
+                            "[--inlinecount]",
+                            "[--skip]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all DSC Configurations",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation hrwg list",
+            "description": "List a list of hybrid runbook worker groups.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg#az-automation-hrwg-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List a list of hybrid runbook worker groups.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation python3-package list",
+            "description": "Retrieve a list of python 3 packages.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/python3-package#az-automation-python3-package-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all Custom Python3Package in AutomationAccount",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation runtime-environment list",
+            "description": "List a list of RuntimeEnvironments.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/runtime-environment#az-automation-runtime-environment-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Runtime Environments",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation source-control list",
+            "description": "List a list of source controls.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control#az-automation-source-control-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List source control",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

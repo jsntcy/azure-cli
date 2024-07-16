@@ -1,0 +1,138 @@
+{
+    "resourceType": "automationRules",
+    "apiVersion": "2022-06-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sentinel/automation-rule"
+    },
+    "commands": [
+        {
+            "name": "az sentinel automation-rule delete",
+            "description": "Delete the automation rule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/automation-rule#az-sentinel-automation-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--automation-rule-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the automation rule.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.automationRuleId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sentinel automation-rule list",
+            "description": "Get all automation rules.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/automation-rule#az-sentinel-automation-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get all automation rules.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sentinel automation-rule show",
+            "description": "Get the automation rule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/automationRules/{automationRuleId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/automation-rule#az-sentinel-automation-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--automation-rule-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the automation rule.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.automationRuleId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

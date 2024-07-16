@@ -1,0 +1,99 @@
+{
+    "resourceType": "vaults/replicationRecoveryPlans",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/recovery-plan"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery recovery-plan delete",
+            "description": "Delete a recovery plan.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/recovery-plan#az-site-recovery-recovery-plan-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--recovery-plan-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "recovery-plan delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.recoveryPlanName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery recovery-plan show",
+            "description": "Get the details of the recovery plan.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationRecoveryPlans/{recoveryPlanName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/recovery-plan#az-site-recovery-recovery-plan-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--recovery-plan-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "recovery-plan show",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.recoveryPlanName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

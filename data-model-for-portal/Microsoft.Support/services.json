@@ -1,0 +1,67 @@
+{
+    "resourceType": "services",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/services"
+    },
+    "commands": [
+        {
+            "name": "az support services show",
+            "description": "Get a specific Azure service for support ticket creation.",
+            "path": "/providers/Microsoft.Support/services/{serviceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/services#az-support-services-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--service-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets details of Azure service.",
+                    "parameters": [
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support services problem-classifications list",
+            "description": "List all the problem classifications (categories) available for a specific Azure service. Always use the service and problem classifications obtained programmatically. This practice ensures that you always have the most recent set of service and problem classification Ids.",
+            "path": "/providers/Microsoft.Support/services/{serviceName}/problemClassifications",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/services/problem-classifications#az-support-services-problem-classifications-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--service-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets list of problem classifications for a service for which a support ticket can be created.",
+                    "parameters": [
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

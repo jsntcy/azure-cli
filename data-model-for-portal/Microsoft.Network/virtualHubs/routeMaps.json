@@ -1,0 +1,143 @@
+{
+    "resourceType": "virtualHubs/routeMaps",
+    "apiVersion": "2022-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/vhub/route-map"
+    },
+    "commands": [
+        {
+            "name": "az network vhub route-map delete",
+            "description": "Delete a route map.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/route-map#az-network-vhub-route-map-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--route-map-name]",
+                            "[--subscription]",
+                            "[--vhub-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete route map",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.routeMapName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vhub-name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub route-map show",
+            "description": "Show the details of a route map.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/route-map#az-network-vhub-route-map-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--route-map-name]",
+                            "[--subscription]",
+                            "[--vhub-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Sho a route map",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.routeMapName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vhub-name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub route-map rule list",
+            "description": "List route map rules",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps/{routeMapName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/route-map/rule#az-network-vhub-route-map-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--route-map-name]",
+                            "[--subscription]",
+                            "[--vhub-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List route map rules",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--route-map-name",
+                            "value": "[path.routeMapName]"
+                        },
+                        {
+                            "name": "--vhub-name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

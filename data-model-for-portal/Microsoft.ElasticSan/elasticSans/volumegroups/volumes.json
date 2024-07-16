@@ -1,0 +1,115 @@
+{
+    "resourceType": "elasticSans/volumegroups/volumes",
+    "apiVersion": "2023-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume"
+    },
+    "commands": [
+        {
+            "name": "az elastic-san volume delete",
+            "description": "Delete a Volume.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume#az-elastic-san-volume-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--x-ms-delete-snapshots]",
+                            "[--x-ms-force-delete]",
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--volume-group]",
+                            "[--volume-group-name]",
+                            "[--name]",
+                            "[--volume-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Volume.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--volume-group",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.volumeName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic-san volume show",
+            "description": "Get a Volume.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes/{volumeName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume#az-elastic-san-volume-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--volume-group]",
+                            "[--volume-group-name]",
+                            "[--name]",
+                            "[--volume-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a Volume.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--volume-group",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.volumeName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,53 @@
+{
+    "resourceType": "organizations/apiKeys",
+    "apiVersion": "2024-02-13",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/confluent/organization/api-key"
+    },
+    "commands": [
+        {
+            "name": "az confluent organization api-key delete",
+            "description": "Delete API key of a kafka or schema registry cluster",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/apiKeys/{apiKeyId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization/api-key#az-confluent-organization-api-key-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--api-key-id]",
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete API key of a kafka or schema registry cluster",
+                    "parameters": [
+                        {
+                            "name": "--api-key-id",
+                            "value": "[path.apiKeyId]"
+                        },
+                        {
+                            "name": "--organization-name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

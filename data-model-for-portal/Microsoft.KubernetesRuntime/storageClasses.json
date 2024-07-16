@@ -1,0 +1,106 @@
+{
+    "resourceType": "storageClasses",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/storage-class"
+    },
+    "commands": [
+        {
+            "name": "az k8s-runtime storage-class delete",
+            "description": "Delete a StorageClass",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/storage-class#az-k8s-runtime-storage-class-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]",
+                            "[--storage-class-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a storage class",
+                    "parameters": [
+                        {
+                            "name": "--storage-class-name",
+                            "value": "[path.storageClassName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime storage-class list",
+            "description": "List StorageClass resources by parent",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/storage-class#az-k8s-runtime-storage-class-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all storage classes in a cluster",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime storage-class show",
+            "description": "Get a StorageClass",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/storageClasses/{storageClassName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/storage-class#az-k8s-runtime-storage-class-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]",
+                            "[--storage-class-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a storage class",
+                    "parameters": [
+                        {
+                            "name": "--storage-class-name",
+                            "value": "[path.storageClassName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

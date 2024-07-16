@@ -1,0 +1,109 @@
+{
+    "resourceType": "namespaces/disasterRecoveryConfigs/authorizationRules",
+    "apiVersion": "2022-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/servicebus/georecovery-alias/authorization-rule"
+    },
+    "commands": [
+        {
+            "name": "az servicebus georecovery-alias authorization-rule show",
+            "description": "Get an authorization rule for a namespace by rule name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/georecovery-alias/authorization-rule#az-servicebus-georecovery-alias-authorization-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--alias]",
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an authorization rule for a namespace by rule name.",
+                    "parameters": [
+                        {
+                            "name": "--alias",
+                            "value": "[path.alias]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus georecovery-alias authorization-rule keys list",
+            "description": "Gets the primary and secondary connection strings for the namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs/{alias}/authorizationRules/{authorizationRuleName}/listKeys",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/georecovery-alias/authorization-rule/keys#az-servicebus-georecovery-alias-authorization-rule-keys-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--alias]",
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets the primary and secondary connection strings for the namespace.",
+                    "parameters": [
+                        {
+                            "name": "--alias",
+                            "value": "[path.alias]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

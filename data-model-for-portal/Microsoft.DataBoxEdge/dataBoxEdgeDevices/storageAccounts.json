@@ -1,0 +1,143 @@
+{
+    "resourceType": "dataBoxEdgeDevices/storageAccounts",
+    "apiVersion": "2023-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account"
+    },
+    "commands": [
+        {
+            "name": "az databoxedge device storage-account delete",
+            "description": "Delete storage account on the Data Box Edge/Data Box Gateway device.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account#az-databoxedge-device-storage-account-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--storage-account-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete storage account",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.storageAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az databoxedge device storage-account show",
+            "description": "Show storage account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account#az-databoxedge-device-storage-account-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--storage-account-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show storage account",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.storageAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az databoxedge device storage-account container list",
+            "description": "List all the containers of a storage account in a Data Box Edge/Data Box Gateway device.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account/container#az-databoxedge-device-storage-account-container-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--resource-group]",
+                            "[--storage-account-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List container",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--storage-account-name",
+                            "value": "[path.storageAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

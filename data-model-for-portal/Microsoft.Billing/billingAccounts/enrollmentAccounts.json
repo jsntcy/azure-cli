@@ -1,0 +1,43 @@
+{
+    "resourceType": "billingAccounts/enrollmentAccounts",
+    "apiVersion": "2019-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/enrollment-account/billing-permission"
+    },
+    "commands": [
+        {
+            "name": "az billing enrollment-account billing-permission list",
+            "description": "List the billing permissions the caller has on an enrollment account.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/enrollmentAccounts/{enrollmentAccountName}/billingPermissions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/enrollment-account/billing-permission#az-billing-enrollment-account-billing-permission-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]",
+                            "[--enrollment-account-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the billing permissions the caller has on an enrollment account.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        },
+                        {
+                            "name": "--enrollment-account-name",
+                            "value": "[path.enrollmentAccountName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

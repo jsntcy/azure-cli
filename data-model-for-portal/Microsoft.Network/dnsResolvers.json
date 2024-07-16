@@ -1,0 +1,205 @@
+{
+    "resourceType": "dnsResolvers",
+    "apiVersion": "2022-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver"
+    },
+    "commands": [
+        {
+            "name": "az dns-resolver delete",
+            "description": "Deletes a DNS resolver. WARNING: This operation cannot be undone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver#az-dns-resolver-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--name]",
+                            "[--dns-resolver-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver list",
+            "description": "Lists DNS resolvers in all resource groups of a subscription.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver#az-dns-resolver-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List DNS resolvers by resource group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver show",
+            "description": "Gets properties of a DNS resolver.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver#az-dns-resolver-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--dns-resolver-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver inbound-endpoint list",
+            "description": "Lists inbound endpoints for a DNS resolver.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/inbound-endpoint#az-dns-resolver-inbound-endpoint-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dns-resolver-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Lists inbound endpoints for a DNS resolver.",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver outbound-endpoint list",
+            "description": "Lists outbound endpoints for a DNS resolver.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/outbound-endpoint#az-dns-resolver-outbound-endpoint-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dns-resolver-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Lists outbound endpoints for a DNS resolver.",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

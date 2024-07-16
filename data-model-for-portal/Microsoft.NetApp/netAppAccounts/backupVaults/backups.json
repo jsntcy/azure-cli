@@ -1,0 +1,109 @@
+{
+    "resourceType": "netAppAccounts/backupVaults/backups",
+    "apiVersion": "2022-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/netappfiles/account/backup-vault/backup"
+    },
+    "commands": [
+        {
+            "name": "az netappfiles account backup-vault backup delete",
+            "description": "Delete a Backup under the Backup Vault",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/account/backup-vault/backup#az-netappfiles-account-backup-vault-backup-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--name]",
+                            "[--backup-name]",
+                            "[--backup-vault-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Backup under the Backup Vault",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.backupName]"
+                        },
+                        {
+                            "name": "--backup-vault-name",
+                            "value": "[path.backupVaultName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az netappfiles account backup-vault backup show",
+            "description": "Get the specified Backup under Backup Vault.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults/{backupVaultName}/backups/{backupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/account/backup-vault/backup#az-netappfiles-account-backup-vault-backup-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--name]",
+                            "[--backup-name]",
+                            "[--backup-vault-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the specified Backup under Backup Vault.",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.backupName]"
+                        },
+                        {
+                            "name": "--backup-vault-name",
+                            "value": "[path.backupVaultName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,100 @@
+{
+    "resourceType": "dnsForwardingRulesets/forwardingRules",
+    "apiVersion": "2022-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver/forwarding-rule"
+    },
+    "commands": [
+        {
+            "name": "az dns-resolver forwarding-rule delete",
+            "description": "Deletes a forwarding rule in a DNS forwarding ruleset. WARNING: This operation cannot be undone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/forwarding-rule#az-dns-resolver-forwarding-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--ruleset-name]",
+                            "[--name]",
+                            "[--forwarding-rule-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete forwarding rule in a DNS forwarding ruleset",
+                    "parameters": [
+                        {
+                            "name": "--ruleset-name",
+                            "value": "[path.dnsForwardingRulesetName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.forwardingRuleName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver forwarding-rule show",
+            "description": "Gets properties of a forwarding rule in a DNS forwarding ruleset.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/forwardingRules/{forwardingRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/forwarding-rule#az-dns-resolver-forwarding-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--ruleset-name]",
+                            "[--name]",
+                            "[--forwarding-rule-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve forwarding rule in a DNS forwarding ruleset",
+                    "parameters": [
+                        {
+                            "name": "--ruleset-name",
+                            "value": "[path.dnsForwardingRulesetName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.forwardingRuleName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

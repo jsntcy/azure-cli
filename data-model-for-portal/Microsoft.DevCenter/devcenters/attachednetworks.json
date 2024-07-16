@@ -1,0 +1,55 @@
+{
+    "resourceType": "devcenters/attachednetworks",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/attached-network"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin attached-network delete",
+            "description": "Delete an attached network connection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/attachednetworks/{attachedNetworkConnectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/attached-network#az-devcenter-admin-attached-network-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--attached-network-connection-name]",
+                            "[--dev-center]",
+                            "[--dev-center-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.attachedNetworkConnectionName]"
+                        },
+                        {
+                            "name": "--dev-center",
+                            "value": "[path.devCenterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

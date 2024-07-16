@@ -1,0 +1,91 @@
+{
+    "resourceType": "VMwareSites",
+    "apiVersion": "2020-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/vmware-site/machine"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery vmware-site machine list",
+            "description": "List to get machine.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/machines",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/vmware-site/machine#az-site-recovery-vmware-site-machine-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--site-name]",
+                            "[--subscription]",
+                            "[--continuation-token]",
+                            "[--filter]",
+                            "[--top]",
+                            "[--total-record-count]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "vmware-site machine list for v2arcm",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--site-name",
+                            "value": "[path.siteName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery vmware-site run-as-account list",
+            "description": "List to get run as accounts.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OffAzure/VMwareSites/{siteName}/runAsAccounts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/vmware-site/run-as-account#az-site-recovery-vmware-site-run-as-account-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--site-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "vmware-site run-as-account list",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--site-name",
+                            "value": "[path.siteName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

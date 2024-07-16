@@ -1,18 +1,18 @@
 {
     "resourceType": "locations",
-    "apiVersion": "2022-11-01",
+    "apiVersion": "2022-09-04",
     "learnMore": {
-        "url": "https://docs.microsoft.com/cli/azure/vm"
+        "url": "https://docs.microsoft.com/cli/azure/cloud-service/os-family"
     },
     "commands": [
         {
-            "name": "az vm list-sizes",
-            "description": "List available sizes for VMs.",
-            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/vmSizes",
+            "name": "az cloud-service os-family list",
+            "description": "List all guest operating system families available to be specified in the XML service configuration (.cscfg) for a cloud service.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/cloudServiceOsFamilies",
             "confirmation": false,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/vm#az-vm-list-sizes"
+                    "url": "https://docs.microsoft.com/cli/azure/cloud-service/os-family#az-cloud-service-os-family-list"
                 },
                 "parameterSets": [
                     {
@@ -25,7 +25,41 @@
             },
             "examples": [
                 {
-                    "description": "List the available VM sizes in the West US region.",
+                    "description": "List os-family",
+                    "parameters": [
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cloud-service os-version list",
+            "description": "List all guest operating system versions available to be specified in the XML service configuration (.cscfg) for a cloud service.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/cloudServiceOsVersions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cloud-service/os-version#az-cloud-service-os-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List os version",
                     "parameters": [
                         {
                             "name": "--location",

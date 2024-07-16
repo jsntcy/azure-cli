@@ -1,0 +1,48 @@
+{
+    "resourceType": "threatIntelligence/metrics",
+    "apiVersion": "2022-06-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sentinel/threat-indicator/metric"
+    },
+    "commands": [
+        {
+            "name": "az sentinel threat-indicator metric list",
+            "description": "Get threat intelligence indicators metrics (Indicators counts by Type, Threat Type, Source).",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/threatIntelligence/main/metrics",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/threat-indicator/metric#az-sentinel-threat-indicator-metric-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get threat intelligence indicators metrics (Indicators counts by Type, Threat Type, Source).",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

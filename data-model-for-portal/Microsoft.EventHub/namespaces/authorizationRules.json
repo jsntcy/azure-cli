@@ -1,0 +1,144 @@
+{
+    "resourceType": "namespaces/authorizationRules",
+    "apiVersion": "2023-01-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/authorization-rule"
+    },
+    "commands": [
+        {
+            "name": "az eventhubs namespace authorization-rule delete",
+            "description": "Delete an AuthorizationRule for a Namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/authorization-rule#az-eventhubs-namespace-authorization-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Deletes the Authorizationrule of the namespace",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az eventhubs namespace authorization-rule show",
+            "description": "Get an AuthorizationRule for a Namespace by rule name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/authorization-rule#az-eventhubs-namespace-authorization-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an AuthorizationRule for a Namespace by rule name.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az eventhubs namespace authorization-rule keys list",
+            "description": "Gets the primary and secondary connection strings for the Namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/authorizationRules/{authorizationRuleName}/listKeys",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/authorization-rule/keys#az-eventhubs-namespace-authorization-rule-keys-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Shows the connection strings of Authorizationrule for the namespace.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

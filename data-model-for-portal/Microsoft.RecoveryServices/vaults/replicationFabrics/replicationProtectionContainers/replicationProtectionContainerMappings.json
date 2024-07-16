@@ -1,0 +1,121 @@
+{
+    "resourceType": "vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/protection-container/mapping"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery protection-container mapping delete",
+            "description": "Delete operation to purge(force delete) a protection container mapping.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/protection-container/mapping#az-site-recovery-protection-container-mapping-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--mapping-name]",
+                            "[--protection-container]",
+                            "[--protection-container-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "protection-container mapping delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.mappingName]"
+                        },
+                        {
+                            "name": "--protection-container",
+                            "value": "[path.protectionContainerName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery protection-container mapping show",
+            "description": "Get the details of a protection container mapping.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectionContainerMappings/{mappingName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/protection-container/mapping#az-site-recovery-protection-container-mapping-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--mapping-name]",
+                            "[--protection-container]",
+                            "[--protection-container-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "protection-container mapping show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.mappingName]"
+                        },
+                        {
+                            "name": "--protection-container",
+                            "value": "[path.protectionContainerName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

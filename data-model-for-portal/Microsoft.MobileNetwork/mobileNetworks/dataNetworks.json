@@ -1,0 +1,99 @@
+{
+    "resourceType": "mobileNetworks/dataNetworks",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mobile-network/data-network"
+    },
+    "commands": [
+        {
+            "name": "az mobile-network data-network delete",
+            "description": "Delete the specified data network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/dataNetworks/{dataNetworkName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/data-network#az-mobile-network-data-network-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--data-network-name]",
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the specified data network.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.dataNetworkName]"
+                        },
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network data-network show",
+            "description": "Get information about the specified data network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/dataNetworks/{dataNetworkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/data-network#az-mobile-network-data-network-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--data-network-name]",
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show data-network",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.dataNetworkName]"
+                        },
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

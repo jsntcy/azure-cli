@@ -1,0 +1,59 @@
+{
+    "resourceType": "workspaces/firmwares/summaries",
+    "apiVersion": "2024-01-10",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/firmwareanalysis/firmware"
+    },
+    "commands": [
+        {
+            "name": "az firmwareanalysis firmware summary",
+            "description": "Get an analysis result summary of a firmware by name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.IoTFirmwareDefense/workspaces/{workspaceName}/firmwares/{firmwareId}/summaries/{summaryName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/firmwareanalysis/firmware#az-firmwareanalysis-firmware-summary"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--firmware-id]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--summary-name]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an analysis result summary of a firmware by name.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        },
+                        {
+                            "name": "--firmware-id",
+                            "value": "[path.firmwareId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.summaryName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

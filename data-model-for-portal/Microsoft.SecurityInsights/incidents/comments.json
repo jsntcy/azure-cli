@@ -1,0 +1,109 @@
+{
+    "resourceType": "incidents/comments",
+    "apiVersion": "2022-06-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/comment"
+    },
+    "commands": [
+        {
+            "name": "az sentinel incident comment delete",
+            "description": "Delete the incident comment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/comment#az-sentinel-incident-comment-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--incident-comment-id]",
+                            "[--incident-id]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the incident comment.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.incidentCommentId]"
+                        },
+                        {
+                            "name": "--incident-id",
+                            "value": "[path.incidentId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sentinel incident comment show",
+            "description": "Get an incident comment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/comments/{incidentCommentId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/comment#az-sentinel-incident-comment-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--incident-comment-id]",
+                            "[--incident-id]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an incident comment.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.incidentCommentId]"
+                        },
+                        {
+                            "name": "--incident-id",
+                            "value": "[path.incidentId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

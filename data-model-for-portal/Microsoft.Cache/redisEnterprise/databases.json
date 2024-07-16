@@ -1,0 +1,143 @@
+{
+    "resourceType": "redisEnterprise/databases",
+    "apiVersion": "2023-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/redisenterprise/database"
+    },
+    "commands": [
+        {
+            "name": "az redisenterprise database delete",
+            "description": "Delete a single database",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/redisenterprise/database#az-redisenterprise-database-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--database-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a single database",
+                    "parameters": [
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.databaseName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az redisenterprise database list-keys",
+            "description": "Retrieves the access keys for the RedisEnterprise database.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}/listKeys",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/redisenterprise/database#az-redisenterprise-database-list-keys"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--database-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieves the access keys for the RedisEnterprise database.",
+                    "parameters": [
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--database-name",
+                            "value": "[path.databaseName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az redisenterprise database show",
+            "description": "Get information about a database in a RedisEnterprise cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cache/redisEnterprise/{clusterName}/databases/{databaseName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/redisenterprise/database#az-redisenterprise-database-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--database-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get information about a database in a RedisEnterprise cluster.",
+                    "parameters": [
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.databaseName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

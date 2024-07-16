@@ -1,0 +1,103 @@
+{
+    "resourceType": "networkManagers/scopeConnections",
+    "apiVersion": "2022-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/scope-connection"
+    },
+    "commands": [
+        {
+            "name": "az network manager scope-connection delete",
+            "description": "Delete the pending scope connection created by this network manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/scope-connection#az-network-manager-scope-connection-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--network-manager]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--connection-name]",
+                            "[--scope-connection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete network manager scope connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.scopeConnectionName]"
+                        },
+                        {
+                            "name": "--network-manager",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager scope-connection show",
+            "description": "Get specified scope connection created by this Network Manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections/{scopeConnectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/scope-connection#az-network-manager-scope-connection-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--network-manager]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--connection-name]",
+                            "[--scope-connection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get network manager scope-connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.scopeConnectionName]"
+                        },
+                        {
+                            "name": "--network-manager",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

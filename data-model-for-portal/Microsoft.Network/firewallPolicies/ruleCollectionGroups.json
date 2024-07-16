@@ -1,0 +1,142 @@
+{
+    "resourceType": "firewallPolicies/ruleCollectionGroups",
+    "apiVersion": "2022-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/firewall/policy/rule-collection-group"
+    },
+    "commands": [
+        {
+            "name": "az network firewall policy rule-collection-group delete",
+            "description": "Delete an Azure Firewall policy rule collection group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/firewall/policy/rule-collection-group#az-network-firewall-policy-rule-collection-group-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--policy-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an Azure Firewall policy rule collection group.",
+                    "parameters": [
+                        {
+                            "name": "--policy-name",
+                            "value": "[path.firewallPolicyName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleCollectionGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network firewall policy rule-collection-group show",
+            "description": "Show an Azure firewall policy rule collection group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/firewall/policy/rule-collection-group#az-network-firewall-policy-rule-collection-group-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--policy-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show an Azure firewall policy rule collection group.",
+                    "parameters": [
+                        {
+                            "name": "--policy-name",
+                            "value": "[path.firewallPolicyName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleCollectionGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network firewall policy rule-collection-group collection list",
+            "description": "List all rule collections of an Azure firewall policy rule collection group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/firewallPolicies/{firewallPolicyName}/ruleCollectionGroups/{ruleCollectionGroupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/firewall/policy/rule-collection-group/collection#az-network-firewall-policy-rule-collection-group-collection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--policy-name]",
+                            "[--resource-group]",
+                            "[--rcg-name]",
+                            "[--rule-collection-group-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all rule collections of an Azure firewall policy rule collection group.",
+                    "parameters": [
+                        {
+                            "name": "--policy-name",
+                            "value": "[path.firewallPolicyName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--rcg-name",
+                            "value": "[path.ruleCollectionGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

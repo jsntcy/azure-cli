@@ -1,0 +1,53 @@
+{
+    "resourceType": "organizations/access/deleteRoleBinding",
+    "apiVersion": "2024-02-13",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/confluent/organization/role-binding"
+    },
+    "commands": [
+        {
+            "name": "az confluent organization role-binding delete",
+            "description": "Delete role bindings",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/access/default/deleteRoleBinding/{roleBindingId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization/role-binding#az-confluent-organization-role-binding-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--role-binding-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete role bindings",
+                    "parameters": [
+                        {
+                            "name": "--organization-name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--role-binding-id",
+                            "value": "[path.roleBindingId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+    "resourceType": "components/linkedStorageAccounts",
+    "apiVersion": "2020-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/linked-storage"
+    },
+    "commands": [
+        {
+            "name": "az monitor app-insights component linked-storage show",
+            "description": "Get the current linked storage settings for an Application Insights component.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/linked-storage#az-monitor-app-insights-component-linked-storage-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--app]",
+                            "[--storage-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the current linked storage settings for an Application Insights component.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--app",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--storage-type",
+                            "value": "[path.storageType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor app-insights component linked-storage unlink",
+            "description": "Unlink a storage account with an Application Insights component.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/microsoft.insights/components/{resourceName}/linkedStorageAccounts/{storageType}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/linked-storage#az-monitor-app-insights-component-linked-storage-unlink"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--app]",
+                            "[--storage-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Unlink a storage account with an Application Insights component.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--app",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--storage-type",
+                            "value": "[path.storageType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

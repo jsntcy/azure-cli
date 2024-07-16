@@ -1,0 +1,479 @@
+{
+    "resourceType": "namespaces",
+    "apiVersion": "2022-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/servicebus/georecovery-alias"
+    },
+    "commands": [
+        {
+            "name": "az servicebus georecovery-alias list",
+            "description": "List all Alias(Disaster Recovery configurations)",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/disasterRecoveryConfigs",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/georecovery-alias#az-servicebus-georecovery-alias-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all Alias(Disaster Recovery configurations)",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus migration list",
+            "description": "List all migrationConfigurations",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/migration#az-servicebus-migration-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all migrationConfigurations",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace delete",
+            "description": "Delete an existing namespace. This operation also removes all associated resources under the namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace#az-servicebus-namespace-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Deletes the Service Bus Namespace",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace list",
+            "description": "List the available namespaces within a resource group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace#az-servicebus-namespace-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the Service Bus Namespaces under resourcegroup.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace show",
+            "description": "Get a description for the specified namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace#az-servicebus-namespace-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "shows the Namespace details.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus queue list",
+            "description": "List the queues within a namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/queue#az-servicebus-queue-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the queues within a namespace.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus topic list",
+            "description": "List all the topics in a namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/topics",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/topic#az-servicebus-topic-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the topics in a namespace.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace authorization-rule list",
+            "description": "List the authorization rules for a namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/AuthorizationRules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace/authorization-rule#az-servicebus-namespace-authorization-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Shows the list of Authorization Rule by Service Bus Namespace",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace network-rule-set list",
+            "description": "List list of NetworkRuleSet for a Namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace/network-rule-set#az-servicebus-namespace-network-rule-set-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List list of NetworkRuleSet for a Namespace.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace network-rule-set show",
+            "description": "Get NetworkRuleSet for a Namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/networkRuleSets/default",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace/network-rule-set#az-servicebus-namespace-network-rule-set-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get NetworkRuleSet for a Namespace.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace private-endpoint-connection list",
+            "description": "List the available PrivateEndpointConnections within a namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateEndpointConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace/private-endpoint-connection#az-servicebus-namespace-private-endpoint-connection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the available PrivateEndpointConnections within a namespace.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus namespace private-link-resource show",
+            "description": "List lists of resources that supports Privatelinks.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/privateLinkResources",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/namespace/private-link-resource#az-servicebus-namespace-private-link-resource-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List lists of resources that supports Privatelinks.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

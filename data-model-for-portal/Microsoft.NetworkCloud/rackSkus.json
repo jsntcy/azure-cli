@@ -1,0 +1,73 @@
+{
+    "resourceType": "rackSkus",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkcloud/racksku"
+    },
+    "commands": [
+        {
+            "name": "az networkcloud racksku list",
+            "description": "List rack SKUs in the provided subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/racksku#az-networkcloud-racksku-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List rack SKUs for subscription",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkcloud racksku show",
+            "description": "Get the properties of the provided rack SKU.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.NetworkCloud/rackSkus/{rackSkuName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/racksku#az-networkcloud-racksku-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--rack-sku-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get rack SKU resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.rackSkuName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

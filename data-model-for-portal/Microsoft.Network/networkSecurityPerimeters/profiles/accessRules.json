@@ -1,0 +1,109 @@
+{
+    "resourceType": "networkSecurityPerimeters/profiles/accessRules",
+    "apiVersion": "2023-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile/access-rule"
+    },
+    "commands": [
+        {
+            "name": "az network perimeter profile access-rule delete",
+            "description": "Deletes an NSP access rule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile/access-rule#az-network-perimeter-profile-access-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--access-rule-name]",
+                            "[--perimeter-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete NSP access rule",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.accessRuleName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter profile access-rule show",
+            "description": "Gets the specified NSP access rule by name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules/{accessRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile/access-rule#az-network-perimeter-profile-access-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--access-rule-name]",
+                            "[--perimeter-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get NSP access rule",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.accessRuleName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,48 @@
+{
+    "resourceType": "publishers",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/configuration-group-schema"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher configuration-group-schema list",
+            "description": "List information of the configuration group schemas under a publisher.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/configuration-group-schema#az-aosm-publisher-configuration-group-schema-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the configuration group schemas defined under the contoso publisher",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

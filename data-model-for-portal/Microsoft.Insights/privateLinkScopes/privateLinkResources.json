@@ -1,0 +1,53 @@
+{
+    "resourceType": "privateLinkScopes/privateLinkResources",
+    "apiVersion": "2019-10-17-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/private-link-scope/private-link-resource"
+    },
+    "commands": [
+        {
+            "name": "az monitor private-link-scope private-link-resource show",
+            "description": "Show a private link resource of a private link scope resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/privateLinkScopes/{scopeName}/privateLinkResources/{groupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/private-link-scope/private-link-resource#az-monitor-private-link-scope-private-link-resource-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--scope-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a private link resource of a private link scope resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.groupName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--scope-name",
+                            "value": "[path.scopeName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

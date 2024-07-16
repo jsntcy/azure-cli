@@ -1,0 +1,99 @@
+{
+    "resourceType": "l3IsolationDomains/internalNetworks",
+    "apiVersion": "2024-02-15-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkfabric/internalnetwork"
+    },
+    "commands": [
+        {
+            "name": "az networkfabric internalnetwork delete",
+            "description": "Delete the Internal Network resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/internalnetwork#az-networkfabric-internalnetwork-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--l3domain]",
+                            "[--l3-isolation-domain-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the Internal Network",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--l3domain",
+                            "value": "[path.l3IsolationDomainName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.internalNetworkName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkfabric internalnetwork show",
+            "description": "Show details of the provided Internal Network resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/l3IsolationDomains/{l3IsolationDomainName}/internalNetworks/{internalNetworkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/internalnetwork#az-networkfabric-internalnetwork-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--l3domain]",
+                            "[--l3-isolation-domain-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the Internal Network",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.internalNetworkName]"
+                        },
+                        {
+                            "name": "--l3domain",
+                            "value": "[path.l3IsolationDomainName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

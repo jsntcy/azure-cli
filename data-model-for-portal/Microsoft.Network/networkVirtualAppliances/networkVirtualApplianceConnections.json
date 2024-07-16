@@ -1,0 +1,54 @@
+{
+    "resourceType": "networkVirtualAppliances/networkVirtualApplianceConnections",
+    "apiVersion": "2023-06-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/virtual-appliance/connection"
+    },
+    "commands": [
+        {
+            "name": "az network virtual-appliance connection show",
+            "description": "Get the details of specified NVA connection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/networkVirtualApplianceConnections/{connectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/virtual-appliance/connection#az-network-virtual-appliance-connection-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--nva]",
+                            "[--virtual-appliance-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show Network Virtual Appliance Connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.connectionName]"
+                        },
+                        {
+                            "name": "--nva",
+                            "value": "[path.networkVirtualApplianceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

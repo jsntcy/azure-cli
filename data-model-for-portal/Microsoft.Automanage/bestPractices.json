@@ -1,0 +1,67 @@
+{
+    "resourceType": "bestPractices",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/best-practice"
+    },
+    "commands": [
+        {
+            "name": "az automanage best-practice show",
+            "description": "Get information about a Automanage best practice",
+            "path": "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/best-practice#az-automanage-best-practice-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--best-practice-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show best-practice",
+                    "parameters": [
+                        {
+                            "name": "--best-practice-name",
+                            "value": "[path.bestPracticeName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage best-practice version list",
+            "description": "List Automanage best practice versions",
+            "path": "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/best-practice/version#az-automanage-best-practice-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--best-practice-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List best-practice versions",
+                    "parameters": [
+                        {
+                            "name": "--best-practice-name",
+                            "value": "[path.bestPracticeName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

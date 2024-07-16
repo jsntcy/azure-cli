@@ -1,0 +1,107 @@
+{
+    "resourceType": "publishers/artifactStores/artifactManifests",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-manifest"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher artifact-manifest list-credential",
+            "description": "List credential for publishing artifacts defined in artifact manifest.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}/listCredential",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-manifest#az-aosm-publisher-artifact-manifest-list-credential"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--artifact-store-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List credential to use for publishing an artifact from the 'contoso-manifest' manifest",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--artifact-store-name",
+                            "value": "[path.artifactStoreName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.artifactManifestName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az aosm publisher artifact-manifest show",
+            "description": "Get information about a artifact manifest resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests/{artifactManifestName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-manifest#az-aosm-publisher-artifact-manifest-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--artifact-store-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get information about a artifact manifest resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.artifactManifestName]"
+                        },
+                        {
+                            "name": "--artifact-store-name",
+                            "value": "[path.artifactStoreName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

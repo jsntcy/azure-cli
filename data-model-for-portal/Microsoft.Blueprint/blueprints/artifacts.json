@@ -1,0 +1,87 @@
+{
+    "resourceType": "blueprints/artifacts",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/blueprint/artifact"
+    },
+    "commands": [
+        {
+            "name": "az blueprint artifact delete",
+            "description": "Delete a blueprint artifact.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/artifacts/{artifactName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/artifact#az-blueprint-artifact-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--blueprint-name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a blueprint artifact.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.artifactName]"
+                        },
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint artifact show",
+            "description": "Get a blueprint artifact.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/artifacts/{artifactName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/artifact#az-blueprint-artifact-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--blueprint-name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a blueprint artifact.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.artifactName]"
+                        },
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

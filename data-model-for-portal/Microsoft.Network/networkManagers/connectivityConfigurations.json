@@ -1,0 +1,100 @@
+{
+    "resourceType": "networkManagers/connectivityConfigurations",
+    "apiVersion": "2022-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/connect-config"
+    },
+    "commands": [
+        {
+            "name": "az network manager connect-config delete",
+            "description": "Delete a network manager connectivity configuration, specified by the resource group, network manager name, and connectivity configuration name",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connect-config#az-network-manager-connect-config-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--configuration-name]",
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--force]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Azure Virtual Network Manager Connectivity Configuration",
+                    "parameters": [
+                        {
+                            "name": "--configuration-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connect-config show",
+            "description": "Get a Network Connectivity Configuration, specified by the resource group, network manager name, and connectivity Configuration name",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connect-config#az-network-manager-connect-config-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--configuration-name]",
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Azure Virtual Network Manager Connectivity Configuration",
+                    "parameters": [
+                        {
+                            "name": "--configuration-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

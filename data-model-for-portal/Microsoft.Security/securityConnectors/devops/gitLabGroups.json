@@ -1,0 +1,144 @@
+{
+    "resourceType": "securityConnectors/devops/gitLabGroups",
+    "apiVersion": "2023-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup"
+    },
+    "commands": [
+        {
+            "name": "az security security-connector devops gitlabgroup list-subgroups",
+            "description": "Gets nested subgroups of given GitLab Group which are onboarded to the connector.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitLabGroups/{groupFQName}/listSubgroups",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup#az-security-security-connector-devops-gitlabgroup-list-subgroups"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets nested subgroups of given GitLab Group which are onboarded to the connector.",
+                    "parameters": [
+                        {
+                            "name": "--group-name",
+                            "value": "[path.groupFQName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security security-connector devops gitlabgroup show",
+            "description": "Get a monitored GitLab Group resource for a given fully-qualified name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitLabGroups/{groupFQName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup#az-security-security-connector-devops-gitlabgroup-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a monitored GitLab Group resource for a given fully-qualified name.",
+                    "parameters": [
+                        {
+                            "name": "--group-name",
+                            "value": "[path.groupFQName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security security-connector devops gitlabgroup project list",
+            "description": "List GitLab projects that are directly owned by given group and onboarded to the connector.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitLabGroups/{groupFQName}/projects",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup/project#az-security-security-connector-devops-gitlabgroup-project-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List GitLab projects that are directly owned by given group and onboarded to the connector.",
+                    "parameters": [
+                        {
+                            "name": "--group-name",
+                            "value": "[path.groupFQName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

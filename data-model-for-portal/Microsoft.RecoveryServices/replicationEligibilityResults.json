@@ -1,0 +1,87 @@
+{
+    "resourceType": "replicationEligibilityResults",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/replication-eligibility"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery replication-eligibility list",
+            "description": "List whether a given VM can be protected or not in which case returns list of errors.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/replication-eligibility#az-site-recovery-replication-eligibility-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--virtual-machine-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List replication eligibility",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--virtual-machine-name",
+                            "value": "[path.virtualMachineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery replication-eligibility show-default",
+            "description": "Get whether a given VM can be protected or not in which case returns list of errors.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{virtualMachineName}/providers/Microsoft.RecoveryServices/replicationEligibilityResults/default",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/replication-eligibility#az-site-recovery-replication-eligibility-show-default"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--virtual-machine-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show default replication-eligibility",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--virtual-machine-name",
+                            "value": "[path.virtualMachineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

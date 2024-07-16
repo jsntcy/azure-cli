@@ -1,0 +1,100 @@
+{
+    "resourceType": "dnsResolvers/inboundEndpoints",
+    "apiVersion": "2022-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver/inbound-endpoint"
+    },
+    "commands": [
+        {
+            "name": "az dns-resolver inbound-endpoint delete",
+            "description": "Deletes an inbound endpoint for a DNS resolver. WARNING: This operation cannot be undone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/inbound-endpoint#az-dns-resolver-inbound-endpoint-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--dns-resolver-name]",
+                            "[--name]",
+                            "[--inbound-endpoint-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete inbound endpoint for DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.inboundEndpointName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver inbound-endpoint show",
+            "description": "Gets properties of an inbound endpoint for a DNS resolver.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/inboundEndpoints/{inboundEndpointName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/inbound-endpoint#az-dns-resolver-inbound-endpoint-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dns-resolver-name]",
+                            "[--name]",
+                            "[--inbound-endpoint-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve inbound endpoint for DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.inboundEndpointName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "resourceType": "services/workspaces/environments",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/apic/environment"
+    },
+    "commands": [
+        {
+            "name": "az apic environment delete",
+            "description": "Delete the environment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/apic/environment#az-apic-environment-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-id]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]",
+                            "[--workspace]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the environment.",
+                    "parameters": [
+                        {
+                            "name": "--environment-id",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az apic environment show",
+            "description": "Get details of the environment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/workspaces/{workspaceName}/environments/{environmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/apic/environment#az-apic-environment-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-id]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]",
+                            "[--workspace]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get details of the environment.",
+                    "parameters": [
+                        {
+                            "name": "--environment-id",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

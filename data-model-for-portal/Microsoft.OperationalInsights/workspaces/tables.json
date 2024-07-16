@@ -1,6 +1,6 @@
 {
     "resourceType": "workspaces/tables",
-    "apiVersion": "2021-12-01-preview",
+    "apiVersion": "2022-10-01",
     "learnMore": {
         "url": "https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/table"
     },
@@ -8,7 +8,7 @@
         {
             "name": "az monitor log-analytics workspace table delete",
             "description": "Delete a Log Analytics workspace table.",
-            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
             "confirmation": true,
             "help": {
                 "learnMore": {
@@ -53,7 +53,7 @@
         {
             "name": "az monitor log-analytics workspace table migrate",
             "description": "Migrate a Log Analytics table from support of the Data Collector API and Custom Fields features to support of Data Collection Rule-based Custom Logs.",
-            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/migrate",
             "confirmation": false,
             "help": {
                 "learnMore": {
@@ -97,7 +97,7 @@
         {
             "name": "az monitor log-analytics workspace table show",
             "description": "Get a Log Analytics workspace table.",
-            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}",
             "confirmation": false,
             "help": {
                 "learnMore": {
@@ -117,23 +117,68 @@
             },
             "examples": [
                 {
-                    "description": "Get a Log Analytics workspace table.",
+                    "description": "Get a Log Analytics workspace table",
                     "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
-                            "name": "--subscription",
-                            "value": "[path.subscriptionId]"
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
                         },
                         {
                             "name": "--name",
                             "value": "[path.tableName]"
                         },
                         {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor log-analytics workspace table search-job cancel",
+            "description": "Cancel a log analytics workspace search results table query run.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables/{tableName}/cancelSearch",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace/table/search-job#az-monitor-log-analytics-workspace-table-search-job-cancel"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--table-name]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Cancel a log analytics workspace search results table query run.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
                             "name": "--workspace-name",
                             "value": "[path.workspaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.tableName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
                         }
                     ]
                 }

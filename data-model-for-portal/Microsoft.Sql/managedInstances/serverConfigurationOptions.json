@@ -1,0 +1,57 @@
+{
+    "resourceType": "managedInstances/serverConfigurationOptions",
+    "apiVersion": "2022-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sql/mi/server-configuration-option"
+    },
+    "commands": [
+        {
+            "name": "az sql mi server-configuration-option show",
+            "description": "Get managed instance server configuration option.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverConfigurationOptions/{serverConfigurationOptionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/server-configuration-option#az-sql-mi-server-configuration-option-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mi]",
+                            "[--instance-name]",
+                            "[--managed-instance]",
+                            "[--managed-instance-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--server-configuration-option-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show server configuration option allowPolybaseExport on ManagedInstance_1 in ResourceGroup_1",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.serverConfigurationOptionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

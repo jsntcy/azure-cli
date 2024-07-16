@@ -1,0 +1,97 @@
+{
+    "resourceType": "expressRoutePorts/authorizations",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/express-route/port/authorization"
+    },
+    "commands": [
+        {
+            "name": "az network express-route port authorization delete",
+            "description": "Delete the specified authorization from the specified express route port.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/express-route/port/authorization#az-network-express-route-port-authorization-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--port-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the authorization from the express route port.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--port-name",
+                            "value": "[path.expressRoutePortName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network express-route port authorization show",
+            "description": "Get the specified authorization from the specified express route port.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRoutePorts/{expressRoutePortName}/authorizations/{authorizationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/express-route/port/authorization#az-network-express-route-port-authorization-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--port-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get theauthorization from the express route port.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--port-name",
+                            "value": "[path.expressRoutePortName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

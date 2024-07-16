@@ -1,0 +1,99 @@
+{
+    "resourceType": "clusters/bmcKeySets",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkcloud/cluster/bmckeyset"
+    },
+    "commands": [
+        {
+            "name": "az networkcloud cluster bmckeyset delete",
+            "description": "Delete the baseboard management controller key set of the provided cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/cluster/bmckeyset#az-networkcloud-cluster-bmckeyset-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--bmc-key-set-name]",
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete baseboard management controller key set of cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.bmcKeySetName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkcloud cluster bmckeyset show",
+            "description": "Get baseboard management controller key set of the provided cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/clusters/{clusterName}/bmcKeySets/{bmcKeySetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/cluster/bmckeyset#az-networkcloud-cluster-bmckeyset-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--bmc-key-set-name]",
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get baseboard management controller key set of cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.bmcKeySetName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,108 @@
+{
+    "resourceType": "netAppAccounts/capacityPools/volumes",
+    "apiVersion": "2022-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/netappfiles/volume"
+    },
+    "commands": [
+        {
+            "name": "az netappfiles volume show",
+            "description": "Get the details of the specified volume",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/volume#az-netappfiles-volume-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--pool-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--volume-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of the specified volume",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--pool-name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.volumeName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az netappfiles volume latest-backup-status current show",
+            "description": "Get the latest status of the backup for a volume",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes/{volumeName}/latestBackupStatus/current",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/volume/latest-backup-status/current#az-netappfiles-volume-latest-backup-status-current-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--pool-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--volume-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the latest status of the backup for a volume",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--pool-name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--volume-name",
+                            "value": "[path.volumeName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

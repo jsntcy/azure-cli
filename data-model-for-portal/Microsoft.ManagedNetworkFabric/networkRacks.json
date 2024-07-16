@@ -1,0 +1,82 @@
+{
+    "resourceType": "networkRacks",
+    "apiVersion": "2024-02-15-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkfabric/rack"
+    },
+    "commands": [
+        {
+            "name": "az networkfabric rack list",
+            "description": "List all Network Racks in the provided resource group or subscription",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/rack#az-networkfabric-rack-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the Network Racks for Resource Group.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkfabric rack show",
+            "description": "Show details of the provided Network Rack resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/networkRacks/{networkRackName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/rack#az-networkfabric-rack-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the Network Rack",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.networkRackName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

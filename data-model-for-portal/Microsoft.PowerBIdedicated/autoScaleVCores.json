@@ -1,0 +1,43 @@
+{
+    "resourceType": "autoScaleVCores",
+    "apiVersion": "2021-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/powerbi"
+    },
+    "commands": [
+        {
+            "name": "az powerbi list-auto-scale-v-core",
+            "description": "List all the auto scale v-cores for the given resource group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.PowerBIDedicated/autoScaleVCores",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/powerbi#az-powerbi-list-auto-scale-v-core"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the auto scale v-cores for the given resource group.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

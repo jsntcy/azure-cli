@@ -1,0 +1,82 @@
+{
+    "resourceType": "internetGateways",
+    "apiVersion": "2024-02-15-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkfabric/internetgateway"
+    },
+    "commands": [
+        {
+            "name": "az networkfabric internetgateway list",
+            "description": "List all Internet Gateways in the provided resource group or subscription",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/internetgateway#az-networkfabric-internetgateway-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the Internet Gateway for Resource group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkfabric internetgateway show",
+            "description": "Show details of the provided Internet Gateway resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ManagedNetworkFabric/internetGateways/{internetGatewayName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkfabric/internetgateway#az-networkfabric-internetgateway-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the Internet Gateway",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.internetGatewayName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

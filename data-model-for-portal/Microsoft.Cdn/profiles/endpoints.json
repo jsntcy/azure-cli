@@ -1,0 +1,321 @@
+{
+    "resourceType": "profiles/endpoints",
+    "apiVersion": "2024-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cdn/custom-domain"
+    },
+    "commands": [
+        {
+            "name": "az cdn custom-domain list",
+            "description": "List all of the existing custom domains within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/customDomains",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/custom-domain#az-cdn-custom-domain-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all of the existing custom domains within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn endpoint delete",
+            "description": "Delete an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/endpoint#az-cdn-endpoint-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a CDN endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn endpoint show",
+            "description": "Get an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/endpoint#az-cdn-endpoint-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an existing CDN endpoint with the specified endpoint name under the specified subscription, resource group and profile.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn endpoint start",
+            "description": "Starts an existing CDN endpoint that is on a stopped state.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/start",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/endpoint#az-cdn-endpoint-start"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-nameendpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Start a CDN endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn endpoint stop",
+            "description": "Stops an existing running CDN endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/stop",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/endpoint#az-cdn-endpoint-stop"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Stop a CDN endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn origin list",
+            "description": "List all of the existing origins within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin#az-cdn-origin-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all of the existing origins within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn origin-group list",
+            "description": "List all of the existing origin groups within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin-group#az-cdn-origin-group-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all of the existing origin groups within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

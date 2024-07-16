@@ -1,0 +1,58 @@
+{
+    "resourceType": "backupVaults/backupInstances/recoveryPoints",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dataprotection/recovery-point"
+    },
+    "commands": [
+        {
+            "name": "az dataprotection recovery-point show",
+            "description": "Get a Recovery Point using recoveryPointId for a Datasource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints/{recoveryPointId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/recovery-point#az-dataprotection-recovery-point-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]",
+                            "[--backup-instance-name]",
+                            "[--recovery-point-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a Recovery Point using recoveryPointId for a Datasource.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--backup-instance-name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--recovery-point-id",
+                            "value": "[path.recoveryPointId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

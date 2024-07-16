@@ -1,0 +1,198 @@
+{
+    "resourceType": "fileWorkspaces",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file"
+    },
+    "commands": [
+        {
+            "name": "az support in-subscription file list",
+            "description": "List all the Files information under a workspace for an Azure subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file#az-support-in-subscription-file-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the files within a file-workspace for a specified subscription (different from the account subscription)",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support in-subscription file-workspace create",
+            "description": "Create a new file workspace for the specified subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file-workspace#az-support-in-subscription-file-workspace-create"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Create a file workspace for a specified subscription (different from the account subscription)",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support in-subscription file-workspace show",
+            "description": "Get details for a specific file workspace in an Azure subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file-workspace#az-support-in-subscription-file-workspace-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a file workspace for a specified subscription (different from the account subscription)",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription file list",
+            "description": "List all the Files information under a workspace.",
+            "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/file#az-support-no-subscription-file-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the Files information under a workspace.",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription file-workspace create",
+            "description": "Creates a new file workspace.",
+            "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/file-workspace#az-support-no-subscription-file-workspace-create"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Create a file workspace",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription file-workspace show",
+            "description": "Gets details for a specific file workspace.",
+            "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/file-workspace#az-support-no-subscription-file-workspace-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a file workspace",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

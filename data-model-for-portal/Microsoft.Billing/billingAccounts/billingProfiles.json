@@ -1,0 +1,47 @@
+{
+    "resourceType": "billingAccounts/billingProfiles",
+    "apiVersion": "2020-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/profile/reservation"
+    },
+    "commands": [
+        {
+            "name": "az billing profile reservation list",
+            "description": "List the reservations for a billing profile and the roll up counts of reservations group by provisioning state.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/billingProfiles/{billingProfileName}/reservations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/profile/reservation#az-billing-profile-reservation-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]",
+                            "[--billing-profile-name]",
+                            "[--filter]",
+                            "[--orderby]",
+                            "[--refresh-summary]",
+                            "[--selected-state]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the reservations for a billing profile and the roll up counts of reservations group by provisioning state.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        },
+                        {
+                            "name": "--billing-profile-name",
+                            "value": "[path.billingProfileName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

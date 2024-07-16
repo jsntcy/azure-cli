@@ -1,0 +1,72 @@
+{
+    "resourceType": "applicationGatewayAvailableSslOptions/predefinedPolicies",
+    "apiVersion": "2022-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/application-gateway/ssl-policy/predefined"
+    },
+    "commands": [
+        {
+            "name": "az network application-gateway ssl-policy predefined list",
+            "description": "List all SSL predefined policies for configuring SSL policy.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/application-gateway/ssl-policy/predefined#az-network-application-gateway-ssl-policy-predefined-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all SSL predefined policies for configuring SSL policy.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network application-gateway ssl-policy predefined show",
+            "description": "Get SSL predefined policy with the specified policy name.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/applicationGatewayAvailableSslOptions/default/predefinedPolicies/{predefinedPolicyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/application-gateway/ssl-policy/predefined#az-network-application-gateway-ssl-policy-predefined-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get SSL predefined policy with the specified policy name.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.predefinedPolicyName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

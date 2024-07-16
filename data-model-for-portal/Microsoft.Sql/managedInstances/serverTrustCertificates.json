@@ -1,0 +1,105 @@
+{
+    "resourceType": "managedInstances/serverTrustCertificates",
+    "apiVersion": "2022-02-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sql/mi/partner-cert"
+    },
+    "commands": [
+        {
+            "name": "az sql mi partner-cert delete",
+            "description": "Delete a server trust certificate that was uploaded from box to Sql Managed Instance.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/partner-cert#az-sql-mi-partner-cert-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--certificate-name]",
+                            "[--mi]",
+                            "[--instance-name]",
+                            "[--managed-instance]",
+                            "[--managed-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a server trust certificate that was uploaded from box to Sql Managed Instance.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.certificateName]"
+                        },
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sql mi partner-cert show",
+            "description": "Get a server trust certificate that was uploaded from box to Sql Managed Instance.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/serverTrustCertificates/{certificateName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/partner-cert#az-sql-mi-partner-cert-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--certificate-name]",
+                            "[--mi]",
+                            "[--instance-name]",
+                            "[--managed-instance]",
+                            "[--managed-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a server trust certificate that was uploaded from box to Sql Managed Instance.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.certificateName]"
+                        },
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

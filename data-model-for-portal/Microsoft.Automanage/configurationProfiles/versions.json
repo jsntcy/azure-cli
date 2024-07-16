@@ -1,0 +1,101 @@
+{
+    "resourceType": "configurationProfiles/versions",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile/version"
+    },
+    "commands": [
+        {
+            "name": "az automanage configuration-profile version delete",
+            "description": "Delete a configuration profile version",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile/version#az-automanage-configuration-profile-version-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--configuration-profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--version-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "delete configuration-profile version",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.configurationProfileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.versionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile version show",
+            "description": "Get information about a configuration profile version",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automanage/configurationProfiles/{configurationProfileName}/versions/{versionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile/version#az-automanage-configuration-profile-version-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--configuration-profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--version-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile version",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.configurationProfileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.versionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

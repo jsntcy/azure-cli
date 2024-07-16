@@ -1,0 +1,54 @@
+{
+    "resourceType": "serverGroupsv2/configurations",
+    "apiVersion": "2022-11-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/configuration"
+    },
+    "commands": [
+        {
+            "name": "az cosmosdb postgres configuration show",
+            "description": "Get information of a configuration for coordinator and nodes.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/configurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/configuration#az-cosmosdb-postgres-configuration-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--configuration-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get configuration details",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

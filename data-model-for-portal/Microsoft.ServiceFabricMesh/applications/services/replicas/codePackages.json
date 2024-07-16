@@ -1,0 +1,65 @@
+{
+    "resourceType": "applications/services/replicas/codePackages",
+    "apiVersion": "2018-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mesh/code-package-log"
+    },
+    "commands": [
+        {
+            "name": "az mesh code-package-log get",
+            "description": "Examine the logs for a codepackage.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/applications/{applicationResourceName}/services/{serviceResourceName}/replicas/{replicaName}/codePackages/{codePackageName}/logs",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mesh/code-package-log#az-mesh-code-package-log-get"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--app-name]",
+                            "[--application-name]",
+                            "[--code-package-name]",
+                            "[--replica-name]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]",
+                            "[--tail]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Examine the logs for a codepackage.",
+                    "parameters": [
+                        {
+                            "name": "--app-name",
+                            "value": "[path.applicationResourceName]"
+                        },
+                        {
+                            "name": "--code-package-name",
+                            "value": "[path.codePackageName]"
+                        },
+                        {
+                            "name": "--replica-name",
+                            "value": "[path.replicaName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceResourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

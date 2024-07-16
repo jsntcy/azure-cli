@@ -1,0 +1,185 @@
+{
+    "resourceType": "namespaces/notificationHubs",
+    "apiVersion": "2017-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/notification-hub"
+    },
+    "commands": [
+        {
+            "name": "az notification-hub delete",
+            "description": "Delete a notification hub associated with a namespace.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/notification-hub#az-notification-hub-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a notification hub",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.notificationHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az notification-hub show",
+            "description": "Show the notification hub information.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/notification-hub#az-notification-hub-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the notification hub information.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.notificationHubName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az notification-hub authorization-rule list",
+            "description": "List the authorization rules for a notification hub.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/AuthorizationRules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/notification-hub/authorization-rule#az-notification-hub-authorization-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--notification-hub-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the authorization rules for a notification hub.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--notification-hub-name",
+                            "value": "[path.notificationHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az notification-hub credential list",
+            "description": "Lists the PNS credentials associated with a notification hub.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NotificationHubs/namespaces/{namespaceName}/notificationHubs/{notificationHubName}/pnsCredentials",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/notification-hub/credential#az-notification-hub-credential-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--notification-hub-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the PNS credentials associated with a notification hub .",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--notification-hub-name",
+                            "value": "[path.notificationHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

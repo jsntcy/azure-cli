@@ -1,0 +1,48 @@
+{
+    "resourceType": "privateClouds",
+    "apiVersion": "2023-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/vmware/private-cloud/identity-source"
+    },
+    "commands": [
+        {
+            "name": "az vmware private-cloud identity-source list",
+            "description": "List vCenter Single Sign On Identity Sources of a private cloud.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AVS/privateClouds/{privateCloudName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/vmware/private-cloud/identity-source#az-vmware-private-cloud-identity-source-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--private-cloud]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List vCenter Single Sign On Identity Sources of a private cloud.",
+                    "parameters": [
+                        {
+                            "name": "--private-cloud",
+                            "value": "[path.privateCloudName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

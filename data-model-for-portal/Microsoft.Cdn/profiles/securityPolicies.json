@@ -1,0 +1,99 @@
+{
+    "resourceType": "profiles/securityPolicies",
+    "apiVersion": "2024-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/afd/security-policy"
+    },
+    "commands": [
+        {
+            "name": "az afd security-policy delete",
+            "description": "Delete an existing security policy within profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/security-policy#az-afd-security-policy-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-policy-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an existing security policy within profile.",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityPolicyName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az afd security-policy show",
+            "description": "Get an existing security policy within a profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/securityPolicies/{securityPolicyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/security-policy#az-afd-security-policy-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-policy-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an existing security policy within a profile.",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityPolicyName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

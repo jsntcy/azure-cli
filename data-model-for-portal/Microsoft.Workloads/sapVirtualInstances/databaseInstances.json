@@ -1,0 +1,55 @@
+{
+    "resourceType": "sapVirtualInstances/databaseInstances",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/workloads/sap-database-instance"
+    },
+    "commands": [
+        {
+            "name": "az workloads sap-database-instance show",
+            "description": "Show the SAP Database Instance resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/databaseInstances/{databaseInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/workloads/sap-database-instance#az-workloads-sap-database-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--database-instance-name]",
+                            "[--resource-group]",
+                            "[--vis-name]",
+                            "[--sap-virtual-instance-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an overview of the Database Instance in a Virtual instance for SAP solutions (VIS)",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vis-name",
+                            "value": "[path.sapVirtualInstanceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.databaseInstanceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

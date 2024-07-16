@@ -1,0 +1,99 @@
+{
+    "resourceType": "kubernetesClusters/agentPools",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/networkcloud/kubernetescluster/agentpool"
+    },
+    "commands": [
+        {
+            "name": "az networkcloud kubernetescluster agentpool delete",
+            "description": "Delete the provided Kubernetes cluster agent pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/kubernetescluster/agentpool#az-networkcloud-kubernetescluster-agentpool-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--agent-pool-name]",
+                            "[--kubernetes-cluster-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete agent pool of the Kubernetes cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.agentPoolName]"
+                        },
+                        {
+                            "name": "--kubernetes-cluster-name",
+                            "value": "[path.kubernetesClusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az networkcloud kubernetescluster agentpool show",
+            "description": "Get properties of the provided Kubernetes cluster agent pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkCloud/kubernetesClusters/{kubernetesClusterName}/agentPools/{agentPoolName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/networkcloud/kubernetescluster/agentpool#az-networkcloud-kubernetescluster-agentpool-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--agent-pool-name]",
+                            "[--kubernetes-cluster-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get agent pool of the Kubernetes cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.agentPoolName]"
+                        },
+                        {
+                            "name": "--kubernetes-cluster-name",
+                            "value": "[path.kubernetesClusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

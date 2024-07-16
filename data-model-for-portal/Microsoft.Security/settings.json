@@ -1,0 +1,73 @@
+{
+    "resourceType": "settings",
+    "apiVersion": "2022-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/setting"
+    },
+    "commands": [
+        {
+            "name": "az security setting list",
+            "description": "List security settings.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Security/settings",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/setting#az-security-setting-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get security settings.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security setting show",
+            "description": "Get of different configurations in Microsoft Defender for Cloud",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Security/settings/{settingName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/setting#az-security-setting-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--setting-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a security setting called \"MCAS\".",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.settingName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

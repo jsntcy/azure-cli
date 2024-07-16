@@ -1,0 +1,97 @@
+{
+    "resourceType": "dataBoxEdgeDevices/shares",
+    "apiVersion": "2023-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/share"
+    },
+    "commands": [
+        {
+            "name": "az databoxedge device share delete",
+            "description": "Delete the share on the Data Box Edge/Data Box Gateway device.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/share#az-databoxedge-device-share-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete share",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.name]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az databoxedge device share show",
+            "description": "Show share.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/shares/{name}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/share#az-databoxedge-device-share-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show share",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.name]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

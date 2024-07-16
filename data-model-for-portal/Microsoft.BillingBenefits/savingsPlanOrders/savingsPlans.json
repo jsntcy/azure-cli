@@ -1,0 +1,44 @@
+{
+    "resourceType": "savingsPlanOrders/savingsPlans",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order/savings-plan"
+    },
+    "commands": [
+        {
+            "name": "az billing-benefits savings-plan-order savings-plan show",
+            "description": "Get savings plan.",
+            "path": "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans/{savingsPlanId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order/savings-plan#az-billing-benefits-savings-plan-order-savings-plan-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--savings-plan-id]",
+                            "[--savings-plan-order-id]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get savings plan details",
+                    "parameters": [
+                        {
+                            "name": "--savings-plan-order-id",
+                            "value": "[path.savingsPlanOrderId]"
+                        },
+                        {
+                            "name": "--savings-plan-id",
+                            "value": "[path.savingsPlanId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

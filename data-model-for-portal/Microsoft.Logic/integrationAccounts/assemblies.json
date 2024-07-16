@@ -1,0 +1,99 @@
+{
+    "resourceType": "integrationAccounts/assemblies",
+    "apiVersion": "2019-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/assembly"
+    },
+    "commands": [
+        {
+            "name": "az logic integration-account assembly delete",
+            "description": "Delete an assembly for an integration account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/assembly#az-logic-integration-account-assembly-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--assembly-artifact-name]",
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete assembly",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.assemblyArtifactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az logic integration-account assembly show",
+            "description": "Show an assembly for an integration account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/assemblies/{assemblyArtifactName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/assembly#az-logic-integration-account-assembly-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--assembly-artifact-name]",
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show assembly",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.assemblyArtifactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

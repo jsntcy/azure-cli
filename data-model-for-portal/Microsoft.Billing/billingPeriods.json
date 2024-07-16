@@ -1,0 +1,75 @@
+{
+    "resourceType": "billingPeriods",
+    "apiVersion": "2018-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/period"
+    },
+    "commands": [
+        {
+            "name": "az billing period list",
+            "description": "List the available billing periods for a subscription in reverse chronological order.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/period#az-billing-period-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--filter]",
+                            "[--skiptoken]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the available billing periods for a subscription in reverse chronological order.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az billing period show",
+            "description": "Show a named billing period.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Billing/billingPeriods/{billingPeriodName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/period#az-billing-period-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a named billing period.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.billingPeriodName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

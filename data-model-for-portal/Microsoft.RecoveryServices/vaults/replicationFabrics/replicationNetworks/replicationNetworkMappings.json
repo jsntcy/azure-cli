@@ -1,0 +1,119 @@
+{
+    "resourceType": "vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/network/mapping"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery network mapping delete",
+            "description": "Delete operation to delete a network mapping.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/network/mapping#az-site-recovery-network-mapping-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--network-mapping-name]",
+                            "[--network-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "network mapping delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkMappingName]"
+                        },
+                        {
+                            "name": "--network-name",
+                            "value": "[path.networkName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery network mapping show",
+            "description": "Get the details of an ASR network mapping.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings/{networkMappingName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/network/mapping#az-site-recovery-network-mapping-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--network-mapping-name]",
+                            "[--network-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "network mapping show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkMappingName]"
+                        },
+                        {
+                            "name": "--network-name",
+                            "value": "[path.networkName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

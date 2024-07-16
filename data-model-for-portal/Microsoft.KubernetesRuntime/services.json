@@ -1,0 +1,106 @@
+{
+    "resourceType": "services",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/service"
+    },
+    "commands": [
+        {
+            "name": "az k8s-runtime service delete",
+            "description": "Delete a Service",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/service#az-k8s-runtime-service-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]",
+                            "[--service-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete storage class service",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime service list",
+            "description": "List Services by parent",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/service#az-k8s-runtime-service-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all services for a cluster",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime service show",
+            "description": "Get a Service",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/services/{serviceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/service#az-k8s-runtime-service-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]",
+                            "[--service-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show storageclass service",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

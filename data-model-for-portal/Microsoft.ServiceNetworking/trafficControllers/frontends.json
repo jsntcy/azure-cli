@@ -1,0 +1,99 @@
+{
+    "resourceType": "trafficControllers/frontends",
+    "apiVersion": "2023-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/alb/frontend"
+    },
+    "commands": [
+        {
+            "name": "az network alb frontend delete",
+            "description": "Delete an Application Gateway for Containers frontend resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/alb/frontend#az-network-alb-frontend-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--frontend-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--alb-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an Application Gateway for Containers frontend resource",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.frontendName]"
+                        },
+                        {
+                            "name": "--alb-name",
+                            "value": "[path.trafficControllerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network alb frontend show",
+            "description": "Get an Application Gateway for Containers frontend resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceNetworking/trafficControllers/{trafficControllerName}/frontends/{frontendName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/alb/frontend#az-network-alb-frontend-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--frontend-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--alb-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of an Application Gateway for containers frontend resource",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.frontendName]"
+                        },
+                        {
+                            "name": "--alb-name",
+                            "value": "[path.trafficControllerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,129 @@
+{
+    "resourceType": "workbooks",
+    "apiVersion": "2023-06-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook"
+    },
+    "commands": [
+        {
+            "name": "az monitor app-insights workbook delete",
+            "description": "Delete a workbook.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook#az-monitor-app-insights-workbook-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--resource-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete workbook",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor app-insights workbook show",
+            "description": "Show a single workbook by its resource name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook#az-monitor-app-insights-workbook-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--resource-name]",
+                            "[--subscription]",
+                            "[--can-fetch-content]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show workbook",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor app-insights workbook revision list",
+            "description": "List the revisions for the workbook.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook/revision#az-monitor-app-insights-workbook-revision-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the revisions for the workbook",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

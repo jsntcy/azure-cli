@@ -1,0 +1,99 @@
+{
+    "resourceType": "mobileNetworks/services",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mobile-network/service"
+    },
+    "commands": [
+        {
+            "name": "az mobile-network service delete",
+            "description": "Delete the specified service.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/services/{serviceName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/service#az-mobile-network-service-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the specified service.",
+                    "parameters": [
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network service show",
+            "description": "Get information about the specified service.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/services/{serviceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/service#az-mobile-network-service-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show service",
+                    "parameters": [
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

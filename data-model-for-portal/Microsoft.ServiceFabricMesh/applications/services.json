@@ -1,0 +1,99 @@
+{
+    "resourceType": "applications/services",
+    "apiVersion": "2018-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mesh/service"
+    },
+    "commands": [
+        {
+            "name": "az mesh service show",
+            "description": "Get the details of a service.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/applications/{applicationResourceName}/services/{serviceResourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mesh/service#az-mesh-service-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--app-name]",
+                            "[--application-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a service.",
+                    "parameters": [
+                        {
+                            "name": "--app-name",
+                            "value": "[path.applicationResourceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.serviceResourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mesh service-replica list",
+            "description": "List the details of service replicas.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/applications/{applicationResourceName}/services/{serviceResourceName}/replicas",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mesh/service-replica#az-mesh-service-replica-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--app-name]",
+                            "[--application-name]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the details of service replicas.",
+                    "parameters": [
+                        {
+                            "name": "--app-name",
+                            "value": "[path.applicationResourceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceResourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

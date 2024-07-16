@@ -1,0 +1,141 @@
+{
+    "resourceType": "extendedZones",
+    "apiVersion": "2024-04-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/edge-zones/extended-zone"
+    },
+    "commands": [
+        {
+            "name": "az edge-zones extended-zone list",
+            "description": "List the Azure Extended Zones available to a subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/edge-zones/extended-zone#az-edge-zones-extended-zone-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all Azure Extended Zones",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az edge-zones extended-zone register",
+            "description": "Registers a subscription for an Extended Zone",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}/register",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/edge-zones/extended-zone#az-edge-zones-extended-zone-register"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--extended-zone-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Registers a subscription for an Extended Zone",
+                    "parameters": [
+                        {
+                            "name": "--extended-zone-name",
+                            "value": "[path.extendedZoneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az edge-zones extended-zone show",
+            "description": "Get an Azure Extended Zone for a subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/edge-zones/extended-zone#az-edge-zones-extended-zone-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--extended-zone-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an Azure Extended Zone for a subscription",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.extendedZoneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az edge-zones extended-zone unregister",
+            "description": "Unregisters a subscription for an Extended Zone",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.EdgeZones/extendedZones/{extendedZoneName}/unregister",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/edge-zones/extended-zone#az-edge-zones-extended-zone-unregister"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--extended-zone-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Unregisters a subscription for an Extended Zone",
+                    "parameters": [
+                        {
+                            "name": "--extended-zone-name",
+                            "value": "[path.extendedZoneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

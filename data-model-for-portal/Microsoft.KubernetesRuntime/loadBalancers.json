@@ -1,0 +1,106 @@
+{
+    "resourceType": "loadBalancers",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/load-balancer"
+    },
+    "commands": [
+        {
+            "name": "az k8s-runtime load-balancer delete",
+            "description": "Delete a LoadBalancer",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--load-balancer-name]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a load balancer",
+                    "parameters": [
+                        {
+                            "name": "--load-balancer-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime load-balancer list",
+            "description": "List LoadBalancer resources by parent",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all load balancers in a cluster",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime load-balancer show",
+            "description": "Get a LoadBalancer",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/load-balancer#az-k8s-runtime-load-balancer-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--load-balancer-name]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a load balancer",
+                    "parameters": [
+                        {
+                            "name": "--load-balancer-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

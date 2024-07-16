@@ -1,0 +1,53 @@
+{
+    "resourceType": "publishers/configurationGroupSchemas",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/configuration-group-schema"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher configuration-group-schema show",
+            "description": "Get information about the specified configuration group schema.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/configurationGroupSchemas/{configurationGroupSchemaName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/configuration-group-schema#az-aosm-publisher-configuration-group-schema-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get information about the specified configuration group schema.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationGroupSchemaName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

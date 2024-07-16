@@ -1,0 +1,99 @@
+{
+    "resourceType": "fluidRelayServers/fluidRelayContainers",
+    "apiVersion": "2022-06-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/fluid-relay/container"
+    },
+    "commands": [
+        {
+            "name": "az fluid-relay container delete",
+            "description": "Delete a Fluid Relay container.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/fluid-relay/container#az-fluid-relay-container-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--container-name]",
+                            "[--server-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "FluidRelayContainer_Delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--server-name",
+                            "value": "[path.fluidRelayServerName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.fluidRelayContainerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az fluid-relay container show",
+            "description": "Get a Fluid Relay container.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/Microsoft.FluidRelay/fluidRelayServers/{fluidRelayServerName}/fluidRelayContainers/{fluidRelayContainerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/fluid-relay/container#az-fluid-relay-container-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--container-name]",
+                            "[--server-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "FluidRelayContainer_Show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--server-name",
+                            "value": "[path.fluidRelayServerName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.fluidRelayContainerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

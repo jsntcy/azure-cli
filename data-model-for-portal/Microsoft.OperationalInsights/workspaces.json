@@ -1,6 +1,6 @@
 {
     "resourceType": "workspaces",
-    "apiVersion": "2021-12-01-preview",
+    "apiVersion": "2023-09-01",
     "learnMore": {
         "url": "https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace"
     },
@@ -149,12 +149,47 @@
                     "description": "Get a list of workspaces under a resource group or a subscription.",
                     "parameters": [
                         {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor log-analytics workspace list-available-service-tier",
+            "description": "List the available service tiers for the workspace.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/availableServiceTiers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/log-analytics/workspace#az-monitor-log-analytics-workspace-list-available-service-tier"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the available service tiers for the workspace.",
+                    "parameters": [
+                        {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
                             "name": "--subscription",
                             "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
                         }
                     ]
                 }
@@ -478,7 +513,7 @@
         {
             "name": "az monitor log-analytics workspace table list",
             "description": "List all the tables for the given Log Analytics workspace.",
-            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/tables",
             "confirmation": false,
             "help": {
                 "learnMore": {

@@ -1,0 +1,38 @@
+{
+    "resourceType": "transfers",
+    "apiVersion": "2019-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/transfer"
+    },
+    "commands": [
+        {
+            "name": "az billing transfer show",
+            "description": "Get a transfer request by ID. The caller must be the recipient of the transfer request.",
+            "path": "/providers/Microsoft.Billing/transfers/{transferName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/transfer#az-billing-transfer-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--transfer-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a transfer request by ID. The caller must be the recipient of the transfer request.",
+                    "parameters": [
+                        {
+                            "name": "--transfer-name",
+                            "value": "[path.transferName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

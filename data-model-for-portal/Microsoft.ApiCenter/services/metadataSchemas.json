@@ -1,0 +1,97 @@
+{
+    "resourceType": "services/metadataSchemas",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/apic/metadata"
+    },
+    "commands": [
+        {
+            "name": "az apic metadata delete",
+            "description": "Delete specified metadata schema.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/apic/metadata#az-apic-metadata-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--metadata-name]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Metadata Schema",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--metadata-name",
+                            "value": "[path.metadataSchemaName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az apic metadata show",
+            "description": "Get details of the metadata schema.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ApiCenter/services/{serviceName}/metadataSchemas/{metadataSchemaName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/apic/metadata#az-apic-metadata-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--metadata-name]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show schema details 1",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceName]"
+                        },
+                        {
+                            "name": "--metadata-name",
+                            "value": "[path.metadataSchemaName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

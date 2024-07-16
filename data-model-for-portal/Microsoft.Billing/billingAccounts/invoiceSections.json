@@ -1,0 +1,44 @@
+{
+    "resourceType": "billingAccounts/invoiceSections",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/account/invoice-section"
+    },
+    "commands": [
+        {
+            "name": "az billing account invoice-section show",
+            "description": "Get the InvoiceSection by id.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoiceSections/{invoiceSectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/account/invoice-section#az-billing-account-invoice-section-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]",
+                            "[--invoice-section-name]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the InvoiceSection by id.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        },
+                        {
+                            "name": "--invoice-section-name",
+                            "value": "[path.invoiceSectionName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

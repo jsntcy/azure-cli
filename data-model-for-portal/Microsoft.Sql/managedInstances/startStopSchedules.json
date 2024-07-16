@@ -1,0 +1,99 @@
+{
+    "resourceType": "managedInstances/startStopSchedules",
+    "apiVersion": "2022-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sql/mi/startstopschedule"
+    },
+    "commands": [
+        {
+            "name": "az sql mi startstopschedule delete",
+            "description": "Delete the managed instance's Start/Stop schedule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/startStopSchedules/{startStopScheduleName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/startstopschedule#az-sql-mi-startstopschedule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mi]",
+                            "[--managed-instance]",
+                            "[--resource-group]",
+                            "[--start-stop-schedule-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the managed instance's Start/Stop schedule.",
+                    "parameters": [
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--start-stop-schedule-name",
+                            "value": "[path.startStopScheduleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sql mi startstopschedule show",
+            "description": "Get the managed instance's Start/Stop schedule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/startStopSchedules/{startStopScheduleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/startstopschedule#az-sql-mi-startstopschedule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mi]",
+                            "[--managed-instance]",
+                            "[--resource-group]",
+                            "[--start-stop-schedule-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the managed instance's Start/Stop schedule.",
+                    "parameters": [
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--start-stop-schedule-name",
+                            "value": "[path.startStopScheduleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

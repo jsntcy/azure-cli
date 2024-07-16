@@ -1,0 +1,188 @@
+{
+    "resourceType": "namespaces/migrationConfigurations",
+    "apiVersion": "2022-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/servicebus/migration"
+    },
+    "commands": [
+        {
+            "name": "az servicebus migration abort",
+            "description": "This operation reverts Migration",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}/revert",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/migration#az-servicebus-migration-abort"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "This operation reverts Migration",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus migration complete",
+            "description": "This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace. CompleteMigration operation will fail when entity migration is in-progress.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}/upgrade",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/migration#az-servicebus-migration-complete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "This operation Completes Migration of entities by pointing the connection strings to Premium namespace and any entities created after the operation will be under Premium Namespace. CompleteMigration operation will fail when entity migration is in-progress.",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus migration delete",
+            "description": "Delete a MigrationConfiguration",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/migration#az-servicebus-migration-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a MigrationConfiguration",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus migration show",
+            "description": "Get Migration Config",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/migrationConfigurations/{configName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/migration#az-servicebus-migration-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--namespace-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Migration Config",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,162 @@
+{
+    "resourceType": "configurationProfileAssignments/reports",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/arc/report"
+    },
+    "commands": [
+        {
+            "name": "az automanage configuration-profile-assignment arc report show",
+            "description": "Get information about a report associated with an ARC machine configuration profile assignment run",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/arc/report#az-automanage-configuration-profile-assignment-arc-report-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--machine-name]",
+                            "[--name]",
+                            "[--report-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment for arc report",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.reportName]"
+                        },
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--machine-name",
+                            "value": "[path.machineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment cluster report show",
+            "description": "Get information about a report associated with a AzureStackHCI cluster configuration profile assignment run",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/cluster/report#az-automanage-configuration-profile-assignment-cluster-report-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--name]",
+                            "[--report-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment cluster report",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.reportName]"
+                        },
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment vm report show",
+            "description": "Get information about a report associated with a VM configuration profile assignment run",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports/{reportName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/vm/report#az-automanage-configuration-profile-assignment-vm-report-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--name]",
+                            "[--report-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vm-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment vm report",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.reportName]"
+                        },
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vm-name",
+                            "value": "[path.vmName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

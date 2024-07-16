@@ -1,0 +1,59 @@
+{
+    "resourceType": "securityConnectors/devops/gitHubOwners/repos",
+    "apiVersion": "2023-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/githubowner/repo"
+    },
+    "commands": [
+        {
+            "name": "az security security-connector devops githubowner repo show",
+            "description": "Get a monitored GitHub repository.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitHubOwners/{ownerName}/repos/{repoName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/githubowner/repo#az-security-security-connector-devops-githubowner-repo-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--owner-name]",
+                            "[--repo-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a monitored GitHub repository.",
+                    "parameters": [
+                        {
+                            "name": "--owner-name",
+                            "value": "[path.ownerName]"
+                        },
+                        {
+                            "name": "--repo-name",
+                            "value": "[path.repoName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

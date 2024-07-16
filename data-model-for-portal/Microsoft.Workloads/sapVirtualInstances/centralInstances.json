@@ -1,0 +1,55 @@
+{
+    "resourceType": "sapVirtualInstances/centralInstances",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/workloads/sap-central-instance"
+    },
+    "commands": [
+        {
+            "name": "az workloads sap-central-instance show",
+            "description": "Show the SAP Central Services Instance resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/centralInstances/{centralInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/workloads/sap-central-instance#az-workloads-sap-central-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--central-instance-name]",
+                            "[--resource-group]",
+                            "[--vis-name]",
+                            "[--sap-virtual-instance-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the SAP Central Services Instance resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.centralInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vis-name",
+                            "value": "[path.sapVirtualInstanceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

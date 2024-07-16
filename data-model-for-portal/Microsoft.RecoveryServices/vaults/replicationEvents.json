@@ -1,0 +1,54 @@
+{
+    "resourceType": "vaults/replicationEvents",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/event"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery event show",
+            "description": "Get operation to get the details of an Azure Site recovery event.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationEvents/{eventName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/event#az-site-recovery-event-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--event-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "event show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.eventName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

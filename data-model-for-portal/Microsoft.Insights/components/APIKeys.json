@@ -1,0 +1,53 @@
+{
+    "resourceType": "components/APIKeys",
+    "apiVersion": "2015-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/api-key"
+    },
+    "commands": [
+        {
+            "name": "az monitor app-insights api-key delete",
+            "description": "Delete an API key from an Application Insights resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/APIKeys/{keyId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/api-key#az-monitor-app-insights-api-key-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--api-key]",
+                            "[--resource-group]",
+                            "[--app]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete API Key.",
+                    "parameters": [
+                        {
+                            "name": "--app",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--api-key",
+                            "value": "[path.keyId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

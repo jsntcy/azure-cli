@@ -1,0 +1,164 @@
+{
+    "resourceType": "spacecrafts",
+    "apiVersion": "2022-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft"
+    },
+    "commands": [
+        {
+            "name": "az orbital spacecraft delete",
+            "description": "Delete a specified spacecraft resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft#az-orbital-spacecraft-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--spacecraft-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Spacecraft",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.spacecraftName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az orbital spacecraft list",
+            "description": "List spacecrafts.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft#az-orbital-spacecraft-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skiptoken]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Spacecrafts by Resource Group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az orbital spacecraft show",
+            "description": "Get the specified spacecraft in a specified resource group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft#az-orbital-spacecraft-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--spacecraft-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Spacecraft",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.spacecraftName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az orbital spacecraft contact list",
+            "description": "List contacts by spacecraft.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft/contact#az-orbital-spacecraft-contact-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--spacecraft-name]",
+                            "[--subscription]",
+                            "[--skiptoken]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Contacts",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--spacecraft-name",
+                            "value": "[path.spacecraftName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

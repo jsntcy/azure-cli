@@ -1,0 +1,100 @@
+{
+    "resourceType": "dnsForwardingRulesets/virtualNetworkLinks",
+    "apiVersion": "2022-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver/vnet-link"
+    },
+    "commands": [
+        {
+            "name": "az dns-resolver vnet-link delete",
+            "description": "Deletes a virtual network link to a DNS forwarding ruleset. WARNING: This operation cannot be undone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/vnet-link#az-dns-resolver-vnet-link-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--ruleset-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--virtual-network-link-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Deletes a virtual network link to a DNS forwarding ruleset. WARNING: This operation cannot be undone.",
+                    "parameters": [
+                        {
+                            "name": "--ruleset-name",
+                            "value": "[path.dnsForwardingRulesetName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.virtualNetworkLinkName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver vnet-link show",
+            "description": "Gets properties of a virtual network link to a DNS forwarding ruleset.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsForwardingRulesets/{dnsForwardingRulesetName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/vnet-link#az-dns-resolver-vnet-link-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--ruleset-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--virtual-network-link-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve virtual network link to a DNS forwarding ruleset",
+                    "parameters": [
+                        {
+                            "name": "--ruleset-name",
+                            "value": "[path.dnsForwardingRulesetName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.virtualNetworkLinkName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

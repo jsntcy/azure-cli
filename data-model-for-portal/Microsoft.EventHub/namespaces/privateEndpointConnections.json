@@ -1,0 +1,99 @@
+{
+    "resourceType": "namespaces/privateEndpointConnections",
+    "apiVersion": "2023-01-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/private-endpoint-connection"
+    },
+    "commands": [
+        {
+            "name": "az eventhubs namespace private-endpoint-connection delete",
+            "description": "Delete a Private Endpoint Connection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/private-endpoint-connection#az-eventhubs-namespace-private-endpoint-connection-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--name]",
+                            "[--private-endpoint-connection-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Private Endpoint Connection.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.privateEndpointConnectionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az eventhubs namespace private-endpoint-connection show",
+            "description": "Get a description for the specified Private Endpoint Connection name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.EventHub/namespaces/{namespaceName}/privateEndpointConnections/{privateEndpointConnectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/eventhubs/namespace/private-endpoint-connection#az-eventhubs-namespace-private-endpoint-connection-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--namespace-name]",
+                            "[--name]",
+                            "[--private-endpoint-connection-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a description for the specified Private Endpoint Connection name.",
+                    "parameters": [
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.privateEndpointConnectionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

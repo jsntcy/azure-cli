@@ -1,0 +1,451 @@
+{
+    "resourceType": "configurationProfileAssignments",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment"
+    },
+    "commands": [
+        {
+            "name": "az automanage configuration-profile-assignment list",
+            "description": "List configuration profile assignments under a given subscription",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment#az-automanage-configuration-profile-assignment-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--machine-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vm-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "list configuration-profile-assignment",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment arc delete",
+            "description": "Delete an association between an ARC machine and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/arc#az-automanage-configuration-profile-assignment-arc-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--machine-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "delete configuration-profile-assignment for arc",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--machine-name",
+                            "value": "[path.machineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment arc show",
+            "description": "Get information about an association between an ARC machine and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/arc#az-automanage-configuration-profile-assignment-arc-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--machine-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment for arc",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--machine-name",
+                            "value": "[path.machineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment cluster delete",
+            "description": "Delete an association between an AzureStackHCI cluster and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/cluster#az-automanage-configuration-profile-assignment-cluster-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "delete configuration-profile-assignment cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment cluster show",
+            "description": "Get information about an association between an AzureStackHCI cluster and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/cluster#az-automanage-configuration-profile-assignment-cluster-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment for cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment vm delete",
+            "description": "Delete an association between a VM and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/vm#az-automanage-configuration-profile-assignment-vm-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vm-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "delete configuration-profile-assignment for vm",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vm-name",
+                            "value": "[path.vmName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment vm show",
+            "description": "Get information about an association between a VM and Automanage configuration profile",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/vm#az-automanage-configuration-profile-assignment-vm-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vm-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show configuration-profile-assignment vm",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vm-name",
+                            "value": "[path.vmName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment arc report list",
+            "description": "List reports within a given ARC machine configuration profile assignment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridCompute/machines/{machineName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/arc/report#az-automanage-configuration-profile-assignment-arc-report-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--machine-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "list configuration-profile-assignment for arc report",
+                    "parameters": [
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--machine-name",
+                            "value": "[path.machineName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment cluster report list",
+            "description": "List reports within a given AzureStackHCI cluster configuration profile assignment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHci/clusters/{clusterName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/cluster/report#az-automanage-configuration-profile-assignment-cluster-report-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "list configuration-profile-assignment cluster report",
+                    "parameters": [
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage configuration-profile-assignment vm report list",
+            "description": "List reports within a given VM configuration profile assignment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/providers/Microsoft.Automanage/configurationProfileAssignments/{configurationProfileAssignmentName}/reports",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/configuration-profile-assignment/vm/report#az-automanage-configuration-profile-assignment-vm-report-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--assignment-name]",
+                            "[--configuration-profile-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vm-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "list configuration-profile-assignment vm report",
+                    "parameters": [
+                        {
+                            "name": "--assignment-name",
+                            "value": "[path.configurationProfileAssignmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vm-name",
+                            "value": "[path.vmName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

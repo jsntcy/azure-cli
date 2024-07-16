@@ -1,0 +1,289 @@
+{
+    "resourceType": "networkSecurityPerimeters",
+    "apiVersion": "2023-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/perimeter"
+    },
+    "commands": [
+        {
+            "name": "az network perimeter delete",
+            "description": "Deletes a network security perimeter.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter#az-network-perimeter-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Network Security Perimeter",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter list",
+            "description": "List all network security perimeters in a subscription.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter#az-network-perimeter-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Network Security Perimeters",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter show",
+            "description": "Gets the specified network security perimeter by the name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter#az-network-perimeter-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the Network Security Perimeter",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter association list",
+            "description": "Lists the NSP resource associations.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/association#az-network-perimeter-association-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List NSP Associations inside a Perimeter",
+                    "parameters": [
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter link list",
+            "description": "List the NSP Link resources in the specified network security perimeter.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/link#az-network-perimeter-link-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Lists NSP links in a parameter",
+                    "parameters": [
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter link-reference list",
+            "description": "List the NSP LinkReference resources in the specified network security perimeter.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/linkReferences",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/link-reference#az-network-perimeter-link-reference-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List NSP link reference",
+                    "parameters": [
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter profile list",
+            "description": "Lists the NSP profiles in the specified network security perimeter.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile#az-network-perimeter-profile-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List NSP Profiles inside a Perimeter",
+                    "parameters": [
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

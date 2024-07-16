@@ -1,0 +1,109 @@
+{
+    "resourceType": "profiles/endpoints/originGroups",
+    "apiVersion": "2024-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cdn/origin-group"
+    },
+    "commands": [
+        {
+            "name": "az cdn origin-group delete",
+            "description": "Delete an existing origin group within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin-group#az-cdn-origin-group-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--name]",
+                            "[--origin-group-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an existing origin group within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.originGroupName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn origin-group show",
+            "description": "Get an existing origin group within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/originGroups/{originGroupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin-group#az-cdn-origin-group-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--name]",
+                            "[--origin-group-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an existing origin group within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.originGroupName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

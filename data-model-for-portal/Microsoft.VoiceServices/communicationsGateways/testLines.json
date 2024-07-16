@@ -1,0 +1,99 @@
+{
+    "resourceType": "communicationsGateways/testLines",
+    "apiVersion": "2023-01-31",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/voice-service/test-line"
+    },
+    "commands": [
+        {
+            "name": "az voice-service test-line delete",
+            "description": "Delete a test line",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/voice-service/test-line#az-voice-service-test-line-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--gateway-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--test-line-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a test line",
+                    "parameters": [
+                        {
+                            "name": "--gateway-name",
+                            "value": "[path.communicationsGatewayName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.testLineName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az voice-service test-line show",
+            "description": "Show a test line",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.VoiceServices/communicationsGateways/{communicationsGatewayName}/testLines/{testLineName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/voice-service/test-line#az-voice-service-test-line-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--gateway-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--test-line-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a test line",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.testLineName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--gateway-name",
+                            "value": "[path.communicationsGatewayName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 {
     "resourceType": "publicIPAddresses",
-    "apiVersion": "2022-05-01",
+    "apiVersion": "2022-11-01",
     "learnMore": {
         "url": "https://docs.microsoft.com/cli/azure/network/public-ip"
     },
@@ -9,7 +9,7 @@
             "name": "az network public-ip delete",
             "description": "Delete a public IP address.",
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}",
-            "confirmation": true,
+            "confirmation": false,
             "help": {
                 "learnMore": {
                     "url": "https://docs.microsoft.com/cli/azure/network/public-ip#az-network-public-ip-delete"
@@ -109,6 +109,45 @@
                         {
                             "name": "--name",
                             "value": "[path.publicIpAddressName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network public-ip ddos-protection-statu show",
+            "description": "Get the Ddos Protection Status of a Public IP Address",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/publicIPAddresses/{publicIpAddressName}/ddosProtectionStatus",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/public-ip/ddos-protection-statu#az-network-public-ip-ddos-protection-statu-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets the Ddos Protection Status of a Public IP Address",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.publicIpAddressName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
                         },
                         {
                             "name": "--subscription",

@@ -1,0 +1,99 @@
+{
+    "resourceType": "storageMovers/endpoints",
+    "apiVersion": "2024-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage-mover/endpoint"
+    },
+    "commands": [
+        {
+            "name": "az storage-mover endpoint delete",
+            "description": "Deletes an Endpoint resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/endpoint#az-storage-mover-endpoint-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "endpoint delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover endpoint show",
+            "description": "Gets an Endpoint resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/endpoints/{endpointName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/endpoint#az-storage-mover-endpoint-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "endpoint show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

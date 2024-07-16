@@ -1,0 +1,58 @@
+{
+    "resourceType": "scheduledevents",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/maintenance/scheduledevent"
+    },
+    "commands": [
+        {
+            "name": "az maintenance scheduledevent acknowledge",
+            "description": "Acknowledge Scheduled Event",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Compute/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/scheduledevents/{scheduledEventId}/acknowledge",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/scheduledevent#az-maintenance-scheduledevent-acknowledge"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-type]",
+                            "[--scheduled-event-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Acknowledge scheduled event of a VirtualMachine",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--scheduled-event-id",
+                            "value": "[path.scheduledEventId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "resourceType": "quotaRequests",
+    "apiVersion": "2023-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/quota/request"
+    },
+    "commands": [
+        {
+            "name": "az quota request list",
+            "description": "List the specified scope, get the current quota requests for a one year period ending at the time is made. Use the **oData** filter to select quota requests.",
+            "path": "/{scope}/providers/Microsoft.Quota/quotaRequests",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota/request#az-quota-request-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]",
+                            "[--filter]",
+                            "[--skiptoken]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the specified scope, get the current quota requests for a one year period ending at the time is made. Use the **oData** filter to select quota requests.",
+                    "parameters": [
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az quota request show",
+            "description": "Show the quota request details and status by quota request ID for the resources of the resource provider at a specific location.",
+            "path": "/{scope}/providers/Microsoft.Quota/quotaRequests/{id}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota/request#az-quota-request-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--id]",
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show quota request for network",
+                    "parameters": [
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        },
+                        {
+                            "name": "--id",
+                            "value": "[path.id]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

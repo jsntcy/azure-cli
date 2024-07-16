@@ -1,0 +1,43 @@
+{
+    "resourceType": "locations",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/usage"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin usage list",
+            "description": "List the current usages and limits in this location for the provided subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.DevCenter/locations/{location}/usages",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/usage#az-devcenter-admin-usage-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List",
+                    "parameters": [
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

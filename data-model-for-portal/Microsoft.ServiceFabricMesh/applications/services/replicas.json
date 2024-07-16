@@ -1,0 +1,59 @@
+{
+    "resourceType": "applications/services/replicas",
+    "apiVersion": "2018-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mesh/service-replica"
+    },
+    "commands": [
+        {
+            "name": "az mesh service-replica show",
+            "description": "Gets the given replica of the service of an application.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceFabricMesh/applications/{applicationResourceName}/services/{serviceResourceName}/replicas/{replicaName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mesh/service-replica#az-mesh-service-replica-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--app-name]",
+                            "[--application-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets the given replica of the service of an application.",
+                    "parameters": [
+                        {
+                            "name": "--app-name",
+                            "value": "[path.applicationResourceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.replicaName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--service-name",
+                            "value": "[path.serviceResourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

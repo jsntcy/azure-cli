@@ -1,0 +1,43 @@
+{
+    "resourceType": "solutions",
+    "apiVersion": "2024-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/self-help/solution"
+    },
+    "commands": [
+        {
+            "name": "az self-help solution show",
+            "description": "Get the solution using the applicable solutionResourceName while creating the solution.",
+            "path": "/{scope}/providers/Microsoft.Help/solutions/{solutionResourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/self-help/solution#az-self-help-solution-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]",
+                            "[--solution-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show Solution at Resource Level",
+                    "parameters": [
+                        {
+                            "name": "--solution-name",
+                            "value": "[path.solutionResourceName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

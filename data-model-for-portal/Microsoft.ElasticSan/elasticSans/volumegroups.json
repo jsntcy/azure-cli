@@ -1,0 +1,194 @@
+{
+    "resourceType": "elasticSans/volumegroups",
+    "apiVersion": "2023-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume"
+    },
+    "commands": [
+        {
+            "name": "az elastic-san volume list",
+            "description": "List Volumes in a Volume Group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/volumes",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume#az-elastic-san-volume-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--volume-group]",
+                            "[--volume-group-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Volumes in a Volume Group.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--volume-group",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic-san volume-group delete",
+            "description": "Delete a Volume Group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume-group#az-elastic-san-volume-group-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--volume-group-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Volume Group.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic-san volume-group show",
+            "description": "Get a Volume Group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume-group#az-elastic-san-volume-group-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--volume-group-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a Volume Group.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic-san volume snapshot list",
+            "description": "List Snapshots in a VolumeGroup or List Snapshots by Volume (name) in a VolumeGroup using filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ElasticSan/elasticSans/{elasticSanName}/volumegroups/{volumeGroupName}/snapshots",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic-san/volume/snapshot#az-elastic-san-volume-snapshot-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--elastic-san]",
+                            "[--elastic-san-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--volume-group]",
+                            "[--volume-group-name]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "snapshot list",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--elastic-san",
+                            "value": "[path.elasticSanName]"
+                        },
+                        {
+                            "name": "--volume-group",
+                            "value": "[path.volumeGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

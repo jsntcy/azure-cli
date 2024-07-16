@@ -1,0 +1,144 @@
+{
+    "resourceType": "automationAccounts/hybridRunbookWorkerGroups",
+    "apiVersion": "2022-08-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/hrwg"
+    },
+    "commands": [
+        {
+            "name": "az automation hrwg delete",
+            "description": "Delete a hybrid runbook worker group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg#az-automation-hrwg-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--hybrid-runbook-worker-group-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a hybrid runbook worker group.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.hybridRunbookWorkerGroupName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation hrwg show",
+            "description": "Get a hybrid runbook worker group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg#az-automation-hrwg-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--hybrid-runbook-worker-group-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a hybrid runbook worker group.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.hybridRunbookWorkerGroupName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation hrwg hrw list",
+            "description": "List a list of hybrid runbook workers.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg/hrw#az-automation-hrwg-hrw-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--hybrid-runbook-worker-group-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List a list of hybrid runbook workers.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--hybrid-runbook-worker-group-name",
+                            "value": "[path.hybridRunbookWorkerGroupName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

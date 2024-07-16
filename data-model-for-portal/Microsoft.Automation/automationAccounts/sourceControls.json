@@ -1,0 +1,147 @@
+{
+    "resourceType": "automationAccounts/sourceControls",
+    "apiVersion": "2023-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/source-control"
+    },
+    "commands": [
+        {
+            "name": "az automation source-control delete",
+            "description": "Delete the source control.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control#az-automation-source-control-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--source-control-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the source control.",
+                    "parameters": [
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.sourceControlName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation source-control show",
+            "description": "Get the source control identified by source control name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control#az-automation-source-control-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--source-control-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get information about the source control",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.sourceControlName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation source-control sync-job list",
+            "description": "List a list of source control sync jobs.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control/sync-job#az-automation-source-control-sync-job-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--source-control-name]",
+                            "[--subscription]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List sync jobs",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--source-control-name",
+                            "value": "[path.sourceControlName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

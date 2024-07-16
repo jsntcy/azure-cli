@@ -1,0 +1,99 @@
+{
+    "resourceType": "plans/members",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/plan-member"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin plan-member delete",
+            "description": "Delete a dev center plan member",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/plan-member#az-devcenter-admin-plan-member-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--member-name]",
+                            "[--plan-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.memberName]"
+                        },
+                        {
+                            "name": "--plan-name",
+                            "value": "[path.planName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az devcenter admin plan-member show",
+            "description": "Get a devcenter plan member.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/plans/{planName}/members/{memberName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/plan-member#az-devcenter-admin-plan-member-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--member-name]",
+                            "[--plan-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.memberName]"
+                        },
+                        {
+                            "name": "--plan-name",
+                            "value": "[path.planName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

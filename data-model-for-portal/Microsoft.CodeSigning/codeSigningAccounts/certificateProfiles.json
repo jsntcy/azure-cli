@@ -1,0 +1,99 @@
+{
+    "resourceType": "codeSigningAccounts/certificateProfiles",
+    "apiVersion": "2024-02-05-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/trustedsigning/certificate-profile"
+    },
+    "commands": [
+        {
+            "name": "az trustedsigning certificate-profile delete",
+            "description": "Delete a certificate profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/trustedsigning/certificate-profile#az-trustedsigning-certificate-profile-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a certificate profile",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az trustedsigning certificate-profile show",
+            "description": "Get details of a certificate profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.CodeSigning/codeSigningAccounts/{accountName}/certificateProfiles/{profileName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/trustedsigning/certificate-profile#az-trustedsigning-certificate-profile-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get details of a profile",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

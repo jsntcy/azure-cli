@@ -1,0 +1,108 @@
+{
+    "resourceType": "vaults/replicationFabrics/replicationNetworks",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/network"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery network show",
+            "description": "Get the details of a network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/network#az-site-recovery-network-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--network-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a network.",
+                    "parameters": [
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery network mapping list",
+            "description": "List all ASR network mappings for the specified network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationNetworks/{networkName}/replicationNetworkMappings",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/network/mapping#az-site-recovery-network-mapping-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--network-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "network mapping list",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--network-name",
+                            "value": "[path.networkName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

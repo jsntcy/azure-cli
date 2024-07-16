@@ -1,0 +1,53 @@
+{
+    "resourceType": "publishers/networkServiceDesignGroups",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/network-service-design/version"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher network-service-design version list",
+            "description": "List information about the network service design versions available under the specified network service design group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkServiceDesignGroups/{networkServiceDesignGroupName}/networkServiceDesignVersions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/network-service-design/version#az-aosm-publisher-network-service-design-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List information about the network service design versions available in the 'contoso-service' network service design group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--group-name",
+                            "value": "[path.networkServiceDesignGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

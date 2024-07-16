@@ -1,0 +1,97 @@
+{
+    "resourceType": "savingsPlanOrders",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order"
+    },
+    "commands": [
+        {
+            "name": "az billing-benefits savings-plan-order elevate",
+            "description": "Elevate as owner on savings plan order based on billing permissions.",
+            "path": "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/elevate",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order#az-billing-benefits-savings-plan-order-elevate"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--savings-plan-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Elevate a savings plan order",
+                    "parameters": [
+                        {
+                            "name": "--savings-plan-order-id",
+                            "value": "[path.savingsPlanOrderId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az billing-benefits savings-plan-order show",
+            "description": "Get a savings plan order.",
+            "path": "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order#az-billing-benefits-savings-plan-order-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--savings-plan-order-id]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a savings plan order",
+                    "parameters": [
+                        {
+                            "name": "--savings-plan-order-id",
+                            "value": "[path.savingsPlanOrderId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az billing-benefits savings-plan-order savings-plan list",
+            "description": "List savings plans in an order.",
+            "path": "/providers/Microsoft.BillingBenefits/savingsPlanOrders/{savingsPlanOrderId}/savingsPlans",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing-benefits/savings-plan-order/savings-plan#az-billing-benefits-savings-plan-order-savings-plan-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--savings-plan-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List savings plans in an order",
+                    "parameters": [
+                        {
+                            "name": "--savings-plan-order-id",
+                            "value": "[path.savingsPlanOrderId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

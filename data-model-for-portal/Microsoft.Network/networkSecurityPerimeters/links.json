@@ -1,0 +1,99 @@
+{
+    "resourceType": "networkSecurityPerimeters/links",
+    "apiVersion": "2023-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/perimeter/link"
+    },
+    "commands": [
+        {
+            "name": "az network perimeter link delete",
+            "description": "Delete an NSP Link resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/link#az-network-perimeter-link-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--link-name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete NSP link",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.linkName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter link show",
+            "description": "Get the specified NSP link resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/links/{linkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/link#az-network-perimeter-link-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--link-name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the specified NSP link resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.linkName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

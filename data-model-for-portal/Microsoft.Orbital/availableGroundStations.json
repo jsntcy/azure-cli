@@ -1,0 +1,44 @@
+{
+    "resourceType": "availableGroundStations",
+    "apiVersion": "2022-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/orbital/available-ground-station"
+    },
+    "commands": [
+        {
+            "name": "az orbital available-ground-station show",
+            "description": "Get the specified available ground station.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/availableGroundStations/{groundStationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/available-ground-station#az-orbital-available-ground-station-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--ground-station-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the specified available ground station.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.groundStationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

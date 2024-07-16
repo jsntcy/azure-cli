@@ -1,0 +1,109 @@
+{
+    "resourceType": "profiles/endpoints/origins",
+    "apiVersion": "2024-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cdn/origin"
+    },
+    "commands": [
+        {
+            "name": "az cdn origin delete",
+            "description": "Delete an existing origin within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin#az-cdn-origin-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--name]",
+                            "[--origin-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an existing origin within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.originName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cdn origin show",
+            "description": "Get an existing origin within an endpoint.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/endpoints/{endpointName}/origins/{originName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cdn/origin#az-cdn-origin-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--endpoint-name]",
+                            "[--name]",
+                            "[--origin-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an existing origin within an endpoint.",
+                    "parameters": [
+                        {
+                            "name": "--endpoint-name",
+                            "value": "[path.endpointName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.originName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,193 @@
+{
+    "resourceType": "projects/pools",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/pool"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin pool delete",
+            "description": "Delete a pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/pool#az-devcenter-admin-pool-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--pool-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--project",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az devcenter admin pool run-health-check",
+            "description": "Triggers a refresh of the pool status.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/runHealthChecks",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/pool#az-devcenter-admin-pool-run-health-check"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--pool-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Run health check",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--project",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az devcenter admin pool show",
+            "description": "Get a pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/pool#az-devcenter-admin-pool-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--pool-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--project",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az devcenter admin schedule list",
+            "description": "List schedules for a pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/pools/{poolName}/schedules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/schedule#az-devcenter-admin-schedule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--pool-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List",
+                    "parameters": [
+                        {
+                            "name": "--pool-name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--project",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

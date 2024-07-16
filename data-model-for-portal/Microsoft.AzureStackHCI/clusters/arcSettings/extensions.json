@@ -1,0 +1,109 @@
+{
+    "resourceType": "clusters/arcSettings/extensions",
+    "apiVersion": "2023-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/stack-hci/extension"
+    },
+    "commands": [
+        {
+            "name": "az stack-hci extension delete",
+            "description": "Delete particular arc extension of HCI Cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/stack-hci/extension#az-stack-hci-extension-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--arc-setting-name]",
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--extension-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete arc extension",
+                    "parameters": [
+                        {
+                            "name": "--arc-setting-name",
+                            "value": "[path.arcSettingName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.extensionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az stack-hci extension show",
+            "description": "Get particular arc extension of HCI cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureStackHCI/clusters/{clusterName}/arcSettings/{arcSettingName}/extensions/{extensionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/stack-hci/extension#az-stack-hci-extension-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--arc-setting-name]",
+                            "[--cluster-name]",
+                            "[--name]",
+                            "[--extension-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get arc settings extension",
+                    "parameters": [
+                        {
+                            "name": "--arc-setting-name",
+                            "value": "[path.arcSettingName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.extensionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,109 @@
+{
+    "resourceType": "automationAccounts/hybridRunbookWorkerGroups/hybridRunbookWorkers",
+    "apiVersion": "2022-08-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/hrwg/hrw"
+    },
+    "commands": [
+        {
+            "name": "az automation hrwg hrw delete",
+            "description": "Delete a hybrid runbook worker.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg/hrw#az-automation-hrwg-hrw-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--hybrid-runbook-worker-group-name]",
+                            "[--name]",
+                            "[--hybrid-runbook-worker-id]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a hybrid runbook worker.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--hybrid-runbook-worker-group-name",
+                            "value": "[path.hybridRunbookWorkerGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.hybridRunbookWorkerId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation hrwg hrw show",
+            "description": "Get a hybrid runbook worker.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/hybridRunbookWorkerGroups/{hybridRunbookWorkerGroupName}/hybridRunbookWorkers/{hybridRunbookWorkerId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/hrwg/hrw#az-automation-hrwg-hrw-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--hybrid-runbook-worker-group-name]",
+                            "[--name]",
+                            "[--hybrid-runbook-worker-id]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a hybrid runbook worker.",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--hybrid-runbook-worker-group-name",
+                            "value": "[path.hybridRunbookWorkerGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.hybridRunbookWorkerId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,678 @@
+{
+    "resourceType": "monitors",
+    "apiVersion": "2023-02-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/elastic/monitor"
+    },
+    "commands": [
+        {
+            "name": "az elastic monitor associate-traffic-filter",
+            "description": "Associate traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/associateTrafficFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-associate-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--ruleset-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Associate traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor create-and-associate-ip-filter",
+            "description": "Create and associate ip filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociateIPFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-create-and-associate-ip-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--ips]",
+                            "[--name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Create and associate ip filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor create-and-associate-pl-filter",
+            "description": "Create and associate pl filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/createAndAssociatePLFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-create-and-associate-pl-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]",
+                            "[--private-endpoint-guid]",
+                            "[--private-endpoint-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Create and associate pl filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor delete",
+            "description": "Delete a monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete monitor",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor delete-traffic-filter",
+            "description": "Delete traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/deleteTrafficFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-delete-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--ruleset-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor detach-and-delete-traffic-filter",
+            "description": "Detach and delete traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachAndDeleteTrafficFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-detach-and-delete-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--ruleset-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Detach and delete traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor detach-traffic-filter",
+            "description": "Detach traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/detachTrafficFilter",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-detach-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--ruleset-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Detach traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list",
+            "description": "List all monitors under the specified resource group. And List all                                monitors under the specified subscription.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all monitors by resource group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-all-traffic-filter",
+            "description": "List all traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAllTrafficFilters",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-all-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-associated-traffic-filter",
+            "description": "List associated traffic filter",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listAssociatedTrafficFilters",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-associated-traffic-filter"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List associated traffic filter",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-deployment-info",
+            "description": "Fetch information regarding Elastic cloud deployment corresponding to                                the Elastic monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listDeploymentInfo",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-deployment-info"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List deployment info",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-resource",
+            "description": "List the resources currently being monitored by the Elastic monitor                                resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listMonitoredResources",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-resource"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the resources currently being monitored by the Elastic monitor                                resource.",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-upgradable-version",
+            "description": "List upgradable version",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listUpgradableVersions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-upgradable-version"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List upgradable version",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor list-vm-host",
+            "description": "List the vm resources currently being monitored by the Elastic                                monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/listVMHost",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-list-vm-host"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List vm host",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor show",
+            "description": "Get the properties of a specific monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show monitor",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor vm-ingestion-detail",
+            "description": "List the vm ingestion details that will be monitored by the Elastic                                monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/vmIngestionDetails",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor#az-elastic-monitor-vm-ingestion-detail"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Vm ingestion detail",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor tag-rule list",
+            "description": "List the tag rules for a given monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor/tag-rule#az-elastic-monitor-tag-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List monitor tag rule",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

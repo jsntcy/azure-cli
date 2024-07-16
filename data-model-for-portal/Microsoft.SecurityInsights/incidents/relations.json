@@ -1,0 +1,109 @@
+{
+    "resourceType": "incidents/relations",
+    "apiVersion": "2022-06-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/relation"
+    },
+    "commands": [
+        {
+            "name": "az sentinel incident relation delete",
+            "description": "Delete the incident relation.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/relation#az-sentinel-incident-relation-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--incident-id]",
+                            "[--name]",
+                            "[--relation-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the incident relation.",
+                    "parameters": [
+                        {
+                            "name": "--incident-id",
+                            "value": "[path.incidentId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.relationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az sentinel incident relation show",
+            "description": "Get an incident relation.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}/providers/Microsoft.SecurityInsights/incidents/{incidentId}/relations/{relationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sentinel/incident/relation#az-sentinel-incident-relation-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--incident-id]",
+                            "[--name]",
+                            "[--relation-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an incident relation.",
+                    "parameters": [
+                        {
+                            "name": "--incident-id",
+                            "value": "[path.incidentId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.relationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--workspace-name",
+                            "value": "[path.workspaceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

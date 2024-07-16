@@ -1,0 +1,334 @@
+{
+    "resourceType": "networkManagers",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager"
+    },
+    "commands": [
+        {
+            "name": "az network manager delete",
+            "description": "Delete a network manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager#az-network-manager-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--force]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Azure Virtual Network Manager",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager list",
+            "description": "List all network managers in a subscription.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager#az-network-manager-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Azure Virtual Network Manager",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager show",
+            "description": "Get the specified Network Manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager#az-network-manager-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Azure Virtual Network Manager",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connect-config list",
+            "description": "List all the network manager connectivity configuration in a specified network manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/connectivityConfigurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connect-config#az-network-manager-connect-config-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Azure Virtual Network Manager Connecitivity Configuration",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager group list",
+            "description": "List the specified network group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/networkGroups",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/group#az-network-manager-group-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Azure Virtual Network Manager Network Groups",
+                    "parameters": [
+                        {
+                            "name": "--network-manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager routing-config list",
+            "description": "List all the network manager routing configurations in a network manager, in a paginated format.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config#az-network-manager-routing-config-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all the network manager routing configurations.",
+                    "parameters": [
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager scope-connection list",
+            "description": "List all scope connections created by this network manager.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/scopeConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/scope-connection#az-network-manager-scope-connection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--network-manager]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List scope connections in a network manager",
+                    "parameters": [
+                        {
+                            "name": "--network-manager",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager security-admin-config list",
+            "description": "List all the network manager security admin configurations in a network manager, in a paginated format.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/security-admin-config#az-network-manager-security-admin-config-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List security admin configurations in a network manager.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "resourceType": "storageAccounts/accountMigrations",
+    "apiVersion": "2023-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage/account/migration"
+    },
+    "commands": [
+        {
+            "name": "az storage account migration show",
+            "description": "Get the status of the ongoing migration for the specified storage account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}/accountMigrations/{migrationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage/account/migration#az-storage-account-migration-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--name]",
+                            "[--migration-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the status of the ongoing migration for the specified storage account.",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.migrationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,99 @@
+{
+    "resourceType": "monitors/tagRules",
+    "apiVersion": "2023-02-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/elastic/monitor/tag-rule"
+    },
+    "commands": [
+        {
+            "name": "az elastic monitor tag-rule delete",
+            "description": "Delete a tag rule set for a given monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor/tag-rule#az-elastic-monitor-tag-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete tag rule",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az elastic monitor tag-rule show",
+            "description": "Get a tag rule set for a given monitor resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Elastic/monitors/{monitorName}/tagRules/{ruleSetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/elastic/monitor/tag-rule#az-elastic-monitor-tag-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show tag rule",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

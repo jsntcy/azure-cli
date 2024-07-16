@@ -1,0 +1,48 @@
+{
+    "resourceType": "netAppAccounts",
+    "apiVersion": "2022-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/netappfiles/account/backup-vault"
+    },
+    "commands": [
+        {
+            "name": "az netappfiles account backup-vault list",
+            "description": "List and describe all Backup Vaults in the NetApp account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/backupVaults",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/account/backup-vault#az-netappfiles-account-backup-vault-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List and describe all Backup Vaults in the NetApp account.",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

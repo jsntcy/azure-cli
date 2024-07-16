@@ -1,0 +1,146 @@
+{
+    "resourceType": "reservationOrders/reservations",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/reservations/reservation"
+    },
+    "commands": [
+        {
+            "name": "az reservations reservation archive",
+            "description": "Archiving a `Reservation` which is in cancelled/expired state and move it to `Archived` state.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/archive",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation#az-reservations-reservation-archive"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-id]",
+                            "[--reservation-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Archiving a reservation",
+                    "parameters": [
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        },
+                        {
+                            "name": "--reservation-id",
+                            "value": "[path.reservationId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az reservations reservation list-history",
+            "description": "List of all the revisions for the `Reservation`.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/revisions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation#az-reservations-reservation-list-history"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-id]",
+                            "[--reservation-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get history of a reservation.",
+                    "parameters": [
+                        {
+                            "name": "--reservation-id",
+                            "value": "[path.reservationId]"
+                        },
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az reservations reservation show",
+            "description": "Get specific `Reservation` details.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation#az-reservations-reservation-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-id]",
+                            "[--reservation-order-id]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a reservation detail",
+                    "parameters": [
+                        {
+                            "name": "--reservation-id",
+                            "value": "[path.reservationId]"
+                        },
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az reservations reservation unarchive",
+            "description": "Unarchiving a `Reservation` moves it to the state it was before archiving.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations/{reservationId}/unarchive",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation#az-reservations-reservation-unarchive"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-id]",
+                            "[--reservation-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Unarchiving a reservation",
+                    "parameters": [
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        },
+                        {
+                            "name": "--reservation-id",
+                            "value": "[path.reservationId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

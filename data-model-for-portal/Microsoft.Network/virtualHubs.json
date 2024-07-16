@@ -1,52 +1,18 @@
 {
     "resourceType": "virtualHubs",
-    "apiVersion": "2022-01-01",
+    "apiVersion": "2022-05-01",
     "learnMore": {
-        "url": "https://docs.microsoft.com/cli/azure/network/routeserver"
+        "url": "https://docs.microsoft.com/cli/azure/network/vhub"
     },
     "commands": [
         {
-            "name": "az network routeserver list",
-            "description": "List all route servers under a subscription or a resource group.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs",
-            "confirmation": false,
-            "help": {
-                "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/routeserver#az-network-routeserver-list"
-                },
-                "parameterSets": [
-                    {
-                        "parameters": [
-                            "[--resource-group]",
-                            "[--subscription]"
-                        ]
-                    }
-                ]
-            },
-            "examples": [
-                {
-                    "description": "List a route server.",
-                    "parameters": [
-                        {
-                            "name": "--resource-group",
-                            "value": "[path.resourceGroupName]"
-                        },
-                        {
-                            "name": "--subscription",
-                            "value": "[path.subscriptionId]"
-                        }
-                    ]
-                }
-            ]
-        },
-        {
-            "name": "az network routeserver show",
-            "description": "Show a route server.",
+            "name": "az network vhub delete",
+            "description": "Delete a virtual hub.",
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
-            "confirmation": false,
+            "confirmation": true,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/routeserver#az-network-routeserver-show"
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub#az-network-vhub-delete"
                 },
                 "parameterSets": [
                     {
@@ -60,14 +26,165 @@
             },
             "examples": [
                 {
-                    "description": "Show a route server.",
+                    "description": "Delete a virtual hub.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub list",
+            "description": "List virtual hubs.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub#az-network-vhub-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List virtual hubs.",
                     "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub show",
+            "description": "Get the details of a virtual hub.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub#az-network-vhub-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a virtual hub.",
+                    "parameters": [
+                        {
                             "name": "--name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub connection list",
+            "description": "List virtual hub VNet connections.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/hubVirtualNetworkConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/connection#az-network-vhub-connection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vhub-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List VNet connections in a given virtual hub.",
+                    "parameters": [
+                        {
+                            "name": "--vhub-name",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub route-map list",
+            "description": "List routem maps by resource group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routeMaps",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/route-map#az-network-vhub-route-map-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vhub-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List route maps by resource group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vhub-name",
                             "value": "[path.virtualHubName]"
                         },
                         {
@@ -79,34 +196,34 @@
             ]
         },
         {
-            "name": "az network routeserver peering list",
-            "description": "List all route server peerings under a resource group.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/bgpConnections",
+            "name": "az network vhub routing-intent list",
+            "description": "Retrieve the details of all routing intent resources of the virtual hub.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent",
             "confirmation": false,
             "help": {
                 "learnMore": {
-                    "url": "https://docs.microsoft.com/cli/azure/network/routeserver/peering#az-network-routeserver-peering-list"
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/routing-intent#az-network-vhub-routing-intent-list"
                 },
                 "parameterSets": [
                     {
                         "parameters": [
                             "[--resource-group]",
                             "[--subscription]",
-                            "[--routeserver]"
+                            "[--vhub]"
                         ]
                     }
                 ]
             },
             "examples": [
                 {
-                    "description": "List a route server peering.",
+                    "description": "Retrieve the details of all routing intent resources of the virtual hub.",
                     "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
                         },
                         {
-                            "name": "--routeserver",
+                            "name": "--vhub",
                             "value": "[path.virtualHubName]"
                         },
                         {

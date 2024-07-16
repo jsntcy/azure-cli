@@ -1,0 +1,99 @@
+{
+    "resourceType": "integrationAccounts/maps",
+    "apiVersion": "2019-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/map"
+    },
+    "commands": [
+        {
+            "name": "az logic integration-account map delete",
+            "description": "Delete an integration account map.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/map#az-logic-integration-account-map-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--integration-account]",
+                            "[--name]",
+                            "[--map-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete map",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.mapName]"
+                        },
+                        {
+                            "name": "--integration-account",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az logic integration-account map show",
+            "description": "Get an integration account map.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/maps/{mapName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/map#az-logic-integration-account-map-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--integration-account]",
+                            "[--name]",
+                            "[--map-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show map",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.mapName]"
+                        },
+                        {
+                            "name": "--integration-account",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

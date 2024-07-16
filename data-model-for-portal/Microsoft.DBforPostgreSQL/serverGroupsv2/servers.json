@@ -1,0 +1,98 @@
+{
+    "resourceType": "serverGroupsv2/servers",
+    "apiVersion": "2022-11-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/cluster/server"
+    },
+    "commands": [
+        {
+            "name": "az cosmosdb postgres cluster server show",
+            "description": "Get information about a server in cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/cluster/server#az-cosmosdb-postgres-cluster-server-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--server-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the server of cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.serverName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cosmosdb postgres configuration server list",
+            "description": "List all the configurations of a server in cluster.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/servers/{serverName}/configurations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/configuration/server#az-cosmosdb-postgres-configuration-server-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--server-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List configurations of the server in the cluster",
+                    "parameters": [
+                        {
+                            "name": "--server-name",
+                            "value": "[path.serverName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,176 @@
+{
+    "resourceType": "vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/protected-item"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery protected-item delete",
+            "description": "Delete operation to delete or purge a replication protected item. This operation will force delete the replication protected item. Use the remove operation on replication protected item to perform a clean disable replication for the item.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/protected-item#az-site-recovery-protected-item-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--protection-container]",
+                            "[--protection-container-name]",
+                            "[--name]",
+                            "[--replicated-protected-item-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "protected-item delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.replicatedProtectedItemName]"
+                        },
+                        {
+                            "name": "--protection-container",
+                            "value": "[path.protectionContainerName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery protected-item failover-commit",
+            "description": "Operation to commit the failover of the replication protected item.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}/failoverCommit",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/protected-item#az-site-recovery-protected-item-failover-commit"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--protection-container]",
+                            "[--protection-container-name]",
+                            "[--replicated-protected-item-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "protected-item failover-commit",
+                    "parameters": [
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--protection-container",
+                            "value": "[path.protectionContainerName]"
+                        },
+                        {
+                            "name": "--replicated-protected-item-name",
+                            "value": "[path.replicatedProtectedItemName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az site-recovery protected-item show",
+            "description": "Get the details of an ASR replication protected item.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationProtectionContainers/{protectionContainerName}/replicationProtectedItems/{replicatedProtectedItemName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/protected-item#az-site-recovery-protected-item-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--protection-container]",
+                            "[--protection-container-name]",
+                            "[--name]",
+                            "[--replicated-protected-item-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "protected-item show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.replicatedProtectedItemName]"
+                        },
+                        {
+                            "name": "--protection-container",
+                            "value": "[path.protectionContainerName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

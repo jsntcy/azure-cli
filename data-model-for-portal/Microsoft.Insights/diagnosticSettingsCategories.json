@@ -1,0 +1,72 @@
+{
+    "resourceType": "diagnosticSettingsCategories",
+    "apiVersion": "2017-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings/categories"
+    },
+    "commands": [
+        {
+            "name": "az monitor diagnostic-settings categories list",
+            "description": "List the diagnostic settings categories for the specified resource.",
+            "path": "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings/categories#az-monitor-diagnostic-settings-categories-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List diagnostic settings categories by using resource ID",
+                    "parameters": [
+                        {
+                            "name": "--resource",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor diagnostic-settings categories show",
+            "description": "Gets the diagnostic settings category for the specified resource.",
+            "path": "/{resourceUri}/providers/Microsoft.Insights/diagnosticSettingsCategories/{name}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings/categories#az-monitor-diagnostic-settings-categories-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets the diagnostic settings category for the specified resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.name]"
+                        },
+                        {
+                            "name": "--resource",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

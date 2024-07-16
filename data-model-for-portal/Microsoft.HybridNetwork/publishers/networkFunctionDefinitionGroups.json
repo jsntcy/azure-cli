@@ -1,0 +1,53 @@
+{
+    "resourceType": "publishers/networkFunctionDefinitionGroups",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/network-function-definition/version"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher network-function-definition version list",
+            "description": "List information about the network function definition versions available in the specified network function definition group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/networkFunctionDefinitionGroups/{networkFunctionDefinitionGroupName}/networkFunctionDefinitionVersions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/network-function-definition/version#az-aosm-publisher-network-function-definition-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List information about the network function definition versions available in the 'nginx' network function definition group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--group-name",
+                            "value": "[path.networkFunctionDefinitionGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

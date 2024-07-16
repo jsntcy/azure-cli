@@ -1,0 +1,159 @@
+{
+    "resourceType": "namespaces/queues/authorizationRules",
+    "apiVersion": "2022-01-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/servicebus/queue/authorization-rule"
+    },
+    "commands": [
+        {
+            "name": "az servicebus queue authorization-rule delete",
+            "description": "Delete a queue authorization rule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/queue/authorization-rule#az-servicebus-queue-authorization-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--queue-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the Authorization Rule of Service Bus Queue",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--queue-name",
+                            "value": "[path.queueName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus queue authorization-rule show",
+            "description": "Get an authorization rule for a queue by rule name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/queue/authorization-rule#az-servicebus-queue-authorization-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--queue-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show properties of Authorization Rule",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--queue-name",
+                            "value": "[path.queueName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az servicebus queue authorization-rule keys list",
+            "description": "Primary and secondary connection strings to the queue.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ServiceBus/namespaces/{namespaceName}/queues/{queueName}/authorizationRules/{authorizationRuleName}/ListKeys",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/servicebus/queue/authorization-rule/keys#az-servicebus-queue-authorization-rule-keys-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--authorization-rule-name]",
+                            "[--namespace-name]",
+                            "[--queue-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the keys and connection strings of Authorization Rule for the given Service Bus Queue",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--namespace-name",
+                            "value": "[path.namespaceName]"
+                        },
+                        {
+                            "name": "--queue-name",
+                            "value": "[path.queueName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.authorizationRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

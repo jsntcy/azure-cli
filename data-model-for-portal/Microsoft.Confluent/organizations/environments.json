@@ -1,0 +1,101 @@
+{
+    "resourceType": "organizations/environments",
+    "apiVersion": "2024-02-13",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/confluent/organization/environment/cluster"
+    },
+    "commands": [
+        {
+            "name": "az confluent organization environment cluster list",
+            "description": "List of all the clusters in a environment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/clusters",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization/environment/cluster#az-confluent-organization-environment-cluster-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-id]",
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--page-size]",
+                            "[--page-token]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List of all the clusters in a environment",
+                    "parameters": [
+                        {
+                            "name": "--environment-id",
+                            "value": "[path.environmentId]"
+                        },
+                        {
+                            "name": "--organization-name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az confluent organization environment schema-registry-cluster list",
+            "description": "List schema registry clusters",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments/{environmentId}/schemaRegistryClusters",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization/environment/schema-registry-cluster#az-confluent-organization-environment-schema-registry-cluster-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-id]",
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--page-size]",
+                            "[--page-token]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List schema registry clusters",
+                    "parameters": [
+                        {
+                            "name": "--environment-id",
+                            "value": "[path.environmentId]"
+                        },
+                        {
+                            "name": "--organization-name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

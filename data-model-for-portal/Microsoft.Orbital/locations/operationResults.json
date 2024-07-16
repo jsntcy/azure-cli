@@ -1,0 +1,49 @@
+{
+    "resourceType": "locations/operationResults",
+    "apiVersion": "2022-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/orbital/operation-result"
+    },
+    "commands": [
+        {
+            "name": "az orbital operation-result show",
+            "description": "Return operation results.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Orbital/locations/{location}/operationResults/{operationId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/operation-result#az-orbital-operation-result-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--name]",
+                            "[--operation-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Return operation results.",
+                    "parameters": [
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.operationId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

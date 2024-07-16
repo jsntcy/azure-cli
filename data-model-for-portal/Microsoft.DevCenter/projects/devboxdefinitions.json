@@ -1,0 +1,57 @@
+{
+    "resourceType": "projects/devboxdefinitions",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/devbox-definition"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin devbox-definition show",
+            "description": "Get a dev box definition configured for a dev center or a project.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/devboxdefinitions/{devBoxDefinitionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/devbox-definition#az-devcenter-admin-devbox-definition-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--devbox-definition-name]",
+                            "[--dev-center]",
+                            "[--dev-center-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a dev center dev box definition",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.devBoxDefinitionName]"
+                        },
+                        {
+                            "name": "--dev-center",
+                            "value": "[path.devCenterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

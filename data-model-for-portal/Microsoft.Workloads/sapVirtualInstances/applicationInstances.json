@@ -1,0 +1,55 @@
+{
+    "resourceType": "sapVirtualInstances/applicationInstances",
+    "apiVersion": "2023-10-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/workloads/sap-application-server-instance"
+    },
+    "commands": [
+        {
+            "name": "az workloads sap-application-server-instance show",
+            "description": "Show the SAP Application Server Instance corresponding to the Virtual Instance for SAP solutions resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Workloads/sapVirtualInstances/{sapVirtualInstanceName}/applicationInstances/{applicationInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/workloads/sap-application-server-instance#az-workloads-sap-application-server-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--application-instance-name]",
+                            "[--resource-group]",
+                            "[--vis-name]",
+                            "[--sap-virtual-instance-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an overview of an App Server Instance",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vis-name",
+                            "value": "[path.sapVirtualInstanceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.applicationInstanceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

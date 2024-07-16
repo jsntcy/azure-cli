@@ -1,0 +1,43 @@
+{
+    "resourceType": "bestPractices/versions",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/best-practice/version"
+    },
+    "commands": [
+        {
+            "name": "az automanage best-practice version show",
+            "description": "Get information about a Automanage best practice version",
+            "path": "/providers/Microsoft.Automanage/bestPractices/{bestPracticeName}/versions/{versionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/best-practice/version#az-automanage-best-practice-version-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--best-practice-name]",
+                            "[--version-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "show a best-practice version",
+                    "parameters": [
+                        {
+                            "name": "--best-practice-name",
+                            "value": "[path.bestPracticeName]"
+                        },
+                        {
+                            "name": "--version-name",
+                            "value": "[path.versionName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

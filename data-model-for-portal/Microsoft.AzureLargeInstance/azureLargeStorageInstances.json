@@ -1,0 +1,83 @@
+{
+    "resourceType": "azureLargeStorageInstances",
+    "apiVersion": "2024-04-10",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/large-storage-instance"
+    },
+    "commands": [
+        {
+            "name": "az large-storage-instance list",
+            "description": "List a list of Azure Large Storage Instances in the specified subscription. The operations returns various properties of each Azure Large Storage instance.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/large-storage-instance#az-large-storage-instance-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "To list Azure Large Storage Instances in a specific subscription and resource group",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az large-storage-instance show",
+            "description": "Get an Azure Large Storage instance for the specified subscription, resource\ngroup, and instance name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.AzureLargeInstance/azureLargeStorageInstances/{azureLargeStorageInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/large-storage-instance#az-large-storage-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "To show details about a specific Azure Large Storage Instance",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.azureLargeStorageInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

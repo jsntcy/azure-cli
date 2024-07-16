@@ -1,0 +1,99 @@
+{
+    "resourceType": "networkSecurityPerimeters/resourceAssociations",
+    "apiVersion": "2023-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/perimeter/association"
+    },
+    "commands": [
+        {
+            "name": "az network perimeter association delete",
+            "description": "Deletes an NSP association resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/association#az-network-perimeter-association-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--association-name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete NSP Association",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.associationName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter association show",
+            "description": "Gets the specified NSP association by name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/resourceAssociations/{associationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/association#az-network-perimeter-association-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--association-name]",
+                            "[--perimeter-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get NSP Association",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.associationName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,54 @@
+{
+    "resourceType": "monitors/singleSignOnConfigurations",
+    "apiVersion": "2021-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dynatrace/monitor/sso-config"
+    },
+    "commands": [
+        {
+            "name": "az dynatrace monitor sso-config show",
+            "description": "Show a dynatrace sso-config",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/singleSignOnConfigurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dynatrace/monitor/sso-config#az-dynatrace-monitor-sso-config-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-name]",
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show sso-config",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

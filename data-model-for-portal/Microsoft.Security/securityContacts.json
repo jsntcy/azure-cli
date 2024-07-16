@@ -1,0 +1,108 @@
+{
+    "resourceType": "securityContacts",
+    "apiVersion": "2020-01-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/contact"
+    },
+    "commands": [
+        {
+            "name": "az security contact delete",
+            "description": "Delete security contact configurations for the subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts/{securityContactName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/contact#az-security-contact-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--security-contact-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Deletes a security contact.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.securityContactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security contact list",
+            "description": "List all security contact configurations for the subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/contact#az-security-contact-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Gets all security contacts.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security contact show",
+            "description": "Get Default Security contact configurations for the subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Security/securityContacts/{securityContactName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/contact#az-security-contact-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--security-contact-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a security contact.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.securityContactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

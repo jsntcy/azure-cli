@@ -1,0 +1,38 @@
+{
+    "resourceType": "appliedReservations",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/reservations/reservation-order-id"
+    },
+    "commands": [
+        {
+            "name": "az reservations reservation-order-id list",
+            "description": "List applicable `Reservation`s that are applied to this subscription or a resource group under this subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Capacity/appliedReservations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation-order-id#az-reservations-reservation-order-id-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List applicable `Reservation`s that are applied to this subscription or a resource group under this subscription.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

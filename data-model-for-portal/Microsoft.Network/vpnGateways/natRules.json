@@ -1,0 +1,97 @@
+{
+    "resourceType": "vpnGateways/natRules",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/vpn-gateway/nat-rule"
+    },
+    "commands": [
+        {
+            "name": "az network vpn-gateway nat-rule delete",
+            "description": "Delete a nat rule.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vpn-gateway/nat-rule#az-network-vpn-gateway-nat-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--gateway-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a nat rule.",
+                    "parameters": [
+                        {
+                            "name": "--gateway-name",
+                            "value": "[path.gatewayName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.natRuleName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vpn-gateway nat-rule show",
+            "description": "Get the details of a nat ruleGet.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/vpnGateways/{gatewayName}/natRules/{natRuleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vpn-gateway/nat-rule#az-network-vpn-gateway-nat-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--gateway-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a nat rule.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--gateway-name",
+                            "value": "[path.gatewayName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.natRuleName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

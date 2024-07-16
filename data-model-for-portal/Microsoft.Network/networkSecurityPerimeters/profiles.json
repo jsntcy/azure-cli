@@ -1,0 +1,145 @@
+{
+    "resourceType": "networkSecurityPerimeters/profiles",
+    "apiVersion": "2023-08-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile"
+    },
+    "commands": [
+        {
+            "name": "az network perimeter profile delete",
+            "description": "Deletes an NSP profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile#az-network-perimeter-profile-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete NSP Profile",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter profile show",
+            "description": "Gets the specified NSP profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile#az-network-perimeter-profile-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get NSP Profile",
+                    "parameters": [
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network perimeter profile access-rule list",
+            "description": "Lists the NSP access rules in the specified NSP profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityPerimeters/{networkSecurityPerimeterName}/profiles/{profileName}/accessRules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/perimeter/profile/access-rule#az-network-perimeter-profile-access-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--perimeter-name]",
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List access rules inside a Profile",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--perimeter-name",
+                            "value": "[path.networkSecurityPerimeterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,6 +1,6 @@
 {
     "resourceType": "disks",
-    "apiVersion": "2022-07-02",
+    "apiVersion": "2023-04-02",
     "learnMore": {
         "url": "https://docs.microsoft.com/cli/azure/disk"
     },
@@ -33,6 +33,40 @@
                             "name": "--name",
                             "value": "[path.diskName]"
                         },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az disk list",
+            "description": "List managed disks.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/disks",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/disk#az-disk-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List managed disks.",
+                    "parameters": [
                         {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"

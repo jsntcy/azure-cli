@@ -1,0 +1,121 @@
+{
+    "resourceType": "loadTests",
+    "apiVersion": "2022-12-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/load"
+    },
+    "commands": [
+        {
+            "name": "az load delete",
+            "description": "Delete an Azure Load Testing resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/load#az-load-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--name]",
+                            "[--resource-group]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Azure load testing resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.loadTestName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az load list",
+            "description": "Lists Azure Load Testing resources.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/load#az-load-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--resource-group]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List Azure load testing resources",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az load show",
+            "description": "Show the details of one or more Azure Load Testing resources.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.LoadTestService/loadTests/{loadTestName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/load#az-load-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--name]",
+                            "[--resource-group]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show an Azure load testing resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.loadTestName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

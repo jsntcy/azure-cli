@@ -1,0 +1,67 @@
+{
+    "resourceType": "servicePrincipals",
+    "apiVersion": "2022-05-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automanage/service-principal"
+    },
+    "commands": [
+        {
+            "name": "az automanage service-principal list",
+            "description": "List the Automanage AAD first party Application Service Principal details for the subscription id.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/service-principal#az-automanage-service-principal-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "list service-principal",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automanage service-principal show-default",
+            "description": "Get the Automanage AAD first party Application Service Principal details for the subscription id.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Automanage/servicePrincipals/default",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automanage/service-principal#az-automanage-service-principal-show-default"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show default service-principal",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

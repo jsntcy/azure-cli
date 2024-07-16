@@ -1,0 +1,59 @@
+{
+    "resourceType": "vaults/replicationFabrics/replicationLogicalNetworks",
+    "apiVersion": "2022-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/site-recovery/logical-network"
+    },
+    "commands": [
+        {
+            "name": "az site-recovery logical-network show",
+            "description": "Get the details of a logical network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{resourceName}/replicationFabrics/{fabricName}/replicationLogicalNetworks/{logicalNetworkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/site-recovery/logical-network#az-site-recovery-logical-network-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--fabric-name]",
+                            "[--name]",
+                            "[--logical-network-name]",
+                            "[--resource-group]",
+                            "[--vault-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a logical network.",
+                    "parameters": [
+                        {
+                            "name": "--fabric-name",
+                            "value": "[path.fabricName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.logicalNetworkName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

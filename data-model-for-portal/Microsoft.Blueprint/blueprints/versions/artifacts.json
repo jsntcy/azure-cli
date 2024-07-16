@@ -1,0 +1,53 @@
+{
+    "resourceType": "blueprints/versions/artifacts",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/blueprint/version/artifact"
+    },
+    "commands": [
+        {
+            "name": "az blueprint version artifact show",
+            "description": "Show an artifact for a published blueprint.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}/artifacts/{artifactName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/version/artifact#az-blueprint-version-artifact-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--artifact-name]",
+                            "[--blueprint-name]",
+                            "[--resource-scope]",
+                            "[--version]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show an artifact for a published blueprint.",
+                    "parameters": [
+                        {
+                            "name": "--artifact-name",
+                            "value": "[path.artifactName]"
+                        },
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        },
+                        {
+                            "name": "--version",
+                            "value": "[path.versionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

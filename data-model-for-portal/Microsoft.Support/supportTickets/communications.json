@@ -1,0 +1,82 @@
+{
+    "resourceType": "supportTickets/communications",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/communication"
+    },
+    "commands": [
+        {
+            "name": "az support in-subscription communication show",
+            "description": "Get communication details for a support ticket.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/communication#az-support-in-subscription-communication-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--communication-name]",
+                            "[--subscription]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get communication details for a subscription support ticket.",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--communication-name",
+                            "value": "[path.communicationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription communication show",
+            "description": "Get communication details for a support ticket.",
+            "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications/{communicationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/communication#az-support-no-subscription-communication-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--communication-name]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get communication details for a no subscription support ticket.",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--communication-name",
+                            "value": "[path.communicationName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

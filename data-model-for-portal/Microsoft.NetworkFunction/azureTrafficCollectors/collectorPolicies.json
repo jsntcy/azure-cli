@@ -1,0 +1,99 @@
+{
+    "resourceType": "azureTrafficCollectors/collectorPolicies",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network-function/traffic-collector/collector-policy"
+    },
+    "commands": [
+        {
+            "name": "az network-function traffic-collector collector-policy delete",
+            "description": "Delete a specified Collector Policy",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network-function/traffic-collector/collector-policy#az-network-function-traffic-collector-collector-policy-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--traffic-collector-name]",
+                            "[--name]",
+                            "[--collector-policy-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a specified collector policy",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--traffic-collector-name",
+                            "value": "[path.azureTrafficCollectorName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.collectorPolicyName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network-function traffic-collector collector-policy show",
+            "description": "Get the specified Collector Policy",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetworkFunction/azureTrafficCollectors/{azureTrafficCollectorName}/collectorPolicies/{collectorPolicyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network-function/traffic-collector/collector-policy#az-network-function-traffic-collector-collector-policy-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--traffic-collector-name]",
+                            "[--name]",
+                            "[--collector-policy-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the specified collector policy",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--traffic-collector-name",
+                            "value": "[path.azureTrafficCollectorName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.collectorPolicyName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

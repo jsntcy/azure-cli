@@ -1,0 +1,164 @@
+{
+    "resourceType": "organizations",
+    "apiVersion": "2024-02-13",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/confluent/organization"
+    },
+    "commands": [
+        {
+            "name": "az confluent organization delete",
+            "description": "Delete Organization resource",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization#az-confluent-organization-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Organization resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az confluent organization list",
+            "description": "List all organizations under the specified subscription.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization#az-confluent-organization-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all organizations under the specified subscription.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az confluent organization show",
+            "description": "Get the properties of a specific Organization resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization#az-confluent-organization-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the properties of a specific Organization resource.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az confluent organization environment list",
+            "description": "List of all the environments in a organization",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Confluent/organizations/{organizationName}/environments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/confluent/organization/environment#az-confluent-organization-environment-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--organization-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--page-size]",
+                            "[--page-token]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List of all the environments in a organization",
+                    "parameters": [
+                        {
+                            "name": "--organization-name",
+                            "value": "[path.organizationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

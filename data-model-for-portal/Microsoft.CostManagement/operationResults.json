@@ -1,0 +1,43 @@
+{
+    "resourceType": "operationResults",
+    "apiVersion": "2023-08-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/costmanagement"
+    },
+    "commands": [
+        {
+            "name": "az costmanagement show-operation-result",
+            "description": "Get the result of the specified operation. The link with this operationId is provided as a response header of the initial request.",
+            "path": "/{scope}/providers/Microsoft.CostManagement/operationResults/{operationId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/costmanagement#az-costmanagement-show-operation-result"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--operation-id]",
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the result of the specified operation. The link with this operationId is provided as a response header of the initial request.",
+                    "parameters": [
+                        {
+                            "name": "--operation-id",
+                            "value": "[path.operationId]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,49 @@
+{
+    "resourceType": "locations/cloudServiceOsVersions",
+    "apiVersion": "2022-09-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cloud-service/os-version"
+    },
+    "commands": [
+        {
+            "name": "az cloud-service os-version show",
+            "description": "Show guest operating system version that can be specified in the XML service configuration (.cscfg) for a cloud service.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Compute/locations/{location}/cloudServiceOsVersions/{osVersionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cloud-service/os-version#az-cloud-service-os-version-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--name]",
+                            "[--os-version-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show os version",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.osVersionName]"
+                        },
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

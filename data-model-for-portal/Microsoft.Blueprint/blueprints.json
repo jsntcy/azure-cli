@@ -1,0 +1,174 @@
+{
+    "resourceType": "blueprints",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/blueprint"
+    },
+    "commands": [
+        {
+            "name": "az blueprint delete",
+            "description": "Delete a blueprint definition.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint#az-blueprint-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a blueprint definition.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint list",
+            "description": "List blueprint definitions.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint#az-blueprint-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List blueprint definitions.",
+                    "parameters": [
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint show",
+            "description": "Get a blueprint definition.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint#az-blueprint-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a blueprint definition.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint artifact list",
+            "description": "List artifacts for a given blueprint definition.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/artifacts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/artifact#az-blueprint-artifact-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--blueprint-name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List artifacts for a given blueprint definition.",
+                    "parameters": [
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint version list",
+            "description": "List published versions of given blueprint definition.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/version#az-blueprint-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--blueprint-name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List published versions of given blueprint definition.",
+                    "parameters": [
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

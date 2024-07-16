@@ -1,0 +1,111 @@
+{
+    "resourceType": "dataCollectionRuleAssociations",
+    "apiVersion": "2023-03-11",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/data-collection/rule/association"
+    },
+    "commands": [
+        {
+            "name": "az monitor data-collection rule association delete",
+            "description": "Delete an association.",
+            "path": "/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/data-collection/rule/association#az-monitor-data-collection-rule-association-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--association-name]",
+                            "[--resource]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete association",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.associationName]"
+                        },
+                        {
+                            "name": "--resource",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor data-collection rule association list-by-resource",
+            "description": "List associations for the specified resource.",
+            "path": "/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/data-collection/rule/association#az-monitor-data-collection-rule-association-list-by-resource"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List associations for the specified resource.",
+                    "parameters": [
+                        {
+                            "name": "--resource",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor data-collection rule association show",
+            "description": "Get the specified association.",
+            "path": "/{resourceUri}/providers/Microsoft.Insights/dataCollectionRuleAssociations/{associationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/data-collection/rule/association#az-monitor-data-collection-rule-association-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--association-name]",
+                            "[--resource]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get association",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.associationName]"
+                        },
+                        {
+                            "name": "--resource",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

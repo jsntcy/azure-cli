@@ -1,0 +1,143 @@
+{
+    "resourceType": "loadBalancers/backendAddressPools",
+    "apiVersion": "2023-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/lb/address-pool"
+    },
+    "commands": [
+        {
+            "name": "az network lb address-pool show",
+            "description": "Get the details of an address pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/address-pool#az-network-lb-address-pool-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--address-pool-name]",
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of an address pool.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.backendAddressPoolName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb address-pool address list",
+            "description": "List all backend addresses of the load balance backend address pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/address-pool/address#az-network-lb-address-pool-address-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--pool-name]",
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all backend addresses of the load balance backend address pool.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--pool-name",
+                            "value": "[path.backendAddressPoolName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb address-pool tunnel-interface list",
+            "description": "List all tunnel interfacees of the load balance tunnel interface pool.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools/{backendAddressPoolName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/address-pool/tunnel-interface#az-network-lb-address-pool-tunnel-interface-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--address-pool]",
+                            "[--address-pool-name]",
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all tunnel interfacees of the load balance tunnel interface pool.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--address-pool",
+                            "value": "[path.backendAddressPoolName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

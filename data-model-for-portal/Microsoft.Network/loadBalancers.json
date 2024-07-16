@@ -1,6 +1,6 @@
 {
     "resourceType": "loadBalancers",
-    "apiVersion": "2022-05-01",
+    "apiVersion": "2023-04-01",
     "learnMore": {
         "url": "https://docs.microsoft.com/cli/azure/network/lb"
     },
@@ -9,7 +9,7 @@
             "name": "az network lb delete",
             "description": "Delete the specified load balancer.",
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
-            "confirmation": true,
+            "confirmation": false,
             "help": {
                 "learnMore": {
                     "url": "https://docs.microsoft.com/cli/azure/network/lb#az-network-lb-delete"
@@ -158,9 +158,204 @@
             ]
         },
         {
+            "name": "az network lb address-pool list",
+            "description": "List address pools.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/backendAddressPools",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/address-pool#az-network-lb-address-pool-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List address pools.",
+                    "parameters": [
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb frontend-ip list",
+            "description": "List frontend IP addresses.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/frontend-ip#az-network-lb-frontend-ip-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List frontend IP addresses.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb inbound-nat-pool list",
+            "description": "List inbound NAT address pools.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-pool#az-network-lb-inbound-nat-pool-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List inbound NAT address pools.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb inbound-nat-rule list",
+            "description": "List inbound NAT rules.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/inbound-nat-rule#az-network-lb-inbound-nat-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List inbound NAT rules.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb outbound-rule list",
+            "description": "List outbound rules.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/outbound-rule#az-network-lb-outbound-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List outbound rules.",
+                    "parameters": [
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "az network lb probe list",
-            "description": "List probes.",
-            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}/probes",
+            "description": "List probes in the load balancer.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
             "confirmation": false,
             "help": {
                 "learnMore": {
@@ -178,7 +373,46 @@
             },
             "examples": [
                 {
-                    "description": "List probes.",
+                    "description": "List probes",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--lb-name",
+                            "value": "[path.loadBalancerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network lb rule list",
+            "description": "List load balancing rules.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/lb/rule#az-network-lb-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--lb-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List load balancing rules.",
                     "parameters": [
                         {
                             "name": "--lb-name",

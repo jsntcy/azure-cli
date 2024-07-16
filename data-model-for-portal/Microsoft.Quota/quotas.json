@@ -1,0 +1,72 @@
+{
+    "resourceType": "quotas",
+    "apiVersion": "2023-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/quota"
+    },
+    "commands": [
+        {
+            "name": "az quota list",
+            "description": "List current quota limits of all resources for the specified scope.",
+            "path": "/{scope}/providers/Microsoft.Quota/quotas",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota#az-quota-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List quota limit for compute",
+                    "parameters": [
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az quota show",
+            "description": "Show the quota limit of a resource.",
+            "path": "/{scope}/providers/Microsoft.Quota/quotas/{resourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota#az-quota-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show quota for compute",
+                    "parameters": [
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

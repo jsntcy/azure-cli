@@ -1,0 +1,49 @@
+{
+    "resourceType": "storageSyncServices",
+    "apiVersion": "2022-06-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storagesync/private-endpoint-connection"
+    },
+    "commands": [
+        {
+            "name": "az storagesync private-endpoint-connection list",
+            "description": "List a PrivateEndpointConnection List.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageSync/storageSyncServices/{storageSyncServiceName}/privateEndpointConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storagesync/private-endpoint-connection#az-storagesync-private-endpoint-connection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--storage-sync-service]",
+                            "[--storage-sync-service-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List a PrivateEndpointConnection List.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--storage-sync-service",
+                            "value": "[path.storageSyncServiceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

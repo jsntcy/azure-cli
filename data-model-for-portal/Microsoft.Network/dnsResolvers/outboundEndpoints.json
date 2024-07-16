@@ -1,0 +1,100 @@
+{
+    "resourceType": "dnsResolvers/outboundEndpoints",
+    "apiVersion": "2022-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dns-resolver/outbound-endpoint"
+    },
+    "commands": [
+        {
+            "name": "az dns-resolver outbound-endpoint delete",
+            "description": "Deletes an outbound endpoint for a DNS resolver. WARNING: This operation cannot be undone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/outbound-endpoint#az-dns-resolver-outbound-endpoint-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--dns-resolver-name]",
+                            "[--name]",
+                            "[--outbound-endpoint-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete outbound endpoint for DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.outboundEndpointName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dns-resolver outbound-endpoint show",
+            "description": "Gets properties of an outbound endpoint for a DNS resolver.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/dnsResolvers/{dnsResolverName}/outboundEndpoints/{outboundEndpointName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dns-resolver/outbound-endpoint#az-dns-resolver-outbound-endpoint-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dns-resolver-name]",
+                            "[--name]",
+                            "[--outbound-endpoint-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve outbound endpoint for DNS resolver",
+                    "parameters": [
+                        {
+                            "name": "--dns-resolver-name",
+                            "value": "[path.dnsResolverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.outboundEndpointName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

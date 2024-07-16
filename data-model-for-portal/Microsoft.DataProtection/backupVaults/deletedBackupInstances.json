@@ -1,0 +1,99 @@
+{
+    "resourceType": "backupVaults/deletedBackupInstances",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance/deleted-backup-instance"
+    },
+    "commands": [
+        {
+            "name": "az dataprotection backup-instance deleted-backup-instance show",
+            "description": "Get a deleted backup instance with name in a backup vault",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance/deleted-backup-instance#az-dataprotection-backup-instance-deleted-backup-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a deleted backup instance with name in a backup vault",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dataprotection backup-instance deleted-backup-instance undelete",
+            "description": "Undelete soft-deleted backup instances.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/deletedBackupInstances/{backupInstanceName}/undelete",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance/deleted-backup-instance#az-dataprotection-backup-instance-deleted-backup-instance-undelete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Undelete soft-deleted backup instances.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

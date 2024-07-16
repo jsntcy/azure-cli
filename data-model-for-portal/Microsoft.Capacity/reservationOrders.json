@@ -1,0 +1,68 @@
+{
+    "resourceType": "reservationOrders",
+    "apiVersion": "2022-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/reservations/reservation"
+    },
+    "commands": [
+        {
+            "name": "az reservations reservation list",
+            "description": "List Reservations within a single `ReservationOrder`.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}/reservations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation#az-reservations-reservation-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-order-id]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all reservations within a reservation order.",
+                    "parameters": [
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az reservations reservation-order show",
+            "description": "Get the details of the `ReservationOrder`.",
+            "path": "/providers/Microsoft.Capacity/reservationOrders/{reservationOrderId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/reservations/reservation-order#az-reservations-reservation-order-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--reservation-order-id]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the details of a reservation order",
+                    "parameters": [
+                        {
+                            "name": "--reservation-order-id",
+                            "value": "[path.reservationOrderId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

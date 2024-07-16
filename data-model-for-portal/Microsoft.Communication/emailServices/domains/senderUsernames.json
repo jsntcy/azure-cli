@@ -1,0 +1,109 @@
+{
+    "resourceType": "emailServices/domains/senderUsernames",
+    "apiVersion": "2023-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/communication/email/domain/sender-username"
+    },
+    "commands": [
+        {
+            "name": "az communication email domain sender-username delete",
+            "description": "Delete to delete a SenderUsernames resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/communication/email/domain/sender-username#az-communication-email-domain-sender-username-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--domain-name]",
+                            "[--email-service-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--sender-username]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a sender username resource",
+                    "parameters": [
+                        {
+                            "name": "--domain-name",
+                            "value": "[path.domainName]"
+                        },
+                        {
+                            "name": "--email-service-name",
+                            "value": "[path.emailServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.senderUsername]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az communication email domain sender-username show",
+            "description": "Get a valid sender username for a domains resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames/{senderUsername}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/communication/email/domain/sender-username#az-communication-email-domain-sender-username-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--domain-name]",
+                            "[--email-service-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--sender-username]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a sender username's properties",
+                    "parameters": [
+                        {
+                            "name": "--domain-name",
+                            "value": "[path.domainName]"
+                        },
+                        {
+                            "name": "--email-service-name",
+                            "value": "[path.emailServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.senderUsername]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

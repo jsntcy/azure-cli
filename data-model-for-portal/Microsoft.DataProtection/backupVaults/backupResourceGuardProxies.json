@@ -1,0 +1,99 @@
+{
+    "resourceType": "backupVaults/backupResourceGuardProxies",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-vault/resource-guard-mapping"
+    },
+    "commands": [
+        {
+            "name": "az dataprotection backup-vault resource-guard-mapping delete",
+            "description": "Delete the ResourceGuard mapping",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-vault/resource-guard-mapping#az-dataprotection-backup-vault-resource-guard-mapping-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--resource-guard-mapping-name]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a ResourceGuard Mapping",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.resourceGuardProxyName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dataprotection backup-vault resource-guard-mapping show",
+            "description": "Get the ResourceGuard mapping object associated with the vault, and that matches the name in the request",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupResourceGuardProxies/{resourceGuardProxyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-vault/resource-guard-mapping#az-dataprotection-backup-vault-resource-guard-mapping-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--resource-guard-mapping-name]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a ResourceGuard Mapping associated with a vault",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.resourceGuardProxyName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

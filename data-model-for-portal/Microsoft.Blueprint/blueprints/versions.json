@@ -1,0 +1,126 @@
+{
+    "resourceType": "blueprints/versions",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/blueprint/version"
+    },
+    "commands": [
+        {
+            "name": "az blueprint version delete",
+            "description": "Delete a published version of a blueprint.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/version#az-blueprint-version-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--blueprint-name]",
+                            "[--resource-scope]",
+                            "[--version]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a published version of a blueprint.",
+                    "parameters": [
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        },
+                        {
+                            "name": "--version",
+                            "value": "[path.versionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint version show",
+            "description": "Get a published version of a blueprint.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/version#az-blueprint-version-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--blueprint-name]",
+                            "[--resource-scope]",
+                            "[--version]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a published version of a blueprint.",
+                    "parameters": [
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        },
+                        {
+                            "name": "--version",
+                            "value": "[path.versionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint version artifact list",
+            "description": "List artifacts for a version of a published blueprint.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprints/{blueprintName}/versions/{versionId}/artifacts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/version/artifact#az-blueprint-version-artifact-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--blueprint-name]",
+                            "[--resource-scope]",
+                            "[--version]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List artifacts for a version of a published blueprint.",
+                    "parameters": [
+                        {
+                            "name": "--blueprint-name",
+                            "value": "[path.blueprintName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        },
+                        {
+                            "name": "--version",
+                            "value": "[path.versionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

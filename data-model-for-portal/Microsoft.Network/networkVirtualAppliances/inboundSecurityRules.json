@@ -1,0 +1,54 @@
+{
+    "resourceType": "networkVirtualAppliances/inboundSecurityRules",
+    "apiVersion": "2024-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/virtual-appliance/inbound-security-rule"
+    },
+    "commands": [
+        {
+            "name": "az network virtual-appliance inbound-security-rule show",
+            "description": "Get the available specified Network Virtual Appliance Inbound Security Rules Collection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkVirtualAppliances/{networkVirtualApplianceName}/inboundSecurityRules/{ruleCollectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/virtual-appliance/inbound-security-rule#az-network-virtual-appliance-inbound-security-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--nva-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-collection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Inbound Security Rule",
+                    "parameters": [
+                        {
+                            "name": "--nva-name",
+                            "value": "[path.networkVirtualApplianceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleCollectionName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

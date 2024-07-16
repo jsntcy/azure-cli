@@ -9,7 +9,7 @@
             "name": "az network nsg delete",
             "description": "Delete a network security group.",
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkSecurityGroups/{networkSecurityGroupName}",
-            "confirmation": true,
+            "confirmation": false,
             "help": {
                 "learnMore": {
                     "url": "https://docs.microsoft.com/cli/azure/network/nsg#az-network-nsg-delete"
@@ -130,7 +130,7 @@
                 "parameterSets": [
                     {
                         "parameters": [
-                            "[--name]",
+                            "[--nsg-name]",
                             "[--resource-group]",
                             "[--subscription]"
                         ]
@@ -142,12 +142,12 @@
                     "description": "List all rules in a network security group.",
                     "parameters": [
                         {
-                            "name": "--name",
-                            "value": "[path.networkSecurityGroupName]"
-                        },
-                        {
                             "name": "--resource-group",
                             "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--nsg-name",
+                            "value": "[path.networkSecurityGroupName]"
                         },
                         {
                             "name": "--subscription",

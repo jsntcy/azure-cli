@@ -1,0 +1,117 @@
+{
+    "resourceType": "updates",
+    "apiVersion": "2023-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/maintenance/update"
+    },
+    "commands": [
+        {
+            "name": "az maintenance update list",
+            "description": "List updates to resources.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/update#az-maintenance-update-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Updates_List",
+                    "parameters": [
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance update list-parent",
+            "description": "List updates to resources.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/updates",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/update#az-maintenance-update-list-parent"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-parent-name]",
+                            "[--resource-parent-type]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Updates_ListParent",
+                    "parameters": [
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-parent-name",
+                            "value": "[path.resourceParentName]"
+                        },
+                        {
+                            "name": "--resource-parent-type",
+                            "value": "[path.resourceParentType]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

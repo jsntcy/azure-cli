@@ -1,0 +1,99 @@
+{
+    "resourceType": "securityConnectors/devops/gitHubOwners",
+    "apiVersion": "2023-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/githubowner"
+    },
+    "commands": [
+        {
+            "name": "az security security-connector devops githubowner show",
+            "description": "Get a monitored GitHub owner.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitHubOwners/{ownerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/githubowner#az-security-security-connector-devops-githubowner-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--owner-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a monitored GitHub owner.",
+                    "parameters": [
+                        {
+                            "name": "--owner-name",
+                            "value": "[path.ownerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az security security-connector devops githubowner repo list",
+            "description": "List GitHub repositories onboarded to the connector.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitHubOwners/{ownerName}/repos",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/githubowner/repo#az-security-security-connector-devops-githubowner-repo-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--owner-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List GitHub repositories onboarded to the connector.",
+                    "parameters": [
+                        {
+                            "name": "--owner-name",
+                            "value": "[path.ownerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

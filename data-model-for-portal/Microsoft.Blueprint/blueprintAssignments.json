@@ -1,0 +1,141 @@
+{
+    "resourceType": "blueprintAssignments",
+    "apiVersion": "2018-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/blueprint/assignment"
+    },
+    "commands": [
+        {
+            "name": "az blueprint assignment delete",
+            "description": "Delete a blueprint assignment.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/assignment#az-blueprint-assignment-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-scope]",
+                            "[--delete-behavior]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a blueprint assignment.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.assignmentName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint assignment list",
+            "description": "List blueprint assignments within a subscription.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/assignment#az-blueprint-assignment-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List blueprint assignments within a subscription.",
+                    "parameters": [
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint assignment show",
+            "description": "Get a blueprint assignment.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/assignment#az-blueprint-assignment-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a blueprint assignment.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.assignmentName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az blueprint assignment who",
+            "description": "Get Blueprint Servie Principal Name objectId.",
+            "path": "/{resourceScope}/providers/Microsoft.Blueprint/blueprintAssignments/{assignmentName}/whoIsBlueprint",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/blueprint/assignment#az-blueprint-assignment-who"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--resource-scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Blueprint Servie Principal Name objectId.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.assignmentName]"
+                        },
+                        {
+                            "name": "--resource-scope",
+                            "value": "[path.resourceScope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

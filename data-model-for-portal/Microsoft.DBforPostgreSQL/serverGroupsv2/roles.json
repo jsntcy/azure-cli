@@ -1,0 +1,99 @@
+{
+    "resourceType": "serverGroupsv2/roles",
+    "apiVersion": "2022-11-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/role"
+    },
+    "commands": [
+        {
+            "name": "az cosmosdb postgres role delete",
+            "description": "Delete a cluster role.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/role#az-cosmosdb-postgres-role-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--role-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a role of the cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.roleName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az cosmosdb postgres role show",
+            "description": "Get information about a cluster role.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/serverGroupsv2/{clusterName}/roles/{roleName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cosmosdb/postgres/role#az-cosmosdb-postgres-role-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cluster-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--role-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the role of the cluster",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.roleName]"
+                        },
+                        {
+                            "name": "--cluster-name",
+                            "value": "[path.clusterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

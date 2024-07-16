@@ -1,0 +1,143 @@
+{
+    "resourceType": "emailServices/domains",
+    "apiVersion": "2023-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/communication/email/domain"
+    },
+    "commands": [
+        {
+            "name": "az communication email domain delete",
+            "description": "Delete to delete a Domains resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/communication/email/domain#az-communication-email-domain-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--domain-name]",
+                            "[--email-service-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a domain resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.domainName]"
+                        },
+                        {
+                            "name": "--email-service-name",
+                            "value": "[path.emailServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az communication email domain show",
+            "description": "Get the Domains resource and its properties.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/communication/email/domain#az-communication-email-domain-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--domain-name]",
+                            "[--email-service-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get all domains from a email resource",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.domainName]"
+                        },
+                        {
+                            "name": "--email-service-name",
+                            "value": "[path.emailServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az communication email domain sender-username list",
+            "description": "List all valid sender usernames for a domains resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Communication/emailServices/{emailServiceName}/domains/{domainName}/senderUsernames",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/communication/email/domain/sender-username#az-communication-email-domain-sender-username-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--domain-name]",
+                            "[--email-service-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get all sender usernames from a domain resource",
+                    "parameters": [
+                        {
+                            "name": "--domain-name",
+                            "value": "[path.domainName]"
+                        },
+                        {
+                            "name": "--email-service-name",
+                            "value": "[path.emailServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

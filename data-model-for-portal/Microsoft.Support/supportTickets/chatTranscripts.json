@@ -1,0 +1,82 @@
+{
+    "resourceType": "supportTickets/chatTranscripts",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/chat-transcript"
+    },
+    "commands": [
+        {
+            "name": "az support in-subscription chat-transcript show",
+            "description": "Get chatTranscript details for a support ticket under a subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/chat-transcript#az-support-in-subscription-chat-transcript-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--chat-transcript-name]",
+                            "[--subscription]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get chatTranscript details for a support ticket under a subscription.",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--chat-transcript-name",
+                            "value": "[path.chatTranscriptName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription chat-transcript show",
+            "description": "Get chatTranscript details for a no subscription support ticket.",
+            "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts/{chatTranscriptName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/chat-transcript#az-support-no-subscription-chat-transcript-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--chat-transcript-name]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get chatTranscript details for a support ticket",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--chat-transcript-name",
+                            "value": "[path.chatTranscriptName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,98 @@
+{
+    "resourceType": "privateDnsZones/virtualNetworkLinks",
+    "apiVersion": "2018-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/private-dns/link/vnet"
+    },
+    "commands": [
+        {
+            "name": "az network private-dns link vnet delete",
+            "description": "Delete a virtual network link to the specified private DNS zone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--if-match]",
+                            "[--zone-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a virtual network link to the specified private DNS zone.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--zone-name",
+                            "value": "[path.privateZoneName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.virtualNetworkLinkName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network private-dns link vnet show",
+            "description": "Get a virtual network link to the specified private DNS zone.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/privateDnsZones/{privateZoneName}/virtualNetworkLinks/{virtualNetworkLinkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/private-dns/link/vnet#az-network-private-dns-link-vnet-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--zone-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a virtual network link to the specified private DNS zone.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.virtualNetworkLinkName]"
+                        },
+                        {
+                            "name": "--zone-name",
+                            "value": "[path.privateZoneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

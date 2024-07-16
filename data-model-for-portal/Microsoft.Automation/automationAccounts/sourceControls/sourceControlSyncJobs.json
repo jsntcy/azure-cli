@@ -1,0 +1,112 @@
+{
+    "resourceType": "automationAccounts/sourceControls/sourceControlSyncJobs",
+    "apiVersion": "2023-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/source-control/sync-job"
+    },
+    "commands": [
+        {
+            "name": "az automation source-control sync-job show",
+            "description": "Get the source control sync job identified by job id.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control/sync-job#az-automation-source-control-sync-job-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--source-control-name]",
+                            "[--name]",
+                            "[--job-id]",
+                            "[--source-control-sync-job-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get information about the sync job",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--source-control-name",
+                            "value": "[path.sourceControlName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.sourceControlSyncJobId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation source-control sync-job stream list",
+            "description": "List a list of sync job streams identified by sync job id.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/sourceControls/{sourceControlName}/sourceControlSyncJobs/{sourceControlSyncJobId}/streams",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/source-control/sync-job/stream#az-automation-source-control-sync-job-stream-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--resource-group]",
+                            "[--source-control-name]",
+                            "[--sync-job-id]",
+                            "[--subscription]",
+                            "[--filter]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List sync job streams",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--source-control-name",
+                            "value": "[path.sourceControlName]"
+                        },
+                        {
+                            "name": "--sync-job-id",
+                            "value": "[path.sourceControlSyncJobId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,43 @@
+{
+    "resourceType": "diagnostics",
+    "apiVersion": "2024-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/self-help/diagnostic"
+    },
+    "commands": [
+        {
+            "name": "az self-help diagnostic show",
+            "description": "Get the diagnostics using the 'diagnosticsResourceName' you chose while creating the diagnostic.",
+            "path": "/{scope}/providers/Microsoft.Help/diagnostics/{diagnosticsResourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/self-help/diagnostic#az-self-help-diagnostic-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--diagnostic-name]",
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show Diagnostic at Resource Level",
+                    "parameters": [
+                        {
+                            "name": "--diagnostic-name",
+                            "value": "[path.diagnosticsResourceName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

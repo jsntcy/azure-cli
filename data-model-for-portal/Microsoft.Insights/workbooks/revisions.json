@@ -1,0 +1,54 @@
+{
+    "resourceType": "workbooks/revisions",
+    "apiVersion": "2023-06-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook/revision"
+    },
+    "commands": [
+        {
+            "name": "az monitor app-insights workbook revision show",
+            "description": "Show workbook revision.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/workbooks/{resourceName}/revisions/{revisionId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/workbook/revision#az-monitor-app-insights-workbook-revision-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--name]",
+                            "[--revision-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show workbook revision",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.revisionId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

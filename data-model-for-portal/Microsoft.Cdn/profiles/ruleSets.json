@@ -1,0 +1,232 @@
+{
+    "resourceType": "profiles/ruleSets",
+    "apiVersion": "2024-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/afd/rule"
+    },
+    "commands": [
+        {
+            "name": "az afd rule list",
+            "description": "List all of the existing delivery rules within a rule set.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/rules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/rule#az-afd-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all of the existing delivery rules within a rule set.",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--rule-set-name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az afd rule-set create",
+            "description": "Create a new rule set within the specified profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/rule-set#az-afd-rule-set-create"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Create a new rule set under the specified profile.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az afd rule-set delete",
+            "description": "Delete an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/rule-set#az-afd-rule-set-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a rule set with the name ruleset1.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az afd rule-set show",
+            "description": "Get an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/rule-set#az-afd-rule-set-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get an existing AzureFrontDoor rule set with the specified rule set name under the specified subscription, resource group and profile.",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az afd rule-set usage",
+            "description": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile..",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Cdn/profiles/{profileName}/ruleSets/{ruleSetName}/usages",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/afd/rule-set#az-afd-rule-set-usage"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--profile-name]",
+                            "[--resource-group]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Checks the quota and actual usage of endpoints under the given Azure Front Door profile..",
+                    "parameters": [
+                        {
+                            "name": "--profile-name",
+                            "value": "[path.profileName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--rule-set-name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

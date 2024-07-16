@@ -1,0 +1,99 @@
+{
+    "resourceType": "environments/referenceDataSets",
+    "apiVersion": "2020-05-15",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/tsi/reference-data-set"
+    },
+    "commands": [
+        {
+            "name": "az tsi reference-data-set delete",
+            "description": "Delete the reference data set with the specified name in the specified subscription, resource group, and environment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/tsi/reference-data-set#az-tsi-reference-data-set-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-name]",
+                            "[--name]",
+                            "[--reference-data-set-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ReferenceDataSetsDelete",
+                    "parameters": [
+                        {
+                            "name": "--environment-name",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.referenceDataSetName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az tsi reference-data-set show",
+            "description": "Get the reference data set with the specified name in the specified environment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/referenceDataSets/{referenceDataSetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/tsi/reference-data-set#az-tsi-reference-data-set-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--environment-name]",
+                            "[--name]",
+                            "[--reference-data-set-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ReferenceDataSetsGet",
+                    "parameters": [
+                        {
+                            "name": "--environment-name",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.referenceDataSetName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

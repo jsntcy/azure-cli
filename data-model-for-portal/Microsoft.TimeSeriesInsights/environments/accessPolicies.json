@@ -1,0 +1,99 @@
+{
+    "resourceType": "environments/accessPolicies",
+    "apiVersion": "2020-05-15",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/tsi/access-policy"
+    },
+    "commands": [
+        {
+            "name": "az tsi access-policy delete",
+            "description": "Delete the access policy with the specified name in the specified subscription, resource group, and environment",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/tsi/access-policy#az-tsi-access-policy-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--access-policy-name]",
+                            "[--environment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "AccessPoliciesDelete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.accessPolicyName]"
+                        },
+                        {
+                            "name": "--environment-name",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az tsi access-policy show",
+            "description": "Get the access policy with the specified name in the specified environment.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.TimeSeriesInsights/environments/{environmentName}/accessPolicies/{accessPolicyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/tsi/access-policy#az-tsi-access-policy-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--access-policy-name]",
+                            "[--environment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "AccessPoliciesGet",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.accessPolicyName]"
+                        },
+                        {
+                            "name": "--environment-name",
+                            "value": "[path.environmentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

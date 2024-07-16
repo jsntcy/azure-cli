@@ -98,6 +98,52 @@
             ]
         },
         {
+            "name": "az vm host redeploy",
+            "description": "Redeploy the dedicated host.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/redeploy",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/vm/host#az-vm-host-redeploy"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--host-group]",
+                            "[--host-group-name]",
+                            "[--name]",
+                            "[--host-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Redeploy the dedicated host.",
+                    "parameters": [
+                        {
+                            "name": "--host-group",
+                            "value": "[path.hostGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.hostName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
             "name": "az vm host restart",
             "description": "Restart the dedicated host.",
             "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/hostGroups/{hostGroupName}/hosts/{hostName}/restart",

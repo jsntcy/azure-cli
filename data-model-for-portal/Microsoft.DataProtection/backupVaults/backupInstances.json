@@ -1,0 +1,191 @@
+{
+    "resourceType": "backupVaults/backupInstances",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance"
+    },
+    "commands": [
+        {
+            "name": "az dataprotection backup-instance delete",
+            "description": "Delete a backup instance in a backup vault",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance#az-dataprotection-backup-instance-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--x-ms-authorization-auxiliary]",
+                            "[--name]",
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete BackupInstance",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dataprotection backup-instance resume-protection",
+            "description": "This operation will resume protection for a stopped backup instance.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/resumeProtection",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance#az-dataprotection-backup-instance-resume-protection"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Resume protection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dataprotection backup-instance show",
+            "description": "Get a backup instance with name in a backup vault",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/backup-instance#az-dataprotection-backup-instance-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get BackupInstance",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dataprotection recovery-point list",
+            "description": "Returns a list of Recovery Points for a DataSource in a vault.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataProtection/backupVaults/{vaultName}/backupInstances/{backupInstanceName}/recoveryPoints",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dataprotection/recovery-point#az-dataprotection-recovery-point-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--backup-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--vault-name]",
+                            "[--filter]",
+                            "[--skip-token]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Returns a list of Recovery Points for a DataSource in a vault.",
+                    "parameters": [
+                        {
+                            "name": "--backup-instance-name",
+                            "value": "[path.backupInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--vault-name",
+                            "value": "[path.vaultName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

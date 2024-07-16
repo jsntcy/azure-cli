@@ -1,0 +1,59 @@
+{
+    "resourceType": "securityConnectors/devops/gitLabGroups/projects",
+    "apiVersion": "2023-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup/project"
+    },
+    "commands": [
+        {
+            "name": "az security security-connector devops gitlabgroup project show",
+            "description": "Get a monitored GitLab Project resource for a given fully-qualified group name and project name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/gitLabGroups/{groupFQName}/projects/{projectName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/gitlabgroup/project#az-security-security-connector-devops-gitlabgroup-project-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--group-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a monitored GitLab Project resource for a given fully-qualified group name and project name.",
+                    "parameters": [
+                        {
+                            "name": "--group-name",
+                            "value": "[path.groupFQName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

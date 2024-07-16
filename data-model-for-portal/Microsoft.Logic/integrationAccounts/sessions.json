@@ -1,0 +1,99 @@
+{
+    "resourceType": "integrationAccounts/sessions",
+    "apiVersion": "2019-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/session"
+    },
+    "commands": [
+        {
+            "name": "az logic integration-account session delete",
+            "description": "Delete an integration account session.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/session#az-logic-integration-account-session-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--session-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete session",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.sessionName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az logic integration-account session show",
+            "description": "Show an integration account session.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/sessions/{sessionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/session#az-logic-integration-account-session-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--session-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show session",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.sessionName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

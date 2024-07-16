@@ -1,0 +1,109 @@
+{
+    "resourceType": "dataBoxEdgeDevices/storageAccounts/containers",
+    "apiVersion": "2023-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account/container"
+    },
+    "commands": [
+        {
+            "name": "az databoxedge device storage-account container delete",
+            "description": "Delete the container on the Data Box Edge/Data Box Gateway device.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account/container#az-databoxedge-device-storage-account-container-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--container-name]",
+                            "[--device-name]",
+                            "[--resource-group]",
+                            "[--storage-account-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete container",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--storage-account-name",
+                            "value": "[path.storageAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.containerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az databoxedge device storage-account container show",
+            "description": "Show container.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/storageAccounts/{storageAccountName}/containers/{containerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/storage-account/container#az-databoxedge-device-storage-account-container-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--container-name]",
+                            "[--device-name]",
+                            "[--resource-group]",
+                            "[--storage-account-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show container",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--storage-account-name",
+                            "value": "[path.storageAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.containerName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,160 @@
+{
+    "resourceType": "networkManagers/routingConfigurations/ruleCollections",
+    "apiVersion": "2023-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config/rule-collection"
+    },
+    "commands": [
+        {
+            "name": "az network manager routing-config rule-collection delete",
+            "description": "Delete an routing rule collection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config/rule-collection#az-network-manager-routing-config-rule-collection-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--collection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete an routing rule collection.",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleCollectionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager routing-config rule-collection show",
+            "description": "Get a network manager routing configuration rule collection.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config/rule-collection#az-network-manager-routing-config-rule-collection-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--collection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a network manager routing configuration rule collection.",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleCollectionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager routing-config rule-collection rule list",
+            "description": "List all network manager routing configuration routing rules.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/routingConfigurations/{configurationName}/ruleCollections/{ruleCollectionName}/rules",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/routing-config/rule-collection/rule#az-network-manager-routing-config-rule-collection-rule-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--config-name]",
+                            "[--manager-name]",
+                            "[--resource-group]",
+                            "[--collection-name]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all network manager routing configuration routing rules.",
+                    "parameters": [
+                        {
+                            "name": "--config-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--manager-name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--collection-name",
+                            "value": "[path.ruleCollectionName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

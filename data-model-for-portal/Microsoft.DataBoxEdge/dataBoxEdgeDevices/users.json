@@ -1,0 +1,97 @@
+{
+    "resourceType": "dataBoxEdgeDevices/users",
+    "apiVersion": "2023-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/user"
+    },
+    "commands": [
+        {
+            "name": "az databoxedge device user delete",
+            "description": "Delete the user on a databox edge/gateway device.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/user#az-databoxedge-device-user-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete user",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.name]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az databoxedge device user show",
+            "description": "Show user.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DataBoxEdge/dataBoxEdgeDevices/{deviceName}/users/{name}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/databoxedge/device/user#az-databoxedge-device-user-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--device-name]",
+                            "[--name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show user",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--device-name",
+                            "value": "[path.deviceName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.name]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

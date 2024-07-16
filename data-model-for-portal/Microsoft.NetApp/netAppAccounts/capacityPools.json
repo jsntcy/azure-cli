@@ -1,0 +1,53 @@
+{
+    "resourceType": "netAppAccounts/capacityPools",
+    "apiVersion": "2022-11-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/netappfiles/volume"
+    },
+    "commands": [
+        {
+            "name": "az netappfiles volume list",
+            "description": "List all volumes within the capacity pool",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.NetApp/netAppAccounts/{accountName}/capacityPools/{poolName}/volumes",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/netappfiles/volume#az-netappfiles-volume-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account-name]",
+                            "[--pool-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all volumes within the capacity pool",
+                    "parameters": [
+                        {
+                            "name": "--account-name",
+                            "value": "[path.accountName]"
+                        },
+                        {
+                            "name": "--pool-name",
+                            "value": "[path.poolName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

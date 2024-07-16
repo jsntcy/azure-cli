@@ -1,0 +1,109 @@
+{
+    "resourceType": "packetCoreControlPlanes/packetCoreDataPlanes/attachedDataNetworks",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mobile-network/attached-data-network"
+    },
+    "commands": [
+        {
+            "name": "az mobile-network attached-data-network delete",
+            "description": "Delete the specified attached data network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/attached-data-network#az-mobile-network-attached-data-network-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--adn-name]",
+                            "[--pccp-name]",
+                            "[--pcdp-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the specified attached data network.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.attachedDataNetworkName]"
+                        },
+                        {
+                            "name": "--pccp-name",
+                            "value": "[path.packetCoreControlPlaneName]"
+                        },
+                        {
+                            "name": "--pcdp-name",
+                            "value": "[path.packetCoreDataPlaneName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network attached-data-network show",
+            "description": "Get information about the specified attached data network.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks/{attachedDataNetworkName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/attached-data-network#az-mobile-network-attached-data-network-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--adn-name]",
+                            "[--pccp-name]",
+                            "[--pcdp-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show attached-data-network",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.attachedDataNetworkName]"
+                        },
+                        {
+                            "name": "--pccp-name",
+                            "value": "[path.packetCoreControlPlaneName]"
+                        },
+                        {
+                            "name": "--pcdp-name",
+                            "value": "[path.packetCoreDataPlaneName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

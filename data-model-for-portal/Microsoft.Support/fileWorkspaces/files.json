@@ -1,0 +1,82 @@
+{
+    "resourceType": "fileWorkspaces/files",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file"
+    },
+    "commands": [
+        {
+            "name": "az support in-subscription file show",
+            "description": "Get details of a specific file in a work space.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/file#az-support-in-subscription-file-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-name]",
+                            "[--file-workspace-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a file within a file-workspace for a specified subscription (different from the account subscription)",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        },
+                        {
+                            "name": "--file-name",
+                            "value": "[path.fileName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription file show",
+            "description": "Get details of a specific file in a work space.",
+            "path": "/providers/Microsoft.Support/fileWorkspaces/{fileWorkspaceName}/files/{fileName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/file#az-support-no-subscription-file-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--file-name]",
+                            "[--file-workspace-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a file within a file-workspace",
+                    "parameters": [
+                        {
+                            "name": "--file-workspace-name",
+                            "value": "[path.fileWorkspaceName]"
+                        },
+                        {
+                            "name": "--file-name",
+                            "value": "[path.fileName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

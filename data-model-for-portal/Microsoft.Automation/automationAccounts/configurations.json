@@ -1,0 +1,147 @@
+{
+    "resourceType": "automationAccounts/configurations",
+    "apiVersion": "2023-11-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/configuration"
+    },
+    "commands": [
+        {
+            "name": "az automation configuration delete",
+            "description": "Delete the dsc configuration identified by configuration name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/configuration#az-automation-configuration-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--configuration-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the dsc configuration identified by configuration name.",
+                    "parameters": [
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation configuration show",
+            "description": "Get the configuration identified by configuration name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/configuration#az-automation-configuration-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--configuration-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the configuration by its name",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation configuration show-content",
+            "description": "Get the configuration script identified by configuration name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/configurations/{configurationName}/content",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/configuration#az-automation-configuration-show-content"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--configuration-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the script content of DSC Configuration",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

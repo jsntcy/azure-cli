@@ -1,0 +1,99 @@
+{
+    "resourceType": "monitors/tagRules",
+    "apiVersion": "2021-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/dynatrace/monitor/tag-rule"
+    },
+    "commands": [
+        {
+            "name": "az dynatrace monitor tag-rule delete",
+            "description": "Delete a tag rule",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dynatrace/monitor/tag-rule#az-dynatrace-monitor-tag-rule-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a tag rule",
+                    "parameters": [
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az dynatrace monitor tag-rule show",
+            "description": "Show a tag rule",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Dynatrace.Observability/monitors/{monitorName}/tagRules/{ruleSetName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/dynatrace/monitor/tag-rule#az-dynatrace-monitor-tag-rule-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--monitor-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--rule-set-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show tag-rule",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--monitor-name",
+                            "value": "[path.monitorName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.ruleSetName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

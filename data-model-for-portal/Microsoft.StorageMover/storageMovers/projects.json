@@ -1,0 +1,143 @@
+{
+    "resourceType": "storageMovers/projects",
+    "apiVersion": "2024-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition"
+    },
+    "commands": [
+        {
+            "name": "az storage-mover job-definition list",
+            "description": "Lists all Job Definitions in a Project.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-definition#az-storage-mover-job-definition-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-definition list",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover project delete",
+            "description": "Deletes a Project resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/project#az-storage-mover-project-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "project delete",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover project show",
+            "description": "Gets a Project resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/project#az-storage-mover-project-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "project show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

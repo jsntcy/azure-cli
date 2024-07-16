@@ -1,0 +1,64 @@
+{
+    "resourceType": "securityConnectors/devops/azureDevOpsOrgs/projects/repos",
+    "apiVersion": "2023-09-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/azuredevopsorg/project/repo"
+    },
+    "commands": [
+        {
+            "name": "az security security-connector devops azuredevopsorg project repo show",
+            "description": "Get a monitored Azure DevOps repository resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Security/securityConnectors/{securityConnectorName}/devops/default/azureDevOpsOrgs/{orgName}/projects/{projectName}/repos/{repoName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/security/security-connector/devops/azuredevopsorg/project/repo#az-security-security-connector-devops-azuredevopsorg-project-repo-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--org-name]",
+                            "[--project-name]",
+                            "[--repo-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--security-connector-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a monitored Azure DevOps repository resource.",
+                    "parameters": [
+                        {
+                            "name": "--org-name",
+                            "value": "[path.orgName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--repo-name",
+                            "value": "[path.repoName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.securityConnectorName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

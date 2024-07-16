@@ -1,0 +1,99 @@
+{
+    "resourceType": "virtualHubs/routingIntent",
+    "apiVersion": "2021-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/vhub/routing-intent"
+    },
+    "commands": [
+        {
+            "name": "az network vhub routing-intent delete",
+            "description": "Delete a routing intent in the virtual hub.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/routing-intent#az-network-vhub-routing-intent-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--routing-intent-name]",
+                            "[--subscription]",
+                            "[--vhub]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a routing intent in the virtual hub.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.routingIntentName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--vhub",
+                            "value": "[path.virtualHubName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network vhub routing-intent show",
+            "description": "Retrieve the details of a routing intent.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/virtualHubs/{virtualHubName}/routingIntent/{routingIntentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/vhub/routing-intent#az-network-vhub-routing-intent-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--routing-intent-name]",
+                            "[--subscription]",
+                            "[--vhub]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Retrieve the details of a routing intent.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.routingIntentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--vhub",
+                            "value": "[path.virtualHubName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

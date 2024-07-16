@@ -1,0 +1,99 @@
+{
+    "resourceType": "integrationAccounts/batchConfigurations",
+    "apiVersion": "2019-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/batch-configuration"
+    },
+    "commands": [
+        {
+            "name": "az logic integration-account batch-configuration delete",
+            "description": "Delete a batch configuration for an integration account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/batch-configuration#az-logic-integration-account-batch-configuration-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--batch-configuration-name]",
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete batch configuration",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.batchConfigurationName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az logic integration-account batch-configuration show",
+            "description": "Show a batch configuration for an integration account.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Logic/integrationAccounts/{integrationAccountName}/batchConfigurations/{batchConfigurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/logic/integration-account/batch-configuration#az-logic-integration-account-batch-configuration-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--batch-configuration-name]",
+                            "[--integration-account-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show batch configuration",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.batchConfigurationName]"
+                        },
+                        {
+                            "name": "--integration-account-name",
+                            "value": "[path.integrationAccountName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

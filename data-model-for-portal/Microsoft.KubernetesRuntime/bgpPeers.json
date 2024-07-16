@@ -1,0 +1,106 @@
+{
+    "resourceType": "bgpPeers",
+    "apiVersion": "2024-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/bgp-peer"
+    },
+    "commands": [
+        {
+            "name": "az k8s-runtime bgp-peer delete",
+            "description": "Delete a BgpPeer",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/bgp-peer#az-k8s-runtime-bgp-peer-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--bgp-peer-name]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a BGP peer",
+                    "parameters": [
+                        {
+                            "name": "--bgp-peer-name",
+                            "value": "[path.bgpPeerName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime bgp-peer list",
+            "description": "List BgpPeer resources by parent",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/bgp-peer#az-k8s-runtime-bgp-peer-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all BGP peers in a cluster",
+                    "parameters": [
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az k8s-runtime bgp-peer show",
+            "description": "Get a BgpPeer",
+            "path": "/{resourceUri}/providers/Microsoft.KubernetesRuntime/bgpPeers/{bgpPeerName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/k8s-runtime/bgp-peer#az-k8s-runtime-bgp-peer-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--bgp-peer-name]",
+                            "[--resource-uri]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a BGP peer",
+                    "parameters": [
+                        {
+                            "name": "--bgp-peer-name",
+                            "value": "[path.bgpPeerName]"
+                        },
+                        {
+                            "name": "--resource-uri",
+                            "value": "[path.resourceUri]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

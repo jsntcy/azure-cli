@@ -1,0 +1,57 @@
+{
+    "resourceType": "projects/attachednetworks",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/attached-network"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin attached-network show",
+            "description": "Get an attached network connection configured for a dev center or project.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/projects/{projectName}/attachednetworks/{attachedNetworkConnectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/attached-network#az-devcenter-admin-attached-network-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--attached-network-connection-name]",
+                            "[--dev-center]",
+                            "[--dev-center-name]",
+                            "[--project]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a dev center attached network connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.attachedNetworkConnectionName]"
+                        },
+                        {
+                            "name": "--dev-center",
+                            "value": "[path.devCenterName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

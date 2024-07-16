@@ -1,0 +1,99 @@
+{
+    "resourceType": "spacecrafts/contacts",
+    "apiVersion": "2022-03-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft/contact"
+    },
+    "commands": [
+        {
+            "name": "az orbital spacecraft contact delete",
+            "description": "Delete a specified contact.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft/contact#az-orbital-spacecraft-contact-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--contact-name]",
+                            "[--resource-group]",
+                            "[--spacecraft-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Contact",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--spacecraft-name",
+                            "value": "[path.spacecraftName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.contactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az orbital spacecraft contact show",
+            "description": "Get the specified contact in a specified resource group.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Orbital/spacecrafts/{spacecraftName}/contacts/{contactName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/orbital/spacecraft/contact#az-orbital-spacecraft-contact-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--contact-name]",
+                            "[--resource-group]",
+                            "[--spacecraft-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Contact",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--spacecraft-name",
+                            "value": "[path.spacecraftName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.contactName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

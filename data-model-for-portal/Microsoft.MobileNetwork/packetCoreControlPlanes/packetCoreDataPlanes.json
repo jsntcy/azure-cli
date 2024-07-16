@@ -1,0 +1,143 @@
+{
+    "resourceType": "packetCoreControlPlanes/packetCoreDataPlanes",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mobile-network/attached-data-network"
+    },
+    "commands": [
+        {
+            "name": "az mobile-network attached-data-network list",
+            "description": "List all the attached data networks associated with a packet core data plane.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}/attachedDataNetworks",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/attached-data-network#az-mobile-network-attached-data-network-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--pccp-name]",
+                            "[--pcdp-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List attached-data-network by resource group",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--pccp-name",
+                            "value": "[path.packetCoreControlPlaneName]"
+                        },
+                        {
+                            "name": "--pcdp-name",
+                            "value": "[path.packetCoreDataPlaneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network pcdp delete",
+            "description": "Delete the specified packet core data plane.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/pcdp#az-mobile-network-pcdp-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--pccp-name]",
+                            "[--name]",
+                            "[--pcdp-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the specified packet core data plane.",
+                    "parameters": [
+                        {
+                            "name": "--pccp-name",
+                            "value": "[path.packetCoreControlPlaneName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packetCoreDataPlaneName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network pcdp show",
+            "description": "Get information about the specified packet core data plane.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/packetCoreControlPlanes/{packetCoreControlPlaneName}/packetCoreDataPlanes/{packetCoreDataPlaneName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/pcdp#az-mobile-network-pcdp-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--pccp-name]",
+                            "[--name]",
+                            "[--pcdp-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show Packet Core Data Plane",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packetCoreDataPlaneName]"
+                        },
+                        {
+                            "name": "--pccp-name",
+                            "value": "[path.packetCoreControlPlaneName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

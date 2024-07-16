@@ -1,0 +1,97 @@
+{
+    "resourceType": "publishers/artifactStores",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-manifest"
+    },
+    "commands": [
+        {
+            "name": "az aosm publisher artifact-manifest list",
+            "description": "List information about the artifact manifest.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifactManifests",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-manifest#az-aosm-publisher-artifact-manifest-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--artifact-store-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List information about the artifact manifest in the 'contoso' artifact store of the 'contoso' publisher",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--artifact-store-name",
+                            "value": "[path.artifactStoreName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az aosm publisher artifact-store artifact list",
+            "description": "List all the available artifacts in the parent Artifact Store.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.HybridNetwork/publishers/{publisherName}/artifactStores/{artifactStoreName}/artifacts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/aosm/publisher/artifact-store/artifact#az-aosm-publisher-artifact-store-artifact-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--artifact-store-name]",
+                            "[--publisher-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all available artifacts in the 'contoso' artifact store of the 'contoso' publisher",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--publisher-name",
+                            "value": "[path.publisherName]"
+                        },
+                        {
+                            "name": "--artifact-store-name",
+                            "value": "[path.artifactStoreName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,111 @@
+{
+    "resourceType": "troubleshooters",
+    "apiVersion": "2024-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/self-help/troubleshooter"
+    },
+    "commands": [
+        {
+            "name": "az self-help troubleshooter end",
+            "description": "Ends the troubleshooter action",
+            "path": "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/end",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/self-help/troubleshooter#az-self-help-troubleshooter-end"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]",
+                            "[--troubleshooter-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "End Troubleshooter at Resource Level",
+                    "parameters": [
+                        {
+                            "name": "--troubleshooter-name",
+                            "value": "[path.troubleshooterName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az self-help troubleshooter restart",
+            "description": "Restarts the troubleshooter API using applicable troubleshooter resource name as the input.",
+            "path": "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}/restart",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/self-help/troubleshooter#az-self-help-troubleshooter-restart"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]",
+                            "[--troubleshooter-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Restart Troubleshooter at Resource Level",
+                    "parameters": [
+                        {
+                            "name": "--troubleshooter-name",
+                            "value": "[path.troubleshooterName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az self-help troubleshooter show",
+            "description": "Get troubleshooter instance result which includes the step status/result of the troubleshooter resource name that is being executed.",
+            "path": "/{scope}/providers/Microsoft.Help/troubleshooters/{troubleshooterName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/self-help/troubleshooter#az-self-help-troubleshooter-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]",
+                            "[--troubleshooter-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show Troubleshooter at Resource Level",
+                    "parameters": [
+                        {
+                            "name": "--troubleshooter-name",
+                            "value": "[path.troubleshooterName]"
+                        },
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

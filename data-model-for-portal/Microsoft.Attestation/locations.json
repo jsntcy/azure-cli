@@ -1,0 +1,43 @@
+{
+    "resourceType": "locations",
+    "apiVersion": "2020-10-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/attestation"
+    },
+    "commands": [
+        {
+            "name": "az attestation get-default-by-location",
+            "description": "Get the default provider by location.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Attestation/locations/{location}/defaultProvider",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/attestation#az-attestation-get-default-by-location"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "AttestationProviders_GetDefaultWithLocation",
+                    "parameters": [
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

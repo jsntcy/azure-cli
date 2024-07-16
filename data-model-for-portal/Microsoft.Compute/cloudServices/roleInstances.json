@@ -1,0 +1,53 @@
+{
+    "resourceType": "cloudServices/roleInstances",
+    "apiVersion": "2022-09-04",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/cloud-service/role-instance"
+    },
+    "commands": [
+        {
+            "name": "az cloud-service role-instance reimage",
+            "description": "The reimage role instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/cloudServices/{cloudServiceName}/roleInstances/{roleInstanceName}/reimage",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/cloud-service/role-instance#az-cloud-service-role-instance-reimage"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--cloud-service-name]",
+                            "[--resource-group]",
+                            "[--role-instance-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "The reimage role instance asynchronous operation reinstalls the operating system on instances of web roles or worker roles.",
+                    "parameters": [
+                        {
+                            "name": "--cloud-service-name",
+                            "value": "[path.cloudServiceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--role-instance-name",
+                            "value": "[path.roleInstanceName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,97 @@
+{
+    "resourceType": "components/exportconfiguration",
+    "apiVersion": "2015-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/continues-export"
+    },
+    "commands": [
+        {
+            "name": "az monitor app-insights component continues-export delete",
+            "description": "Delete a specific Continuous Export     configuration of an Application Insights component.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/exportconfiguration/{exportId}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/continues-export#az-monitor-app-insights-component-continues-export-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--id]",
+                            "[--resource-group]",
+                            "[--app]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a Continuous Export configuration by ID.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--app",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--id",
+                            "value": "[path.exportId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az monitor app-insights component continues-export show",
+            "description": "Get the Continuous Export configuration for this export id.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Insights/components/{resourceName}/exportconfiguration/{exportId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/monitor/app-insights/component/continues-export#az-monitor-app-insights-component-continues-export-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--id]",
+                            "[--resource-group]",
+                            "[--app]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show a continuous export configuration by ID.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--app",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--id",
+                            "value": "[path.exportId]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

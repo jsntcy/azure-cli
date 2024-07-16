@@ -1,0 +1,110 @@
+{
+    "resourceType": "devcenters/galleries/images",
+    "apiVersion": "2024-05-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/image"
+    },
+    "commands": [
+        {
+            "name": "az devcenter admin image show",
+            "description": "Get a gallery image.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/image#az-devcenter-admin-image-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dev-center]",
+                            "[--dev-center-name]",
+                            "[--gallery-name]",
+                            "[--name]",
+                            "[--image-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get",
+                    "parameters": [
+                        {
+                            "name": "--dev-center",
+                            "value": "[path.devCenterName]"
+                        },
+                        {
+                            "name": "--gallery-name",
+                            "value": "[path.galleryName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.imageName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az devcenter admin image-version list",
+            "description": "List versions for an image.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DevCenter/devcenters/{devCenterName}/galleries/{galleryName}/images/{imageName}/versions",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/devcenter/admin/image-version#az-devcenter-admin-image-version-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--dev-center]",
+                            "[--dev-center-name]",
+                            "[--gallery-name]",
+                            "[--image-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List",
+                    "parameters": [
+                        {
+                            "name": "--dev-center",
+                            "value": "[path.devCenterName]"
+                        },
+                        {
+                            "name": "--gallery-name",
+                            "value": "[path.galleryName]"
+                        },
+                        {
+                            "name": "--image-name",
+                            "value": "[path.imageName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

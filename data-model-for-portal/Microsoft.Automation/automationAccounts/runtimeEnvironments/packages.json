@@ -1,0 +1,113 @@
+{
+    "resourceType": "automationAccounts/runtimeEnvironments/packages",
+    "apiVersion": "2023-05-15-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/runtime-environment/package"
+    },
+    "commands": [
+        {
+            "name": "az automation runtime-environment package delete",
+            "description": "Delete the package by name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/runtime-environment/package#az-automation-runtime-environment-package-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--package-name]",
+                            "[--resource-group]",
+                            "[--environment]",
+                            "[--runtime-environment-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete the package",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--environment",
+                            "value": "[path.runtimeEnvironmentName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packageName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation runtime-environment package show",
+            "description": "Get the Package identified by Package name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/runtimeEnvironments/{runtimeEnvironmentName}/packages/{packageName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/runtime-environment/package#az-automation-runtime-environment-package-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--account]",
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--package-name]",
+                            "[--resource-group]",
+                            "[--environment]",
+                            "[--runtime-environment-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the information about the package",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--account",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--environment",
+                            "value": "[path.runtimeEnvironmentName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packageName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

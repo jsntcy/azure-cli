@@ -1,0 +1,64 @@
+{
+    "resourceType": "storageMovers/projects/jobDefinitions/jobRuns",
+    "apiVersion": "2024-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-run"
+    },
+    "commands": [
+        {
+            "name": "az storage-mover job-run show",
+            "description": "Gets a Job Run resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/projects/{projectName}/jobDefinitions/{jobDefinitionName}/jobRuns/{jobRunName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/job-run#az-storage-mover-job-run-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--job-definition-name]",
+                            "[--name]",
+                            "[--job-run-name]",
+                            "[--project-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "job-run show",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.jobRunName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--job-definition-name",
+                            "value": "[path.jobDefinitionName]"
+                        },
+                        {
+                            "name": "--project-name",
+                            "value": "[path.projectName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

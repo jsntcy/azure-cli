@@ -1,0 +1,49 @@
+{
+    "resourceType": "locations/operationsStatus",
+    "apiVersion": "2023-03-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/redisenterprise/operation-status"
+    },
+    "commands": [
+        {
+            "name": "az redisenterprise operation-status show",
+            "description": "Get the status of operation.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Cache/locations/{location}/operationsStatus/{operationId}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/redisenterprise/operation-status#az-redisenterprise-operation-status-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--location]",
+                            "[--name]",
+                            "[--operation-id]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get the status of an operation",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.operationId]"
+                        },
+                        {
+                            "name": "--location",
+                            "value": "[path.location]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

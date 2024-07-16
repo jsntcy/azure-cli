@@ -1,0 +1,58 @@
+{
+    "resourceType": "expressRouteCircuits/peerings/arpTables",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/express-route"
+    },
+    "commands": [
+        {
+            "name": "az network express-route list-arp-tables",
+            "description": "Show the current Address Resolution Protocol (ARP) table of an ExpressRoute circuit.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/expressRouteCircuits/{circuitName}/peerings/{peeringName}/arpTables/{devicePath}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/express-route#az-network-express-route-list-arp-tables"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--path]",
+                            "[--peering-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show the current Address Resolution Protocol (ARP) table of an ExpressRoute circuit.",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.circuitName]"
+                        },
+                        {
+                            "name": "--path",
+                            "value": "[path.devicePath]"
+                        },
+                        {
+                            "name": "--peering-name",
+                            "value": "[path.peeringName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

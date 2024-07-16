@@ -1,0 +1,147 @@
+{
+    "resourceType": "networkManagers/securityAdminConfigurations",
+    "apiVersion": "2022-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/security-admin-config"
+    },
+    "commands": [
+        {
+            "name": "az network manager security-admin-config delete",
+            "description": "Delete a network manager security admin configuration.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/security-admin-config#az-network-manager-security-admin-config-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--configuration-name]",
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--force]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete a network manager security admin configuration.",
+                    "parameters": [
+                        {
+                            "name": "--configuration-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager security-admin-config show",
+            "description": "Get a network manager security admin configuration.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/security-admin-config#az-network-manager-security-admin-config-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--configuration-name]",
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a security admin configuration.",
+                    "parameters": [
+                        {
+                            "name": "--configuration-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager security-admin-config rule-collection list",
+            "description": "List all the rule collections in a security admin configuration, in a paginated format.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/networkManagers/{networkManagerName}/securityAdminConfigurations/{configurationName}/ruleCollections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/security-admin-config/rule-collection#az-network-manager-security-admin-config-rule-collection-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--configuration-name]",
+                            "[--name]",
+                            "[--network-manager-name]",
+                            "[--resource-group]",
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List security admin rule collections",
+                    "parameters": [
+                        {
+                            "name": "--configuration-name",
+                            "value": "[path.configurationName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

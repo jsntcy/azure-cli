@@ -1,0 +1,72 @@
+{
+    "resourceType": "usages",
+    "apiVersion": "2023-02-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/quota/usage"
+    },
+    "commands": [
+        {
+            "name": "az quota usage list",
+            "description": "List current usage for all resources for the scope specified.",
+            "path": "/{scope}/providers/Microsoft.Quota/usages",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota/usage#az-quota-usage-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List quota usage for network",
+                    "parameters": [
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az quota usage show",
+            "description": "Show the current usage of a resource.",
+            "path": "/{scope}/providers/Microsoft.Quota/usages/{resourceName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/quota/usage#az-quota-usage-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--resource-name]",
+                            "[--scope]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show quota usage for network",
+                    "parameters": [
+                        {
+                            "name": "--scope",
+                            "value": "[path.scope]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

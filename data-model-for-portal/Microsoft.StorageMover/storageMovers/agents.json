@@ -1,0 +1,99 @@
+{
+    "resourceType": "storageMovers/agents",
+    "apiVersion": "2024-07-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/storage-mover/agent"
+    },
+    "commands": [
+        {
+            "name": "az storage-mover agent show",
+            "description": "Gets an Agent resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/agent#az-storage-mover-agent-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--agent-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "agent show",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.agentName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az storage-mover agent unregister",
+            "description": "Unregisters an Agent resource.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.StorageMover/storageMovers/{storageMoverName}/agents/{agentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/storage-mover/agent#az-storage-mover-agent-unregister"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--agent-name]",
+                            "[--resource-group]",
+                            "[--storage-mover-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "agent unregister",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.agentName]"
+                        },
+                        {
+                            "name": "--storage-mover-name",
+                            "value": "[path.storageMoverName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

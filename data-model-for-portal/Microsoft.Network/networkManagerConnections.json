@@ -1,0 +1,211 @@
+{
+    "resourceType": "networkManagerConnections",
+    "apiVersion": "2022-01-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/management-group"
+    },
+    "commands": [
+        {
+            "name": "az network manager connection management-group delete",
+            "description": "Delete specified pending connection created by this management group.",
+            "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/management-group#az-network-manager-connection-management-group-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--management-group-id]",
+                            "[--name]",
+                            "[--connection-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete network manager connection management-group",
+                    "parameters": [
+                        {
+                            "name": "--management-group-id",
+                            "value": "[path.managementGroupId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerConnectionName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connection management-group list",
+            "description": "List all network manager connections created by this management group.",
+            "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/management-group#az-network-manager-connection-management-group-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--management-group-id]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List management-group connections in a network manager",
+                    "parameters": [
+                        {
+                            "name": "--management-group-id",
+                            "value": "[path.managementGroupId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connection management-group show",
+            "description": "Get a specified connection created by this management group.",
+            "path": "/providers/Microsoft.Management/managementGroups/{managementGroupId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/management-group#az-network-manager-connection-management-group-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--management-group-id]",
+                            "[--name]",
+                            "[--connection-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get network manager connection management-group",
+                    "parameters": [
+                        {
+                            "name": "--management-group-id",
+                            "value": "[path.managementGroupId]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerConnectionName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connection subscription delete",
+            "description": "Delete specified connection created by this subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/subscription#az-network-manager-connection-subscription-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--connection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete network manager connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerConnectionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connection subscription list",
+            "description": "List all network manager connections created by this subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/subscription#az-network-manager-connection-subscription-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--skip-token]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List network manager connections in a network manager",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az network manager connection subscription show",
+            "description": "Get a specified connection created by this subscription.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Network/networkManagerConnections/{networkManagerConnectionName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/network/manager/connection/subscription#az-network-manager-connection-subscription-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--connection-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get network manager connection",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.networkManagerConnectionName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

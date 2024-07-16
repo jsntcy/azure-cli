@@ -1,0 +1,258 @@
+{
+    "resourceType": "supportTickets",
+    "apiVersion": "2024-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/chat-transcript"
+    },
+    "commands": [
+        {
+            "name": "az support in-subscription chat-transcript list",
+            "description": "List all chat transcripts for a support ticket under subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/chat-transcript#az-support-in-subscription-chat-transcript-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all chat transcripts for a support ticket under subscription",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support in-subscription communication list",
+            "description": "List all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/communication#az-support-in-subscription-communication-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--ticket-name]",
+                            "[--filter]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        },
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support in-subscription tickets list",
+            "description": "Lists all the support tickets for an Azure subscription. You can also filter the support tickets by _Status_, _CreatedDate_, _ServiceId_, and _ProblemClassificationId_ using the $filter parameter. Output will be a paged result with _nextLink_, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. Default is CreatedDate >= one week.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/tickets#az-support-in-subscription-tickets-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--filter]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List support tickets for a subscription",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support in-subscription tickets show",
+            "description": "Get ticket details for an Azure subscription. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/in-subscription/tickets#az-support-in-subscription-tickets-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]",
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get details of a subscription ticket",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription chat-transcript list",
+            "description": "List all chat transcripts for a support ticket",
+            "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/chatTranscripts",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/chat-transcript#az-support-no-subscription-chat-transcript-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all chat transcripts for a support ticket",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription communication list",
+            "description": "List all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+            "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}/communications",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/communication#az-support-no-subscription-communication-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--ticket-name]",
+                            "[--filter]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all communications (attachments not included) for a support ticket. <br/></br> You can also filter support ticket communications by _CreatedDate_ or _CommunicationType_ using the $filter parameter. The only type of communication supported today is _Web_. Output will be a paged result with _nextLink_, using which you can retrieve the next set of Communication results. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription tickets list",
+            "description": "List all the support tickets. <br/><br/>You can also filter the support tickets by <i>Status</i>, <i>CreatedDate</i>, <i>ServiceId</i>, and <i>ProblemClassificationId</i> using the $filter parameter. Output will be a paged result with <i>nextLink</i>, using which you can retrieve the next set of support tickets. <br/><br/>Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error. Default is CreatedDate >= one week.",
+            "path": "/providers/Microsoft.Support/supportTickets",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/tickets#az-support-no-subscription-tickets-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--filter]",
+                            "[--top]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List support tickets for a no subscription",
+                    "parameters": []
+                }
+            ]
+        },
+        {
+            "name": "az support no-subscription tickets show",
+            "description": "Get details for a specific support ticket. Support ticket data is available for 18 months after ticket creation. If a ticket was created more than 18 months ago, a request for data might cause an error.",
+            "path": "/providers/Microsoft.Support/supportTickets/{supportTicketName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/support/no-subscription/tickets#az-support-no-subscription-tickets-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--ticket-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get details of a no subscription ticket",
+                    "parameters": [
+                        {
+                            "name": "--ticket-name",
+                            "value": "[path.supportTicketName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

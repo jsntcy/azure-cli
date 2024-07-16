@@ -1,0 +1,99 @@
+{
+    "resourceType": "mobileNetworks/simPolicies",
+    "apiVersion": "2023-09-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/mobile-network/sim/policy"
+    },
+    "commands": [
+        {
+            "name": "az mobile-network sim policy delete",
+            "description": "Delete the specified SIM policy.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/simPolicies/{simPolicyName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/sim/policy#az-mobile-network-sim-policy-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--sim-policy-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete sim policy",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.simPolicyName]"
+                        },
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az mobile-network sim policy show",
+            "description": "Get information about the specified SIM policy.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.MobileNetwork/mobileNetworks/{mobileNetworkName}/simPolicies/{simPolicyName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/mobile-network/sim/policy#az-mobile-network-sim-policy-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--mobile-network-name]",
+                            "[--resource-group]",
+                            "[--name]",
+                            "[--sim-policy-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Show sim policy",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.simPolicyName]"
+                        },
+                        {
+                            "name": "--mobile-network-name",
+                            "value": "[path.mobileNetworkName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

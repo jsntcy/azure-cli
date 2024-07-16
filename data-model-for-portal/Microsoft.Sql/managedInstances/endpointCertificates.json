@@ -1,0 +1,57 @@
+{
+    "resourceType": "managedInstances/endpointCertificates",
+    "apiVersion": "2022-02-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/sql/mi/endpoint-cert"
+    },
+    "commands": [
+        {
+            "name": "az sql mi endpoint-cert show",
+            "description": "Get a certificate used on the endpoint with the given id.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Sql/managedInstances/{managedInstanceName}/endpointCertificates/{endpointType}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/sql/mi/endpoint-cert#az-sql-mi-endpoint-cert-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--endpoint-type]",
+                            "[--mi]",
+                            "[--instance-name]",
+                            "[--managed-instance]",
+                            "[--managed-instance-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get a certificate used on the endpoint with the given id.",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.endpointType]"
+                        },
+                        {
+                            "name": "--mi",
+                            "value": "[path.managedInstanceName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

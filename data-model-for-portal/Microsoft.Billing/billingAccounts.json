@@ -1,0 +1,101 @@
+{
+    "resourceType": "billingAccounts",
+    "apiVersion": "2020-05-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/billing/account"
+    },
+    "commands": [
+        {
+            "name": "az billing account list-invoice-section",
+            "description": "List the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/listInvoiceSectionsWithCreateSubscriptionPermission",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/account#az-billing-account-list-invoice-section"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the invoice sections for which the user has permission to create Azure subscriptions. The operation is supported only for billing accounts with agreement type Microsoft Customer Agreement.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az billing account invoice-section list",
+            "description": "List all invoice sections for which a user has access.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/invoiceSections",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/account/invoice-section#az-billing-account-invoice-section-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]",
+                            "[--expand]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List all invoice sections for which a user has access.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az billing account reservation list",
+            "description": "List the reservations for a billing account and the roll up counts of reservations group by provisioning states.",
+            "path": "/providers/Microsoft.Billing/billingAccounts/{billingAccountName}/reservations",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/billing/account/reservation#az-billing-account-reservation-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--billing-account-name]",
+                            "[--filter]",
+                            "[--orderby]",
+                            "[--refresh-summary]",
+                            "[--selected-state]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "List the reservations for a billing account and the roll up counts of reservations group by provisioning states.",
+                    "parameters": [
+                        {
+                            "name": "--billing-account-name",
+                            "value": "[path.billingAccountName]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

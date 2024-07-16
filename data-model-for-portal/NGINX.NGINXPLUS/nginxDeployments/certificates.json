@@ -1,0 +1,99 @@
+{
+    "resourceType": "nginxDeployments/certificates",
+    "apiVersion": "2024-01-01-preview",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/nginx/deployment/certificate"
+    },
+    "commands": [
+        {
+            "name": "az nginx deployment certificate delete",
+            "description": "Delete an NGINX deployment certificate",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/nginx/deployment/certificate#az-nginx-deployment-certificate-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--certificate-name]",
+                            "[--deployment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Certificate_Delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.certificateName]"
+                        },
+                        {
+                            "name": "--deployment-name",
+                            "value": "[path.deploymentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az nginx deployment certificate show",
+            "description": "Get the properties of a specific NGINX certificate.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Nginx.NginxPlus/nginxDeployments/{deploymentName}/certificates/{certificateName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/nginx/deployment/certificate#az-nginx-deployment-certificate-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--certificate-name]",
+                            "[--deployment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Certificate Get",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.certificateName]"
+                        },
+                        {
+                            "name": "--deployment-name",
+                            "value": "[path.deploymentName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

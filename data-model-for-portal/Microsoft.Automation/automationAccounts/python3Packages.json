@@ -1,0 +1,99 @@
+{
+    "resourceType": "automationAccounts/python3Packages",
+    "apiVersion": "2022-08-08",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/automation/python3-package"
+    },
+    "commands": [
+        {
+            "name": "az automation python3-package delete",
+            "description": "Delete the python 3 package by name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/python3-package#az-automation-python3-package-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--package-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Delete Python3 Package by Name",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packageName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az automation python3-package show",
+            "description": "Retrieve the python 3 package identified by package name.",
+            "path": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Automation/automationAccounts/{automationAccountName}/python3Packages/{packageName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/automation/python3-package#az-automation-python3-package-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--automation-account-name]",
+                            "[--name]",
+                            "[--package-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get Python3Package by Name",
+                    "parameters": [
+                        {
+                            "name": "--automation-account-name",
+                            "value": "[path.automationAccountName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.packageName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

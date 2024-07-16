@@ -1,0 +1,536 @@
+{
+    "resourceType": "configurationAssignments",
+    "apiVersion": "2023-04-01",
+    "learnMore": {
+        "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment"
+    },
+    "commands": [
+        {
+            "name": "az maintenance assignment delete",
+            "description": "Delete configuration for resource.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-delete"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_Delete",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment delete-parent",
+            "description": "Delete configuration for resource.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-delete-parent"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-parent-name]",
+                            "[--resource-parent-type]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_DeleteParent",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-parent-name",
+                            "value": "[path.resourceParentName]"
+                        },
+                        {
+                            "name": "--resource-parent-type",
+                            "value": "[path.resourceParentType]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment delete-resource-group",
+            "description": "Delete configuration for resource.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-delete-resource-group"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_DeleteSubscription",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment delete-subscription",
+            "description": "Delete configuration for resource.",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": true,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-delete-subscription"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_DeleteSubscription",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment list",
+            "description": "List configurationAssignments for resource.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-list"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_List",
+                    "parameters": [
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment list-parent",
+            "description": "List configurationAssignments for resource.",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-list-parent"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-parent-name]",
+                            "[--resource-parent-type]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_ListParent",
+                    "parameters": [
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-parent-name",
+                            "value": "[path.resourceParentName]"
+                        },
+                        {
+                            "name": "--resource-parent-type",
+                            "value": "[path.resourceParentType]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment list-subscription",
+            "description": "List configuration assignment within a subscription",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-list-subscription"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_List",
+                    "parameters": [
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment show",
+            "description": "Get configuration assignment for resource..",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-show"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_Get",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment show-parent",
+            "description": "Get configuration assignment for resource..",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/{providerName}/{resourceParentType}/{resourceParentName}/{resourceType}/{resourceName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-show-parent"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--provider-name]",
+                            "[--resource-group]",
+                            "[--resource-name]",
+                            "[--resource-parent-name]",
+                            "[--resource-parent-type]",
+                            "[--resource-type]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "Get configuration assignment for resource..",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--provider-name",
+                            "value": "[path.providerName]"
+                        },
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--resource-name",
+                            "value": "[path.resourceName]"
+                        },
+                        {
+                            "name": "--resource-parent-name",
+                            "value": "[path.resourceParentName]"
+                        },
+                        {
+                            "name": "--resource-parent-type",
+                            "value": "[path.resourceParentType]"
+                        },
+                        {
+                            "name": "--resource-type",
+                            "value": "[path.resourceType]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment show-resource-group",
+            "description": "Get configuration assignment for resource..",
+            "path": "/subscriptions/{subscriptionId}/resourcegroups/{resourceGroupName}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-show-resource-group"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--resource-group]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_GetResourceGroup",
+                    "parameters": [
+                        {
+                            "name": "--resource-group",
+                            "value": "[path.resourceGroupName]"
+                        },
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "az maintenance assignment show-subscription",
+            "description": "Get configuration assignment for resource..",
+            "path": "/subscriptions/{subscriptionId}/providers/Microsoft.Maintenance/configurationAssignments/{configurationAssignmentName}",
+            "confirmation": false,
+            "help": {
+                "learnMore": {
+                    "url": "https://docs.microsoft.com/cli/azure/maintenance/assignment#az-maintenance-assignment-show-subscription"
+                },
+                "parameterSets": [
+                    {
+                        "parameters": [
+                            "[--name]",
+                            "[--configuration-assignment-name]",
+                            "[--subscription]"
+                        ]
+                    }
+                ]
+            },
+            "examples": [
+                {
+                    "description": "ConfigurationAssignments_GetSubscription",
+                    "parameters": [
+                        {
+                            "name": "--name",
+                            "value": "[path.configurationAssignmentName]"
+                        },
+                        {
+                            "name": "--subscription",
+                            "value": "[path.subscriptionId]"
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
